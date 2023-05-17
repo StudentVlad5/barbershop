@@ -17,9 +17,6 @@ export const Footer = () => {
             <Description>Developed by</Description>
             <TeamModalBtn
               aria-label="Our team"
-              onClick={() => {
-                
-              }}
               data-modal="developers"
             ></TeamModalBtn>
           </Team>
