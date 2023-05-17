@@ -33,6 +33,6 @@ export const ThemeStatus = ({ children }) => {
   );
 };
 
-ThemeProvider.propTypes = {
+ThemeStatus.propTypes = {
   children: PropTypes.object
 };
