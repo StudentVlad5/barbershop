@@ -10,7 +10,7 @@ export const SwitchTheme = () => {
       {({ theme, setMode }) => (
         <SwitcherWrapper>
           <BtnChangeTheme
-            onClick={e =>
+            onClick={() =>
               theme === 'light' ? setMode('dark') : setMode('light')
             }
           >

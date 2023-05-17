@@ -18,7 +18,7 @@ export const Footer = () => {
             <TeamModalBtn
               aria-label="Our team"
               onClick={e => {
-                toggleModal(e);
+                
               }}
               data-modal="developers"
             ></TeamModalBtn>
