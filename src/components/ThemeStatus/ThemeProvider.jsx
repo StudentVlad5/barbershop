@@ -34,5 +34,5 @@ export const ThemeStatus = ({ children }) => {
 };
 
 ThemeStatus.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.array
 };

@@ -1,9 +1,11 @@
 {
-  "name": "barbershop", 
+  "name": "barbershop",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://studentvlad5.github.io/barbershop/",
   "dependencies": {
+    "@syncfusion/ej2-base": "^21.2.3",
+    "@syncfusion/ej2-react-schedule": "^21.2.5",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^13.5.0",

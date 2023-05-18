@@ -1,11 +1,13 @@
 // import { SEO } from 'utils/SEO';
+import Schedule from "components/Schedule/Schedule";
 
 const HomePage = () => {
   return (
     <>
       {/* <SEO title="Home" description="Take good care of your small pets" /> */}
-
-      <div>HERE WILL BE HERO</div>
+      <div>
+        <Schedule />
+      </div>
     </>
   );
 };
