@@ -15,15 +15,27 @@ import {
   ResourcesDirective,
   ResourceDirective,
 } from "@syncfusion/ej2-react-schedule";
-import { data, fieldsData, ownersData } from "./Datasource";
-import { extend } from "@syncfusion/ej2-base";
+import { data, fieldsData } from "./Datasource";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
+import { DataManager, ODataV4Adaptor } from "@syncfusion/ej2-data";
 
 const Schedule = () => {
-  const dates = extend([], data, null, true);
+  let dataManager = new DataManager({
+    url: "http://localhost:3030/api/event",
+    adaptor: new ODataV4Adaptor(),
+  });
+  let ownersData = new DataManager({
+    url: "http://localhost:3030/api/owner",
+    adaptor: new ODataV4Adaptor(),
+  });
   const [ownerData] = React.useState(ownersData);
+  console.log(ownersData);
   const group = { resources: ["Doctors"] };
-  const eventSettings = { dataSource: dates, fields: fieldsData };
+  const eventSettings = {
+    // includeFiltersInQuery: true,
+    dataSource: dataManager,
+    fields: fieldsData,
+  };
   // const workingDays = [1, 3, 5];
   const today = new Date();
   let scheduleObj;
@@ -94,10 +106,10 @@ const Schedule = () => {
             title="Subject"
             name="Doctors"
             dataSource={ownerData}
-            textField="OwnerText"
+            textField="ownerText"
             idField="Id"
             DesignationField="designation"
-            colorField="OwnerColor"
+            colorField="ownerColor"
           ></ResourceDirective>
         </ResourcesDirective>
         <ViewsDirective>

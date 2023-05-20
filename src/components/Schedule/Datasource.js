@@ -29,8 +29,3 @@ export const fieldsData = {
   endTime: { name: "EndTime" },
 };
 
-export const ownersData = [
-  { OwnerText: "Julia", Id: 1, OwnerColor: "#ffaa00", designation: 'Cardioligst' },
-  { OwnerText: "Grogoriy", Id: 2, OwnerColor: "#f8a398", designation: 'Neurologist' },
-  { OwnerText: "Vlad", Id: 3, OwnerColor: "#7499e1", designation: 'Orthopedic Surgeon' },
-];
