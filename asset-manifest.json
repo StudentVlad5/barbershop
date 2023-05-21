@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/barbershop/static/css/main.7cda0caf.css",
-    "main.js": "/barbershop/static/js/main.8f286202.js",
+    "main.js": "/barbershop/static/js/main.74ab330a.js",
     "index.html": "/barbershop/index.html",
     "main.7cda0caf.css.map": "/barbershop/static/css/main.7cda0caf.css.map",
-    "main.8f286202.js.map": "/barbershop/static/js/main.8f286202.js.map"
+    "main.74ab330a.js.map": "/barbershop/static/js/main.74ab330a.js.map"
   },
   "entrypoints": [
     "static/css/main.7cda0caf.css",
-    "static/js/main.8f286202.js"
+    "static/js/main.74ab330a.js"
   ]
 }
