@@ -17,12 +17,14 @@ import {
 } from "@syncfusion/ej2-react-schedule";
 import { data, fieldsData } from "./Datasource";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
-import { DataManager, ODataV4Adaptor } from "@syncfusion/ej2-data";
+import { DataManager, ODataV4Adaptor, UrlAdaptor } from "@syncfusion/ej2-data";
 
 const Schedule = () => {
   let dataManager = new DataManager({
-    url: "http://localhost:3030/api/event",
-    adaptor: new ODataV4Adaptor(),
+    url: "http://localhost:3030/api/get_event",
+    crudUrl: "http://localhost:3030/api/batch_event",
+    adaptor: new UrlAdaptor(),
+    crossDomain: true,
   });
   let ownersData = new DataManager({
     url: "http://localhost:3030/api/owner",
