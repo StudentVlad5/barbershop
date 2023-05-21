@@ -115,7 +115,7 @@ const Schedule = () => {
           ></ResourceDirective>
         </ResourcesDirective>
         <ViewsDirective>
-          {/* <ViewDirective option="Week" /> */}
+          <ViewDirective option="Day" startHour="10:00" endHour="18:00" />
           <ViewDirective option="Week" startHour="10:00" endHour="18:00" />
           <ViewDirective option="WorkWeek" startHour="7:00" endHour="21:00" />
           <ViewDirective option="Month" showWeekend={false} />
