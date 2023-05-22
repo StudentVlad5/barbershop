@@ -15,19 +15,30 @@ import {
   ResourcesDirective,
   ResourceDirective,
 } from "@syncfusion/ej2-react-schedule";
-import { data, fieldsData, ownersData } from "./Datasource";
-import { extend } from "@syncfusion/ej2-base";
-import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
+import { fieldsData } from "./Datasource";
+import { DataManager, ODataV4Adaptor, UrlAdaptor } from "@syncfusion/ej2-data";
 
 const Schedule = () => {
-  const dates = extend([], data, null, true);
+  let dataManager = new DataManager({
+    url: "http://localhost:3030/api/get_event",
+    crudUrl: "http://localhost:3030/api/batch_event",
+    adaptor: new UrlAdaptor(),
+    crossDomain: true,
+  });
+  let ownersData = new DataManager({
+    url: "http://localhost:3030/api/owner",
+    adaptor: new ODataV4Adaptor(),
+  });
   const [ownerData] = React.useState(ownersData);
+  console.log(ownersData);
   const group = { resources: ["Doctors"] };
-  const eventSettings = { dataSource: dates, fields: fieldsData };
+  const eventSettings = {
+    // includeFiltersInQuery: true,
+    dataSource: dataManager,
+    fields: fieldsData,
+  };
   // const workingDays = [1, 3, 5];
   const today = new Date();
-  let scheduleObj;
-  let buttonObj;
 
   function getDoctorName(value) {
     return value.resourceData
@@ -44,12 +55,6 @@ const Schedule = () => {
       : "Orthopedic Surgeon";
   }
 
-  function onAddClick() {
-    let Data = data;
-    scheduleObj.addEvent(Data);
-    buttonObj.element.setAttribute("disabled", "true");
-  }
-
   function resourceHeaderTemplate(props) {
     return (
       <div className="template-wrap">
@@ -62,16 +67,7 @@ const Schedule = () => {
   }
   return (
     <div>
-      <ButtonComponent
-        id="add"
-        title="Add"
-        ref={(t) => (buttonObj = t)}
-        onClick={onAddClick}
-      >
-        Add
-      </ButtonComponent>
       <ScheduleComponent
-        ref={(t) => (scheduleObj = t)}
         height="550px"
         width="100%"
         currentView="WorkWeek"
@@ -94,17 +90,18 @@ const Schedule = () => {
             title="Subject"
             name="Doctors"
             dataSource={ownerData}
-            textField="OwnerText"
+            textField="ownerText"
             idField="Id"
             DesignationField="designation"
-            colorField="OwnerColor"
+            colorField="ownerColor"
           ></ResourceDirective>
         </ResourcesDirective>
         <ViewsDirective>
-          {/* <ViewDirective option="Week" /> */}
+          <ViewDirective option="Day" startHour="7:00" endHour="18:00" />
           <ViewDirective option="Week" startHour="10:00" endHour="18:00" />
           <ViewDirective option="WorkWeek" startHour="7:00" endHour="21:00" />
-          <ViewDirective option="Month" showWeekend={false} />
+          <ViewDirective option="Month" showWeekend={true} />
+          <ViewDirective option="Agenda" />
         </ViewsDirective>
 
         <Inject
