@@ -1,5 +1,4 @@
-// @import '../base/index';
-@import '../base/mixins';
+@import '../base/main';
 
 .header {
     position: fixed;
@@ -330,4 +329,16 @@
     &--mode-dark {
         color: var(--color-text-white);
     }
+}
+
+// js-selector - base
+.no-scroll {
+    overflow: hidden;
+}
+
+.js-no-transparency {
+    transition: background-color var(--slow-anim), backdrop-filter var(--slow-anim);
+
+    background-color: rgba(16, 18, 27, 0.4);
+    backdrop-filter: blur(10px);
 }

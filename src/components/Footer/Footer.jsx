@@ -6,17 +6,18 @@ import {
   Description,
   TeamModalBtn,
 } from './Footer.styled';
+import css from './footer.module.scss';
 
 export const Footer = () => {
   return (
     <>
-      <footer className="footer">
-        <div className="footer__container container">
-          <p className="copyright">&#169; Copyright 2022</p>
-          <ul className="socials list">
-            <li className="socials__item">
+      <footer className={css.footer}>
+        <div className={css.footer__container + ' ' + css.container}>
+          <p className={css.copyright}>&#169; Copyright 2022</p>
+          <ul className={css.socials + ' ' + css.list}>
+            <li className={css.socials__item}>
               <a
-                className="socials__link link"
+                className={css.socials__link + ' ' + css.link}
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noreferrer noopener"
@@ -24,9 +25,9 @@ export const Footer = () => {
                 Instagram
               </a>
             </li>
-            <li className="socials__item">
+            <li className={css.socials__item}>
               <a
-                className="socials__link link"
+                className={css.socials__link + ' ' + css.link}
                 href="https://www.youtube.com/"
                 target="_blank"
                 rel="noreferrer noopener"

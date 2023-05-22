@@ -3,7 +3,7 @@
 }
 
 .js-no-transparency {
-    transition: background-color $slow-anim, backdrop-filter $slow-anim;
+    transition: background-color var(--slow-anim), backdrop-filter var(--slow-anim);
 
     background-color: rgba(16, 18, 27, 0.4);
     backdrop-filter: blur(10px);

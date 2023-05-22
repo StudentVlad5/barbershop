@@ -1,0 +1,25 @@
+// @import 'common', 'reset', 'mixin', 'breakpoints', 'variables', 'section', 'container', 'js-selectors', 'animations', 'button', 'visually-hidden', 'social-links', 'socials', 'slider', 'mobile-menu', 'scroll-to-top';
+// utils
+@import './variables';
+@import './mixins';
+@import './breakpoints';
+
+// base styles
+@import './reset';
+@import './common';
+@import './section';
+@import './container';
+@import './animations';
+@import './js-selectors';
+
+// components
+@import './visually-hidden';
+@import './button';
+@import './social-links';
+@import './socials';
+@import './modal/backdrop';
+@import './modal/modal-form';
+@import './modal/modal';
+@import './slider';
+@import './mobile-menu';
+@import './scroll-to-top';

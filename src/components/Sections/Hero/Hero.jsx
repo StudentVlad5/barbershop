@@ -1,13 +1,15 @@
+import css from './hero.module.scss';
+
 const Hero = () => {
   return (
-    <section className="hero" id="hero">
-      <div className="hero__container container">
+    <section className={css.hero} id="hero">
+      <div className={css.hero__container + ' ' + css.container}>
         {/* ========= SIDEBAR =========== */}
-        <div className="sidebar">
-          <ul className="socials list">
-            <li className="socials__item">
+        <div className={css.sidebar}>
+          <ul className={css.socials + ' ' + css.list}>
+            <li className={css.socials__item}>
               <a
-                className="socials__link link"
+                className={css.socials__link + ' ' + css.link}
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noreferrer noopener"
@@ -15,9 +17,9 @@ const Hero = () => {
                 Instagram
               </a>
             </li>
-            <li className="socials__item">
+            <li className={css.socials__item}>
               <a
-                className="socials__link link"
+                className={css.socials__link + ' ' + css.link}
                 href="https://www.youtube.com/"
                 target="_blank"
                 rel="noreferrer noopener"
@@ -28,32 +30,32 @@ const Hero = () => {
           </ul>
         </div>
         {/* ========= TITLE GROUP ========= */}
-        <div className="hero__group title-group">
-          <p className="uppertitle uppertitle--mode-light">
+        <div className={css.hero__group + ' ' + css['title-group']}>
+          <p className={css.uppertitle + ' ' + css['uppertitle--mode-light']}>
             A hair salon for men in Kyiv
           </p>
-          <h1 className="main-tittle">BarberShop</h1>
-          <p className="subtitle subtitle--mode-light">
+          <h1 className={css['main-tittle']}>BarberShop</h1>
+          <p className={css.subtitle + ' ' + css['subtitle--mode-light']}>
             We are experts in trendy mens haircuts. We work quickly, carefully,
             and tastefully.
           </p>
         </div>
         {/* ========= SLIDER =========== */}
-        <div className="hero_slider slider">
-          <ul className="slider__pagination list">
-            <li className="slider__item">
-              <a href="#slide1" onClick="currentSlide(1)"></a>
+        <div className={css.hero_slider + ' ' + css.slider}>
+          <ul className={css.slider__pagination + ' ' + css.list}>
+            <li className={css.slider__item}>
+              {/* <a href="#slide1" onClick="currentSlide(1)"></a> */}
             </li>
-            <li className="slider__item">
-              <a href="#slide2" onClick="currentSlide(2)"></a>
+            <li className={css.slider__item}>
+              {/* <a href="#slide2" onClick="currentSlide(2)"></a> */}
             </li>
-            <li className="slider__item">
-              <a href="#slide3" onClick="currentSlide(3)"></a>
+            <li className={css.slider__item}>
+              {/* <a href="#slide3" onClick="currentSlide(3)"></a> */}
             </li>
           </ul>
-          <div className="slides">
-            <div className="slide fade" id="slide1">
-              <picture className="slide__img">
+          <div className={css.slides}>
+            <div className={css.slide + ' ' + css.fade} id="slide1">
+              <picture className={css.slide__img}>
                 <source
                   media="(min-width:1280px)"
                   srcSet="./images/slider/slider-1-desk.webp 1x, ./images/slider/slider-1-desk@2x.webp 2x"
@@ -80,8 +82,8 @@ const Hero = () => {
                 />
               </picture>
             </div>
-            <div className="slide fade" id="slide2">
-              <picture className="slide__img">
+            <div className={css.slide + ' ' + css.fade} id="slide2">
+              <picture className={css.slide__img}>
                 <source
                   media="(min-width:1280px)"
                   srcSet="./images/slider/slider-2-desk.webp 1x, ./images/slider/slider-2-desk@2x.webp 2x"
@@ -108,8 +110,8 @@ const Hero = () => {
                 />
               </picture>
             </div>
-            <div className="slide fade" id="slide3">
-              <picture className="slide__img">
+            <div className={css.slide + ' ' + css.fade} id="slide3">
+              <picture className={css.slide__img}>
                 <source
                   media="(min-width:1280px)"
                   srcSet="./images/slider/slider-3-desk.webp 1x, ./images/slider/slider-3-desk@2x.webp 2x"
@@ -137,16 +139,23 @@ const Hero = () => {
               </picture>
             </div>
           </div>
-          <ul className="slider__controls list">
-            <li className="slider__controls-item">
-              <a className="slider__controls-btn" onClick="plusSlides(-1)">
+          <ul className={css.slider__controls + ' ' + css.list}>
+            <li className={css['slider__controls-item']}>
+              <a
+                className={css['slider__controls-btn']}
+                // onClick="plusSlides(-1)"
+              >
                 Back
               </a>
             </li>
-            <li className="slider__controls-item">
+            <li className={css['slider__controls-item']}>
               <a
-                className="slider__controls-btn slider__controls-btn--forward"
-                onClick="plusSlides(1)"
+                className={
+                  css['slider__controls-btn'] +
+                  ' ' +
+                  css['slider__controls-btn--forward']
+                }
+                // onClick="plusSlides(1)"
               >
                 Next
               </a>

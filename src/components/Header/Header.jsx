@@ -1,9 +1,8 @@
-import { HeaderContainer } from './Header.styled';
 import css from './header.module.scss';
 
 export const Header = () => {
   return (
-    <HeaderContainer>
+    <>
       {/*=========== HEADER =============*/}
       <header className={css.header} id="header">
         <div className={css.header__container + ' ' + css.container}>
@@ -13,7 +12,7 @@ export const Header = () => {
             </svg>
           </a>
           <nav className={css.navigation}>
-            <ul className={css.navigation__list + ' ' + css.list}>
+            <ul className={css.navigation__list + css.list}>
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
@@ -205,6 +204,6 @@ export const Header = () => {
           </ul>
         </div>
       </header>
-    </HeaderContainer>
+    </>
   );
 };

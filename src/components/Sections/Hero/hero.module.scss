@@ -1,3 +1,6 @@
+@import '../../base/main';
+
+
 .hero {
     position: relative;
 
@@ -11,44 +14,46 @@
     background-position: top right, center;
     background-size: cover;
 
-    background-image: url(../images/hero/hero-mob.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
-    background-image: -webkit-image-set(url(../images/hero/hero-mob.webp) 1x);
+    background-color: var(--color-background-accent);
 
-    @include mq(retina) {
-        background-image: url(../images/hero/hero-mob@2x.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
-        background-image: -webkit-image-set(url(../images/hero/hero-mob@2x.webp) 2x);
-    }
+    // background-image: url(../../../images/hero/hero-mob.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
+    // background-image: -webkit-image-set(url(../../../images/hero/hero-mob.webp) 1x);
 
-    @include mq(mobile) {
-        background-size: cover;
-    }
+    // @include mq(retina) {
+    //     background-image: url(../../../images/hero/hero-mob@2x.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
+    //     background-image: -webkit-image-set(url(../../../images/hero/hero-mob@2x.webp) 2x);
+    // }
 
-    @include mq(tablet) {
-        max-width: $tablet;
-        height: 680px;
-        background-size: 609px 680px, contain;
+    // @include mq(mobile) {
+    //     background-size: cover;
+    // }
 
-        background-image: url(../images/hero/hero-tab.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
-        background-image: -webkit-image-set(url(../images/hero/hero-tab.webp) 1x);
+    // @include mq(tablet) {
+    //     max-width: $tablet;
+    //     height: 680px;
+    //     background-size: 609px 680px, contain;
 
-        @include mq(retina) {
-            background-image: url(../images/hero/hero-tab@2x.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
-            background-image: -webkit-image-set(url(../images/hero/hero-tab@2x.webp) 2x);
-        }
-    }
+    //     background-image: url(../../../images/hero/hero-tab.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
+    //     background-image: -webkit-image-set(url(../../../images/hero/hero-tab.webp) 1x);
 
-    @include mq(desktop) {
-        max-width: $desktop;
-        background-size: 1125px 680px, contain;
+    //     @include mq(retina) {
+    //         background-image: url(../../../images/hero/hero-tab@2x.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
+    //         background-image: -webkit-image-set(url(../../../images/hero/hero-tab@2x.webp) 2x);
+    //     }
+    // }
 
-        background-image: url(../images/hero/hero-desk.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
-        background-image: -webkit-image-set(url(../images/hero/hero-desk.webp) 1x);
+    // @include mq(desktop) {
+    //     max-width: $desktop;
+    //     background-size: 1125px 680px, contain;
 
-        @include mq(retina) {
-            background-image: url(../images/hero/hero-desk@2x.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
-            background-image: -webkit-image-set(url(../images/hero/hero-desk@2x.webp) 2x);
-        }
-    }
+    //     background-image: url(../../../images/hero/hero-desk.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
+    //     background-image: -webkit-image-set(url(../../../images/hero/hero-desk.webp) 1x);
+
+    //     @include mq(retina) {
+    //         background-image: url(../../../images/hero/hero-desk@2x.jpg), linear-gradient(to right, rgb(255, 255, 255) 12%, rgba(25, 28, 38, 0.12));
+    //         background-image: -webkit-image-set(url(../../../images/hero/hero-desk@2x.webp) 2x);
+    //     }
+    // }
 
 
     &__container {
