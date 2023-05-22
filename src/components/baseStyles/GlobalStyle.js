@@ -2,15 +2,22 @@ import 'modern-normalize';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Manrope Medium', 'Manrope Bold', 'Manrope SemiBold', 
-  'Manrope Regular', 'Poppins Regular','Poppins Bold', 'Inter Regular' ,'Inter Medium', 'Inter Bold',
-  'Montserrat Regular', 'Montserrat Medium', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans','Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: ${props => props.theme.mainBg};
-  transition: .3s ease;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: ${props => props.theme.textMain};
+
+  background-color: ${props => props.theme.backgroundMain};
+  transition: 0.3s ease;
+  
   &.scroll {
       max-height: 100vh;
       overflow: hidden;
@@ -41,6 +48,18 @@ img {
   height: auto;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+      color: ${props => props.theme.accent};
+  }
+}
+
 //-----modal windows-----//
 #popup-root {
     position: fixed;
@@ -67,7 +86,7 @@ img {
   height: 0;
 }
 
- //-----pagination-----//
+/* //-----pagination-----//
 .paginate__container {
   display: flex;
   align-items: center;
@@ -244,8 +263,7 @@ margin: 0!important;
 .react-select__value-container {
 padding: 0!important;
 margin: 0!important;
-}
-
+} */
 //-----Swiper-----//
 
 .swiper {
@@ -256,7 +274,7 @@ margin: 0!important;
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  background: ${props => props.theme.backgroundMain};
 
   /* Center slide text vertically */
   display: flex;
@@ -273,18 +291,18 @@ margin: 0!important;
 }
 
 .swiper-button-next::after {
-  color: ${props => props.theme.orangeLight};
+  color: ${props => props.theme.accent};
 }
 
 .swiper-button-prev::after {
-  color: ${props => props.theme.orangeLight};
+  color: ${props => props.theme.accent};
 }
 
 .swiper-pagination-bullet-active.swiper-pagination-bullet{
-  background-color: ${props => props.theme.orangeLight}!important;
+  background-color: ${props => props.theme.accent}!important;
 }
 .swiper-pagination-bullet {
-  background-color: ${props => props.theme.black}!important;
+  background-color: ${props => props.theme.textMain}!important;
 }
 .swiper-button-prev,
 .swiper-button-next,
