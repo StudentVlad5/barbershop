@@ -1,26 +1,49 @@
+
+import css from './about.module.scss';
+
+import  work1_desk  from "images/about/work-1-desk.webp";
+import  work2_desk  from "images/about/work-1-desk@2x.webp";
+import  work1_tb  from "images/about/work-1-tab.webp";
+import  work2_tb  from "images/about/work-1-tab@2x.webp";
+
+import  work1_desk_jpg  from "images/about/work-1-desk.jpg";
+import  work2_desk_jpg  from "images/about/work-1-desk@2x.jpg";
+import  work1_tb_jpg  from "images/about/work-1-tab.jpg";
+import  work2_tb_jpg  from "images/about/work-1-tab@2x.jpg";
+
+import  work12_desk  from "images/about/work-2-desk.webp";
+import  work22_desk  from "images/about/work-2-desk@2x.webp";
+import  work12_tb  from "images/about/work-2-tab.webp";
+import  work22_tb  from "images/about/work-2-tab@2x.webp";
+
+import  work12_desk_jpg  from "images/about/work-2-desk.jpg";
+import  work22_desk_jpg  from "images/about/work-2-desk@2x.jpg";
+import  work12_tb_jpg  from "images/about/work-2-tab.jpg";
+import  work22_tb_jpg  from "images/about/work-2-tab@2x.jpg";
+
 const About = () => {
   return (
-    <section className="about section" id="about">
-      <div className="about__container container">
-        <ul className="about__list list">
-          <li className="about__item">
+    <section className={css.about + " " + css.section} id="about">
+      <div className={css.about__container + " " + css.container}>
+        <ul className={css.about__list + " " + css.list}>
+          <li className={css.about__item}>
             <picture>
               <source
                 media="(min-width:1280px )"
-                srcSet="./images/about/work-1-desk.webp 1x, ./images/about/work-1-desk@2x.webp 2x"
+                srcSet={`${work1_desk} 1x, ${work2_desk} 2x`}
                 type="image/webp"
               />
               <source
                 media="(min-width:768px )"
-                srcSet="./images/about/work-1-tab.webp 1x, ./images/about/work-1-tab@2x.webp 2x"
+                srcSet={`${work1_tb} 1x, ${work2_tb} 2x`}
                 type="image/webp"
               />
               <img
-                className="about__image"
-                src="./images/about/work-1-desk.jpg"
+                className={css.about__image}
+                src={work1_desk_jpg}
                 alt="Shaving beard"
-                srcSet="./images/about/work-1-desk.jpg 270w, ./images/about/work-1-desk@2x.jpg 540w,
-                                ./images/about/work-1-tab.jpg 330w, ./images/about/work-1-tab@2x.jpg 660w"
+                srcSet={`${work1_desk_jpg.jpg} 270w, ${work2_desk_jpg.jpg} 540w,
+                ${work1_tb_jpg.jpg} 330w, ${work2_tb_jpg.jpg} 660w"`}
                 sizes="(min-width:1280px) 270px, (min-width:768px) 330px, 100vw"
                 width="270"
                 height="445"
@@ -28,24 +51,24 @@ const About = () => {
               />
             </picture>
           </li>
-          <li className="about__item">
+          <li className={css.about__item}>
             <picture>
               <source
                 media="(min-width:1280px )"
-                srcSet="./images/about/work-2-desk.webp 1x, ./images/about/work-2-desk@2x.webp 2x"
+                srcSet={`${work12_desk} 1x, ${work22_desk} 2x`}
                 type="image/webp"
               />
               <source
                 media="(min-width:768px )"
-                srcSet="./images/about/work-2-tab.webp 1x, ./images/about/work-2-tab@2x.webp 2x"
+                srcSet={`${work12_tb} 1x, ${work22_tb} 2x`}
                 type="image/webp"
               />
               <img
-                className="about__image"
-                src="./images/about/work-2-desk.jpg"
+                className={css.about__image}
+                src={work12_desk_jpg}
                 alt="Shaving beard"
-                srcSet="./images/about/work-2-desk.jpg 270w, ./images/about/work-2-desk@2x.jpg 540w,
-                                ./images/about/work-2-tab.jpg 330w, ./images/about/work-2-tab@2x.jpg 660w"
+                srcSet={`${work12_desk_jpg.jpg} 270w, ${work22_desk_jpg.jpg} 540w,
+                ${work12_tb_jpg.jpg} 330w, ${work22_tb_jpg.jpg} 660w"`}
                 sizes="(min-width:1280px) 270px, (min-width:768px) 330px, 100vw"
                 width="270"
                 height="445"
@@ -54,19 +77,19 @@ const About = () => {
             </picture>
           </li>
         </ul>
-        <div className="about__group">
-          <div className="title-group">
-            <p className="uppertitle">About</p>
-            <h2 className="section-title section-title--size-s">
+        <div className={css.about__group}>
+          <div className={css["title-group"]}>
+            <p className={css.uppertitle}>About</p>
+            <h2 className={css["section-title"] + " " + css["section-title--size-s"]}>
               The Best Barbershop
               <br />
               in Your City
             </h2>
-            <p className="subtitle subtitle--mode-dark subtitle--size-s">
+            <p className={css.subtitle + " " + css["subtitle--mode-dark subtitle--size-s"]}>
               If you want to add more confidence to your image, you are
               definitely in the right place.
             </p>
-            <p className="description">
+            <p className={css.description}>
               We are a team that never rests on its laurels and yearns for
               change. And once you fall into the hands of our master, you will
               never be the same again. We are a team that is always on the same
@@ -74,7 +97,7 @@ const About = () => {
               everyone who comes to us!
             </p>
           </div>
-          <a className="link btn btn--mode-light" href="#contacts">
+          <a className={css.link + " " + css.btn + " " + css["btn--mode-light"]} href="#contacts">
             book a Service
           </a>
         </div>

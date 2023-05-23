@@ -1,4 +1,42 @@
 import css from './hero.module.scss';
+import  hero1_desk  from "images/slider/slider-1-desk.webp";
+import  hero12_desk  from "images/slider/slider-1-desk@2x.webp";
+import  hero1_tb  from "images/slider/slider-1-tab.webp";
+import  hero12_tb  from "images/slider/slider-1-tab@2x.webp";
+import  hero1_mob  from "images/slider/slider-1-mob.webp";
+import  hero12_mob  from "images/slider/slider-1-mob@2x.webp";
+import  hero1_desk_jpg  from "images/slider/slider-1-desk.jpg";
+import  hero12_desk_jpg  from "images/slider/slider-1-desk@2x.jpg";
+import  hero1_tb_jpg  from "images/slider/slider-1-tab.jpg";
+import  hero12_tb_jpg  from "images/slider/slider-1-tab@2x.jpg";
+import  hero1_mob_jpg  from "images/slider/slider-1-mob.jpg";
+import  hero12_mob_jpg  from "images/slider/slider-1-mob@2x.jpg";
+
+import  hero2_desk  from "images/slider/slider-2-desk.webp";
+import  hero22_desk  from "images/slider/slider-2-desk@2x.webp";
+import  hero2_tb  from "images/slider/slider-2-tab.webp";
+import  hero22_tb  from "images/slider/slider-2-tab@2x.webp";
+import  hero2_mob  from "images/slider/slider-2-mob.webp";
+import  hero22_mob  from "images/slider/slider-2-mob@2x.webp";
+import  hero2_desk_jpg  from "images/slider/slider-2-desk.jpg";
+import  hero22_desk_jpg  from "images/slider/slider-2-desk@2x.jpg";
+import  hero2_tb_jpg  from "images/slider/slider-2-tab.jpg";
+import  hero22_tb_jpg  from "images/slider/slider-2-tab@2x.jpg";
+import  hero2_mob_jpg  from "images/slider/slider-2-mob.jpg";
+import  hero22_mob_jpg  from "images/slider/slider-2-mob@2x.jpg";
+
+import  hero3_desk  from "images/slider/slider-3-desk.webp";
+import  hero32_desk  from "images/slider/slider-3-desk@2x.webp";
+import  hero3_tb  from "images/slider/slider-3-tab.webp";
+import  hero32_tb  from "images/slider/slider-3-tab@2x.webp";
+import  hero3_mob  from "images/slider/slider-3-mob.webp";
+import  hero32_mob  from "images/slider/slider-3-mob@2x.webp";
+import  hero3_desk_jpg  from "images/slider/slider-3-desk.jpg";
+import  hero32_desk_jpg  from "images/slider/slider-3-desk@2x.jpg";
+import  hero3_tb_jpg  from "images/slider/slider-3-tab.jpg";
+import  hero32_tb_jpg  from "images/slider/slider-3-tab@2x.jpg";
+import  hero3_mob_jpg  from "images/slider/slider-3-mob.jpg";
+import  hero32_mob_jpg  from "images/slider/slider-3-mob@2x.jpg";
 
 const Hero = () => {
   return (
@@ -58,24 +96,22 @@ const Hero = () => {
               <picture className={css.slide__img}>
                 <source
                   media="(min-width:1280px)"
-                  srcSet="./images/slider/slider-1-desk.webp 1x, ./images/slider/slider-1-desk@2x.webp 2x"
+                  srcSet={`${hero1_desk} 1x, ${hero12_desk} 2x`}
                   type="image/webp"
                 />
                 <source
                   media="(min-width:768px)"
-                  srcSet="./images/slider/slider-1-tab.webp 1x, ./images/slider/slider-1-tab@2x.webp 2x"
+                  srcSet={`${hero1_tb} 1x, ${hero12_tb} 2x`}
                   type="image/webp"
                 />
                 <source
                   media="(max-width:767px)"
-                  srcSet="./images/slider/slider-1-mob.webp 1x, ./images/slider/slider-1-mob@2x.webp 2x"
+                  srcSet={`${hero1_mob} 1x, ${hero12_mob} 2x`}
                   type="image/webp"
                 />
                 <img
-                  srcSet="./images/slider/slider-1-mob.jpg 480w, ./images/slider/slider-1-mob@2x.jpg 960w,
-                                        ./images/slider/slider-1-tab.jpg 609w, ./images/slider/slider-1-tab@2x.jpg 1218w,
-                                        ./images/slider/slider-1-desk.jpg 1125w, ./images/slider/slider-1-desk@2x.jpg 2250w"
-                  src="./images/slider/slider-1-mob.jpg"
+                  srcSet={`${hero1_mob_jpg} 480w, ${hero12_mob_jpg} 960w, ${hero1_tb_jpg} 609w, ${hero12_tb_jpg} 1218w, ${hero1_desk_jpg} 1125w, ${hero12_desk_jpg} 2250w`}
+                  src= {hero1_mob_jpg}
                   alt="Beard trim"
                   sizes="(min-width:1280px) 1125px, (min-width:768px) 609px, (max-width:767px) 480px, 100vw"
                   loading="lazy"
@@ -86,24 +122,22 @@ const Hero = () => {
               <picture className={css.slide__img}>
                 <source
                   media="(min-width:1280px)"
-                  srcSet="./images/slider/slider-2-desk.webp 1x, ./images/slider/slider-2-desk@2x.webp 2x"
+                  srcSet={`${hero2_desk} 1x, ${hero22_desk} 2x`}
                   type="image/webp"
                 />
                 <source
                   media="(min-width:768px)"
-                  srcSet="./images/slider/slider-2-tab.webp 1x, ./images/slider/slider-2-tab@2x.webp 2x"
+                  srcSet={`${hero2_tb} 1x, ${hero22_tb} 2x`}
                   type="image/webp"
                 />
                 <source
                   media="(max-width:767px)"
-                  srcSet="./images/slider/slider-2-mob.webp 1x, ./images/slider/slider-2-mob@2x.webp 2x"
+                  srcSet={`${hero2_mob} 1x, ${hero22_mob} 2x`}
                   type="image/webp"
                 />
                 <img
-                  srcSet="./images/slider/slider-2-mob.jpg 480w, ./images/slider/slider-2-mob@2x.jpg 960w,
-                                            ./images/slider/slider-2-tab.jpg 609w, ./images/slider/slider-2-tab@2x.jpg 1218w,
-                                            ./images/slider/slider-2-desk.jpg 1125w, ./images/slider/slider-2-desk@2x.jpg 2250w"
-                  src="./images/slider/slider-2-mob.jpg"
+                  srcSet={`${hero2_mob_jpg} 480w, ${hero22_mob_jpg} 960w, ${hero2_tb_jpg} 609w, ${hero22_tb_jpg} 1218w, ${hero2_desk_jpg} 1125w, ${hero22_desk_jpg} 2250w`}
+                  src= {hero2_mob_jpg}
                   alt="Beard trim"
                   sizes="(min-width:1280px) 1125px, (min-width:768px) 609px, (max-width:767px) 480px, 100vw"
                   loading="lazy"
@@ -114,24 +148,22 @@ const Hero = () => {
               <picture className={css.slide__img}>
                 <source
                   media="(min-width:1280px)"
-                  srcSet="./images/slider/slider-3-desk.webp 1x, ./images/slider/slider-3-desk@2x.webp 2x"
+                  srcSet={`${hero3_desk} 1x, ${hero32_desk} 2x`}
                   type="image/webp"
                 />
                 <source
                   media="(min-width:768px)"
-                  srcSet="./images/slider/slider-3-tab.webp 1x, ./images/slider/slider-3-tab@2x.webp 2x"
+                  srcSet={`${hero3_tb} 1x, ${hero32_tb} 2x`}
                   type="image/webp"
                 />
                 <source
                   media="(max-width:767px)"
-                  srcSet="./images/slider/slider-3-mob.webp 1x, ./images/slider/slider-3-mob@2x.webp 2x"
+                  srcSet={`${hero3_mob} 1x, ${hero32_mob} 2x`}
                   type="image/webp"
                 />
                 <img
-                  srcSet="./images/slider/slider-3-mob.jpg 480w, ./images/slider/slider-3-mob@2x.jpg 960w,
-                                            ./images/slider/slider-3-tab.jpg 609w, ./images/slider/slider-3-tab@2x.jpg 1218w,
-                                            ./images/slider/slider-3-desk.jpg 1125w, ./images/slider/slider-3-desk@2x.jpg 2250w"
-                  src="./images/slider/slider-3-mob.jpg"
+                  srcSet={`${hero3_mob_jpg} 480w, ${hero32_mob_jpg} 960w, ${hero3_tb_jpg} 609w, ${hero32_tb_jpg} 1218w, ${hero3_desk_jpg} 1125w, ${hero32_desk_jpg} 2250w`}
+                  src= {hero3_mob_jpg}
                   alt="Beard trim"
                   sizes="(min-width:1280px) 1125px, (min-width:768px) 609px, (max-width:767px) 480px, 100vw"
                   loading="lazy"
