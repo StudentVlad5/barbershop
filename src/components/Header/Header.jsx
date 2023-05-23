@@ -1,5 +1,9 @@
 import css from './header.module.scss';
 
+import logo from 'images/icons/logo.svg';
+import menu from 'images/icons/menu_40px.svg';
+import close from 'images/icons/close_40px.svg';
+
 export const Header = () => {
   return (
     <>
@@ -8,7 +12,7 @@ export const Header = () => {
         <div className={css.header__container + ' ' + css.container}>
           <a className={css.link} href="./index.html" aria-label="logo company">
             <svg className={css.logo} width="69" height="56">
-              <use href="../../images/icons/logo.svg"></use>
+              <use href={logo}></use>
             </svg>
           </a>
           <nav className={css.navigation}>
@@ -80,14 +84,8 @@ export const Header = () => {
             aria-controls="mobile-menu"
           >
             <svg className={css['mobile-btn__icon']} width="40" height="40">
-              <use
-                className={css['mobile-btn__icon-open']}
-                href="../../images/icons/menu_40px.svg"
-              ></use>
-              <use
-                className={css['mobile-btn__icon-close']}
-                href="../../images/icons/close_40px.svg"
-              ></use>
+              <use className={css['mobile-btn__icon-open']} href={menu}></use>
+              <use className={css['mobile-btn__icon-close']} href={close}></use>
             </svg>
           </button>
         </div>

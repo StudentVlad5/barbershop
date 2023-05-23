@@ -1,4 +1,3 @@
-
 import css from './about.module.scss';
 
 import  work1_desk  from "images/about/work-1-desk.webp";
