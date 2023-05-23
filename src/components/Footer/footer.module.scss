@@ -1,0 +1,119 @@
+@import '../base/main';
+
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    padding-top: 44px;
+    padding-bottom: 44px;
+
+    @include mq(tablet) {
+        align-items: center;
+        padding-top: 56px;
+        padding-bottom: 56px;
+    }
+
+    & .socials {
+        padding-bottom: 35px;
+
+        @include mq(tablet) {
+            padding-bottom: 0;
+        }
+    }
+}
+
+.copyright {
+    padding-top: 35px;
+
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 1.36;
+
+    color: var(--color-text-light);
+
+    @include mq(tablet) {
+        padding-top: 0;
+    }
+}
+
+// socials - base
+.socials {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    &::before {
+        display: block;
+        content: " ";
+        width: 60px;
+        height: 1px;
+        margin-right: 40px;
+
+        background: currentColor;
+    }
+
+
+    &__item {
+
+        &:first-child {
+            margin-right: 40px;
+        }
+    }
+
+    &__link {
+        padding: 44px 0;
+
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 1.36;
+    }
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+    &__item {
+
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+
+        &--bgc {
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 44px;
+        height: 44px;
+
+        color: var(--color-text-main);
+        border-radius: 50%;
+        background-color: var(--color-background-main);
+
+        transition: background-color var(--animation);
+
+        &:hover,
+        &:focus {
+            color: var(--color-text-white);
+            background-color: var(--color-accent);
+        }
+    }
+
+    &__icon {
+        fill: currentColor;
+
+        &--white {
+            fill: var(--color-text-white);
+        }
+    }
+}

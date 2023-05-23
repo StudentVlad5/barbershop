@@ -2,7 +2,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Route, Routes } from 'react-router-dom'; //Navigate
 import { Suspense } from 'react';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
-import HomePage from 'pages/Home';
+import LandingPage from 'pages/LandingPage';
 
 export const App = () => {
   // const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export const App = () => {
       <Suspense fallback={<div>{'Loading...'}</div>}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-            <Route index element={<HomePage />} />
+            <Route index element={<LandingPage />} />
             {/*
             <Route
               path="register"
@@ -111,7 +111,7 @@ export const App = () => {
               }
             /> */}
 
-            <Route path="*" element={<HomePage />} />
+            <Route path="*" element={<LandingPage />} />
           </Route>
         </Routes>
       </Suspense>
