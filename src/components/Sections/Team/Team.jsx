@@ -1,4 +1,47 @@
 import css from './team.module.scss';
+
+import member1_desk from "./images/team/member-1-desk.webp";
+import member12_desk from "./images/team/member-1-desk@2x.webp";
+import member1_tb from "./images/team/member-1-tab.webp";
+import member12_tb from "./images/team/member-1-tab@2x.webp";
+import member1_mob from "./images/team/member-1-mob.webp";
+import member12_mob from "./images/team/member-1-mob@2x.webp";
+
+import member1_desk_jpg from "./images/team/member-1-desk.jpg";
+import member12_desk_jpg from "./images/team/member-1-desk@2x.jpg";
+import member1_tb_jpg from "./images/team/member-1-tab.jpg";
+import member12_tb_jpg from "./images/team/member-1-tab@2x.jpg";
+import member1_mob_jpg from "./images/team/member-1-mob.jpg";
+import member12_mob_jpg from "./images/team/member-1-mob@2x.jpg";
+
+import member2_desk from "./images/team/member-2-desk.webp";
+import member22_desk from "./images/team/member-2-desk@2x.webp";
+import member2_tb from "./images/team/member-2-tab.webp";
+import member22_tb from "./images/team/member-2-tab@2x.webp";
+import member2_mob from "./images/team/member-2-mob.webp";
+import member22_mob from "./images/team/member-2-mob@2x.webp";
+
+import member2_desk_jpg from "./images/team/member-2-desk.jpg";
+import member22_desk_jpg from "./images/team/member-2-desk@2x.jpg";
+import member2_tb_jpg from "./images/team/member-2-tab.jpg";
+import member22_tb_jpg from "./images/team/member-2-tab@2x.jpg";
+import member2_mob_jpg from "./images/team/member-2-mob.jpg";
+import member22_mob_jpg from "./images/team/member-2-mob@2x.jpg";
+
+import member3_desk from "./images/team/member-3-desk.webp";
+import member32_desk from "./images/team/member-3-desk@2x.webp";
+import member3_tb from "./images/team/member-3-tab.webp";
+import member32_tb from "./images/team/member-3-tab@2x.webp";
+import member3_mob from "./images/team/member-3-mob.webp";
+import member32_mob from "./images/team/member-3-mob@2x.webp";
+
+import member3_desk_jpg from "./images/team/member-3-desk.jpg";
+import member32_desk_jpg from "./images/team/member-3-desk@2x.jpg";
+import member3_tb_jpg from "./images/team/member-3-tab.jpg";
+import member32_tb_jpg from "./images/team/member-3-tab@2x.jpg";
+import member3_mob_jpg from "./images/team/member-3-mob.jpg";
+import member32_mob_jpg from "./images/team/member-3-mob@2x.jpg";
+
 const Team = () => {
   return (
     <section className={css.team + " " + css.section} id="team">
@@ -12,25 +55,23 @@ const Team = () => {
             <picture>
               <source
                 media="(min-width:1280px)"
-                srcSet="./images/team/member-1-desk.webp 1x, ./images/team/member-1-desk@2x.webp 2x"
+                srcSet={`${member1_desk} 1x, ${member12_desk} 2x`}
                 type="image/webp"
               />
               <source
                 media="(min-width:768px)"
-                srcSet="./images/team/member-1-tab.webp 1x, ./images/team/member-1-tab@2x.webp 2x"
+                srcSet={`${member1_tb} 1x, ${member12_tb} 2x`}
                 type="image/webp"
               />
               <source
                 media="(max-width:767px)"
-                srcSet="./images/team/member-1-mob.webp 1x, ./images/team/member-1-mob@2x.webp 2x"
+                srcSet={`${member1_mob} 1x, ${member12_mob} 2x`}
                 type="image/webp"
               />
               <img
                 className="team__image"
-                srcSet="./images/team/member-1-mob.jpg 418w, ./images/team/member-1-mob@2x.jpg 836w,
-                        				./images/team/member-1-tab.jpg 450w, ./images/team/member-1-tab@2x.jpg 900w,
-                        				./images/team/member-1-desk.jpg 370w, ./images/team/member-1-desk@2x.jpg 740w"
-                src="./images/team/member-1-mob.jpg"
+                srcSet={`${member1_mob_jpg} 418w, ${member12_mob_jpg} 836w, ${member1_tb_jpg} 450w, ${member12_tb_jpg} 900w, ${member1_desk_jpg} 370w, ${member12_desk_jpg} 740w`}
+                src={member1_mob_jpg}
                 alt="John's Smith photo"
                 sizes="(min-width:1280px) 370px, (min-width:768px) 450px, (max-width:767px) 418px, 100vw"
                 width="418"
@@ -105,25 +146,23 @@ const Team = () => {
             <picture>
               <source
                 media="(min-width:1280px)"
-                srcSet="./images/team/member-2-desk.webp 1x, ./images/team/member-2-desk@2x.webp 2x"
+                srcSet={`${member2_desk} 1x, ${member22_desk} 2x`}
                 type="image/webp"
               />
               <source
                 media="(min-width:768px)"
-                srcSet="./images/team/member-2-tab.webp 1x, ./images/team/member-2-tab@2x.webp 2x"
+                srcSet={`${member2_tb} 1x, ${member22_tb} 2x`}
                 type="image/webp"
               />
               <source
                 media="(max-width:767px)"
-                srcSet="./images/team/member-2-mob.webp 1x, ./images/team/member-2-mob@2x.webp 2x"
+                srcSet={`${member2_mob} 1x, ${member22_mob} 2x`}
                 type="image/webp"
               />
               <img
                 className={css.team__image}
-                srcSet="./images/team/member-2-mob.jpg 418w, ./images/team/member-2-mob@2x.jpg 836w,
-                                        ./images/team/member-2-tab.jpg 450w, ./images/team/member-2-tab@2x.jpg 900w,
-                                        ./images/team/member-2-desk.jpg 370w, ./images/team/member-2-desk@2x.jpg 740w"
-                src="./images/team/member-2-mob.jpg"
+                srcSet={`${member2_mob_jpg} 418w, ${member22_mob_jpg} 836w, ${member2_tb_jpg} 450w, ${member22_tb_jpg} 900w, ${member2_desk_jpg} 370w, ${member22_desk_jpg} 740w`}
+                src={member2_mob_jpg}
                 alt="John's Smith photo"
                 sizes="(min-width:1280px) 370px, (min-width:768px) 450px, (max-width:767px) 418px, 100vw"
                 width="418"
@@ -198,25 +237,23 @@ const Team = () => {
             <picture>
               <source
                 media="(min-width:1280px)"
-                srcSet="./images/team/member-3-desk.webp 1x, ./images/team/member-3-desk@2x.webp 2x"
+                srcSet={`${member3_desk} 1x, ${member32_desk} 2x`}
                 type="image/webp"
               />
               <source
                 media="(min-width:768px)"
-                srcSet="./images/team/member-3-tab.webp 1x, ./images/team/member-3-tab@2x.webp 2x"
+                srcSet={`${member3_tb} 1x, ${member32_tb} 2x`}
                 type="image/webp"
               />
               <source
                 media="(max-width:767px)"
-                srcSet="./images/team/member-3-mob.webp 1x, ./images/team/member-3-mob@2x.webp 2x"
+                srcSet={`${member3_mob} 1x, ${member32_mob} 2x`}
                 type="image/webp"
               />
               <img
                 className={css.team__image}
-                srcSet="./images/team/member-3-mob.jpg 418w, ./images/team/member-3-mob@2x.jpg 836w,
-                                        ./images/team/member-3-tab.jpg 450w, ./images/team/member-3-tab@2x.jpg 900w,
-                                        ./images/team/member-3-desk.jpg 370w, ./images/team/member-3-desk@2x.jpg 740w"
-                src="./images/team/member-3-mob.jpg"
+                srcSet={`${member3_mob_jpg} 418w, ${member32_mob_jpg} 836w, ${member3_tb_jpg} 450w, ${member32_tb_jpg} 900w, ${member3_desk_jpg} 370w, ${member32_desk_jpg} 740w`}
+                src={member3_mob_jpg}
                 alt="John's Smith photo"
                 sizes="(min-width:1280px) 370px, (min-width:768px) 450px, (max-width:767px) 418px, 100vw"
                 width="418"
