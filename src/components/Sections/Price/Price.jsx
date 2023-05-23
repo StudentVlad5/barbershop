@@ -2,7 +2,7 @@ import css from './price.module.scss';
 
 const Price = () => {
     return (
-      <section className={css.price + " " + css.section} id="price">
+      <section className={css.price + " " + css.section} id="price" style={{}}>
         <div className={css.container}>
           <div className={css.price__group + " " + css["title-group"]}>
             <p className={css.uppertitle + " " + css["uppertitle--mode-light"]}>

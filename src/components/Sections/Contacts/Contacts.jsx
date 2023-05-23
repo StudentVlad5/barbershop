@@ -61,7 +61,7 @@ const Contacts = () => {
                     rel="noopener noreferrer"
                   >
                     <svg className={css.address__icon} width="24" height="24">
-                      <use href="./images/sprite.svg#map-pin"></use>
+                      <use href="../../../images/sprite.svg#map-pin"></use>
                     </svg>
                     Main Street, 7A, Kyiv, 08132
                   </a>
@@ -73,7 +73,7 @@ const Contacts = () => {
                     aria-label="phone"
                   >
                     <svg className={css.address__icon} width="24" height="24">
-                      <use href="./images/sprite.svg#phone"></use>
+                      <use href="../../../images/sprite.svg#phone"></use>
                     </svg>
                     +38 044 111 11 11
                   </a>
@@ -85,7 +85,7 @@ const Contacts = () => {
                     aria-label="email"
                   >
                     <svg className={css.address__icon} width="24" height="24">
-                      <use href="./images/sprite.svg#mail"></use>
+                      <use href="../../../images/sprite.svg#mail"></use>
                     </svg>
                     barbershop@email.com
                   </a>

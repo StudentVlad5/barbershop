@@ -1,3 +1,4 @@
+@import '../../base/main';
 .benefits {
     &__container {
         @include mq(tablet) {
