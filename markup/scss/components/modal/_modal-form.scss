@@ -176,6 +176,8 @@
 
     color: var(--color-text-second);
     cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
     user-select: none;
 
     @include mq(desktop) {

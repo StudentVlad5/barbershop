@@ -1,13 +1,14 @@
+import css from './team.module.scss';
 const Team = () => {
   return (
-    <section className="team section" id="team">
-      <div className="container">
-        <div className="team__group title-group">
-          <p className="uppertitle">for true connoisseurs of the atmosphere</p>
-          <h2 className="section-title">Our Barbers</h2>
+    <section className={css.team + " " + css.section} id="team">
+      <div className={css.container}>
+        <div className={css.team__group + " " + css["title-group"]}>
+          <p className={css.uppertitle}>for true connoisseurs of the atmosphere</p>
+          <h2 className={css["section-title"]}>Our Barbers</h2>
         </div>
-        <ul className="team__list list">
-          <li className="team__item" data-aos="zoom-in-up" data-aos-delay="200">
+        <ul className={css.team__list + " " + css.list}>
+          <li className={css.team__item} data-aos="zoom-in-up" data-aos-delay="200">
             <picture>
               <source
                 media="(min-width:1280px)"
@@ -37,62 +38,62 @@ const Team = () => {
                 loading="lazy"
               />
             </picture>
-            <div className="team__wrap">
-              <h3 className="team__title">John Smith</h3>
-              <p className="team__description">Extreme Barber</p>
-              <ul className="social-links list">
-                <li className="social-links__item">
+            <div className={css.team__wrap}>
+              <h3 className={css.team__title}>John Smith</h3>
+              <p className={css.team__description}>Extreme Barber</p>
+              <ul className={css["social-links"] + " " + css.list}>
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://www.instagram.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Instagram"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#instagram"></use>
                     </svg>
                   </a>
                 </li>
-                <li className="social-links__item">
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://twitter.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Twitter"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#twitter"></use>
                     </svg>
                   </a>
                 </li>
-                <li className="social-links__item">
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://www.facebook.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Facebook"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#facebook"></use>
                     </svg>
                   </a>
                 </li>
-                <li className="social-links__item">
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://www.linkedin.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Linkedin"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#linkedin"></use>
                     </svg>
                   </a>
@@ -100,7 +101,7 @@ const Team = () => {
               </ul>
             </div>
           </li>
-          <li className="team__item" data-aos="zoom-in-up" data-aos-delay="300">
+          <li className={css.team__item} data-aos="zoom-in-up" data-aos-delay="300">
             <picture>
               <source
                 media="(min-width:1280px)"
@@ -118,7 +119,7 @@ const Team = () => {
                 type="image/webp"
               />
               <img
-                className="team__image"
+                className={css.team__image}
                 srcSet="./images/team/member-2-mob.jpg 418w, ./images/team/member-2-mob@2x.jpg 836w,
                                         ./images/team/member-2-tab.jpg 450w, ./images/team/member-2-tab@2x.jpg 900w,
                                         ./images/team/member-2-desk.jpg 370w, ./images/team/member-2-desk@2x.jpg 740w"
@@ -130,62 +131,62 @@ const Team = () => {
                 loading="lazy"
               />
             </picture>
-            <div className="team__wrap">
-              <h3 className="team__title">Michele Doe</h3>
-              <p className="team__description">Extreme Barber</p>
-              <ul className="social-links list">
-                <li className="social-links__item">
+            <div className={css.team__wrap}>
+              <h3 className={css.team__title}>Michele Doe</h3>
+              <p className={css.team__description}>Extreme Barber</p>
+              <ul className={css["social-links"] + " " + css.list}>
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://www.instagram.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Instagram"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#instagram"></use>
                     </svg>
                   </a>
                 </li>
-                <li className="social-links__item">
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://twitter.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Twitter"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#twitter"></use>
                     </svg>
                   </a>
                 </li>
-                <li className="social-links__item">
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://www.facebook.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Facebook"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#facebook"></use>
                     </svg>
                   </a>
                 </li>
-                <li className="social-links__item">
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://www.linkedin.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Linkedin"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#linkedin"></use>
                     </svg>
                   </a>
@@ -193,7 +194,7 @@ const Team = () => {
               </ul>
             </div>
           </li>
-          <li className="team__item" data-aos="zoom-in-up" data-aos-delay="400">
+          <li className={css.team__item} data-aos="zoom-in-up" data-aos-delay="400">
             <picture>
               <source
                 media="(min-width:1280px)"
@@ -211,7 +212,7 @@ const Team = () => {
                 type="image/webp"
               />
               <img
-                className="team__image"
+                className={css.team__image}
                 srcSet="./images/team/member-3-mob.jpg 418w, ./images/team/member-3-mob@2x.jpg 836w,
                                         ./images/team/member-3-tab.jpg 450w, ./images/team/member-3-tab@2x.jpg 900w,
                                         ./images/team/member-3-desk.jpg 370w, ./images/team/member-3-desk@2x.jpg 740w"
@@ -223,62 +224,62 @@ const Team = () => {
                 loading="lazy"
               />
             </picture>
-            <div className="team__wrap">
-              <h3 className="team__title">Alan Black</h3>
-              <p className="team__description">Extreme Barber</p>
-              <ul className="social-links list">
-                <li className="social-links__item">
+            <div className={css.team__wrap}>
+              <h3 className={css.team__title}>Alan Black</h3>
+              <p className={css.team__description}>Extreme Barber</p>
+              <ul className={css["social-links"] + " " + css.list}>
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://www.instagram.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Instagram"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#instagram"></use>
                     </svg>
                   </a>
                 </li>
-                <li className="social-links__item">
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://twitter.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Twitter"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#twitter"></use>
                     </svg>
                   </a>
                 </li>
-                <li className="social-links__item">
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://www.facebook.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Facebook"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#facebook"></use>
                     </svg>
                   </a>
                 </li>
-                <li className="social-links__item">
+                <li className={css["social-links__item"]}>
                   <a
-                    className="social-links__link link"
+                    className={css["social-links__link"] + " " + css.link}
                     href="https://www.linkedin.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Linkedin"
                   >
-                    <svg className="social-links__icon" width="20" height="20">
+                    <svg className={css["social-links__icon"]} width="20" height="20">
                       <use href="./images/sprite.svg#linkedin"></use>
                     </svg>
                   </a>

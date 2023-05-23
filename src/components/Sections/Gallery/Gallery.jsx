@@ -1,13 +1,14 @@
+import css from './gallery.module.scss';
 const Gallery = () => {
   return (
-    <section className="gallery section" id="gallery">
-      <div className="container">
-        <div className="gallery__group title-group">
-          <p className="uppertitle">In Latin, barba means beard</p>
-          <h2 className="section-title visually-hidden">Our portfolio</h2>
+    <section className={css.gallery + " " + css.section} id="gallery">
+      <div className={css.container}>
+        <div className={css.gallery__group + " " + css["title-group"]}>
+          <p className={css.uppertitle}>In Latin, barba means beard</p>
+          <h2 className={css["section-title"] + " " + css["visually-hidden"]}>Our portfolio</h2>
         </div>
-        <ul className="gallery__list list">
-          <li className="gallery__item" data-sale="Discount 30%">
+        <ul className={css.gallery__list + " " + css.list}>
+          <li className={css.gallery__item} data-sale="Discount 30%">
             <picture>
               <source
                 media="(min-width:1280px)"
@@ -25,7 +26,7 @@ const Gallery = () => {
                 type="image/webp"
               />
               <img
-                className="gallery__image"
+                className={css.gallery__image}
                 srcSet="./images/portfolio/gallery-1-desk.jpg 270w, ./images/portfolio/gallery-1-desk@2x.jpg 540w,
                     				./images/portfolio/gallery-1-tab.webp 330w, ./images/portfolio/gallery-1-tab@2x.webp 660w,
                     				./images/portfolio/gallery-1-mob.webp 418w, ./images/portfolio/gallery-1-mob@2x.webp 836w"
@@ -38,7 +39,7 @@ const Gallery = () => {
               />
             </picture>
           </li>
-          <li className="gallery__item" data-sale="Discount 30%">
+          <li className={css.gallery__item} data-sale="Discount 30%">
             <picture>
               <source
                 media="(min-width:1280px)"
@@ -56,7 +57,7 @@ const Gallery = () => {
                 type="image/webp"
               />
               <img
-                className="gallery__image"
+                className={css.gallery__image}
                 srcSet="./images/portfolio/gallery-2-desk.jpg 270w, ./images/portfolio/gallery-2-desk@2x.jpg 540w,
                                         ./images/portfolio/gallery-2-tab.webp 330w, ./images/portfolio/gallery-2-tab@2x.webp 660w,
                                         ./images/portfolio/gallery-2-mob.webp 418w, ./images/portfolio/gallery-2-mob@2x.webp 836w"
@@ -69,7 +70,7 @@ const Gallery = () => {
               />
             </picture>
           </li>
-          <li className="gallery__item" data-sale="Discount 25%">
+          <li className={css.gallery__item} data-sale="Discount 25%">
             <picture>
               <source
                 media="(min-width:1280px)"
@@ -87,7 +88,7 @@ const Gallery = () => {
                 type="image/webp"
               />
               <img
-                className="gallery__image"
+                className={css.gallery__image}
                 srcSet="./images/portfolio/gallery-3-desk.jpg 270w, ./images/portfolio/gallery-3-desk@2x.jpg 540w,
                                         ./images/portfolio/gallery-3-tab.webp 330w, ./images/portfolio/gallery-3-tab@2x.webp 660w,
                                         ./images/portfolio/gallery-3-mob.webp 418w, ./images/portfolio/gallery-3-mob@2x.webp 836w"
@@ -100,7 +101,7 @@ const Gallery = () => {
               />
             </picture>
           </li>
-          <li className="gallery__item" data-sale="Discount 20%">
+          <li className={css.gallery__item} data-sale="Discount 20%">
             <picture>
               <source
                 media="(min-width:1280px)"
@@ -118,7 +119,7 @@ const Gallery = () => {
                 type="image/webp"
               />
               <img
-                className="gallery__image"
+                className={css.gallery__image}
                 srcSet="./images/portfolio/gallery-4-desk.jpg 270w, ./images/portfolio/gallery-4-desk@2x.jpg 540w,
                                         ./images/portfolio/gallery-4-tab.webp 330w, ./images/portfolio/gallery-4-tab@2x.webp 660w,
                                         ./images/portfolio/gallery-4-mob.webp 418w, ./images/portfolio/gallery-4-mob@2x.webp 836w"

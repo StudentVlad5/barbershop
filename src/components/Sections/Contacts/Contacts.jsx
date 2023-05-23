@@ -1,88 +1,90 @@
+import css from './contacts.module.scss';
+
 const Contacts = () => {
   return (
-    <section className="contacts section" id="contacts">
-      <div className="contacts__container container">
+    <section className={css.contacts + ' ' + css.section} id="contacts">
+      <div className={css.contacts__container + ' ' + css.container}>
         {/*========= USER CONTACTS FORM ===========*/}
-        <div className="contacts__form" id="book">
-          <h2 className="section-title section-title--mode-light">
+        <div className={css.contacts__form} id="book">
+          <h2 className={css["section-title"] + ' ' + css["section-title--mode-light"]}>
             Book a Service
           </h2>
-          <form className="form" name="form-contacts" autoComplete="on">
-            <label className="form__field" aria-label="Name">
+          <form className={css.form} name="form-contacts" autoComplete="on">
+            <label className={css.form__field} aria-label="Name">
               <input
-                className="form__input"
+                className={css.form__input}
                 type="text"
                 name="user-name"
                 required
                 placeholder="John"
               />
-              <span className="form__label">Name*</span>
+              <span className={css.form__label}>Name*</span>
             </label>
-            <label className="form__field" aria-label="Phone">
+            <label className={css.form__field} aria-label="Phone">
               <input
-                className="form__input"
+                className={css.form__input}
                 type="tel"
                 name="user-phone"
                 required
                 placeholder="+19739476185"
               />
-              <span className="form__label">Telephone*</span>
+              <span className={css.form__label}>Telephone*</span>
             </label>
             <label
-              className="form__field form__field-comment"
+              className={css.form__field + ' ' + css["form__field-comment"]}
               aria-label="Comment"
             >
               <textarea
-                className="form__comment"
+                className={css.form__comment}
                 name="comment"
                 placeholder="Your comment"
               ></textarea>
-              <span className="form__label">Message</span>
+              <span className={css.form__label}>Message</span>
             </label>
           </form>
-          <button className="form__btn btn btn--mode-dark" type="submit">
+          <button className={css.form__btn + " " + css.btn + " " + css["btn--mode-dark"]} type="submit">
             send
           </button>
         </div>
         {/*========= CONTACTS COMPANY ===========*/}
-        <div className="contacts__group">
-          <h2 className="section-title section-title--mode-light">Contacts</h2>
-          <div className="contacts__wrapper">
-            <address className="address">
-              <ul className="address__list list">
-                <li className="address__item">
+        <div className={css.contacts__group}>
+          <h2 className={css["section-title"] + " " + css["section-title--mode-light"]}>Contacts</h2>
+          <div className={css.contacts__wrapper}>
+            <address className={css.address}>
+              <ul className={css.address__list + ' ' + css.list}>
+                <li className={css.address__item}>
                   <a
-                    className="adress__link link"
+                    className={css.adress__link + " " + css.link}
                     href="https://goo.gl/maps/EWTb5EmzrJwAVnWu9"
                     aria-label="address"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <svg className="address__icon" width="24" height="24">
+                    <svg className={css.address__icon} width="24" height="24">
                       <use href="./images/sprite.svg#map-pin"></use>
                     </svg>
                     Main Street, 7A, Kyiv, 08132
                   </a>
                 </li>
-                <li className="address__item">
+                <li className={css.address__item}>
                   <a
-                    className="adress__link link"
+                    className={css.adress__link + " " + css.link}
                     href="tel:+380441111111"
                     aria-label="phone"
                   >
-                    <svg className="address__icon" width="24" height="24">
+                    <svg className={css.address__icon} width="24" height="24">
                       <use href="./images/sprite.svg#phone"></use>
                     </svg>
                     +38 044 111 11 11
                   </a>
                 </li>
-                <li className="address__item">
+                <li className={css.address__item}>
                   <a
-                    className="adress__link link"
+                    className={css.adress__link + " " + css.link}
                     href="mailto:barbershop@email.com"
                     aria-label="email"
                   >
-                    <svg className="address__icon" width="24" height="24">
+                    <svg className={css.address__icon} width="24" height="24">
                       <use href="./images/sprite.svg#mail"></use>
                     </svg>
                     barbershop@email.com
@@ -90,9 +92,9 @@ const Contacts = () => {
                 </li>
               </ul>
             </address>
-            <div className="worktime">
-              <p className="uppertitle uppertitle--mode-light">working hours</p>
-              <p className="subtitle subtitle--mode-light">
+            <div className={css.worktime}>
+              <p className={css.uppertitle + " " + css["uppertitle--mode-light"]}>working hours</p>
+              <p className={css.subtitle + " " + css["subtitle--mode-light"]}>
                 Daily from 9:00 AM till 22:00 PM
               </p>
             </div>
