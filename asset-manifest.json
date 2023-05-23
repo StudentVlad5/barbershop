@@ -1,13 +1,49 @@
 {
   "files": {
     "main.css": "/barbershop/static/css/main.59b6bcba.css",
-    "main.js": "/barbershop/static/js/main.d9c30277.js",
+    "main.js": "/barbershop/static/js/main.bff1cb81.js",
+    "static/media/slider-1-desk@2x.jpg": "/barbershop/static/media/slider-1-desk@2x.d9e49e6989ed6d68781e.jpg",
+    "static/media/slider-3-desk@2x.jpg": "/barbershop/static/media/slider-3-desk@2x.03c2f11ee090ad9212e3.jpg",
+    "static/media/slider-2-desk@2x.jpg": "/barbershop/static/media/slider-2-desk@2x.2ec3ce50927ee48dc045.jpg",
+    "static/media/slider-3-desk@2x.webp": "/barbershop/static/media/slider-3-desk@2x.29299ea04f1d6163b26a.webp",
+    "static/media/slider-3-tab@2x.jpg": "/barbershop/static/media/slider-3-tab@2x.5bf12b07d7c8f49880cf.jpg",
+    "static/media/slider-1-desk@2x.webp": "/barbershop/static/media/slider-1-desk@2x.9c80c8f1b4c8b94d1b03.webp",
+    "static/media/slider-1-tab@2x.jpg": "/barbershop/static/media/slider-1-tab@2x.f7c6d917bb6fd52885bb.jpg",
+    "static/media/slider-2-tab@2x.jpg": "/barbershop/static/media/slider-2-tab@2x.05ec9d3a43d6f912b99f.jpg",
+    "static/media/slider-2-desk@2x.webp": "/barbershop/static/media/slider-2-desk@2x.0cebbe50e8d795adcbbc.webp",
+    "static/media/slider-3-mob@2x.jpg": "/barbershop/static/media/slider-3-mob@2x.f85e575b8b28d9a41ef9.jpg",
+    "static/media/slider-1-mob@2x.jpg": "/barbershop/static/media/slider-1-mob@2x.5d08518dd718a931760f.jpg",
+    "static/media/slider-2-mob@2x.jpg": "/barbershop/static/media/slider-2-mob@2x.0cfcadbaae081947dc47.jpg",
+    "static/media/slider-1-desk.jpg": "/barbershop/static/media/slider-1-desk.9345f09582654ec67b01.jpg",
+    "static/media/slider-3-desk.jpg": "/barbershop/static/media/slider-3-desk.7ba8c6eb7761d030b943.jpg",
+    "static/media/slider-3-tab@2x.webp": "/barbershop/static/media/slider-3-tab@2x.e4987f5c459c343c34c8.webp",
+    "static/media/slider-2-desk.jpg": "/barbershop/static/media/slider-2-desk.8a4ba2c6e9d96a787cd1.jpg",
+    "static/media/slider-1-tab@2x.webp": "/barbershop/static/media/slider-1-tab@2x.a26f516609afd68a88bb.webp",
+    "static/media/slider-2-tab@2x.webp": "/barbershop/static/media/slider-2-tab@2x.bf12db28904e6b8f485e.webp",
+    "static/media/slider-1-desk.webp": "/barbershop/static/media/slider-1-desk.d6b1ea6a9e61edacfa4d.webp",
+    "static/media/slider-3-desk.webp": "/barbershop/static/media/slider-3-desk.1e0f895b26927a37224b.webp",
+    "static/media/slider-3-mob@2x.webp": "/barbershop/static/media/slider-3-mob@2x.0bb835c2d554d1b55a52.webp",
+    "static/media/slider-1-mob@2x.webp": "/barbershop/static/media/slider-1-mob@2x.1e503c096984dfef8e0a.webp",
+    "static/media/slider-3-tab.jpg": "/barbershop/static/media/slider-3-tab.8e7ad78c4fb4d9e4f00c.jpg",
+    "static/media/slider-1-tab.jpg": "/barbershop/static/media/slider-1-tab.5dea6643402a2cfcc7b8.jpg",
+    "static/media/slider-2-mob@2x.webp": "/barbershop/static/media/slider-2-mob@2x.5ee154d28797d10cd653.webp",
+    "static/media/slider-2-tab.jpg": "/barbershop/static/media/slider-2-tab.71a40cfb8e60c0b08796.jpg",
+    "static/media/slider-2-desk.webp": "/barbershop/static/media/slider-2-desk.dde323a160661d14d192.webp",
+    "static/media/slider-3-mob.jpg": "/barbershop/static/media/slider-3-mob.4e3ff05de1815a70625e.jpg",
+    "static/media/slider-1-mob.jpg": "/barbershop/static/media/slider-1-mob.51af2d9b9e4e5f171760.jpg",
+    "static/media/slider-2-mob.jpg": "/barbershop/static/media/slider-2-mob.5647d992551dcfe51c62.jpg",
+    "static/media/slider-3-tab.webp": "/barbershop/static/media/slider-3-tab.392d6799263099f9c031.webp",
+    "static/media/slider-1-tab.webp": "/barbershop/static/media/slider-1-tab.099a17847dbb814a9c27.webp",
+    "static/media/slider-2-tab.webp": "/barbershop/static/media/slider-2-tab.531114050a1387cdb5e5.webp",
+    "static/media/slider-3-mob.webp": "/barbershop/static/media/slider-3-mob.2c05e54e3e8c11c138de.webp",
+    "static/media/slider-1-mob.webp": "/barbershop/static/media/slider-1-mob.8f3376a951b3d72c459c.webp",
+    "static/media/slider-2-mob.webp": "/barbershop/static/media/slider-2-mob.3018c9b6988212cce715.webp",
     "index.html": "/barbershop/index.html",
     "main.59b6bcba.css.map": "/barbershop/static/css/main.59b6bcba.css.map",
-    "main.d9c30277.js.map": "/barbershop/static/js/main.d9c30277.js.map"
+    "main.bff1cb81.js.map": "/barbershop/static/js/main.bff1cb81.js.map"
   },
   "entrypoints": [
     "static/css/main.59b6bcba.css",
-    "static/js/main.d9c30277.js"
+    "static/js/main.bff1cb81.js"
   ]
 }
