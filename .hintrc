@@ -22,9 +22,18 @@
           "background-image: -webkit-image-set(url(../images/contacts/bg-contacts-tab@2x.webp) 2x)",
           "background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-desk.webp) 1x)",
           "background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-desk@2x.webp) 2x)",
-          "background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-tab@2x.webp) 2x)"
+          "background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-tab@2x.webp) 2x)",
+          "background-image: -webkit-image-set(url(../../../images/price/bg-price-mob@2x.webp) 2x)",
+          "background-image: -webkit-image-set(url(../images/price/bg-price-mob.webp) 1x)",
+          "background-image: -webkit-image-set(url(../images/price/bg-price-mob@2x.webp) 2x)",
+          "background-image: -webkit-image-set(url(../images/price/bg-price-tab.webp) 1x)",
+          "background-image: -webkit-image-set(url(../images/price/bg-price-tab@2x.webp) 2x)",
+          "background-image: -webkit-image-set(url(../images/price/bg-price-desk.webp) 1x)",
+          "background-image: -webkit-image-set(url(../images/price/bg-price-desk@2x.webp) 2x)"
         ]
       }
-    ]
+    ],
+    "detect-css-reflows/composite": "off",
+    "detect-css-reflows/paint": "off"
   }
 }
