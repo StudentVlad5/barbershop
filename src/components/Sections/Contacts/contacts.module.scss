@@ -1,4 +1,4 @@
-@import '../../base/main.scss';
+@import '../../base/main';
 
 .contacts {
     width: 100%;
@@ -10,12 +10,12 @@
     background-size: 100% 45%, cover;
     background-position: bottom right;
 
-    background-image: url(../../../images/contacts/bg-contacts-mob.png), linear-gradient(to bottom, #191c26, #191c26);
     background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-mob.webp) 1x);
+    background-image: url(../../../images/contacts/bg-contacts-mob.png), linear-gradient(to bottom, #191c26, #191c26);
 
     @include mq(retina) {
-        background-image: url(../../../images/contacts/bg-contacts-mob@2x.png), linear-gradient(to bottom, #191c26, #191c26);
         background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-mob@2x.webp) 2x);
+        background-image: url(../../../images/contacts/bg-contacts-mob@2x.png), linear-gradient(to bottom, #191c26, #191c26);
     }
 
     @include mq(mobile) {
@@ -25,12 +25,12 @@
     @include mq(tablet) {
         background-size: 100% 449px, cover;
 
-        background-image: url(../../../images/contacts/bg-contacts-tab.png), linear-gradient(to bottom, #191c26, #191c26);
         background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-tab.webp) 1x);
+        background-image: url(../../../images/contacts/bg-contacts-tab.png), linear-gradient(to bottom, #191c26, #191c26);
 
         @include mq(retina) {
-            background-image: url(../../../images/contacts/bg-contacts-tab@2x.png), linear-gradient(to bottom, #191c26, #191c26);
             background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-tab@2x.webp) 2x);
+            background-image: url(../../../images/contacts/bg-contacts-tab@2x.png), linear-gradient(to bottom, #191c26, #191c26);
         }
     }
 
@@ -40,12 +40,12 @@
         background-position: bottom right;
         background-size: 625px 644px, contain;
 
-        background-image: url(../../../images/contacts/bg-contacts-desk.png), linear-gradient(to bottom, #191c26, #191c26);
         background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-desk.webp) 1x);
+        background-image: url(../../../images/contacts/bg-contacts-desk.png), linear-gradient(to bottom, #191c26, #191c26);
 
         @include mq(retina) {
-            background-image: url(../../../images/contacts/bg-contacts-desk@2x.png), linear-gradient(to bottom, #191c26, #191c26);
             background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-desk@2x.webp) 2x);
+            background-image: url(../../../images/contacts/bg-contacts-desk@2x.png), linear-gradient(to bottom, #191c26, #191c26);
         }
     }
 

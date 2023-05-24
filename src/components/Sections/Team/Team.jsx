@@ -42,6 +42,11 @@ import member32_tb_jpg from "images/team/member-3-tab@2x.jpg";
 import member3_mob_jpg from "images/team/member-3-mob.jpg";
 import member32_mob_jpg from "images/team/member-3-mob@2x.jpg";
 
+import linkedin from "images/sprite.svg";
+import twitter from "images/sprite.svg";
+import instagram from "images/sprite.svg";
+import facebook from "images/sprite.svg";
+
 const Team = () => {
   return (
     <section className={css.team + " " + css.section} id="team">
@@ -86,14 +91,14 @@ const Team = () => {
                 <li className={css["social-links__item"]}>
                   <a
                     className={css["social-links__link"] + " " + css.link}
-                    href="https://www.instagram.com/"
+                    href={"https://www.instagram.com/"}
                     target="_blank"
                     rel="noopener noreferrer"
                     lang="en"
                     aria-label="Instagram"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#instagram"></use>
+                      <use href={instagram + "#instagram"}></use>
                     </svg>
                   </a>
                 </li>
@@ -107,7 +112,7 @@ const Team = () => {
                     aria-label="Twitter"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#twitter"></use>
+                      <use href={twitter + "#twitter"}></use>
                     </svg>
                   </a>
                 </li>
@@ -121,7 +126,7 @@ const Team = () => {
                     aria-label="Facebook"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#facebook"></use>
+                      <use href={facebook + '#facebook'}></use>
                     </svg>
                   </a>
                 </li>
@@ -135,7 +140,7 @@ const Team = () => {
                     aria-label="Linkedin"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#linkedin"></use>
+                      <use href={linkedin + '#linkedin'}></use>
                     </svg>
                   </a>
                 </li>
@@ -184,7 +189,7 @@ const Team = () => {
                     aria-label="Instagram"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#instagram"></use>
+                      <use href={instagram + "#instagram"}></use>
                     </svg>
                   </a>
                 </li>
@@ -198,7 +203,7 @@ const Team = () => {
                     aria-label="Twitter"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#twitter"></use>
+                      <use href={twitter + "#twitter"}></use>
                     </svg>
                   </a>
                 </li>
@@ -212,7 +217,7 @@ const Team = () => {
                     aria-label="Facebook"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#facebook"></use>
+                      <use href={facebook + '#facebook'}></use>
                     </svg>
                   </a>
                 </li>
@@ -226,7 +231,7 @@ const Team = () => {
                     aria-label="Linkedin"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#linkedin"></use>
+                      <use href={linkedin + '#linkedin'}></use>
                     </svg>
                   </a>
                 </li>
@@ -275,7 +280,7 @@ const Team = () => {
                     aria-label="Instagram"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#instagram"></use>
+                      <use href={instagram + "#instagram"}></use>
                     </svg>
                   </a>
                 </li>
@@ -289,7 +294,7 @@ const Team = () => {
                     aria-label="Twitter"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#twitter"></use>
+                      <use href={twitter + "#twitter"}></use>
                     </svg>
                   </a>
                 </li>
@@ -303,7 +308,7 @@ const Team = () => {
                     aria-label="Facebook"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#facebook"></use>
+                      <use href={facebook + '#facebook'}></use>
                     </svg>
                   </a>
                 </li>
@@ -317,7 +322,7 @@ const Team = () => {
                     aria-label="Linkedin"
                   >
                     <svg className={css["social-links__icon"]} width="20" height="20">
-                      <use href="./images/sprite.svg#linkedin"></use>
+                      <use href={linkedin + '#linkedin'}></use>
                     </svg>
                   </a>
                 </li>
