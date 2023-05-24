@@ -55,6 +55,8 @@
 
     &__list {
         margin-bottom: 50px;
+        padding: 30px 0;
+
         background-image: linear-gradient(180deg, #171A24 0%, rgba(23, 26, 36, 0.2) 100%);
 
         @include mq(desktop) {
@@ -104,17 +106,10 @@
     }
 
     &__inner-list {
-        padding-top: 30px;
-        padding-left: 30px;
-        padding-right: 30px;
-
-        &:not(:last-child) {
-            padding-bottom: 30px;
-        }
+        padding: 10px 30px;
 
         @include mq(tablet) {
-            padding-left: 40px;
-            padding-right: 40px;
+            padding: 10px 40px;
         }
 
         @include mq(desktop) {
@@ -132,13 +127,18 @@
         display: flex;
         align-items: baseline;
 
-        font-size: 14px;
-        line-height: 2.14;
+        font-size: 12px;
+        line-height: 1.14;
 
         color: var(--color-text-light);
 
         &:not(:last-child) {
             margin-bottom: 20px;
+        }
+
+        @include mq(mobile-only) {
+            font-size: 14px;
+            line-height: 2.14;
         }
 
         @include mq(tablet) {

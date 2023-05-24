@@ -1,30 +1,30 @@
 import css from './about.module.scss';
 
-import  work1_desk  from "images/about/work-1-desk.webp";
-import  work2_desk  from "images/about/work-1-desk@2x.webp";
-import  work1_tb  from "images/about/work-1-tab.webp";
-import  work2_tb  from "images/about/work-1-tab@2x.webp";
+import work1_desk from 'images/about/work-1-desk.webp';
+import work2_desk from 'images/about/work-1-desk@2x.webp';
+import work1_tb from 'images/about/work-1-tab.webp';
+import work2_tb from 'images/about/work-1-tab@2x.webp';
 
-import  work1_desk_jpg  from "images/about/work-1-desk.jpg";
-import  work2_desk_jpg  from "images/about/work-1-desk@2x.jpg";
-import  work1_tb_jpg  from "images/about/work-1-tab.jpg";
-import  work2_tb_jpg  from "images/about/work-1-tab@2x.jpg";
+import work1_desk_jpg from 'images/about/work-1-desk.jpg';
+import work2_desk_jpg from 'images/about/work-1-desk@2x.jpg';
+import work1_tb_jpg from 'images/about/work-1-tab.jpg';
+import work2_tb_jpg from 'images/about/work-1-tab@2x.jpg';
 
-import  work12_desk  from "images/about/work-2-desk.webp";
-import  work22_desk  from "images/about/work-2-desk@2x.webp";
-import  work12_tb  from "images/about/work-2-tab.webp";
-import  work22_tb  from "images/about/work-2-tab@2x.webp";
+import work12_desk from 'images/about/work-2-desk.webp';
+import work22_desk from 'images/about/work-2-desk@2x.webp';
+import work12_tb from 'images/about/work-2-tab.webp';
+import work22_tb from 'images/about/work-2-tab@2x.webp';
 
-import  work12_desk_jpg  from "images/about/work-2-desk.jpg";
-import  work22_desk_jpg  from "images/about/work-2-desk@2x.jpg";
-import  work12_tb_jpg  from "images/about/work-2-tab.jpg";
-import  work22_tb_jpg  from "images/about/work-2-tab@2x.jpg";
+import work12_desk_jpg from 'images/about/work-2-desk.jpg';
+import work22_desk_jpg from 'images/about/work-2-desk@2x.jpg';
+import work12_tb_jpg from 'images/about/work-2-tab.jpg';
+import work22_tb_jpg from 'images/about/work-2-tab@2x.jpg';
 
 const About = () => {
   return (
-    <section className={css.about + " " + css.section} id="about">
-      <div className={css.about__container + " " + css.container}>
-        <ul className={css.about__list + " " + css.list}>
+    <section className={'about' + ' ' + css.section} id="about">
+      <div className={css.about__container + ' ' + css.container}>
+        <ul className={css.about__list + ' ' + css.list}>
           <li className={css.about__item}>
             <picture>
               <source
@@ -77,14 +77,22 @@ const About = () => {
           </li>
         </ul>
         <div className={css.about__group}>
-          <div className={css["title-group"]}>
+          <div className={css['title-group']}>
             <p className={css.uppertitle}>About</p>
-            <h2 className={css["section-title"] + " " + css["section-title--size-s"]}>
+            <h2
+              className={
+                css['section-title'] + ' ' + css['section-title--size-s']
+              }
+            >
               The Best Barbershop
               <br />
               in Your City
             </h2>
-            <p className={css.subtitle + " " + css["subtitle--mode-dark subtitle--size-s"]}>
+            <p
+              className={
+                css.subtitle + ' ' + css['subtitle--mode-dark subtitle--size-s']
+              }
+            >
               If you want to add more confidence to your image, you are
               definitely in the right place.
             </p>
@@ -96,7 +104,10 @@ const About = () => {
               everyone who comes to us!
             </p>
           </div>
-          <a className={css.link + " " + css.btn + " " + css["btn--mode-light"]} href="#contacts">
+          <a
+            className={css.link + ' ' + css.btn + ' ' + css['btn--mode-light']}
+            href="#contacts"
+          >
             book a Service
           </a>
         </div>
