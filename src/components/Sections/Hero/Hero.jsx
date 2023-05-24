@@ -1,3 +1,7 @@
+import { plusSlides } from 'utils/js/slider';
+import { currentSlide } from 'utils/js/slider';
+import { showSlides } from 'utils/js/slider';
+
 import css from './hero.module.scss';
 import  hero1_desk  from "images/slider/slider-1-desk.webp";
 import  hero12_desk  from "images/slider/slider-1-desk@2x.webp";
@@ -39,6 +43,8 @@ import  hero3_mob_jpg  from "images/slider/slider-3-mob.jpg";
 import  hero32_mob_jpg  from "images/slider/slider-3-mob@2x.jpg";
 
 const Hero = () => {
+  let slideIndex = 1;
+  showSlides(slideIndex);
   return (
     <section className={css.hero} id="hero">
       <div className={css.hero__container + ' ' + css.container}>
@@ -81,18 +87,18 @@ const Hero = () => {
         {/* ========= SLIDER =========== */}
         <div className={css.hero_slider + ' ' + css.slider}>
           <ul className={css.slider__pagination + ' ' + css.list}>
-            <li className={css.slider__item}>
-              {/* <a href="#slide1" onClick="currentSlide(1)"></a> */}
+            <li className={css.slider__item} data-info="slider__item">
+              <a href="#slide1" onClick={currentSlide(1)}></a>
             </li>
-            <li className={css.slider__item}>
-              {/* <a href="#slide2" onClick="currentSlide(2)"></a> */}
+            <li className={css.slider__item} data-info="slider__item">
+              <a href="#slide2" onClick={currentSlide(2)}></a>
             </li>
-            <li className={css.slider__item}>
-              {/* <a href="#slide3" onClick="currentSlide(3)"></a> */}
+            <li className={css.slider__item} data-info="slider__item">
+              <a href="#slide3" onClick={currentSlide(3)}></a>
             </li>
           </ul>
           <div className={css.slides}>
-            <div className={css.slide + ' ' + css.fade} id="slide1">
+            <div className={css.slide + ' ' + css.fade} id="slide1" data-info="slide">
               <picture className={css.slide__img}>
                 <source
                   media="(min-width:1280px)"
@@ -118,7 +124,7 @@ const Hero = () => {
                 />
               </picture>
             </div>
-            <div className={css.slide + ' ' + css.fade} id="slide2">
+            <div className={css.slide + ' ' + css.fade} id="slide2" data-info="slide">
               <picture className={css.slide__img}>
                 <source
                   media="(min-width:1280px)"
@@ -144,7 +150,7 @@ const Hero = () => {
                 />
               </picture>
             </div>
-            <div className={css.slide + ' ' + css.fade} id="slide3">
+            <div className={css.slide + ' ' + css.fade} id="slide3" data-info="slide">
               <picture className={css.slide__img}>
                 <source
                   media="(min-width:1280px)"
@@ -175,7 +181,7 @@ const Hero = () => {
             <li className={css['slider__controls-item']}>
               <a
                 className={css['slider__controls-btn']}
-                // onClick="plusSlides(-1)"
+                onClick={()=>plusSlides(-1)}
               >
                 Back
               </a>
@@ -187,7 +193,7 @@ const Hero = () => {
                   ' ' +
                   css['slider__controls-btn--forward']
                 }
-                // onClick="plusSlides(1)"
+                onClick={()=>plusSlides(1)}
               >
                 Next
               </a>
