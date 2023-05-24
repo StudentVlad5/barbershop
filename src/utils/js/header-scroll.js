@@ -1,9 +1,7 @@
-window.onscroll = () => changeHeaderBackground();
-
-function changeHeaderBackground() {
+export function changeHeaderBackground() {
   const header = document.getElementById('header');
   const headerOffsetTrigger = header.offsetTop;
-  const pageOffset = window.pageYOffset;
+  const pageOffset = window.scrollY;
 
   if (pageOffset > headerOffsetTrigger) {
     header.classList.add('js-no-transparency');

@@ -1,4 +1,4 @@
-(() => {
+export const mobile_menu = () => {
   const menuBtnRef = document.querySelector('.js-mobile-menu-button');
   const mobileMenuRef = document.querySelector('.js-mobile-menu');
   const menuLinks = document.querySelector('.js-mobile-menu-links');
@@ -14,7 +14,7 @@
 
   menuBtnRef.addEventListener('click', toggleMenu);
   menuLinks.addEventListener('click', toggleMenu);
-})();
+};
 
 // Fixed window when modal opened
 function fixedModalOverflow() {
