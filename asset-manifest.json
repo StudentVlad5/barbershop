@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/barbershop/static/css/main.c8acad45.css",
+    "main.css": "/barbershop/static/css/main.fe22698f.css",
     "main.js": "/barbershop/static/js/main.1d32cd97.js",
     "static/media/bg-contacts-desk@2x.png": "/barbershop/static/media/bg-contacts-desk@2x.2a429a3247de8fc945f7.png",
     "static/media/bg-contacts-tab@2x.png": "/barbershop/static/media/bg-contacts-tab@2x.75fd506572fc7c301a84.png",
@@ -14,11 +14,14 @@
     "static/media/bg-contacts-mob@2x.webp": "/barbershop/static/media/bg-contacts-mob@2x.732411af62c019b1c791.webp",
     "static/media/slider-2-desk@2x.jpg": "/barbershop/static/media/slider-2-desk@2x.2ec3ce50927ee48dc045.jpg",
     "static/media/bg-price-desk.png": "/barbershop/static/media/bg-price-desk.8ee68deeb8e40ae7d779.png",
+    "static/media/bg-price-desk@2x.webp": "/barbershop/static/media/bg-price-desk@2x.67f68b5c10babd083259.webp",
     "static/media/bg-contacts-desk.png": "/barbershop/static/media/bg-contacts-desk.13f5e3b203c7fb18adb5.png",
+    "static/media/bg-price-mob@2x.webp": "/barbershop/static/media/bg-price-mob@2x.402e28586e44b6754b2f.webp",
     "static/media/bg-contacts-tab.png": "/barbershop/static/media/bg-contacts-tab.d45b805f029a430737d0.png",
     "static/media/gallery-1-mob@2x.jpg": "/barbershop/static/media/gallery-1-mob@2x.5beac7902d6af2ff6c10.jpg",
     "static/media/gallery-1-mob@2x.webp": "/barbershop/static/media/gallery-1-mob@2x.8c1e2d2c8d60687f70e2.webp",
     "static/media/bg-price-tab.png": "/barbershop/static/media/bg-price-tab.f69863d20e6931b1b036.png",
+    "static/media/bg-price-tab@2x.webp": "/barbershop/static/media/bg-price-tab@2x.f3ece4c3a13912203dea.webp",
     "static/media/gallery-1-tab@2x.jpg": "/barbershop/static/media/gallery-1-tab@2x.08a9d29f228b8b863469.jpg",
     "static/media/member-2-tab@2x.webp": "/barbershop/static/media/member-2-tab@2x.18ba3808db9d3f8798d1.webp",
     "static/media/slider-3-desk@2x.webp": "/barbershop/static/media/slider-3-desk@2x.29299ea04f1d6163b26a.webp",
@@ -59,6 +62,7 @@
     "static/media/bg-price-mob.png": "/barbershop/static/media/bg-price-mob.609cd693dd512931a8e7.png",
     "static/media/member-1-desk@2x.webp": "/barbershop/static/media/member-1-desk@2x.004d336493b97f40e1b9.webp",
     "static/media/slider-3-desk.jpg": "/barbershop/static/media/slider-3-desk.7ba8c6eb7761d030b943.jpg",
+    "static/media/bg-price-mob.webp": "/barbershop/static/media/bg-price-mob.93023ea0b3da74c9585c.webp",
     "static/media/gallery-4-mob@2x.webp": "/barbershop/static/media/gallery-4-mob@2x.44c5a7f6e1c33cfb6c1e.webp",
     "static/media/gallery-4-desk@2x.jpg": "/barbershop/static/media/gallery-4-desk@2x.f01ddc8e6462a66ef364.jpg",
     "static/media/gallery-3-desk@2x.webp": "/barbershop/static/media/gallery-3-desk@2x.df9bb4647f1adeaa69a4.webp",
@@ -66,6 +70,7 @@
     "static/media/member-3-tab@2x.jpg": "/barbershop/static/media/member-3-tab@2x.f46a6fea5ad49ae32b81.jpg",
     "static/media/gallery-2-tab@2x.jpg": "/barbershop/static/media/gallery-2-tab@2x.6f954336d77ebcfbe58e.jpg",
     "static/media/work-1-desk@2x.webp": "/barbershop/static/media/work-1-desk@2x.8323aa57142e9739c21c.webp",
+    "static/media/bg-price-desk.webp": "/barbershop/static/media/bg-price-desk.38a4ba2d449a2bd9de6e.webp",
     "static/media/bg-contacts-mob.webp": "/barbershop/static/media/bg-contacts-mob.a36af6c18bb7d7604552.webp",
     "static/media/slider-3-tab@2x.webp": "/barbershop/static/media/slider-3-tab@2x.e4987f5c459c343c34c8.webp",
     "static/media/slider-2-desk.jpg": "/barbershop/static/media/slider-2-desk.8a4ba2c6e9d96a787cd1.jpg",
@@ -83,6 +88,7 @@
     "static/media/work-2-desk@2x.jpg": "/barbershop/static/media/work-2-desk@2x.1ab8acbdc585c5916f94.jpg",
     "static/media/gallery-1-mob.jpg": "/barbershop/static/media/gallery-1-mob.a0151250f1d5e7ffb08a.jpg",
     "static/media/slider-1-desk.webp": "/barbershop/static/media/slider-1-desk.d6b1ea6a9e61edacfa4d.webp",
+    "static/media/bg-price-tab.webp": "/barbershop/static/media/bg-price-tab.e9862e34c1c407812687.webp",
     "static/media/slider-3-desk.webp": "/barbershop/static/media/slider-3-desk.1e0f895b26927a37224b.webp",
     "static/media/slider-3-mob@2x.webp": "/barbershop/static/media/slider-3-mob@2x.0bb835c2d554d1b55a52.webp",
     "static/media/gallery-1-mob.webp": "/barbershop/static/media/gallery-1-mob.7aead6abc0d239b3278d.webp",
@@ -158,11 +164,11 @@
     "static/media/work-2-desk.webp": "/barbershop/static/media/work-2-desk.bc817261f80f73fa5ed2.webp",
     "static/media/work-2-tab.webp": "/barbershop/static/media/work-2-tab.6dffec233a7f73ff4bac.webp",
     "index.html": "/barbershop/index.html",
-    "main.c8acad45.css.map": "/barbershop/static/css/main.c8acad45.css.map",
+    "main.fe22698f.css.map": "/barbershop/static/css/main.fe22698f.css.map",
     "main.1d32cd97.js.map": "/barbershop/static/js/main.1d32cd97.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8acad45.css",
+    "static/css/main.fe22698f.css",
     "static/js/main.1d32cd97.js"
   ]
 }
