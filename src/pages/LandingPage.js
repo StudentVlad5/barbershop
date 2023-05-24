@@ -1,5 +1,5 @@
 import { SEO } from 'utils/SEO';
-import Schedule from 'components/Schedule/Schedule';
+// import Schedule from 'components/Schedule/Schedule';
 import Hero from 'components/Sections/Hero/Hero';
 import About from 'components/Sections/About/About';
 import Price from 'components/Sections/Price/Price';
@@ -19,7 +19,7 @@ const LandingPage = () => {
       <Team />
       <Gallery />
       <Contacts />
-      <Schedule />
+      {/* <Schedule /> */}
     </>
   );
 };
