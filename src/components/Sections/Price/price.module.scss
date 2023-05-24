@@ -14,20 +14,20 @@
     background-position: center;
     background-size: cover;
 
-    background-image: -webkit-image-set(url(../images/price/bg-price-mob.webp) 1x);
+    background-image: -webkit-image-set(url(../../../images/price/bg-price-mob.webp) 1x);
     background-image: url(../../../images/price/bg-price-mob.png), linear-gradient(to bottom, #191c26, #191c26);
 
     @include mq(retina) {
-        background-image: -webkit-image-set(url(../images/price/bg-price-mob@2x.webp) 2x);
+        background-image: -webkit-image-set(url(../../../images/price/bg-price-mob@2x.webp) 2x);
         background-image: url(../../../images/price/bg-price-mob@2x.png), linear-gradient(to bottom, #191c26, #191c26);
     }
 
     @include mq(tablet) {
-        background-image: -webkit-image-set(url(../images/price/bg-price-tab.webp) 1x);
+        background-image: -webkit-image-set(url(../../../images/price/bg-price-tab.webp) 1x);
         background-image: url(../../../images/price/bg-price-tab.png), linear-gradient(to bottom, #191c26, #191c26);
 
         @include mq(retina) {
-            background-image: -webkit-image-set(url(../images/price/bg-price-tab@2x.webp) 2x);
+            background-image: -webkit-image-set(url(../../../images/price/bg-price-tab@2x.webp) 2x);
             background-image: url(../../../images/price/bg-price-tab@2x.png), linear-gradient(to bottom, #191c26, #191c26);
         }
     }
@@ -35,11 +35,11 @@
     @include mq(desktop) {
         max-width: 1280px;
 
-        background-image: -webkit-image-set(url(../images/price/bg-price-desk.webp) 1x);
+        background-image: -webkit-image-set(url(../../../images/price/bg-price-desk.webp) 1x);
         background-image: url(../../../images/price/bg-price-desk.png), linear-gradient(to bottom, #191c26, #191c26);
 
         @include mq(retina) {
-            background-image: -webkit-image-set(url(../images/price/bg-price-desk@2x.webp) 2x);
+            background-image: -webkit-image-set(url(../../../images/price/bg-price-desk@2x.webp) 2x);
             background-image: url(../../../images/price/bg-price-desk@2x.png), linear-gradient(to bottom, #191c26, #191c26);
         }
     }
