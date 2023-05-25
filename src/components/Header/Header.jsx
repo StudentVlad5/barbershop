@@ -1,10 +1,10 @@
 import css from './header.module.scss';
 import { changeHeaderBackground } from 'utils/js/header-scroll';
-import { mobile_menu } from 'utils/js/mobile-menu';
+// import { mobile_menu } from 'utils/js/mobile-menu';
 
 export const Header = () => {
   window.onscroll = () => changeHeaderBackground();
-  mobile_menu();
+  // mobile_menu();
   return (
     <>
       {/*=========== HEADER =============*/}

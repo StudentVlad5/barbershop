@@ -1,6 +1,5 @@
 import { plusSlides } from 'utils/js/slider';
 import { currentSlide } from 'utils/js/slider';
-import { showSlides } from 'utils/js/slider';
 
 import css from './hero.module.scss';
 import  hero1_desk  from "images/slider/slider-1-desk.webp";
@@ -42,9 +41,9 @@ import  hero32_tb_jpg  from "images/slider/slider-3-tab@2x.jpg";
 import  hero3_mob_jpg  from "images/slider/slider-3-mob.jpg";
 import  hero32_mob_jpg  from "images/slider/slider-3-mob@2x.jpg";
 
+
 const Hero = () => {
-  let slideIndex = 1;
-  showSlides(slideIndex);
+
   return (
     <section className={css.hero} id="hero">
       <div className={css.hero__container + ' ' + css.container}>
@@ -88,13 +87,13 @@ const Hero = () => {
         <div className={css.hero_slider + ' ' + css.slider}>
           <ul className={css.slider__pagination + ' ' + css.list}>
             <li className={css.slider__item} data-info="slider__item">
-              <a href="#slide1" onClick={currentSlide(1)}></a>
+              <a href="#slide1" onClick={()=>currentSlide(1)}></a>
             </li>
             <li className={css.slider__item} data-info="slider__item">
-              <a href="#slide2" onClick={currentSlide(2)}></a>
+              <a href="#slide2" onClick={()=>currentSlide(2)}></a>
             </li>
             <li className={css.slider__item} data-info="slider__item">
-              <a href="#slide3" onClick={currentSlide(3)}></a>
+              <a href="#slide3" onClick={()=>currentSlide(3)}></a>
             </li>
           </ul>
           <div className={css.slides}>
