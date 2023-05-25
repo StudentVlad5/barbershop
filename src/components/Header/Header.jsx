@@ -1,4 +1,6 @@
 import css from './header.module.scss';
+import { changeHeaderBackground } from 'utils/js/header-scroll';
+// import { mobile_menu } from 'utils/js/mobile-menu';
 
 import logo from 'images/icons/logo.svg';
 import menu from 'images/icons/menu_40px.svg';
@@ -7,18 +9,7 @@ import close from 'images/icons/close_40px.svg';
 export const Header = () => {
   window.onscroll = () => changeHeaderBackground();
 
-  function changeHeaderBackground() {
-    const header = document.getElementById('header');
-    const headerOffsetTrigger = header.offsetTop;
-    const pageOffset = window.pageYOffset;
-
-    if (pageOffset > headerOffsetTrigger) {
-      header.classList.add('js-no-transparency');
-    } else {
-      header.classList.remove('js-no-transparency');
-    }
-  }
-
+  // mobile_menu();
   return (
     <>
       {/*=========== HEADER =============*/}

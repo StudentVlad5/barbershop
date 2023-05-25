@@ -3,6 +3,7 @@ import Sidebar from './Sidebar/Sidebar';
 import Slider from './Slider/Slider';
 
 const Hero = () => {
+
   return (
     <section className={css.hero} id="hero">
       <div className={css.hero__container + ' ' + css.container}>
