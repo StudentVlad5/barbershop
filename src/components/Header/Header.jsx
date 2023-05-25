@@ -2,9 +2,13 @@ import css from './header.module.scss';
 import { changeHeaderBackground } from 'utils/js/header-scroll';
 // import { mobile_menu } from 'utils/js/mobile-menu';
 
-import logo from 'images/icons/logo.svg';
-import menu from 'images/icons/menu_40px.svg';
-import close from 'images/icons/close_40px.svg';
+
+import { ReactComponent as Logo } from '../../images/icons/logo.svg';
+import { ReactComponent as Menu } from '../../images/icons/menu_40px.svg';
+import { ReactComponent as Close } from '../../images/icons/close_40px.svg';
+// import logo from '../../images/icons/logo.svg';
+// import menu from '../../images/icons/menu_40px.svg';
+// import close from '../../images/icons/close_40px.svg';
 
 export const Header = () => {
   window.onscroll = () => changeHeaderBackground();
@@ -17,7 +21,7 @@ export const Header = () => {
         <div className={css.header__container + ' ' + css.container}>
           <a className={css.link} href="./index.html" aria-label="logo company">
             <svg className={css.logo} width="69" height="56">
-              <use href={logo}></use>
+              <Logo className={css.logo} style={{width:"69",height:"56"}}/>
             </svg>
           </a>
           <nav className={css.navigation}>
@@ -88,10 +92,8 @@ export const Header = () => {
             aria-expanded="false"
             aria-controls="mobile-menu"
           >
-            <svg className={css['mobile-btn__icon']} width="40" height="40">
-              <use className={css['mobile-btn__icon-open']} href={menu}></use>
-              <use className={css['mobile-btn__icon-close']} href={close}></use>
-            </svg>
+              <Menu lassName={css['mobile-btn__icon']} style={{width:"40",height:"40"}}/>
+              <Close className={css['mobile-btn__icon-close']} style={{width:"40",height:"40"}}/>
           </button>
         </div>
         {/*========= MOBILE MENU ===========*/}
