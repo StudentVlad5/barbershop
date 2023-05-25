@@ -1,4 +1,3 @@
-// @import 'common', 'reset', 'mixin', 'breakpoints', 'variables', 'section', 'container', 'js-selectors', 'animations', 'button', 'visually-hidden', 'social-links', 'socials', 'slider', 'mobile-menu', 'scroll-to-top';
 // utils
 @import './variables';
 @import './mixins';
@@ -20,6 +19,5 @@
 @import './modal/backdrop';
 @import './modal/modal-form';
 @import './modal/modal';
-@import './slider';
 @import './mobile-menu';
 @import './scroll-to-top';

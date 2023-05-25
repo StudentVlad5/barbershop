@@ -5,6 +5,20 @@ import menu from 'images/icons/menu_40px.svg';
 import close from 'images/icons/close_40px.svg';
 
 export const Header = () => {
+  window.onscroll = () => changeHeaderBackground();
+
+  function changeHeaderBackground() {
+    const header = document.getElementById('header');
+    const headerOffsetTrigger = header.offsetTop;
+    const pageOffset = window.pageYOffset;
+
+    if (pageOffset > headerOffsetTrigger) {
+      header.classList.add('js-no-transparency');
+    } else {
+      header.classList.remove('js-no-transparency');
+    }
+  }
+
   return (
     <>
       {/*=========== HEADER =============*/}
@@ -16,7 +30,7 @@ export const Header = () => {
             </svg>
           </a>
           <nav className={css.navigation}>
-            <ul className={css.navigation__list + css.list}>
+            <ul className={css.navigation__list + ' ' + css.list}>
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
@@ -205,5 +219,3 @@ export const Header = () => {
     </>
   );
 };
-
-
