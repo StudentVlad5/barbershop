@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/barbershop/static/css/main.d6b526a9.css",
-    "main.js": "/barbershop/static/js/main.c2485136.js",
+    "main.css": "/barbershop/static/css/main.afc1675c.css",
+    "main.js": "/barbershop/static/js/main.7fc8b149.js",
     "static/media/bg-contacts-desk@2x.png": "/barbershop/static/media/bg-contacts-desk@2x.2a429a3247de8fc945f7.png",
     "static/media/bg-contacts-tab@2x.png": "/barbershop/static/media/bg-contacts-tab@2x.75fd506572fc7c301a84.png",
     "static/media/bg-contacts-mob@2x.png": "/barbershop/static/media/bg-contacts-mob@2x.0e8ee0de56531892befd.png",
@@ -165,13 +165,14 @@
     "static/media/work-2-tab.webp": "/barbershop/static/media/work-2-tab.6dffec233a7f73ff4bac.webp",
     "static/media/logo.svg": "/barbershop/static/media/logo.90a10c01fd05d13ca37aff04380a3e23.svg",
     "index.html": "/barbershop/index.html",
+    "static/media/icon_close.svg": "/barbershop/static/media/icon_close.73b1d8773d59eabcd477439289b362e4.svg",
     "static/media/close_40px.svg": "/barbershop/static/media/close_40px.1299f7a1c6f1b4133eacc09fbffa0ab1.svg",
     "static/media/menu_40px.svg": "/barbershop/static/media/menu_40px.e0648aa1789691023b1ba4431d6e8149.svg",
-    "main.d6b526a9.css.map": "/barbershop/static/css/main.d6b526a9.css.map",
-    "main.c2485136.js.map": "/barbershop/static/js/main.c2485136.js.map"
+    "main.afc1675c.css.map": "/barbershop/static/css/main.afc1675c.css.map",
+    "main.7fc8b149.js.map": "/barbershop/static/js/main.7fc8b149.js.map"
   },
   "entrypoints": [
-    "static/css/main.d6b526a9.css",
-    "static/js/main.c2485136.js"
+    "static/css/main.afc1675c.css",
+    "static/js/main.7fc8b149.js"
   ]
 }
