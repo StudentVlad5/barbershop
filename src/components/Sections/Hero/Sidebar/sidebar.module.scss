@@ -1,0 +1,26 @@
+@import '../../../base/main';
+
+.sidebar {
+    display: none;
+
+    @include mq(tablet) {
+        display: flex;
+        align-items: flex-end;
+        z-index: 10;
+
+        width: 90px;
+        padding-left: 25px;
+        padding-bottom: 40px;
+    }
+
+    & .socials {
+        display: flex;
+        align-items: center;
+
+        padding-top: 36px;
+        padding-bottom: 37px;
+
+        transform: rotate(-90deg) translateY(100%);
+        transform-origin: left bottom;
+    }
+}

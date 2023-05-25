@@ -52,39 +52,7 @@ export const App = () => {
                 }
               />
             )}
-            <Route path="news" element={<NewsPage />} />
-
-            <Route path="notices/:id" element={<NoticesPage />} />
-
-            <Route
-              path="notices/:favorite"
-              element={
-                <PrivateRoute
-                  redirectTo="/register"
-                  component={<NoticesPage />}
-                />
-              }
-            />
-
-            <Route
-              path="notices/:own"
-              element={
-                <PrivateRoute
-                  redirectTo="/register"
-                  component={<NoticesPage />}
-                />
-              }
-            />
-
-            <Route path="friends" element={<OurFriendsPage />} />
-
-            <Route
-              path="user"
-              element={
-                <PrivateRoute redirectTo="/register" component={<UserPage />} />
-              }
-            />
-
+           
             <Route
               path="admin"
               element={
@@ -102,11 +70,11 @@ export const App = () => {
             />
 
             <Route
-              path="admin/notices"
+              path="admin/services"
               element={
                 <PrivateRoute
                   redirectTo="/admin"
-                  component={<AdminNoticesPage />}
+                  component={<AdminServicesPage />}
                 />
               }
             /> */}

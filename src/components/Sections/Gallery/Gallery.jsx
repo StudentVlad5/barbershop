@@ -1,69 +1,71 @@
 import css from './gallery.module.scss';
-import gallery_1_desk from "images/portfolio/gallery-1-desk.webp";
-import gallery_12_desk from "images/portfolio/gallery-1-desk@2x.webp";
-import gallery_1_tb from "images/portfolio/gallery-1-tab.webp";
-import gallery_12_tb from "images/portfolio/gallery-1-tab@2x.webp";
-import gallery_1_mob from "images/portfolio/gallery-1-mob.webp";
-import gallery_12_mob from "images/portfolio/gallery-1-mob@2x.webp";
+import gallery_1_desk from 'images/portfolio/gallery-1-desk.webp';
+import gallery_12_desk from 'images/portfolio/gallery-1-desk@2x.webp';
+import gallery_1_tb from 'images/portfolio/gallery-1-tab.webp';
+import gallery_12_tb from 'images/portfolio/gallery-1-tab@2x.webp';
+import gallery_1_mob from 'images/portfolio/gallery-1-mob.webp';
+import gallery_12_mob from 'images/portfolio/gallery-1-mob@2x.webp';
 
-import gallery_1_desk_jpg from "images/portfolio/gallery-1-desk.jpg";
-import gallery_12_desk_jpg from "images/portfolio/gallery-1-desk@2x.jpg";
-import gallery_1_tb_jpg from "images/portfolio/gallery-1-tab.jpg";
-import gallery_12_tb_jpg from "images/portfolio/gallery-1-tab@2x.jpg";
-import gallery_1_mob_jpg from "images/portfolio/gallery-1-mob.jpg";
-import gallery_12_mob_jpg from "images/portfolio/gallery-1-mob@2x.jpg";
+import gallery_1_desk_jpg from 'images/portfolio/gallery-1-desk.jpg';
+import gallery_12_desk_jpg from 'images/portfolio/gallery-1-desk@2x.jpg';
+import gallery_1_tb_jpg from 'images/portfolio/gallery-1-tab.jpg';
+import gallery_12_tb_jpg from 'images/portfolio/gallery-1-tab@2x.jpg';
+import gallery_1_mob_jpg from 'images/portfolio/gallery-1-mob.jpg';
+import gallery_12_mob_jpg from 'images/portfolio/gallery-1-mob@2x.jpg';
 
-import gallery_2_desk from "images/portfolio/gallery-2-desk.webp";
-import gallery_22_desk from "images/portfolio/gallery-2-desk@2x.webp";
-import gallery_2_tb from "images/portfolio/gallery-2-tab.webp";
-import gallery_22_tb from "images/portfolio/gallery-2-tab@2x.webp";
-import gallery_2_mob from "images/portfolio/gallery-2-mob.webp";
-import gallery_22_mob from "images/portfolio/gallery-2-mob@2x.webp";
+import gallery_2_desk from 'images/portfolio/gallery-2-desk.webp';
+import gallery_22_desk from 'images/portfolio/gallery-2-desk@2x.webp';
+import gallery_2_tb from 'images/portfolio/gallery-2-tab.webp';
+import gallery_22_tb from 'images/portfolio/gallery-2-tab@2x.webp';
+import gallery_2_mob from 'images/portfolio/gallery-2-mob.webp';
+import gallery_22_mob from 'images/portfolio/gallery-2-mob@2x.webp';
 
-import gallery_2_desk_jpg from "images/portfolio/gallery-2-desk.jpg";
-import gallery_22_desk_jpg from "images/portfolio/gallery-2-desk@2x.jpg";
-import gallery_2_tb_jpg from "images/portfolio/gallery-2-tab.jpg";
-import gallery_22_tb_jpg from "images/portfolio/gallery-2-tab@2x.jpg";
-import gallery_2_mob_jpg from "images/portfolio/gallery-2-mob.jpg";
-import gallery_22_mob_jpg from "images/portfolio/gallery-2-mob@2x.jpg";
+import gallery_2_desk_jpg from 'images/portfolio/gallery-2-desk.jpg';
+import gallery_22_desk_jpg from 'images/portfolio/gallery-2-desk@2x.jpg';
+import gallery_2_tb_jpg from 'images/portfolio/gallery-2-tab.jpg';
+import gallery_22_tb_jpg from 'images/portfolio/gallery-2-tab@2x.jpg';
+import gallery_2_mob_jpg from 'images/portfolio/gallery-2-mob.jpg';
+import gallery_22_mob_jpg from 'images/portfolio/gallery-2-mob@2x.jpg';
 
-import gallery_3_desk from "images/portfolio/gallery-3-desk.webp";
-import gallery_32_desk from "images/portfolio/gallery-3-desk@2x.webp";
-import gallery_3_tb from "images/portfolio/gallery-3-tab.webp";
-import gallery_32_tb from "images/portfolio/gallery-3-tab@2x.webp";
-import gallery_3_mob from "images/portfolio/gallery-3-mob.webp";
-import gallery_32_mob from "images/portfolio/gallery-3-mob@2x.webp";
+import gallery_3_desk from 'images/portfolio/gallery-3-desk.webp';
+import gallery_32_desk from 'images/portfolio/gallery-3-desk@2x.webp';
+import gallery_3_tb from 'images/portfolio/gallery-3-tab.webp';
+import gallery_32_tb from 'images/portfolio/gallery-3-tab@2x.webp';
+import gallery_3_mob from 'images/portfolio/gallery-3-mob.webp';
+import gallery_32_mob from 'images/portfolio/gallery-3-mob@2x.webp';
 
-import gallery_3_desk_jpg from "images/portfolio/gallery-3-desk.jpg";
-import gallery_32_desk_jpg from "images/portfolio/gallery-3-desk@2x.jpg";
-import gallery_3_tb_jpg from "images/portfolio/gallery-3-tab.jpg";
-import gallery_32_tb_jpg from "images/portfolio/gallery-3-tab@2x.jpg";
-import gallery_3_mob_jpg from "images/portfolio/gallery-3-mob.jpg";
-import gallery_32_mob_jpg from "images/portfolio/gallery-3-mob@2x.jpg";
+import gallery_3_desk_jpg from 'images/portfolio/gallery-3-desk.jpg';
+import gallery_32_desk_jpg from 'images/portfolio/gallery-3-desk@2x.jpg';
+import gallery_3_tb_jpg from 'images/portfolio/gallery-3-tab.jpg';
+import gallery_32_tb_jpg from 'images/portfolio/gallery-3-tab@2x.jpg';
+import gallery_3_mob_jpg from 'images/portfolio/gallery-3-mob.jpg';
+import gallery_32_mob_jpg from 'images/portfolio/gallery-3-mob@2x.jpg';
 
-import gallery_4_desk from "images/portfolio/gallery-4-desk.webp";
-import gallery_42_desk from "images/portfolio/gallery-4-desk@2x.webp";
-import gallery_4_tb from "images/portfolio/gallery-4-tab.webp";
-import gallery_42_tb from "images/portfolio/gallery-4-tab@2x.webp";
-import gallery_4_mob from "images/portfolio/gallery-4-mob.webp";
-import gallery_42_mob from "images/portfolio/gallery-4-mob@2x.webp";
+import gallery_4_desk from 'images/portfolio/gallery-4-desk.webp';
+import gallery_42_desk from 'images/portfolio/gallery-4-desk@2x.webp';
+import gallery_4_tb from 'images/portfolio/gallery-4-tab.webp';
+import gallery_42_tb from 'images/portfolio/gallery-4-tab@2x.webp';
+import gallery_4_mob from 'images/portfolio/gallery-4-mob.webp';
+import gallery_42_mob from 'images/portfolio/gallery-4-mob@2x.webp';
 
-import gallery_4_desk_jpg from "images/portfolio/gallery-4-desk.jpg";
-import gallery_42_desk_jpg from "images/portfolio/gallery-4-desk@2x.jpg";
-import gallery_4_tb_jpg from "images/portfolio/gallery-4-tab.jpg";
-import gallery_42_tb_jpg from "images/portfolio/gallery-4-tab@2x.jpg";
-import gallery_4_mob_jpg from "images/portfolio/gallery-4-mob.jpg";
-import gallery_42_mob_jpg from "images/portfolio/gallery-4-mob@2x.jpg";
+import gallery_4_desk_jpg from 'images/portfolio/gallery-4-desk.jpg';
+import gallery_42_desk_jpg from 'images/portfolio/gallery-4-desk@2x.jpg';
+import gallery_4_tb_jpg from 'images/portfolio/gallery-4-tab.jpg';
+import gallery_42_tb_jpg from 'images/portfolio/gallery-4-tab@2x.jpg';
+import gallery_4_mob_jpg from 'images/portfolio/gallery-4-mob.jpg';
+import gallery_42_mob_jpg from 'images/portfolio/gallery-4-mob@2x.jpg';
 
 const Gallery = () => {
   return (
-    <section className={css.gallery + " " + css.section} id="gallery">
+    <section className={'gallery' + ' ' + css.section} id="gallery">
       <div className={css.container}>
-        <div className={css.gallery__group + " " + css["title-group"]}>
+        <div className={css.gallery__group + ' ' + css['title-group']}>
           <p className={css.uppertitle}>In Latin, barba means beard</p>
-          <h2 className={css["section-title"] + " " + css["visually-hidden"]}>Our portfolio</h2>
+          <h2 className={css['section-title'] + ' ' + css['visually-hidden']}>
+            Our portfolio
+          </h2>
         </div>
-        <ul className={css.gallery__list + " " + css.list}>
+        <ul className={css.gallery__list + ' ' + css.list}>
           <li className={css.gallery__item} data-sale="Discount 30%">
             <picture>
               <source
@@ -83,7 +85,7 @@ const Gallery = () => {
               />
               <img
                 className={css.gallery__image}
-                  srcSet={`${gallery_1_desk_jpg} 270w, ${gallery_12_desk_jpg} 540w, ${gallery_1_tb_jpg} 330w, ${gallery_12_tb_jpg} 660w,
+                srcSet={`${gallery_1_desk_jpg} 270w, ${gallery_12_desk_jpg} 540w, ${gallery_1_tb_jpg} 330w, ${gallery_12_tb_jpg} 660w,
                   ${gallery_1_mob_jpg} 418w, ${gallery_12_mob_jpg} 836w`}
                 src={gallery_1_mob_jpg}
                 alt="Men's Haircut"

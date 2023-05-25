@@ -1,4 +1,5 @@
 @import '../../base/main';
+
 .contacts {
     width: 100%;
     height: 100%;
@@ -8,7 +9,7 @@
     background-repeat: no-repeat;
     background-size: 100% 45%, cover;
     background-position: bottom right;
-    
+
     background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-mob.webp) 1x);
     background-image: url(../../../images/contacts/bg-contacts-mob.png), linear-gradient(to bottom, #191c26, #191c26);
 
@@ -23,7 +24,7 @@
 
     @include mq(tablet) {
         background-size: 100% 449px, cover;
-        
+
         background-image: -webkit-image-set(url(../../../images/contacts/bg-contacts-tab.webp) 1x);
         background-image: url(../../../images/contacts/bg-contacts-tab.png), linear-gradient(to bottom, #191c26, #191c26);
 

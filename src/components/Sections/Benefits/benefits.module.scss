@@ -1,4 +1,5 @@
-@import '../../base/main';
+@import '../../base/main.scss';
+
 .benefits {
     &__container {
         @include mq(tablet) {
