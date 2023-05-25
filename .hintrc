@@ -35,7 +35,8 @@
           "background-image: -webkit-image-set(url(../../../images/price/bg-price-tab@2x.webp) 2x)",
           "background-image: -webkit-image-set(url(../../../images/price/bg-price-tab.webp) 1x)",
           "background-image: -webkit-image-set(url(../../../images/price/bg-price-mob.webp) 1x)",
-          "scroll-behavior"
+          "scroll-behavior",
+          "backdrop-filter"
         ]
       }
     ],

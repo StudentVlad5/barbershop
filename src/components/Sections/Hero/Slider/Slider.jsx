@@ -1,4 +1,4 @@
-// import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import css from './slider.module.scss';
 // import { plusSlides } from 'utils/js/slider';
 // import { currentSlide } from 'utils/js/slider';
@@ -43,30 +43,26 @@ import hero3_mob_jpg from 'images/slider/slider-3-mob.jpg';
 import hero32_mob_jpg from 'images/slider/slider-3-mob@2x.jpg';
 
 const Slider = () => {
-  // const [slideIndex, setSlideIndex] = useState(1);
-
-  // useEffect(() => {
-  //   showSlides(slideIndex);
-  // }, []);
-
-  let slideIndex = 1;
-  showSlides(slideIndex);
+  let [slideIndex, setSlideIndex] = useState(1);
 
   // Next/previous controls
   function plusSlides(n) {
-    showSlides((slideIndex += n));
+    setSlideIndex(slideIndex + n);
+    showSlides(slideIndex);
   }
 
   // Thumbnail image controls
   function currentSlide(n) {
-    showSlides((slideIndex = n));
+    setSlideIndex(n);
+    showSlides(slideIndex);
   }
 
   function showSlides(n) {
     let i;
-    let slides = document.getElementsByClassName('slide');
-    let dots = document.getElementsByClassName('slider__item');
-
+    let slides = document.querySelectorAll('[data-info = "slide"]');
+    let dots = document.querySelectorAll('[data-info = "slider__item"]');
+console.log("slides", slides)
+console.log("dots", dots)
     if (n > slides.length) {
       slideIndex = 1;
     }
@@ -79,25 +75,25 @@ const Slider = () => {
     for (i = 0; i < dots.length; i += 1) {
       dots[i].className = dots[i].className.replace(' active', '');
     }
-    // slides[slideIndex - 1].style.display = 'block';
-    // dots[slideIndex - 1].className += ' active';
+    slides[slideIndex - 1].style.display = 'block';
+    dots[slideIndex - 1].className += ' active';
   }
 
   return (
     <div className={css.slider}>
       <ul className={css.slider__pagination + ' ' + css.list}>
-        <li className={css.slider__item + ' slider_item'}>
-          <a href="#slide1" onClick={currentSlide(1)}></a>
+        <li className={css.slider__item + ' slider_item'} data-info = "slider__item">
+          <a href="#slide1" onClick={()=>currentSlide(1)}></a>
         </li>
-        <li className={css.slider__item + ' slider_item'}>
-          <a href="#slide2" onClick={currentSlide(2)}></a>
+        <li className={css.slider__item + ' slider_item'} data-info = "slider__item">
+          <a href="#slide2" onClick={()=>currentSlide(2)}></a>
         </li>
-        <li className={css.slider__item + ' slider_item'}>
-          <a href="#slide3" onClick={currentSlide(3)}></a>
+        <li className={css.slider__item + ' slider_item'} data-info = "slider__item">
+          <a href="#slide3" onClick={()=>currentSlide(3)}></a>
         </li>
       </ul>
       <div className={css.slides}>
-        <div className={css.slide + ' ' + css.fade + ' slide'} id="slide1">
+        <div className={css.slide + ' ' + css.fade + ' slide'} id="slide1" data-info = "slide">
           <picture className={css.slide__img}>
             <source
               media="(min-width:1280px)"
@@ -123,7 +119,7 @@ const Slider = () => {
             />
           </picture>
         </div>
-        <div className={css.slide + ' ' + css.fade + ' slide'} id="slide2">
+        <div className={css.slide + ' ' + css.fade + ' slide'} id="slide2" data-info = "slide">
           <picture className={css.slide__img}>
             <source
               media="(min-width:1280px)"
@@ -149,7 +145,7 @@ const Slider = () => {
             />
           </picture>
         </div>
-        <div className={css.slide + ' ' + css.fade + ' slide'} id="slide3">
+        <div className={css.slide + ' ' + css.fade + ' slide'} id="slide3" data-info = "slide">
           <picture className={css.slide__img}>
             <source
               media="(min-width:1280px)"
@@ -178,7 +174,7 @@ const Slider = () => {
       </div>
       <ul className={css.slider__controls + ' ' + css.list}>
         <li className={css['slider__controls-item']}>
-          <a className={css['slider__controls-btn']} onClick={plusSlides(-1)}>
+          <a className={css['slider__controls-btn']} onClick={()=>plusSlides(-1)}>
             Back
           </a>
         </li>
@@ -189,7 +185,7 @@ const Slider = () => {
               ' ' +
               css['slider__controls-btn--forward']
             }
-            onClick={plusSlides(1)}
+            onClick={()=>plusSlides(1)}
           >
             Next
           </a>
