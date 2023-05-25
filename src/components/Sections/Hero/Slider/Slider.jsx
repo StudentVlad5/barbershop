@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import css from './slider.module.scss';
 // import { plusSlides } from 'utils/js/slider';
 // import { currentSlide } from 'utils/js/slider';
@@ -72,11 +72,12 @@ const Slider = () => {
       slides[i].style.display = 'none';
     }
     for (i = 0; i < dots.length; i += 1) {
-      dots[i].className = dots[i].className.replace(' active', '');
+      dots[i].className = dots[i].className.replace('active', '');
     }
     slides[slideIndex - 1].style.display = 'block';
-    dots[slideIndex - 1].className += ' active';
+    dots[slideIndex - 1].className += 'active';
   }
+  useEffect(()=>{showSlides(1)},[])
 
   return (
     <div className={css.slider}>
