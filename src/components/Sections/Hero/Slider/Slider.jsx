@@ -61,8 +61,7 @@ const Slider = () => {
     let i;
     let slides = document.querySelectorAll('[data-info = "slide"]');
     let dots = document.querySelectorAll('[data-info = "slider__item"]');
-console.log("slides", slides)
-console.log("dots", dots)
+
     if (n > slides.length) {
       slideIndex = 1;
     }
@@ -82,14 +81,14 @@ console.log("dots", dots)
   return (
     <div className={css.slider}>
       <ul className={css.slider__pagination + ' ' + css.list}>
-        <li className={css.slider__item + ' slider_item'} data-info = "slider__item">
-          <a href="#slide1" onClick={()=>currentSlide(1)}></a>
+        <li className={css.slider__item + ' slider_item'} data-info = "slider__item" onClick={()=>currentSlide(1)}>
+          <a href="#slide1"></a>
         </li>
-        <li className={css.slider__item + ' slider_item'} data-info = "slider__item">
-          <a href="#slide2" onClick={()=>currentSlide(2)}></a>
+        <li className={css.slider__item + ' slider_item'} data-info = "slider__item" onClick={()=>currentSlide(2)}>
+          <a href="#slide2"></a>
         </li>
-        <li className={css.slider__item + ' slider_item'} data-info = "slider__item">
-          <a href="#slide3" onClick={()=>currentSlide(3)}></a>
+        <li className={css.slider__item + ' slider_item'} data-info = "slider__item"  onClick={()=>currentSlide(3)}>
+          <a href="#slide3"></a>
         </li>
       </ul>
       <div className={css.slides}>
