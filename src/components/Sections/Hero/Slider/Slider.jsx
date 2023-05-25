@@ -1,5 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+// import { useState, useEffect, useRef } from 'react';
 import css from './slider.module.scss';
+// import { plusSlides } from 'utils/js/slider';
+// import { currentSlide } from 'utils/js/slider';
 
 import hero1_desk from 'images/slider/slider-1-desk.webp';
 import hero12_desk from 'images/slider/slider-1-desk@2x.webp';
