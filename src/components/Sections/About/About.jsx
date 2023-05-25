@@ -1,24 +1,24 @@
 import css from './about.module.scss';
 
-import work1_desk from 'images/about/work-1-desk.webp';
-import work2_desk from 'images/about/work-1-desk@2x.webp';
-import work1_tb from 'images/about/work-1-tab.webp';
-import work2_tb from 'images/about/work-1-tab@2x.webp';
+import work1_desk from './../../../images/about/work-1-desk.webp';
+import work2_desk from './../../../images/about/work-1-desk@2x.webp';
+import work1_tb from './../../../images/about/work-1-tab.webp';
+import work2_tb from './../../../images/about/work-1-tab@2x.webp';
 
-import work1_desk_jpg from 'images/about/work-1-desk.jpg';
-import work2_desk_jpg from 'images/about/work-1-desk@2x.jpg';
-import work1_tb_jpg from 'images/about/work-1-tab.jpg';
-import work2_tb_jpg from 'images/about/work-1-tab@2x.jpg';
+import work1_desk_jpg from './../../../images/about/work-1-desk.jpg';
+import work2_desk_jpg from './../../../images/about/work-1-desk@2x.jpg';
+import work1_tb_jpg from './../../../images/about/work-1-tab.jpg';
+import work2_tb_jpg from './../../../images/about/work-1-tab@2x.jpg';
 
-import work12_desk from 'images/about/work-2-desk.webp';
-import work22_desk from 'images/about/work-2-desk@2x.webp';
-import work12_tb from 'images/about/work-2-tab.webp';
-import work22_tb from 'images/about/work-2-tab@2x.webp';
+import work12_desk from './../../../images/about/work-2-desk.webp';
+import work22_desk from './../../../images/about/work-2-desk@2x.webp';
+import work12_tb from './../../../images/about/work-2-tab.webp';
+import work22_tb from './../../../images/about/work-2-tab@2x.webp';
 
-import work12_desk_jpg from 'images/about/work-2-desk.jpg';
-import work22_desk_jpg from 'images/about/work-2-desk@2x.jpg';
-import work12_tb_jpg from 'images/about/work-2-tab.jpg';
-import work22_tb_jpg from 'images/about/work-2-tab@2x.jpg';
+import work12_desk_jpg from './../../../images/about/work-2-desk.jpg';
+import work22_desk_jpg from './../../../images/about/work-2-desk@2x.jpg';
+import work12_tb_jpg from './../../../images/about/work-2-tab.jpg';
+import work22_tb_jpg from './../../../images/about/work-2-tab@2x.jpg';
 
 const About = () => {
   return (
@@ -33,7 +33,7 @@ const About = () => {
                 type="image/webp"
               />
               <source
-                media="(min-width:768px )"
+                media="(min-width:768px)"
                 srcSet={`${work1_tb} 1x, ${work2_tb} 2x`}
                 type="image/webp"
               />
@@ -41,8 +41,7 @@ const About = () => {
                 className={css.about__image}
                 src={work1_desk_jpg}
                 alt="Shaving beard"
-                srcSet={`${work1_desk_jpg.jpg} 270w, ${work2_desk_jpg.jpg} 540w,
-                ${work1_tb_jpg.jpg} 330w, ${work2_tb_jpg.jpg} 660w"`}
+                srcSet={`${work1_desk_jpg} 270w, ${work2_desk_jpg} 540w, ${work1_tb_jpg} 330w, ${work2_tb_jpg} 660w`}
                 sizes="(min-width:1280px) 270px, (min-width:768px) 330px, 100vw"
                 width="270"
                 height="445"
@@ -66,8 +65,7 @@ const About = () => {
                 className={css.about__image}
                 src={work12_desk_jpg}
                 alt="Shaving beard"
-                srcSet={`${work12_desk_jpg.jpg} 270w, ${work22_desk_jpg.jpg} 540w,
-                ${work12_tb_jpg.jpg} 330w, ${work22_tb_jpg.jpg} 660w"`}
+                srcSet={`${work12_desk_jpg} 270w, ${work22_desk_jpg} 540w, ${work12_tb_jpg} 330w, ${work22_tb_jpg} 660w`}
                 sizes="(min-width:1280px) 270px, (min-width:768px) 330px, 100vw"
                 width="270"
                 height="445"

@@ -92,8 +92,10 @@ export const Header = () => {
             aria-expanded="false"
             aria-controls="mobile-menu"
           >
-              <Menu lassName={css['mobile-btn__icon']} style={{width:"40",height:"40"}}/>
+            <svg width="69" height="56">
+              <Menu className={css['mobile-btn__icon']} style={{width:"40",height:"40"}}/>
               <Close className={css['mobile-btn__icon-close']} style={{width:"40",height:"40"}}/>
+            </svg>
           </button>
         </div>
         {/*========= MOBILE MENU ===========*/}
