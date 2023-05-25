@@ -1,25 +1,24 @@
-// mobile menu
+@import '../../base/main';
+
 .header__mobile-menu {
+
     z-index: 11;
-
     width: 100%;
-
+    // height: 100vh;
     padding-top: 118px;
     padding-right: 105px;
     padding-left: 40px;
-
     display: flex;
     flex-direction: column;
-
     transform: translateX(100%);
     transition: transform var(--animation);
-
     background-color: var(--color-background-main);
 
     // visibility: hidden;
-    overflow-y: scroll;
+    // overflow-y: scroll;
 
     &.is-open {
+        display: flex;
         visibility: visible;
         transform: translateX(0);
         transition: transform var(--animation);
@@ -27,6 +26,7 @@
 
     @include mq(mobile) {
         width: 337px;
+        display: flex;
     }
 
     @include mq(desktop) {
@@ -41,15 +41,12 @@
 // mobile button
 .mobile-btn {
     z-index: 11;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 0;
     width: 40px;
     height: 40px;
-
     color: var(--color-text-main);
     background: transparent;
     border: none;
@@ -172,4 +169,55 @@
             line-height: 1.36;
         }
     }
+}
+
+// btn - base
+.btn {
+    align-items: center;
+    padding: 12px 25px;
+    min-width: 160px;
+    min-height: 40px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.33;
+    text-align: center;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+
+    border: 1px solid var(--color-accent);
+    border-radius: 25px;
+    background-color: transparent;
+
+    cursor: pointer;
+
+    transition: color var(--animation),
+        background-color var(--animation);
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: var(--color-text-white);
+        background-color: var(--color-accent);
+    }
+
+    &--mode-light {
+        color: var(--color-text-main);
+    }
+
+    &--mode-dark {
+        color: var(--color-text-white);
+    }
+}
+
+// js-selector - base
+.no-scroll {
+    overflow: hidden;
+}
+
+.js-no-transparency {
+    transition: background-color var(--slow-anim), backdrop-filter var(--slow-anim);
+
+    background-color: rgba(16, 18, 27, 0.4);
+    backdrop-filter: blur(10px);
 }

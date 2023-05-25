@@ -1,14 +1,13 @@
 import css from './header.module.scss';
 import { changeHeaderBackground } from 'utils/js/header-scroll';
-// import { mobile_menu } from 'utils/js/mobile-menu';
+import  MobileMenu  from './MobileMenu/MobileMenu';
+import { openModalWindow } from 'hooks/modalWindow';
 
 
 import { ReactComponent as Logo } from '../../images/icons/logo.svg';
 import { ReactComponent as Menu } from '../../images/icons/menu_40px.svg';
 import { ReactComponent as Close } from '../../images/icons/close_40px.svg';
-// import logo from '../../images/icons/logo.svg';
-// import menu from '../../images/icons/menu_40px.svg';
-// import close from '../../images/icons/close_40px.svg';
+
 
 export const Header = () => {
   window.onscroll = () => changeHeaderBackground();
@@ -91,6 +90,7 @@ export const Header = () => {
             aria-label="Switch mobile menu"
             aria-expanded="false"
             aria-controls="mobile-menu"
+            onClick={(e)=>openModalWindow(e)}
           >
             <svg width="69" height="56">
               <Menu className={css['mobile-btn__icon']} style={{width:"40",height:"40"}}/>
@@ -98,118 +98,7 @@ export const Header = () => {
             </svg>
           </button>
         </div>
-        {/*========= MOBILE MENU ===========*/}
-        <div
-          className={
-            css['header__mobile-menu'] +
-            ' ' +
-            css['mobile-menu'] +
-            ' ' +
-            css['js-mobile-menu']
-          }
-          id="mobile-menu"
-        >
-          <nav className={css['mobile-menu__navigation']}>
-            <ul
-              className={
-                css['mobile-menu__navigation-list'] +
-                ' ' +
-                css.list +
-                ' ' +
-                css['js-mobile-menu-links']
-              }
-            >
-              <li className={css['mobile-menu__navigation-item']}>
-                <a
-                  className={
-                    css['mobile-menu__navigation-link'] + ' ' + css.link
-                  }
-                  href="#about"
-                  aria-label="About"
-                >
-                  About
-                </a>
-              </li>
-              <li className={css['mobile-menu__navigation-item']}>
-                <a
-                  className={
-                    css['mobile-menu__navigation-link'] + ' ' + css.link
-                  }
-                  href="#price"
-                  aria-label="Services and Prices"
-                >
-                  Services and Prices
-                </a>
-              </li>
-              <li className={css['mobile-menu__navigation-item']}>
-                <a
-                  className={
-                    css['mobile-menu__navigation-link'] + ' ' + css.link
-                  }
-                  href="#team"
-                  aria-label="Barbers"
-                >
-                  Barbers
-                </a>
-              </li>
-              <li className={css['mobile-menu__navigation-item']}>
-                <a
-                  className={
-                    css['mobile-menu__navigation-link'] + ' ' + css.link
-                  }
-                  href="#contacts"
-                  aria-label="Contacts"
-                >
-                  Contacts
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <a
-            className={css.contacts__phone + ' ' + css.link}
-            href="tel:+380441111111"
-          >
-            +38 044 111 11 11
-          </a>
-          <button
-            className={
-              css.btn +
-              ' ' +
-              css['btn--mode-light'] +
-              ' ' +
-              css['js-mobile-modal-open']
-            }
-            type="button"
-          >
-            book a service
-          </button>
-          <ul
-            className={
-              css['mobile-menu__socials'] + ' ' + css.socials + ' ' + css.list
-            }
-          >
-            <li className={css.socials__item}>
-              <a
-                className={css.socials__link + ' ' + css.link}
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Instagram
-              </a>
-            </li>
-            <li className={css.socials__item}>
-              <a
-                className={css.socials__link + ' ' + css.link}
-                href="htts://www.youtube.com"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Youtube
-              </a>
-            </li>
-          </ul>
-        </div>
+        <MobileMenu/>
       </header>
     </>
   );
