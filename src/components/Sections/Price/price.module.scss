@@ -154,7 +154,9 @@
         @include mq(tablet) {
             font-size: 18px;
             line-height: 1.67;
+        }
 
+        @include mq(desktop) {
             &:last-child {
                 margin-bottom: 0;
             }
