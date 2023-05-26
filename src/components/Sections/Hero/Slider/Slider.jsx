@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import css from './slider.module.scss';
 
 import hero1_desk from 'images/slider/slider-1-desk.webp';
@@ -41,17 +41,17 @@ import hero3_mob_jpg from 'images/slider/slider-3-mob.jpg';
 import hero32_mob_jpg from 'images/slider/slider-3-mob@2x.jpg';
 
 const Slider = () => {
-  let [slideIndex, setSlideIndex] = useState(1);
+  let slideIndex = 1;
 
   // Next/previous controls
   function plusSlides(n) {
-    setSlideIndex(slideIndex + n);
+    slideIndex = slideIndex + n;
     showSlides(slideIndex);
   }
 
   // Thumbnail image controls
   function currentSlide(n) {
-    setSlideIndex(n);
+    slideIndex = n;
     showSlides(slideIndex);
   }
 
@@ -60,10 +60,10 @@ const Slider = () => {
     let slides = document.querySelectorAll('[data-info = "slide"]');
     let dots = document.querySelectorAll('[data-info = "slider__item"]');
 
-    if (n > slides.length) {
+    if (Number(n) > slides.length) {
       slideIndex = 1;
     }
-    if (n < 1) {
+    if (Number(n) < 1) {
       slideIndex = slides.length;
     }
     for (i = 0; i < slides.length; i += 1) {
@@ -72,9 +72,11 @@ const Slider = () => {
     for (i = 0; i < dots.length; i += 1) {
       dots[i].className = dots[i].className.replace(css['active'], '');
     }
+
     slides[slideIndex - 1].style.display = 'block';
     dots[slideIndex - 1].classList.add(css['active']);
   }
+
   useEffect(() => {
     showSlides(1);
   }, []);
