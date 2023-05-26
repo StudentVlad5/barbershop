@@ -38,7 +38,7 @@
     fill: var(--color-text-white);
 
     @include mq(tablet) {
-        fill: currentColor;
+        fill: var(--color-text-white);
     }
 
     @include mq(desktop) {
