@@ -1,46 +1,44 @@
 import { useEffect, useState } from 'react';
 import css from './slider.module.scss';
-// import { plusSlides } from 'utils/js/slider';
-// import { currentSlide } from 'utils/js/slider';
 
-import hero1_desk from './../../../../images/slider/slider-1-desk.webp';
-import hero12_desk from './../../../../images/slider/slider-1-desk@2x.webp';
-import hero1_tb from './../../../../images/slider/slider-1-tab.webp';
-import hero12_tb from './../../../../images/slider/slider-1-tab@2x.webp';
-import hero1_mob from './../../../../images/slider/slider-1-mob.webp';
-import hero12_mob from './../../../../images/slider/slider-1-mob@2x.webp';
-import hero1_desk_jpg from './../../../../images/slider/slider-1-desk.jpg';
-import hero12_desk_jpg from './../../../../images/slider/slider-1-desk@2x.jpg';
-import hero1_tb_jpg from './../../../../images/slider/slider-1-tab.jpg';
-import hero12_tb_jpg from './../../../../images/slider/slider-1-tab@2x.jpg';
-import hero1_mob_jpg from './../../../../images/slider/slider-1-mob.jpg';
-import hero12_mob_jpg from './../../../../images/slider/slider-1-mob@2x.jpg';
+import hero1_desk from 'images/slider/slider-1-desk.webp';
+import hero12_desk from 'images/slider/slider-1-desk@2x.webp';
+import hero1_tb from 'images/slider/slider-1-tab.webp';
+import hero12_tb from 'images/slider/slider-1-tab@2x.webp';
+import hero1_mob from 'images/slider/slider-1-mob.webp';
+import hero12_mob from 'images/slider/slider-1-mob@2x.webp';
+import hero1_desk_jpg from 'images/slider/slider-1-desk.jpg';
+import hero12_desk_jpg from 'images/slider/slider-1-desk@2x.jpg';
+import hero1_tb_jpg from 'images/slider/slider-1-tab.jpg';
+import hero12_tb_jpg from 'images/slider/slider-1-tab@2x.jpg';
+import hero1_mob_jpg from 'images/slider/slider-1-mob.jpg';
+import hero12_mob_jpg from 'images/slider/slider-1-mob@2x.jpg';
 
-import hero2_desk from './../../../../images/slider/slider-2-desk.webp';
-import hero22_desk from './../../../../images/slider/slider-2-desk@2x.webp';
-import hero2_tb from './../../../../images/slider/slider-2-tab.webp';
-import hero22_tb from './../../../../images/slider/slider-2-tab@2x.webp';
-import hero2_mob from './../../../../images/slider/slider-2-mob.webp';
-import hero22_mob from './../../../../images/slider/slider-2-mob@2x.webp';
-import hero2_desk_jpg from './../../../../images/slider/slider-2-desk.jpg';
-import hero22_desk_jpg from './../../../../images/slider/slider-2-desk@2x.jpg';
-import hero2_tb_jpg from './../../../../images/slider/slider-2-tab.jpg';
-import hero22_tb_jpg from './../../../../images/slider/slider-2-tab@2x.jpg';
-import hero2_mob_jpg from './../../../../images/slider/slider-2-mob.jpg';
-import hero22_mob_jpg from './../../../../images/slider/slider-2-mob@2x.jpg';
+import hero2_desk from 'images/slider/slider-2-desk.webp';
+import hero22_desk from 'images/slider/slider-2-desk@2x.webp';
+import hero2_tb from 'images/slider/slider-2-tab.webp';
+import hero22_tb from 'images/slider/slider-2-tab@2x.webp';
+import hero2_mob from 'images/slider/slider-2-mob.webp';
+import hero22_mob from 'images/slider/slider-2-mob@2x.webp';
+import hero2_desk_jpg from 'images/slider/slider-2-desk.jpg';
+import hero22_desk_jpg from 'images/slider/slider-2-desk@2x.jpg';
+import hero2_tb_jpg from 'images/slider/slider-2-tab.jpg';
+import hero22_tb_jpg from 'images/slider/slider-2-tab@2x.jpg';
+import hero2_mob_jpg from 'images/slider/slider-2-mob.jpg';
+import hero22_mob_jpg from 'images/slider/slider-2-mob@2x.jpg';
 
-import hero3_desk from './../../../../images/slider/slider-3-desk.webp';
-import hero32_desk from './../../../../images/slider/slider-3-desk@2x.webp';
-import hero3_tb from './../../../../images/slider/slider-3-tab.webp';
-import hero32_tb from './../../../../images/slider/slider-3-tab@2x.webp';
-import hero3_mob from './../../../../images/slider/slider-3-mob.webp';
-import hero32_mob from './../../../../images/slider/slider-3-mob@2x.webp';
-import hero3_desk_jpg from './../../../../images/slider/slider-3-desk.jpg';
-import hero32_desk_jpg from './../../../../images/slider/slider-3-desk@2x.jpg';
-import hero3_tb_jpg from './../../../../images/slider/slider-3-tab.jpg';
-import hero32_tb_jpg from './../../../../images/slider/slider-3-tab@2x.jpg';
-import hero3_mob_jpg from './../../../../images/slider/slider-3-mob.jpg';
-import hero32_mob_jpg from './../../../../images/slider/slider-3-mob@2x.jpg';
+import hero3_desk from 'images/slider/slider-3-desk.webp';
+import hero32_desk from 'images/slider/slider-3-desk@2x.webp';
+import hero3_tb from 'images/slider/slider-3-tab.webp';
+import hero32_tb from 'images/slider/slider-3-tab@2x.webp';
+import hero3_mob from 'images/slider/slider-3-mob.webp';
+import hero32_mob from 'images/slider/slider-3-mob@2x.webp';
+import hero3_desk_jpg from 'images/slider/slider-3-desk.jpg';
+import hero32_desk_jpg from 'images/slider/slider-3-desk@2x.jpg';
+import hero3_tb_jpg from 'images/slider/slider-3-tab.jpg';
+import hero32_tb_jpg from 'images/slider/slider-3-tab@2x.jpg';
+import hero3_mob_jpg from 'images/slider/slider-3-mob.jpg';
+import hero32_mob_jpg from 'images/slider/slider-3-mob@2x.jpg';
 
 const Slider = () => {
   let [slideIndex, setSlideIndex] = useState(1);
@@ -72,10 +70,10 @@ const Slider = () => {
       slides[i].style.display = 'none';
     }
     for (i = 0; i < dots.length; i += 1) {
-      dots[i].className = dots[i].className.replace(' active', '');
+      dots[i].className = dots[i].className.replace(css['active'], '');
     }
     slides[slideIndex - 1].style.display = 'block';
-    dots[slideIndex - 1].className += ' active';
+    dots[slideIndex - 1].classList.add(css['active']);
   }
   useEffect(() => {
     showSlides(1);
