@@ -3,7 +3,7 @@ import { closeModalWindow } from 'hooks/modalWindow';
 import css from './mobileMenu.module.scss';
 
 import {
-  NoticesContainerItem,
+  MobileContainer,
   ButtonClose,
   IconClose,
   BackDrop,
@@ -19,7 +19,7 @@ const MobileMenu = ( ) => {
 
   return ReactDOM.createPortal(
         <BackDrop onClick={closeModalForItemPet}>
-        <NoticesContainerItem onClick={e => e.stopPropagation()}>
+        <MobileContainer onClick={e => e.stopPropagation()}>
           <ButtonClose
             type="button"
             onClick={closeModalForItemPet}
@@ -129,7 +129,7 @@ const MobileMenu = ( ) => {
             </li>
           </ul>
         </div>
-        </NoticesContainerItem>
+        </MobileContainer>
       </BackDrop>,
     document.querySelector('#popup-root')
   );

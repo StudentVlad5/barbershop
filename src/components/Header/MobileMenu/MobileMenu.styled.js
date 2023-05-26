@@ -12,25 +12,13 @@ const BackDrop = styled.div`
   overflow: scroll;
 `;
 
-const NoticesContainerItem = styled.div`
+const MobileContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 280px;
   margin-top: 50px;
-  padding: 10px 20px 40px 20px;
-  background-color: ${(props) => props.theme.white};
-  border-radius: 20px;
-  -webkit-box-shadow: 7px 4px 14px 7px ${(props) => props.theme.shadowColor};
-  -moz-box-shadow: 7px 4px 14px 7px ${(props) => props.theme.shadowColor};
-  box-shadow: 7px 4px 14px 7px ${(props) => props.theme.shadowColor};
-
-  @media screen and (min-width: 768px) {
-    margin-top: 0;
-    width: 704px;
-    padding: 45px 20px 32px 20px;
-  }
+  padding: 20px 20px 40px 20px;
 `;
 
 const ButtonClose = styled.button`
@@ -89,4 +77,4 @@ const IconClose = styled(icon)`
   }
 `;
 
-export { NoticesContainerItem, ButtonClose, IconClose, BackDrop };
+export { MobileContainer, ButtonClose, IconClose, BackDrop };

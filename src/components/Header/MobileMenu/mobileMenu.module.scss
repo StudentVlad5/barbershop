@@ -10,19 +10,11 @@
     padding-left: 40px;
     display: flex;
     flex-direction: column;
-    transform: translateX(100%);
-    transition: transform var(--animation);
     background-color: var(--color-background-main);
+    border-radius: 20px;
 
     // visibility: hidden;
     // overflow-y: scroll;
-
-    &.is-open {
-        display: flex;
-        visibility: visible;
-        transform: translateX(0);
-        transition: transform var(--animation);
-    }
 
     @include mq(mobile) {
         width: 337px;

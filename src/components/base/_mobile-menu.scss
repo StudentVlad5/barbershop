@@ -1,29 +1,17 @@
 // mobile menu
 .header__mobile-menu {
     z-index: 11;
-
     width: 100%;
-
     padding-top: 118px;
     padding-right: 105px;
     padding-left: 40px;
-
+    padding-bottom: 118px;
     display: flex;
     flex-direction: column;
-
-    transform: translateX(100%);
-    transition: transform var(--animation);
-
     background-color: var(--color-background-main);
 
     // visibility: hidden;
-    overflow-y: scroll;
-
-    &.is-open {
-        visibility: visible;
-        transform: translateX(0);
-        transition: transform var(--animation);
-    }
+    // overflow-y: scroll;
 
     @include mq(mobile) {
         width: 337px;
