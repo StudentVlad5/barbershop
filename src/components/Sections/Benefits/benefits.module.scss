@@ -25,11 +25,8 @@
         justify-content: center;
         gap: 30px;
 
-        @include mq(mobile) {
-            gap: 0;
-        }
-
         @include mq(tablet) {
+            gap: 0;
             max-width: 450px;
         }
 
@@ -51,12 +48,16 @@
         @include mq(mobile) {
             &:nth-child(2n) {
                 margin-left: 30px;
-                margin-top: 30px;
+                // margin-top: 30px;
             }
         }
 
         @include mq(tablet) {
             width: 210px;
+
+            &:nth-child(2n) {
+                margin-top: 30px;
+            }
         }
 
         @include mq(desktop) {

@@ -118,7 +118,7 @@
         transition: border-color var(--animation);
 
         @include mq(mobile) {
-            width: 418px;
+            width: calc(100vw - 60px);
         }
 
         @include mq(tablet) {
@@ -199,7 +199,7 @@
         transition: border-color var(--animation);
 
         @include mq(mobile) {
-            width: 418px;
+            width: calc(100vw - 60px);
         }
 
         @include mq(tablet) {
