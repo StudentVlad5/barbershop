@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import css from './mobileMenu.module.scss';
 
-const MobileMenu = onClose => {
+const MobileMenu = ({ onClose }) => {
   useEffect(() => {
     // closes modal with a click on the root
     const handleBackdropClick = () => {
@@ -39,6 +40,7 @@ const MobileMenu = onClose => {
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
               href="#about"
               aria-label="About"
+              onClick={() => onClose()}
             >
               About
             </a>
@@ -48,6 +50,7 @@ const MobileMenu = onClose => {
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
               href="#price"
               aria-label="Services and Prices"
+              onClick={() => onClose()}
             >
               Services and Prices
             </a>
@@ -57,6 +60,7 @@ const MobileMenu = onClose => {
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
               href="#team"
               aria-label="Barbers"
+              onClick={() => onClose()}
             >
               Barbers
             </a>
@@ -66,6 +70,7 @@ const MobileMenu = onClose => {
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
               href="#contacts"
               aria-label="Contacts"
+              onClick={() => onClose()}
             >
               Contacts
             </a>
@@ -78,17 +83,8 @@ const MobileMenu = onClose => {
       >
         +38 044 111 11 11
       </a>
-      <button
-        className={
-          css.btn +
-          ' ' +
-          css['btn--mode-light'] +
-          ' ' +
-          css['js-mobile-modal-open']
-        }
-        type="button"
-      >
-        book a service
+      <button className={css.btn + ' ' + css['btn--mode-light']} type="button">
+        Log in
       </button>
       <ul
         className={
@@ -121,3 +117,5 @@ const MobileMenu = onClose => {
 };
 
 export default MobileMenu;
+
+MobileMenu.propTypes = { onClose: PropTypes.func.isRequired };

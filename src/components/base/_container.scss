@@ -5,10 +5,12 @@
 
     @include mq(mobile) {
         padding: 0 30px;
+        max-width: 480px;
     }
 
     @include mq(tablet) {
         padding: 0 40px;
+        max-width: 900px;
     }
 
     @include mq(desktop) {

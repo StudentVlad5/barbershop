@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import css from './header.module.scss';
-// import { changeHeaderBackground } from 'utils/js/header-scroll';
 import MobileMenu from './MobileMenu/MobileMenu';
-import { openModalWindow } from 'hooks/modalWindow';
 
 import { ReactComponent as Logo } from 'images/icons/logo.svg';
 import { ReactComponent as Menu } from 'images/icons/menu_40px.svg';
@@ -12,7 +10,6 @@ export const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal(state => !state);
 
-  const [isScroll, setIsScroll] = useState(false);
   window.onscroll = () => changeHeaderBackground();
 
   function changeHeaderBackground() {
@@ -21,18 +18,14 @@ export const Header = () => {
     const pageOffset = window.scrollY;
 
     if (pageOffset > headerOffsetTrigger) {
-      // header.classList.add('js-no-transparency');
-      setIsScroll(true);
+      header.classList.add(css['js-no-transparency']);
     } else {
-      // header.classList.remove('js-no-transparency');
-      setIsScroll(false);
+      header.classList.remove(css['js-no-transparency']);
     }
   }
 
-  // mobile_menu();
   return (
     <>
-      {/* {isScroll  */}
       <header className={css.header} id="header">
         <div className={css.header__container + ' ' + css.container}>
           <a className={css.link} href="./index.html" aria-label="logo company">
@@ -105,7 +98,7 @@ export const Header = () => {
             </button>
           </div>
           <button
-            className={css['mobile-btn'] + ' ' + css['js-mobile-menu-button']}
+            className={css['mobile-btn']}
             type="button"
             aria-label="Switch mobile menu"
             aria-expanded="false"
