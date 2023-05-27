@@ -8,6 +8,8 @@ import Team from "components/Sections/Team/Team";
 import Gallery from "components/Sections/Gallery/Gallery";
 import Contacts from "components/Sections/Contacts/Contacts";
 import { ButtonForOrder } from "components/ButtonForOffer/ButtonForOrder.styled";
+import Schedule from "components/Schedule/Schedule";
+import { openModalWindow } from "hooks/modalWindow";
 
 const LandingPage = () => {
   return (
@@ -20,8 +22,10 @@ const LandingPage = () => {
       <Team />
       <Gallery />
       <Contacts />
-      <ButtonForOrder>Make offer</ButtonForOrder>
-      {/* <Schedule /> */}
+      <ButtonForOrder onClick={(e) => openModalWindow(e)}>
+        Book service
+      </ButtonForOrder>
+      <Schedule />
     </>
   );
 };

@@ -13,6 +13,7 @@ body {
 
   font-size: 14px;
   letter-spacing: 0.02em;
+  overflow: unset;
   color: ${props => props.theme.textMain};
 
   background-color: ${props => props.theme.backgroundMain};
