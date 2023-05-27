@@ -90,8 +90,10 @@
         margin-bottom: 44px;
         padding-top: 20px;
 
-        &:first-of-type {
-            margin-right: 30px;
+        @include mq(tablet) {
+            &:first-of-type {
+                margin-right: 30px;
+            }
         }
     }
 
@@ -116,10 +118,6 @@
         border-bottom: 1px solid rgba(157, 164, 189, 0.4);
 
         transition: border-color var(--animation);
-
-        @include mq(mobile) {
-            width: 418px;
-        }
 
         @include mq(tablet) {
             width: 330px;
@@ -197,10 +195,6 @@
         border-radius: 4px;
 
         transition: border-color var(--animation);
-
-        @include mq(mobile) {
-            width: 418px;
-        }
 
         @include mq(tablet) {
             width: 690px;

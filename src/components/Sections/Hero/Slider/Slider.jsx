@@ -1,50 +1,48 @@
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import css from './slider.module.scss';
-// import { plusSlides } from 'utils/js/slider';
-// import { currentSlide } from 'utils/js/slider';
 
-import hero1_desk from './../../../../images/slider/slider-1-desk.webp';
-import hero12_desk from './../../../../images/slider/slider-1-desk@2x.webp';
-import hero1_tb from './../../../../images/slider/slider-1-tab.webp';
-import hero12_tb from './../../../../images/slider/slider-1-tab@2x.webp';
-import hero1_mob from './../../../../images/slider/slider-1-mob.webp';
-import hero12_mob from './../../../../images/slider/slider-1-mob@2x.webp';
-import hero1_desk_jpg from './../../../../images/slider/slider-1-desk.jpg';
-import hero12_desk_jpg from './../../../../images/slider/slider-1-desk@2x.jpg';
-import hero1_tb_jpg from './../../../../images/slider/slider-1-tab.jpg';
-import hero12_tb_jpg from './../../../../images/slider/slider-1-tab@2x.jpg';
-import hero1_mob_jpg from './../../../../images/slider/slider-1-mob.jpg';
-import hero12_mob_jpg from './../../../../images/slider/slider-1-mob@2x.jpg';
+import hero1_desk from 'images/slider/slider-1-desk.webp';
+import hero12_desk from 'images/slider/slider-1-desk@2x.webp';
+import hero1_tb from 'images/slider/slider-1-tab.webp';
+import hero12_tb from 'images/slider/slider-1-tab@2x.webp';
+import hero1_mob from 'images/slider/slider-1-mob.webp';
+import hero12_mob from 'images/slider/slider-1-mob@2x.webp';
+import hero1_desk_jpg from 'images/slider/slider-1-desk.jpg';
+import hero12_desk_jpg from 'images/slider/slider-1-desk@2x.jpg';
+import hero1_tb_jpg from 'images/slider/slider-1-tab.jpg';
+import hero12_tb_jpg from 'images/slider/slider-1-tab@2x.jpg';
+import hero1_mob_jpg from 'images/slider/slider-1-mob.jpg';
+import hero12_mob_jpg from 'images/slider/slider-1-mob@2x.jpg';
 
-import hero2_desk from './../../../../images/slider/slider-2-desk.webp';
-import hero22_desk from './../../../../images/slider/slider-2-desk@2x.webp';
-import hero2_tb from './../../../../images/slider/slider-2-tab.webp';
-import hero22_tb from './../../../../images/slider/slider-2-tab@2x.webp';
-import hero2_mob from './../../../../images/slider/slider-2-mob.webp';
-import hero22_mob from './../../../../images/slider/slider-2-mob@2x.webp';
-import hero2_desk_jpg from './../../../../images/slider/slider-2-desk.jpg';
-import hero22_desk_jpg from './../../../../images/slider/slider-2-desk@2x.jpg';
-import hero2_tb_jpg from './../../../../images/slider/slider-2-tab.jpg';
-import hero22_tb_jpg from './../../../../images/slider/slider-2-tab@2x.jpg';
-import hero2_mob_jpg from './../../../../images/slider/slider-2-mob.jpg';
-import hero22_mob_jpg from './../../../../images/slider/slider-2-mob@2x.jpg';
+import hero2_desk from 'images/slider/slider-2-desk.webp';
+import hero22_desk from 'images/slider/slider-2-desk@2x.webp';
+import hero2_tb from 'images/slider/slider-2-tab.webp';
+import hero22_tb from 'images/slider/slider-2-tab@2x.webp';
+import hero2_mob from 'images/slider/slider-2-mob.webp';
+import hero22_mob from 'images/slider/slider-2-mob@2x.webp';
+import hero2_desk_jpg from 'images/slider/slider-2-desk.jpg';
+import hero22_desk_jpg from 'images/slider/slider-2-desk@2x.jpg';
+import hero2_tb_jpg from 'images/slider/slider-2-tab.jpg';
+import hero22_tb_jpg from 'images/slider/slider-2-tab@2x.jpg';
+import hero2_mob_jpg from 'images/slider/slider-2-mob.jpg';
+import hero22_mob_jpg from 'images/slider/slider-2-mob@2x.jpg';
 
-import hero3_desk from './../../../../images/slider/slider-3-desk.webp';
-import hero32_desk from './../../../../images/slider/slider-3-desk@2x.webp';
-import hero3_tb from './../../../../images/slider/slider-3-tab.webp';
-import hero32_tb from './../../../../images/slider/slider-3-tab@2x.webp';
-import hero3_mob from './../../../../images/slider/slider-3-mob.webp';
-import hero32_mob from './../../../../images/slider/slider-3-mob@2x.webp';
-import hero3_desk_jpg from './../../../../images/slider/slider-3-desk.jpg';
-import hero32_desk_jpg from './../../../../images/slider/slider-3-desk@2x.jpg';
-import hero3_tb_jpg from './../../../../images/slider/slider-3-tab.jpg';
-import hero32_tb_jpg from './../../../../images/slider/slider-3-tab@2x.jpg';
-import hero3_mob_jpg from './../../../../images/slider/slider-3-mob.jpg';
-import hero32_mob_jpg from './../../../../images/slider/slider-3-mob@2x.jpg';
+import hero3_desk from 'images/slider/slider-3-desk.webp';
+import hero32_desk from 'images/slider/slider-3-desk@2x.webp';
+import hero3_tb from 'images/slider/slider-3-tab.webp';
+import hero32_tb from 'images/slider/slider-3-tab@2x.webp';
+import hero3_mob from 'images/slider/slider-3-mob.webp';
+import hero32_mob from 'images/slider/slider-3-mob@2x.webp';
+import hero3_desk_jpg from 'images/slider/slider-3-desk.jpg';
+import hero32_desk_jpg from 'images/slider/slider-3-desk@2x.jpg';
+import hero3_tb_jpg from 'images/slider/slider-3-tab.jpg';
+import hero32_tb_jpg from 'images/slider/slider-3-tab@2x.jpg';
+import hero3_mob_jpg from 'images/slider/slider-3-mob.jpg';
+import hero32_mob_jpg from 'images/slider/slider-3-mob@2x.jpg';
 
 const Slider = () => {
   let slideIndex = 1;
-  
+
   // Next/previous controls
   function plusSlides(n) {
     slideIndex = slideIndex + n;
@@ -72,29 +70,48 @@ const Slider = () => {
       slides[i].style.display = 'none';
     }
     for (i = 0; i < dots.length; i += 1) {
-      dots[i].className = dots[i].className.replace('active', '');
+      dots[i].className = dots[i].className.replace(css['active'], '');
     }
 
     slides[slideIndex - 1].style.display = 'block';
-    dots[slideIndex - 1].className += 'active';
+    dots[slideIndex - 1].classList.add(css['active']);
   }
-  useEffect(()=>{showSlides(slideIndex)},[])
+
+  useEffect(() => {
+    showSlides(1);
+  }, []);
 
   return (
     <div className={css.slider}>
       <ul className={css.slider__pagination + ' ' + css.list}>
-        <li className={css.slider__item + ' slider_item'} data-info = "slider__item" onClick={()=>currentSlide(1)}>
+        <li
+          className={css.slider__item}
+          data-info="slider__item"
+          onClick={() => currentSlide(1)}
+        >
           <a href="#slide1"></a>
         </li>
-        <li className={css.slider__item + ' slider_item'} data-info = "slider__item" onClick={()=>currentSlide(2)}>
+        <li
+          className={css.slider__item}
+          data-info="slider__item"
+          onClick={() => currentSlide(2)}
+        >
           <a href="#slide2"></a>
         </li>
-        <li className={css.slider__item + ' slider_item'} data-info = "slider__item"  onClick={()=>currentSlide(3)}>
+        <li
+          className={css.slider__item}
+          data-info="slider__item"
+          onClick={() => currentSlide(3)}
+        >
           <a href="#slide3"></a>
         </li>
       </ul>
       <div className={css.slides}>
-        <div className={css.slide + ' ' + css.fade + ' slide'} id="slide1" data-info = "slide">
+        <div
+          className={css.slide + ' ' + css.fade}
+          id="slide1"
+          data-info="slide"
+        >
           <picture className={css.slide__img}>
             <source
               media="(min-width:1280px)"
@@ -120,7 +137,11 @@ const Slider = () => {
             />
           </picture>
         </div>
-        <div className={css.slide + ' ' + css.fade + ' slide'} id="slide2" data-info = "slide">
+        <div
+          className={css.slide + ' ' + css.fade}
+          id="slide2"
+          data-info="slide"
+        >
           <picture className={css.slide__img}>
             <source
               media="(min-width:1280px)"
@@ -146,7 +167,11 @@ const Slider = () => {
             />
           </picture>
         </div>
-        <div className={css.slide + ' ' + css.fade + ' slide'} id="slide3" data-info = "slide">
+        <div
+          className={css.slide + ' ' + css.fade}
+          id="slide3"
+          data-info="slide"
+        >
           <picture className={css.slide__img}>
             <source
               media="(min-width:1280px)"
@@ -175,7 +200,10 @@ const Slider = () => {
       </div>
       <ul className={css.slider__controls + ' ' + css.list}>
         <li className={css['slider__controls-item']}>
-          <a className={css['slider__controls-btn']} onClick={()=>plusSlides(-1)}>
+          <a
+            className={css['slider__controls-btn']}
+            onClick={() => plusSlides(-1)}
+          >
             Back
           </a>
         </li>
@@ -186,7 +214,7 @@ const Slider = () => {
               ' ' +
               css['slider__controls-btn--forward']
             }
-            onClick={()=>plusSlides(1)}
+            onClick={() => plusSlides(1)}
           >
             Next
           </a>
