@@ -1,5 +1,4 @@
 import { SEO } from "utils/SEO";
-// import Schedule from 'components/Schedule/Schedule';
 import Hero from "components/Sections/Hero/Hero";
 import About from "components/Sections/About/About";
 import Price from "components/Sections/Price/Price";
@@ -8,8 +7,9 @@ import Team from "components/Sections/Team/Team";
 import Gallery from "components/Sections/Gallery/Gallery";
 import Contacts from "components/Sections/Contacts/Contacts";
 import { ButtonForOrder } from "components/ButtonForOffer/ButtonForOrder.styled";
-import Schedule from "components/Schedule/Schedule";
-import { openModalWindow } from "hooks/modalWindow";
+// import Schedule from "components/Schedule/Schedule";
+import RegisterForm from "components/RegistrateForm/RegistrateForm";
+import { openModalForm } from "hooks/modalWindow";
 
 const LandingPage = () => {
   return (
@@ -22,10 +22,10 @@ const LandingPage = () => {
       <Team />
       <Gallery />
       <Contacts />
-      <ButtonForOrder onClick={(e) => openModalWindow(e)}>
+      <ButtonForOrder onClick={(e) => openModalForm(e)}>
         Book service
       </ButtonForOrder>
-      <Schedule />
+        <RegisterForm/>
     </>
   );
 };

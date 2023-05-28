@@ -1,5 +1,5 @@
-import 'modern-normalize';
-import { createGlobalStyle } from 'styled-components';
+import "modern-normalize";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 html {
@@ -7,6 +7,7 @@ html {
 }
 
 body {
+  position: relative;
   font-family: -apple-system, BlinkMacSystemFont, 'Open Sans','Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14,9 +15,9 @@ body {
   font-size: 14px;
   letter-spacing: 0.02em;
   overflow: unset;
-  color: ${props => props.theme.textMain};
+  color: ${(props) => props.theme.textMain};
 
-  background-color: ${props => props.theme.backgroundMain};
+  background-color: ${(props) => props.theme.backgroundMain};
   transition: 0.3s ease;
   
   &.scroll {
@@ -57,7 +58,7 @@ a{
 
   &:hover,
   &:focus {
-      color: ${props => props.theme.accent};
+      color: ${(props) => props.theme.accent};
   }
 }
 
@@ -78,7 +79,32 @@ a{
     transition: opacity .3s linear 50ms, visibility .3s linear 50ms; 
 }
 
+#popup-register-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 45;
+
+    width: 100vw;
+    height: 100vh;
+
+    opacity: 1;
+    visibility: visible;
+
+    background-color: #0000006b;
+    transition: opacity .3s linear 50ms, visibility .3s linear 50ms; 
+}
+
 #popup-root.is-hide {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+
+  width: 0;
+  height: 0;
+}
+
+#popup-register-root.is-hide {
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
@@ -107,9 +133,9 @@ a{
   letter-spacing: 0.04em;
   text-align: left;
 
-  color: ${props => props.theme.mainBg};
+  color: ${(props) => props.theme.mainBg};
   background-color: rgba(245, 146, 86, 0.8);
-  box-shadow: 0px 0px 5px 0px ${props => props.theme.inpText};
+  box-shadow: 0px 0px 5px 0px ${(props) => props.theme.inpText};
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
@@ -158,8 +184,8 @@ a{
 .paginate__page--active {
   pointer-events: none;
   border-radius: 50%;
-  border: 3px solid ${props => props.theme.white};
-  color: ${props => props.theme.white};
+  border: 3px solid ${(props) => props.theme.white};
+  color: ${(props) => props.theme.white};
 }
 
 
@@ -179,7 +205,7 @@ a{
   line-height: 1.375;
   letter-spacing: 0.04em;
   text-align: left;
-  color: ${props => props.theme.inpTextModal};
+  color: ${(props) => props.theme.inpTextModal};
 
   &::placeholder {
     color: rgba(27, 27, 27, 0.6);
@@ -189,17 +215,17 @@ a{
 
   margin-bottom: 16px;
 
-  background: ${props => props.theme.mainBg};
-  border: 1px solid ${props => props.theme.orangeLight};
+  background: ${(props) => props.theme.mainBg};
+  border: 1px solid ${(props) => props.theme.orangeLight};
   border-radius: 40px;
   outline: none;
   transition: all 0.25s ease-in;
   &:hover {
-    outline: 2px solid ${props => props.theme.orangeLight};
+    outline: 2px solid ${(props) => props.theme.orangeLight};
   }
 
   &:focus {
-    outline: 3px solid ${props => props.theme.orangeLight};
+    outline: 3px solid ${(props) => props.theme.orangeLight};
   }
 
   &::-webkit-outer-spin-button,
@@ -233,7 +259,7 @@ margin: 0!important;
 padding: 0!important;
 margin: 0!important;
 
-color: ${props => props.theme.inpText}!important;
+color: ${(props) => props.theme.inpText}!important;
 }
 
 .react-select__indicators {
@@ -248,11 +274,11 @@ margin: 0!important;
 }
 
 .react-select__option--is-focused {
-background-color: ${props => props.theme.mainBg}!important;
+background-color: ${(props) => props.theme.mainBg}!important;
 }
 
 .react-select__option--is-selected {
-background-color: ${props => props.theme.orangeLight}!important;
+background-color: ${(props) => props.theme.orangeLight}!important;
 }
 
 
@@ -275,7 +301,7 @@ margin: 0!important;
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: ${props => props.theme.backgroundMain};
+  background: ${(props) => props.theme.backgroundMain};
 
   /* Center slide text vertically */
   display: flex;
@@ -292,18 +318,18 @@ margin: 0!important;
 }
 
 .swiper-button-next::after {
-  color: ${props => props.theme.accent};
+  color: ${(props) => props.theme.accent};
 }
 
 .swiper-button-prev::after {
-  color: ${props => props.theme.accent};
+  color: ${(props) => props.theme.accent};
 }
 
 .swiper-pagination-bullet-active.swiper-pagination-bullet{
-  background-color: ${props => props.theme.accent}!important;
+  background-color: ${(props) => props.theme.accent}!important;
 }
 .swiper-pagination-bullet {
-  background-color: ${props => props.theme.textMain}!important;
+  background-color: ${(props) => props.theme.textMain}!important;
 }
 .swiper-button-prev,
 .swiper-button-next,
@@ -312,7 +338,7 @@ margin: 0!important;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-  color-scheme: ${props => props.theme.colorscheme};
+  color-scheme: ${(props) => props.theme.colorscheme};
   opacity: 1;
 }
 

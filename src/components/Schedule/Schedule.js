@@ -34,29 +34,31 @@ const Schedule = () => {
     adaptor: new ODataV4Adaptor(),
   });
   const [ownerData] = React.useState(ownersData);
-  console.log(ownersData);
-  const group = { resources: ["Doctors"] };
+  const group = { resources: ["Barbers"] };
   const eventSettings = {
-    // includeFiltersInQuery: true,
     dataSource: dataManager,
     fields: fieldsData,
   };
-  // const workingDays = [1, 3, 5];
   const today = new Date();
 
-  function getDoctorName(value) {
+  function getBarberName(value) {
     return value.resourceData
       ? value.resourceData[value.resource.textField]
       : value.resourceName;
   }
 
-  function getDoctorLevel(value) {
-    let resourceName = getDoctorName(value);
-    return resourceName === "Julia"
-      ? "Cardiologist"
-      : resourceName === "Grogoriy"
-      ? "Neurologist"
-      : "Orthopedic Surgeon";
+  function getBarberLevel(value) {
+    let resourceName = getBarberName(value);
+    switch (resourceName) {
+      case "Julia":
+        return "High level barber";
+      case "Grogoriy":
+        return "Master";
+      case "Vlad":
+        return "Dr. BARber";
+      default:
+        break;
+    }
   }
 
   function closeModal(e) {
@@ -68,13 +70,14 @@ const Schedule = () => {
     return (
       <div className="template-wrap">
         <div className="resource-detail">
-          <div className="resource-name">{getDoctorName(props)}</div>
-          <div className="resource-designation">{getDoctorLevel(props)}</div>
+          <div className="resource-name">{getBarberName(props)}</div>
+          <div className="resource-designation">{getBarberLevel(props)}</div>
         </div>
       </div>
     );
   }
-  return  ReactDOM.createPortal(
+
+  return ReactDOM.createPortal(
     <div className={css.backdrop} onClick={closeModal}>
       <div
         className={css.sheduleContainer}
@@ -86,7 +89,7 @@ const Schedule = () => {
           onClick={closeModal}
           aria-label="Close modal"
         >
-          <CloseIcon style={{fill:"black", width:"25px", height:"25px"}}/>
+          <CloseIcon style={{ fill: "black", width: "25px", height: "25px" }} />
         </button>
         <div>
           <ScheduleComponent
@@ -101,8 +104,8 @@ const Schedule = () => {
               )
             }
             resourceHeaderTemplate={resourceHeaderTemplate}
-            eventSettings={eventSettings}
             group={group}
+            eventSettings={eventSettings}
             enablePersistence={true}
             rowAutoHeight={true}
           >
@@ -110,17 +113,20 @@ const Schedule = () => {
               <ResourceDirective
                 field="OwnerId"
                 title="Subject"
-                name="Doctors"
+                name="Barbers"
                 dataSource={ownerData}
                 textField="ownerText"
                 idField="Id"
                 DesignationField="designation"
                 colorField="ownerColor"
+                workDaysField="workDays"
+                allowMultiple={true}
+                groupIDField="groupId"
               ></ResourceDirective>
             </ResourcesDirective>
             <ViewsDirective>
-              <ViewDirective option="Day" startHour="7:00" endHour="18:00" />
-              <ViewDirective option="Week" startHour="10:00" endHour="18:00" />
+              <ViewDirective option="Day" startHour="7:00" endHour="21:00" />
+              <ViewDirective option="Week" startHour="7:00" endHour="21:00" />
               <ViewDirective
                 option="WorkWeek"
                 startHour="7:00"
@@ -147,6 +153,6 @@ const Schedule = () => {
       </div>
     </div>,
     document.querySelector("#popup-root")
-  )
+  );
 };
 export default Schedule;
