@@ -18,7 +18,6 @@ export const FormContainer = styled.div`
   min-height: calc(100vh - 140px);
 
   @media (min-width: 767px) and (max-width: 1279px) {
-    padding-top: 168px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -29,6 +28,7 @@ export const FormContainer = styled.div`
 export const TitleRegister = styled(Title)`
   margin-bottom: 40px;
   margin-top: 0;
+  color: #535353;
   @media screen and (min-width: 768px) {
     font-size: 36px;
     font-weight: 500;
@@ -48,11 +48,11 @@ export const FormRegister = styled(Form)`
     width: 608px;
     margin: 0 auto;
     padding: 60px 0 40px 0;
-    background-color: ${(props) => props.theme.colorOfForm};
+    background-color: #ffffff;
     border-radius: 40px;
-    -webkit-box-shadow: 7px 4px 14px 0px ${(props) => props.theme.shadowColor};
-    -moz-box-shadow: 7px 4px 14px 0px ${(props) => props.theme.shadowColor};
-    box-shadow: 7px 4px 14px 0px ${(props) => props.theme.shadowColor};
+    -webkit-box-shadow: 7px 4px 14px 0px rgba(0, 0, 0, 0.11);
+    -moz-box-shadow: 7px 4px 14px 0px rgba(0, 0, 0, 0.11);
+    box-shadow: 7px 4px 14px 0px rgba(0, 0, 0, 0.11);
   }
 
   @media screen and (min-width: 1280px) {
@@ -115,14 +115,14 @@ export const Input = styled(Field)`
   font-size: 14px;
   line-height: 1.3;
   padding: 11px 0 12px 14px;
-  background-color: ${(props) => props.theme.colorOfInput};
-  color: ${(props) => props.theme.inpText};
+  background-color: #ffffff;
+  color: #535353;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
   transition: all 0.25s ease-in;
   &:focus,
   &:hover {
-    border-color: ${(props) => props.theme.orange};
+    border-color: #ff6101;
     outline: none;
   }
   @media screen and (min-width: 768px) {
@@ -137,15 +137,15 @@ export const Input = styled(Field)`
 export const PhoneInput = styled.div`
   width: 280px;
   padding: 11px 0 12px 14px;
-  background: ${(props) => props.theme.colorOfInput};
-  color: ${(props) => props.theme.inpText};
+  background: #fac9ab;
+  color: #535353;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
   margin-bottom: 16px;
   transition: all 0.25s ease-in;
   &:focus,
   &:hover {
-    border-color: ${(props) => props.theme.orange};
+    border-color: #ff6101;
     outline: none;
   }
   @media screen and (min-width: 768px) {
@@ -161,8 +161,8 @@ export const Button = styled.button`
   width: 100%;
   padding: 11px 0 12px 14px;
   text-align: center;
-  color: ${(props) => props.theme.white};
-  background: ${(props) => props.theme.orangeLight};
+  color: #ffffff;
+  background: #f59256;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
   margin: 8px 0 40px 0;
@@ -188,7 +188,7 @@ export const Button = styled.button`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: ${(props) => props.theme.orangeLight};
+    background: #f59256;
     transition: all 450ms;
   }
   :disabled {
@@ -211,8 +211,8 @@ export const BackButton = styled.button`
   padding: 11px 0 12px 14px;
   text-align: center;
   color: #000;
-  background: ${(props) => props.theme.orangeLight};
-  border: 1px solid ${(props) => props.theme.orangeLight};
+  background: #f59256;
+  border: 1px solid #f59256;
   border-radius: 40px;
   margin: -24px 0 40px 0;
   cursor: pointer;
@@ -236,7 +236,7 @@ export const BackButton = styled.button`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: ${(props) => props.theme.orangeLight};
+    background: #f59256;
     transition: all 450ms;
   }
   @media screen and (min-width: 768px) {
@@ -271,12 +271,12 @@ export const Div = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-  color: ${(props) => props.theme.blue};
+  color: #3091eb;
   margin-left: 4px;
   transition: all 0.25s ease-in;
   :hover,
   :focus {
-    color: ${(props) => props.theme.orangeLight};
+    color: #f59256;
   }
 `;
 export const BoxText = styled.div`
@@ -290,7 +290,7 @@ export const BoxText = styled.div`
   text-align: center;
   letter-spacing: 0.04em;
 
-  color: ${(props) => props.theme.logout};
+  color: #707070;
 `;
 
 export const SpinerWrapper = styled.div`
@@ -317,11 +317,10 @@ export const RegisterFormContainer = styled.div`
   width: 280px;
   margin-top: 50px;
   padding: 10px 20px 40px 20px;
-  background-color: ${(props) => props.theme.white};
   border-radius: 20px;
-  -webkit-box-shadow: 7px 4px 14px 7px ${(props) => props.theme.shadowColor};
-  -moz-box-shadow: 7px 4px 14px 7px ${(props) => props.theme.shadowColor};
-  box-shadow: 7px 4px 14px 7px ${(props) => props.theme.shadowColor};
+  -webkit-box-shadow: 7px 4px 14px 7px rgba(0, 0, 0, 0.11);
+  -moz-box-shadow: 7px 4px 14px 7px rgba(0, 0, 0, 0.11);
+  box-shadow: 7px 4px 14px 7px rgba(0, 0, 0, 0.11);
 
   @media screen and (min-width: 768px) {
     margin-top: 0;
@@ -345,7 +344,7 @@ export const ButtonClose = styled.button`
   width: 34px;
   height: 34px;
 
-  background-color: ${(props) => props.theme.mainBg};
+  background-color: #fdf7f2;
   border-radius: 50%;
   border: medium none;
   border-spacing: 0;
@@ -355,7 +354,7 @@ export const ButtonClose = styled.button`
 
   &:hover,
   &:focus {
-    outline: 2px solid ${(props) => props.theme.orangeLight};
+    outline: 2px solid #f59256;
     border: none;
   }
 
