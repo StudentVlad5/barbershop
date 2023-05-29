@@ -8,8 +8,8 @@ import Gallery from "components/Sections/Gallery/Gallery";
 import Contacts from "components/Sections/Contacts/Contacts";
 import { ButtonForOrder } from "components/ButtonForOffer/ButtonForOrder.styled";
 // import Schedule from "components/Schedule/Schedule";
-import RegisterForm from "components/RegistrateForm/RegistrateForm";
 import { openModalForm } from "hooks/modalWindow";
+import { ModalWindowForForm } from "components/ModalWindowForForm/ModalWindowForForm";
 
 const LandingPage = () => {
   return (
@@ -25,7 +25,7 @@ const LandingPage = () => {
       <ButtonForOrder onClick={(e) => openModalForm(e)}>
         Book service
       </ButtonForOrder>
-        <RegisterForm/>
+      <ModalWindowForForm />
     </>
   );
 };

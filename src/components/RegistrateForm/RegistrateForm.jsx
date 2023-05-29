@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import ReactDOM from 'react-dom';
 import { register } from '../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { useFormik, Formik } from 'formik';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import schemas from '../Schemas/schemas';
-import { closeModalForm } from "hooks/modalWindow";
 import {
   FormRegister,
   FormContainer,
@@ -14,31 +12,22 @@ import {
   TitleRegister,
   BackButton,
   ShowPassword,
-  StyledLink,
   BoxText,
   IconValid,
   IconInValid,
   ErrBox,
   Div,
   FormSection,
-  RegisterFormContainer,
-  BackDrop,
-  ButtonClose
 } from './RegistrateForm.styled';
 import { theme } from '../baseStyles/Variables.styled';
-import { ReactComponent as CloseIcon } from "../../images/svg/icon_close.svg";
+import PropTypes from 'prop-types';
 
-const RegisterForm = () => {
+const RegisterForm = ({setStatusLogin}) => {
   const [isShown, setIsShown] = useState(true);
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
-
-  function closeModal(e) {
-    e.preventDefault();
-    closeModalForm(e);
-  }
 
   const onSubmit = ({ values }) => {
     setIsLoading(true);
@@ -96,17 +85,7 @@ const RegisterForm = () => {
   };
 
 
-  return ReactDOM.createPortal(
-    <BackDrop onClick={closeModal}>
-    <RegisterFormContainer onClick={e => e.stopPropagation()}>
-      <ButtonClose
-        type="button"
-        onClick={closeModal}
-        aria-label="Close modal"
-      >
-        <CloseIcon />
-      </ButtonClose>
-    <FormSection>
+  return (<FormSection>
       <FormContainer>
         <Formik validationSchema={schemas.registerSchema}>
           <FormRegister onSubmit={formik.handleSubmit} autoComplete="off">
@@ -253,9 +232,8 @@ const RegisterForm = () => {
                 {'Back'}
               </BackButton>
             )}
-            <BoxText>
+            <BoxText onClick={()=>setStatusLogin(true)}>
               <span>{'Already have an account?'}</span>{' '}
-              <StyledLink to="/login">{'Login'}</StyledLink>
             </BoxText>
           </FormRegister>
         </Formik>
@@ -263,10 +241,11 @@ const RegisterForm = () => {
           <h1 style={{ textAlign: 'center' }}>{'Loading...'}</h1>
         )}
       </FormContainer>
-    </FormSection>
-    </RegisterFormContainer>
-    </BackDrop>, document.querySelector("#popup-register-root")
-  );
+    </FormSection>);
 };
+
+  RegisterForm.propTypes = ({
+    setStatusLogin: PropTypes.func
+  });
 
 export default RegisterForm;
