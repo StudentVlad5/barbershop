@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { register } from '../redux/auth/operations';
+import { register } from '../../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { useFormik, Formik } from 'formik';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
-import schemas from '../Schemas/schemas';
+import schemas from '../../Schemas/schemas';
 import {
   FormRegister,
   FormContainer,
@@ -19,10 +19,10 @@ import {
   Div,
   FormSection,
 } from './RegistrateForm.styled';
-import { theme } from '../baseStyles/Variables.styled';
+import { theme } from '../../baseStyles/Variables.styled';
 import PropTypes from 'prop-types';
 
-const RegisterForm = ({setStatusLogin}) => {
+const RegisterForm = ({ setStatusLogin }) => {
   const [isShown, setIsShown] = useState(true);
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
@@ -84,8 +84,8 @@ const RegisterForm = ({setStatusLogin}) => {
     return !hasValue ? null : isValide ? '#E2001A' : '#3CBC81';
   };
 
-
-  return (<FormSection>
+  return (
+    <FormSection>
       <FormContainer>
         <Formik validationSchema={schemas.registerSchema}>
           <FormRegister onSubmit={formik.handleSubmit} autoComplete="off">
@@ -232,20 +232,19 @@ const RegisterForm = ({setStatusLogin}) => {
                 {'Back'}
               </BackButton>
             )}
-            <BoxText onClick={()=>setStatusLogin(true)}>
+            <BoxText onClick={() => setStatusLogin(true)}>
               <span>{'Already have an account?'}</span>{' '}
             </BoxText>
           </FormRegister>
         </Formik>
-        {isLoading && (
-          <h1 style={{ textAlign: 'center' }}>{'Loading...'}</h1>
-        )}
+        {isLoading && <h1 style={{ textAlign: 'center' }}>{'Loading...'}</h1>}
       </FormContainer>
-    </FormSection>);
+    </FormSection>
+  );
 };
 
-  RegisterForm.propTypes = ({
-    setStatusLogin: PropTypes.func
-  });
+RegisterForm.propTypes = {
+  setStatusLogin: PropTypes.func,
+};
 
 export default RegisterForm;

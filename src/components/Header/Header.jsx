@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import css from './header.module.scss';
 import MobileMenu from './MobileMenu/MobileMenu';
+import { openModalForm } from 'hooks/modalWindow';
 
 import { ReactComponent as Logo } from 'images/icons/logo.svg';
 import { ReactComponent as Menu } from 'images/icons/menu_40px.svg';
@@ -85,16 +86,11 @@ export const Header = () => {
               +38 044 111 11 11
             </a>
             <button
-              className={
-                css.btn +
-                ' ' +
-                css['btn--mode-dark'] +
-                ' ' +
-                css['js-modal-open']
-              }
+              className={css.btn + ' ' + css['btn--mode-dark']}
               type="button"
+              onClick={e => openModalForm(e)}
             >
-              book a service
+              log in
             </button>
           </div>
           <button
