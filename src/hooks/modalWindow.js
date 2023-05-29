@@ -25,7 +25,7 @@ export function openModalForm(e) {
   document.querySelector("body").classList.add("scroll");
 }
 
-export function closeModalForm(e) {
+export function closeModalForm() {
   document.querySelector("#popup-register-root").classList.add("is-hide");
   window.removeEventListener("keydown", closeByEsc);
   document.querySelector("body").classList.remove("scroll");
