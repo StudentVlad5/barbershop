@@ -38,10 +38,10 @@
         @include mq(tablet) {
             max-width: $tablet;
         }
-    }
 
-    @include mq(desktop) {
-        max-width: $desktop;
+        @include mq(desktop) {
+            max-width: $desktop;
+        }
     }
 
 }
