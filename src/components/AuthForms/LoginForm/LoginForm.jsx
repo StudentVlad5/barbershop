@@ -4,7 +4,6 @@ import { useFormik, Formik } from 'formik';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import schemas from 'components/Schemas/schemas';
 
-
 import {
   FormSection,
   FormContainer,
@@ -19,15 +18,14 @@ import {
   Div,
   TitleLogin,
 } from './LoginForm.styled';
-import { logIn } from '../redux/auth/operations';
+import { logIn } from '../../../redux/auth/operations';
 import PropTypes from 'prop-types';
 
-const LoginForm = ({setStatusLogin}) => {
+const LoginForm = ({ setStatusLogin }) => {
   const [isShown, setIsShown] = useState(true); //
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
-
 
   const hideForm = () => {
     setIsShown(true);
@@ -134,21 +132,19 @@ const LoginForm = ({setStatusLogin}) => {
             )}
 
             {!isShown && <Button type="submit">{'Login'}</Button>}
-            <BoxText onClick={()=>setStatusLogin(false)}>
+            <BoxText onClick={() => setStatusLogin(false)}>
               <span>{"Still don't have an account?"}</span>{' '}
             </BoxText>
           </FormLogin>
         </Formik>
-        {isLoading && (
-          <h1 style={{ textAlign: 'center' }}>{'Loading...'}</h1>
-        )}
+        {isLoading && <h1 style={{ textAlign: 'center' }}>{'Loading...'}</h1>}
       </FormContainer>
     </FormSection>
   );
 };
 
-LoginForm.propTypes = ({
-  setStatusLogin: PropTypes.func
-});
+LoginForm.propTypes = {
+  setStatusLogin: PropTypes.func,
+};
 
 export default LoginForm;

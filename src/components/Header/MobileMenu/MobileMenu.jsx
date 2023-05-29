@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { openModalForm } from 'hooks/modalWindow';
 import css from './mobileMenu.module.scss';
 
 const MobileMenu = ({ onClose }) => {
@@ -83,7 +84,11 @@ const MobileMenu = ({ onClose }) => {
       >
         +38 044 111 11 11
       </a>
-      <button className={css.btn + ' ' + css['btn--mode-light']} type="button">
+      <button
+        className={css.btn + ' ' + css['btn--mode-light']}
+        type="button"
+        onClick={e => openModalForm(e)}
+      >
         Log in
       </button>
       <ul

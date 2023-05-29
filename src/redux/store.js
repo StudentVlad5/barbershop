@@ -1,14 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { authReducer } from "./auth/slice";
-import { reloadSlice } from "./reload/slice";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { configureStore } from '@reduxjs/toolkit';
+import { authReducer } from './auth/slice';
+import { reloadSlice } from './reload/slice';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 // Persisting token and role fields from auth slice to localstorage
 const authPersistConfig = {
-  key: "auth",
+  key: 'auth',
   storage,
-  whitelist: ["token", "permission"],
+  whitelist: ['token', 'permission'],
 };
 
 export const store = configureStore({
@@ -16,7 +16,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     reload: reloadSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
