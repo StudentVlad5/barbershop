@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { openModalForm } from 'hooks/modalWindow';
 import css from './mobileMenu.module.scss';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 const MobileMenu = ({ onClose }) => {
   useEffect(() => {
@@ -27,6 +29,7 @@ const MobileMenu = ({ onClose }) => {
         .removeEventListener('click', handleBackdropClick);
     };
   }, [onClose]);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <div
@@ -84,13 +87,19 @@ const MobileMenu = ({ onClose }) => {
       >
         +38 044 111 11 11
       </a>
-      <button
+      { !isLoggedIn ? <button
         className={css.btn + ' ' + css['btn--mode-light']}
         type="button"
         onClick={e => openModalForm(e)}
       >
         Log in
-      </button>
+      </button> : <button
+        className={css.btn + ' ' + css['btn--mode-light']}
+        type="button"
+        // onClick={e => openModalForm(e)}
+      >
+        Log out
+      </button>}
       <ul
         className={
           css['mobile-menu__socials'] + ' ' + css.socials + ' ' + css.list
