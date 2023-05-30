@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useFormik, Formik, Form } from 'formik';
+import { useFormik, Formik, Form, Field } from 'formik';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import schemas from 'components/Schemas/schemas';
@@ -64,7 +64,7 @@ const LoginForm = ({ setStatusLogin }) => {
           <h1 className={css.form__title}>{'Login'}</h1>
           {isShown && (
             <div className={css.form__wrapper}>
-              <input
+              <Field
                 className={css.form__input}
                 style={{
                   borderColor: showAccentValidateInput(
@@ -75,7 +75,7 @@ const LoginForm = ({ setStatusLogin }) => {
                 name="email"
                 type="email"
                 placeholder="Email"
-                // validate={schemas.schemasLogin.email}
+                validate={schemas.schemasLogin.email}
                 onChange={formik.handleChange}
                 value={formik.values.email}
                 onBlur={formik.handleBlur}
@@ -101,7 +101,7 @@ const LoginForm = ({ setStatusLogin }) => {
 
           {isShown && (
             <div className={css.form__wrapper}>
-              <input
+              <Field
                 className={css.form__input}
                 style={{
                   borderColor: showAccentValidateInput(
@@ -140,7 +140,10 @@ const LoginForm = ({ setStatusLogin }) => {
             </button>
           )}
           <div className={css.form_text} onClick={() => setStatusLogin(false)}>
-            <span>{"Still don't have an account? Register"}</span>
+            <span>
+              {"Still don't have an account? "}
+              <span className={css['form_text--bold']}>Register</span>
+            </span>
           </div>
         </Form>
       </Formik>

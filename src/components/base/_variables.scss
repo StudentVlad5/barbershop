@@ -3,6 +3,7 @@
     --color-background-main: #ffffff;
     --color-background-second: #F7F7F7;
     --color-background-accent: #191C26;
+    --color-background-input: #fdf7f2;
 
     // text
     --color-text-main: #303030;
@@ -13,8 +14,9 @@
     // accent
     --color-accent: #FF6C00;
 
-    //shadow
-    --color-shadow: #5555554d;
+    //border shadow
+    --color-border: rgba(245, 146, 86, 0.5);
+    --color-shadow: rgba(85, 85, 85, 0.302);
 
     // fonts
     --font-family-main: 'Open Sans', sans-serif;

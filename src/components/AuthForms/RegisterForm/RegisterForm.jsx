@@ -1,35 +1,20 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useFormik, Formik } from 'formik';
+import { useFormik, Formik, Form, Field } from 'formik';
+import { FaCheck, FaTimes } from 'react-icons/fa';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import { theme } from 'components/baseStyles/Variables.styled';
 import schemas from 'components/Schemas/schemas';
 import { register } from 'redux/auth/operations';
-import {
-  FormRegister,
-  FormContainer,
-  Input,
-  Button,
-  TitleRegister,
-  BackButton,
-  ShowPassword,
-  StyledLink,
-  BoxText,
-  IconValid,
-  IconInValid,
-  ErrBox,
-  Div,
-  FormSection,
-} from './RegistrateForm.styled';
-import PropTypes from 'prop-types';
+import css from './registerForm.module.scss';
 
-const RegisterForm = ({setStatusLogin}) => {
+const RegisterForm = ({ setStatusLogin }) => {
   const [isShown, setIsShown] = useState(true);
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
-
 
   const onSubmit = ({ values }) => {
     setIsLoading(true);
@@ -71,9 +56,9 @@ const RegisterForm = ({setStatusLogin}) => {
   const isValid =
     (formik.errors.email && formik.touched.email) ||
     (formik.errors.password && formik.touched.password) ||
-    (formik.errors.confirmPassword && formik.touched.confirmPassword) || 
+    (formik.errors.confirmPassword && formik.touched.confirmPassword) ||
     formik.values.email === '' ||
-    formik.values.confirmPassword === '' 
+    formik.values.confirmPassword === ''
       ? true
       : false;
 
@@ -89,192 +74,252 @@ const RegisterForm = ({setStatusLogin}) => {
   };
 
   return (
-    <FormSection>
-      <FormContainer>
-        <Formik validationSchema={schemas.registerSchema}>
-          <FormRegister onSubmit={formik.handleSubmit} autoComplete="off">
-            <TitleRegister>Register</TitleRegister>
-            {isShown && (
-              <Div>
-                <Input
-                  style={{
-                    borderColor: showAccentValidateInput(
-                      formik.values.email,
-                      formik.errors.email,
-                    ),
-                  }}
-                  name="email"
-                  type="email"
-                  placeholder='Email'
-                  value={formik.values.email}
-                  validate={schemas.registerSchema.email}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
+    <>
+      <Formik validationSchema={schemas.registerSchema}>
+        <Form
+          className={css.form}
+          onSubmit={formik.handleSubmit}
+          autoComplete="off"
+        >
+          <h1 className={css.form__title}>Register</h1>
+          {isShown && (
+            <div className={css.form__wrapper}>
+              <Field
+                className={css.form__input}
+                style={{
+                  borderColor: showAccentValidateInput(
+                    formik.values.email,
+                    formik.errors.email,
+                  ),
+                }}
+                name="email"
+                type="email"
+                placeholder="Email"
+                value={formik.values.email}
+                validate={schemas.registerSchema.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
 
-                {!formik.values.email ? null : !formik.errors.email ? (
-                  <IconValid color={theme.light.success} />
-                ) : (
-                  <IconInValid color={theme.light.error} />
-                )}
-                {formik.errors.email && formik.touched.email ? (
-                  <ErrBox>{formik.errors.email}</ErrBox>
-                ) : null}
-              </Div>
-            )}
-            {isShown && (
-              <Div>
-                <Input
-                  style={{
-                    borderColor: showAccentValidateInput(
-                      formik.values.password,
-                      formik.errors.password,
-                    ),
-                  }}
-                  name="password"
-                  type={showPass ? 'text' : 'password'}
-                  placeholder='Password'
-                  onChange={formik.handleChange}
-                  value={formik.values.password}
-                  onBlur={formik.handleBlur}
+              {!formik.values.email ? null : !formik.errors.email ? (
+                <FaCheck
+                  className={css['form__icon-check']}
+                  color={theme.light.success}
                 />
+              ) : (
+                <FaTimes
+                  className={css['form__icon-check']}
+                  color={theme.light.error}
+                />
+              )}
+              {formik.errors.email && formik.touched.email ? (
+                <div className={css['form__input-error']}>
+                  {formik.errors.email}
+                </div>
+              ) : null}
+            </div>
+          )}
+          {isShown && (
+            <div className={css.form__wrapper}>
+              <Field
+                className={css.form__input}
+                style={{
+                  borderColor: showAccentValidateInput(
+                    formik.values.password,
+                    formik.errors.password,
+                  ),
+                }}
+                name="password"
+                type={showPass ? 'text' : 'password'}
+                placeholder="Password"
+                onChange={formik.handleChange}
+                value={formik.values.password}
+                onBlur={formik.handleBlur}
+              />
 
-                <ShowPassword onClick={showPassword}>
-                  {!showPass ? <ImEyeBlocked /> : <ImEye />}
-                </ShowPassword>
-                {formik.errors.password && formik.touched.password ? (
-                  <ErrBox>{formik.errors.password}</ErrBox>
-                ) : null}
-              </Div>
-            )}
-            {isShown && (
-              <Div>
-                <Input
-                  style={{
-                    borderColor: showAccentValidateInput(
-                      formik.values.confirmPassword,
-                      formik.errors.confirmPassword,
-                    ),
-                  }}
-                  name="confirmPassword"
-                  type={showConfirmPass ? 'text' : 'password'}
-                  placeholder='Confirm Password'
-                  onChange={formik.handleChange}
-                  value={formik.values.confirmPassword}
-                  onBlur={formik.handleBlur}
+              <span className={css['form__icon-show']} onClick={showPassword}>
+                {!showPass ? <ImEyeBlocked /> : <ImEye />}
+              </span>
+              {formik.errors.password && formik.touched.password ? (
+                <div className={css['form__input-error']}>
+                  {formik.errors.password}
+                </div>
+              ) : null}
+            </div>
+          )}
+          {isShown && (
+            <div className={css.form__wrapper}>
+              <Field
+                className={css.form__input}
+                style={{
+                  borderColor: showAccentValidateInput(
+                    formik.values.confirmPassword,
+                    formik.errors.confirmPassword,
+                  ),
+                }}
+                name="confirmPassword"
+                type={showConfirmPass ? 'text' : 'password'}
+                placeholder="Confirm Password"
+                onChange={formik.handleChange}
+                value={formik.values.confirmPassword}
+                onBlur={formik.handleBlur}
+              />
+              <span
+                className={css['form__icon-show']}
+                onClick={showConfirmPassword}
+              >
+                {!showConfirmPass ? <ImEyeBlocked /> : <ImEye />}
+              </span>
+              {formik.errors.confirmPassword &&
+              formik.touched.confirmPassword ? (
+                <div className={css['form__input-error']}>
+                  {formik.errors.confirmPassword}
+                </div>
+              ) : null}
+            </div>
+          )}
+          {isShown && (
+            <button
+              className={css.form__btn}
+              type="button"
+              onClick={showForm}
+              disabled={isValid}
+            >
+              Next
+            </button>
+          )}
+          {!isShown && (
+            <div className={css.form__wrapper}>
+              <Field
+                className={css.form__input}
+                style={{
+                  borderColor: showAccentValidateInput(
+                    formik.values.name,
+                    formik.errors.name,
+                  ),
+                }}
+                name="name"
+                type="text"
+                placeholder="Name"
+                onChange={formik.handleChange}
+                value={formik.values.name}
+                onBlur={formik.handleBlur}
+              />
+              {!formik.values.name ? null : !formik.errors.name ? (
+                <FaCheck
+                  className={css['form__icon-check']}
+                  color={theme.light.success}
                 />
-                <ShowPassword onClick={showConfirmPassword}>
-                  {!showConfirmPass ? <ImEyeBlocked /> : <ImEye />}
-                </ShowPassword>
-                {formik.errors.confirmPassword &&
-                formik.touched.confirmPassword ? (
-                  <ErrBox>{formik.errors.confirmPassword}</ErrBox>
-                ) : null}
-              </Div>
-            )}
-            {isShown && (
-              <Button type="button" onClick={showForm} disabled={isValid}>
-                Next
-              </Button>
-            )}
-            {!isShown && (
-              <Div>
-                <Input
-                  style={{
-                    borderColor: showAccentValidateInput(
-                      formik.values.name,
-                      formik.errors.name,
-                    ),
-                  }}
-                  name="name"
-                  type="text"
-                  placeholder='Name'
-                  onChange={formik.handleChange}
-                  value={formik.values.name}
-                  onBlur={formik.handleBlur}
+              ) : (
+                <FaTimes
+                  className={css['form__icon-check']}
+                  color={theme.light.error}
                 />
-                {!formik.values.name ? null : !formik.errors.name ? (
-                  <IconValid color={theme.light.success} />
-                ) : (
-                  <IconInValid color={theme.light.error} />
-                )}
-                {formik.errors.name && formik.touched.name ? (
-                  <ErrBox>{formik.errors.name}</ErrBox>
-                ) : null}
-              </Div>
-            )}
-            {!isShown && (
-              <Div>
-                <Input
-                  style={{
-                    borderColor: showAccentValidateInput(
-                      formik.values.location,
-                      formik.errors.location,
-                    ),
-                  }}
-                  name="location"
-                  type="text"
-                  placeholder='Location, region'
-                  value={formik.values.location}
-                  onBlur={formik.handleBlur}
-                  onChange={e => {
-                    formik.handleChange(e);
-                  }}
+              )}
+              {formik.errors.name && formik.touched.name ? (
+                <div className={css['form__input-error']}>
+                  {formik.errors.name}
+                </div>
+              ) : null}
+            </div>
+          )}
+          {!isShown && (
+            <div className={css.form__wrapper}>
+              <Field
+                className={css.form__input}
+                style={{
+                  borderColor: showAccentValidateInput(
+                    formik.values.location,
+                    formik.errors.location,
+                  ),
+                }}
+                name="location"
+                type="text"
+                placeholder="Location, region"
+                value={formik.values.location}
+                onBlur={formik.handleBlur}
+                onChange={e => {
+                  formik.handleChange(e);
+                }}
+              />
+              {!formik.values.location ? null : !formik.errors.location ? (
+                <FaCheck
+                  className={css['form__icon-check']}
+                  color={theme.light.success}
                 />
-                {!formik.values.location ? null : !formik.errors.location ? (
-                  <IconValid color={theme.light.success} />
-                ) : (
-                  <IconInValid color={theme.light.error} />
-                )}
-                {formik.errors.location && formik.touched.location ? (
-                  <ErrBox>{formik.errors.location}</ErrBox>
-                ) : null}
-              </Div>
-            )}
-            {!isShown && (
-              <Div>
-                <Input
-                  style={{
-                    borderColor: showAccentValidateInput(
-                      formik.values.phone,
-                      formik.errors.phone,
-                    ),
-                  }}
-                  id="phone"
-                  type="phone"
-                  placeholder='Mobile phone'
-                  onChange={formik.handleChange}
-                  value={formik.values.phone}
-                  onBlur={formik.handleBlur}
-                  name="phone"
+              ) : (
+                <FaTimes
+                  className={css['form__icon-check']}
+                  color={theme.light.error}
                 />
-                {!formik.values.phone ? null : !formik.errors.phone ? (
-                  <IconValid color={theme.light.success} />
-                ) : (
-                  <IconInValid color={theme.light.error} />
-                )}
-                {formik.errors.phone && formik.touched.phone ? (
-                  <ErrBox>{formik.errors.phone}</ErrBox>
-                ) : null}
-              </Div>
-            )}
-            {!isShown && <Button type="submit">Register</Button>}
-            {!isShown && (
-              <BackButton type="button" onClick={hideForm}>
-                Back
-              </BackButton>
-            )}
-            <BoxText onClick={setStatusLogin}>
-              <span>Already have an account?</span>{' '}
-              <StyledLink to="/login">Login</StyledLink>
-            </BoxText>
-          </FormRegister>
-        </Formik>
-        {isLoading && (
-          <h1 style={{ textAlign: 'center' }}>Loading...</h1>
-        )}
-      </FormContainer>
-    </FormSection>
+              )}
+              {formik.errors.location && formik.touched.location ? (
+                <div className={css['form__input-error']}>
+                  {formik.errors.location}
+                </div>
+              ) : null}
+            </div>
+          )}
+          {!isShown && (
+            <div className={css.form__wrapper}>
+              <Field
+                className={css.form__input}
+                style={{
+                  borderColor: showAccentValidateInput(
+                    formik.values.phone,
+                    formik.errors.phone,
+                  ),
+                }}
+                id="phone"
+                type="phone"
+                placeholder="Mobile phone"
+                onChange={formik.handleChange}
+                value={formik.values.phone}
+                onBlur={formik.handleBlur}
+                name="phone"
+              />
+              {!formik.values.phone ? null : !formik.errors.phone ? (
+                <FaCheck
+                  className={css['form__icon-check']}
+                  color={theme.light.success}
+                />
+              ) : (
+                <FaTimes
+                  className={css['form__icon-check']}
+                  color={theme.light.error}
+                />
+              )}
+              {formik.errors.phone && formik.touched.phone ? (
+                <div className={css['form__input-error']}>
+                  {formik.errors.phone}
+                </div>
+              ) : null}
+            </div>
+          )}
+          {!isShown && (
+            <button className={css.form__btn} type="submit">
+              Register
+            </button>
+          )}
+          {!isShown && (
+            <button
+              className={css['form__btn--back']}
+              type="button"
+              onClick={hideForm}
+            >
+              Back
+            </button>
+          )}
+          <div className={css.form_text} onClick={setStatusLogin}>
+            <span>
+              Already have an account?{' '}
+              <span className={css['form_text--bold']}>Login</span>
+            </span>
+          </div>
+        </Form>
+      </Formik>
+      {isLoading && <h1 style={{ textAlign: 'center' }}>Loading...</h1>}
+    </>
   );
 };
 
