@@ -8,6 +8,7 @@ const initialState = {
     avatarUrl: null,
     email: null,
     phone: null,
+    location: null,
     birthday: null,
     role: "user",
   },

@@ -34,10 +34,11 @@ const registerSchema = Yup.object().shape({
     .min(99999)
     .max(999999999999),
   location: Yup.string()
-    .matches(
-      /(([A-Za-zsd&.-]){1,}, ([A-Za-zsd&,.-]){1,})/,
-      "Invalid format. Example: Brovary, Kyiv ..."
-    )
+  .matches(/\S{2,}/, "Name too short (min 2)")
+  .matches(
+    /((\s*[a-zA-Z]+\s*){2,}|[a-zA-Z]{2,})/,
+    "Name must includes only Latin alphabet"
+  )
     .required("Require field"),
 });
 

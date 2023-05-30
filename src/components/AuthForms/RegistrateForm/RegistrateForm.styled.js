@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Form, Field } from "formik";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { Title } from "components/baseStyles/CommonStyle.styled";
 
 export const FormSection = styled.section`
@@ -287,4 +288,14 @@ export const SpinerWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${(props) => props.theme.blue};
+  margin-left: 4px;
+  transition: all 0.25s ease-in;
+  :hover,
+  :focus {
+    color: ${(props) => props.theme.orangeLight};
+  }
 `;

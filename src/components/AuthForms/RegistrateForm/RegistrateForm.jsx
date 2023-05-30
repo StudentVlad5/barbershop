@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { register } from '../../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { useFormik, Formik } from 'formik';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
-import schemas from '../../Schemas/schemas';
+import { theme } from 'components/baseStyles/Variables.styled';
+import schemas from 'components/Schemas/schemas';
+import { register } from 'redux/auth/operations';
 import {
   FormRegister,
   FormContainer,
@@ -12,6 +13,7 @@ import {
   TitleRegister,
   BackButton,
   ShowPassword,
+  StyledLink,
   BoxText,
   IconValid,
   IconInValid,
@@ -19,25 +21,26 @@ import {
   Div,
   FormSection,
 } from './RegistrateForm.styled';
-import { theme } from '../../baseStyles/Variables.styled';
 import PropTypes from 'prop-types';
 
-const RegisterForm = ({ setStatusLogin }) => {
+const RegisterForm = ({setStatusLogin}) => {
   const [isShown, setIsShown] = useState(true);
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
+
   const onSubmit = ({ values }) => {
     setIsLoading(true);
-    const { name: userName, email, password, phone } = values;
+    const { name: userName, email, password, phone, location } = values;
     dispatch(
       register({
         userName,
         email,
         password,
         phone,
+        location,
       }),
     );
   };
@@ -57,6 +60,7 @@ const RegisterForm = ({ setStatusLogin }) => {
       password: '',
       confirmPassword: '',
       phone: '',
+      location: '',
     },
     validationSchema: schemas.registerSchema,
     onSubmit: (values, action) => {
@@ -67,9 +71,9 @@ const RegisterForm = ({ setStatusLogin }) => {
   const isValid =
     (formik.errors.email && formik.touched.email) ||
     (formik.errors.password && formik.touched.password) ||
-    (formik.errors.confirmPassword && formik.touched.confirmPassword) ||
+    (formik.errors.confirmPassword && formik.touched.confirmPassword) || 
     formik.values.email === '' ||
-    formik.values.confirmPassword === ''
+    formik.values.confirmPassword === '' 
       ? true
       : false;
 
@@ -89,7 +93,7 @@ const RegisterForm = ({ setStatusLogin }) => {
       <FormContainer>
         <Formik validationSchema={schemas.registerSchema}>
           <FormRegister onSubmit={formik.handleSubmit} autoComplete="off">
-            <TitleRegister>{'Register'}</TitleRegister>
+            <TitleRegister>Register</TitleRegister>
             {isShown && (
               <Div>
                 <Input
@@ -101,7 +105,7 @@ const RegisterForm = ({ setStatusLogin }) => {
                   }}
                   name="email"
                   type="email"
-                  placeholder={'Email'}
+                  placeholder='Email'
                   value={formik.values.email}
                   validate={schemas.registerSchema.email}
                   onChange={formik.handleChange}
@@ -129,7 +133,7 @@ const RegisterForm = ({ setStatusLogin }) => {
                   }}
                   name="password"
                   type={showPass ? 'text' : 'password'}
-                  placeholder={'Password'}
+                  placeholder='Password'
                   onChange={formik.handleChange}
                   value={formik.values.password}
                   onBlur={formik.handleBlur}
@@ -154,7 +158,7 @@ const RegisterForm = ({ setStatusLogin }) => {
                   }}
                   name="confirmPassword"
                   type={showConfirmPass ? 'text' : 'password'}
-                  placeholder={'Confirm Password'}
+                  placeholder='Confirm Password'
                   onChange={formik.handleChange}
                   value={formik.values.confirmPassword}
                   onBlur={formik.handleBlur}
@@ -170,7 +174,7 @@ const RegisterForm = ({ setStatusLogin }) => {
             )}
             {isShown && (
               <Button type="button" onClick={showForm} disabled={isValid}>
-                {'Next'}
+                Next
               </Button>
             )}
             {!isShown && (
@@ -184,7 +188,7 @@ const RegisterForm = ({ setStatusLogin }) => {
                   }}
                   name="name"
                   type="text"
-                  placeholder={'Name'}
+                  placeholder='Name'
                   onChange={formik.handleChange}
                   value={formik.values.name}
                   onBlur={formik.handleBlur}
@@ -204,13 +208,41 @@ const RegisterForm = ({ setStatusLogin }) => {
                 <Input
                   style={{
                     borderColor: showAccentValidateInput(
+                      formik.values.location,
+                      formik.errors.location,
+                    ),
+                  }}
+                  name="location"
+                  type="text"
+                  placeholder='Location, region'
+                  value={formik.values.location}
+                  onBlur={formik.handleBlur}
+                  onChange={e => {
+                    formik.handleChange(e);
+                  }}
+                />
+                {!formik.values.location ? null : !formik.errors.location ? (
+                  <IconValid color={theme.light.success} />
+                ) : (
+                  <IconInValid color={theme.light.error} />
+                )}
+                {formik.errors.location && formik.touched.location ? (
+                  <ErrBox>{formik.errors.location}</ErrBox>
+                ) : null}
+              </Div>
+            )}
+            {!isShown && (
+              <Div>
+                <Input
+                  style={{
+                    borderColor: showAccentValidateInput(
                       formik.values.phone,
                       formik.errors.phone,
                     ),
                   }}
                   id="phone"
                   type="phone"
-                  placeholder={'Mobile phone'}
+                  placeholder='Mobile phone'
                   onChange={formik.handleChange}
                   value={formik.values.phone}
                   onBlur={formik.handleBlur}
@@ -226,18 +258,21 @@ const RegisterForm = ({ setStatusLogin }) => {
                 ) : null}
               </Div>
             )}
-            {!isShown && <Button type="submit">{'Register'}</Button>}
+            {!isShown && <Button type="submit">Register</Button>}
             {!isShown && (
               <BackButton type="button" onClick={hideForm}>
-                {'Back'}
+                Back
               </BackButton>
             )}
-            <BoxText onClick={() => setStatusLogin(true)}>
-              <span>{'Already have an account?'}</span>{' '}
+            <BoxText onClick={setStatusLogin}>
+              <span>Already have an account?</span>{' '}
+              <StyledLink to="/login">Login</StyledLink>
             </BoxText>
           </FormRegister>
         </Formik>
-        {isLoading && <h1 style={{ textAlign: 'center' }}>{'Loading...'}</h1>}
+        {isLoading && (
+          <h1 style={{ textAlign: 'center' }}>Loading...</h1>
+        )}
       </FormContainer>
     </FormSection>
   );
