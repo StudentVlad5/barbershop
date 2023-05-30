@@ -39,7 +39,7 @@ const RegisterForm = ({setStatusLogin}) => {
         userName,
         email,
         password,
-        phone,
+        phone: phone.toString(),
         location,
       }),
     );
