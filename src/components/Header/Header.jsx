@@ -2,14 +2,19 @@ import { useState } from 'react';
 import css from './header.module.scss';
 import MobileMenu from './MobileMenu/MobileMenu';
 import { openModalForm } from 'hooks/modalWindow';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 import { ReactComponent as Logo } from 'images/icons/logo.svg';
 import { ReactComponent as Menu } from 'images/icons/menu_40px.svg';
 import { ReactComponent as Close } from 'images/icons/close_40px.svg';
+import { useSelector } from 'react-redux';
+import { UserNav } from './UserNav/UserNav';
+import { AuthNav } from './AuthNav/AuthNav';
 
 export const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal(state => !state);
+    const isLoggedIn = useSelector(selectIsLoggedIn);
 
   window.onscroll = () => changeHeaderBackground();
 
@@ -37,6 +42,7 @@ export const Header = () => {
               />
             </svg>
           </a>
+           {isLoggedIn ? <UserNav /> : <AuthNav />}
           <nav className={css.navigation}>
             <ul className={css.navigation__list + ' ' + css.list}>
               <li className={css.navigation__item}>
