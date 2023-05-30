@@ -8,6 +8,7 @@ import { theme } from 'components/baseStyles/Variables.styled';
 import schemas from 'components/Schemas/schemas';
 import { register } from 'redux/auth/operations';
 import css from './registerForm.module.scss';
+import { closeModalForm } from 'hooks/modalWindow';
 
 const RegisterForm = ({ setStatusLogin }) => {
   const [isShown, setIsShown] = useState(true);
@@ -27,6 +28,7 @@ const RegisterForm = ({ setStatusLogin }) => {
         phone: phone.toString(),
         location,
       }),
+      closeModalForm(),
     );
   };
 

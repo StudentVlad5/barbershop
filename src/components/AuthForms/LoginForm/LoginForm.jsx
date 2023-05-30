@@ -7,6 +7,7 @@ import { FaCheck, FaTimes } from 'react-icons/fa';
 import schemas from 'components/Schemas/schemas';
 import { logIn } from 'redux/auth/operations';
 import css from './loginForm.module.scss';
+import { closeModalForm } from 'hooks/modalWindow';
 
 const LoginForm = ({ setStatusLogin }) => {
   const [isShown, setIsShown] = useState(true); //
@@ -27,6 +28,7 @@ const LoginForm = ({ setStatusLogin }) => {
         password,
       }),
       hideForm(),
+      closeModalForm(),
     );
   };
   const formik = useFormik({
