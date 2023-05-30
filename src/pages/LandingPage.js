@@ -1,15 +1,15 @@
-import { SEO } from "utils/SEO";
-import Hero from "components/Sections/Hero/Hero";
-import About from "components/Sections/About/About";
-import Price from "components/Sections/Price/Price";
-import Benefits from "components/Sections/Benefits/Benefits";
-import Team from "components/Sections/Team/Team";
-import Gallery from "components/Sections/Gallery/Gallery";
-import Contacts from "components/Sections/Contacts/Contacts";
-import { ButtonForOrder } from "components/ButtonForOffer/ButtonForOrder.styled";
+import { SEO } from 'utils/SEO';
+import Hero from 'components/Sections/Hero/Hero';
+import About from 'components/Sections/About/About';
+import Price from 'components/Sections/Price/Price';
+import Benefits from 'components/Sections/Benefits/Benefits';
+import Team from 'components/Sections/Team/Team';
+import Gallery from 'components/Sections/Gallery/Gallery';
+import Contacts from 'components/Sections/Contacts/Contacts';
+import { ButtonForOrder } from 'components/ButtonForOffer/ButtonForOrder.styled';
 // import Schedule from "components/Schedule/Schedule";
-import { openModalForm } from "hooks/modalWindow";
-import { ModalWindowForForm } from "components/ModalWindowForForm/ModalWindowForForm";
+import { openModalForm } from 'hooks/modalWindow';
+import { ModalWindowForForm } from 'components/AuthForms/ModalWindowForForm/ModalWindowForForm';
 
 const LandingPage = () => {
   return (
@@ -22,7 +22,7 @@ const LandingPage = () => {
       <Team />
       <Gallery />
       <Contacts />
-      <ButtonForOrder onClick={(e) => openModalForm(e)}>
+      <ButtonForOrder onClick={e => openModalForm(e)}>
         Book service
       </ButtonForOrder>
       <ModalWindowForForm />

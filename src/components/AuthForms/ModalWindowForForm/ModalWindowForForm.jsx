@@ -1,14 +1,10 @@
 import ReactDOM from 'react-dom';
-import RegisterForm from '../AuthForms/RegistrateForm/RegistrateForm';
-import LoginForm from '../AuthForms/LoginForm/LoginForm';
+import RegisterForm from '../RegisterForm/RegisterForm';
+import LoginForm from '../LoginForm/LoginForm';
 import { ReactComponent as CloseIcon } from 'images/svg/icon_close.svg';
-import {
-  BackDrop,
-  ButtonClose,
-  FormContainer,
-} from './ModalWindowForForm.styles';
 import { closeModalForm } from 'hooks/modalWindow';
 import { useState } from 'react';
+import css from './modalWindowForForm.module.scss';
 
 export const ModalWindowForForm = () => {
   const [statusLogin, setStatusLogin] = useState(true);
@@ -19,22 +15,23 @@ export const ModalWindowForForm = () => {
   }
 
   return ReactDOM.createPortal(
-    <BackDrop onClick={closeModal}>
-      <FormContainer onClick={e => e.stopPropagation()}>
-        <ButtonClose
+    <div className={css.backdrop} onClick={closeModal}>
+      <div className={css.modal} onClick={e => e.stopPropagation()}>
+        <button
+          className={css['modal__btn-close']}
           type="button"
           onClick={closeModal}
           aria-label="Close modal"
         >
-          <CloseIcon />
-        </ButtonClose>
+          <CloseIcon className={css.modal__icon} width="40" height="40" />
+        </button>
         {statusLogin ? (
           <LoginForm setStatusLogin={setStatusLogin} />
         ) : (
           <RegisterForm setStatusLogin={setStatusLogin} />
         )}
-      </FormContainer>
-    </BackDrop>,
+      </div>
+    </div>,
     document.querySelector('#popup-register-root'),
   );
 };
