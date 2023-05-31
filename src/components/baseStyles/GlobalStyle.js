@@ -74,6 +74,7 @@ a{
 
     opacity: 1;
     visibility: visible;
+    display: flex;
 
     background-color: #0000006b;
     transition: opacity .3s linear 50ms, visibility .3s linear 50ms; 
@@ -90,6 +91,7 @@ a{
 
     opacity: 1;
     visibility: visible;
+    display: flex;
 
     background-color: #0000006b;
     transition: opacity .3s linear 50ms, visibility .3s linear 50ms; 
@@ -99,6 +101,7 @@ a{
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
+  display: none;
 
   width: 0;
   height: 0;
@@ -108,6 +111,7 @@ a{
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
+  display: none;
 
   width: 0;
   height: 0;

@@ -7,8 +7,8 @@ import Team from 'components/Sections/Team/Team';
 import Gallery from 'components/Sections/Gallery/Gallery';
 import Contacts from 'components/Sections/Contacts/Contacts';
 import { ButtonForOrder } from 'components/ButtonForOffer/ButtonForOrder.styled';
-// import Schedule from "components/Schedule/Schedule";
-import { openModalForm } from 'hooks/modalWindow';
+import Schedule from "components/Schedule/Schedule";
+import { openModalWindow } from 'hooks/modalWindow';
 import { ModalWindowForForm } from 'components/AuthForms/ModalWindowForForm/ModalWindowForForm';
 
 const LandingPage = () => {
@@ -22,10 +22,11 @@ const LandingPage = () => {
       <Team />
       <Gallery />
       <Contacts />
-      <ButtonForOrder onClick={e => openModalForm(e)}>
+      <ButtonForOrder onClick={e => openModalWindow(e)}>
         Book service
       </ButtonForOrder>
       <ModalWindowForForm />
+      <Schedule/>
     </>
   );
 };
