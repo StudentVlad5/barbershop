@@ -29,6 +29,7 @@ const LoginForm = ({ setStatusLogin }) => {
       }),
       hideForm(),
       closeModalForm(),
+      setIsLoading(false),
     );
   };
   const formik = useFormik({

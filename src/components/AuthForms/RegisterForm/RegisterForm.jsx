@@ -29,6 +29,7 @@ const RegisterForm = ({ setStatusLogin }) => {
         location,
       }),
       closeModalForm(),
+      setIsLoading(false),
     );
   };
 
