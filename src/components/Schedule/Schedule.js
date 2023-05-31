@@ -16,6 +16,8 @@ import {
   ResourceDirective,
   ExcelExport,
 } from "@syncfusion/ej2-react-schedule";
+import { TreeViewComponent } from "@syncfusion/ej2-react-navigations";
+import { closest, remove, addClass } from "@syncfusion/ej2-base";
 import { fieldsData } from "./Datasource";
 import ReactDOM from "react-dom";
 import { DataManager, ODataV4Adaptor, UrlAdaptor } from "@syncfusion/ej2-data";
@@ -42,6 +44,24 @@ const Schedule = () => {
   };
   const today = new Date();
   const scheduleObj = React.useRef(null);
+  const treeObj = React.useRef(null);
+  let isTreeItemDropped = false;
+  let draggedItemId = "";
+  let allowDragAndDrops = true;
+  const treeViewData = [
+    { Id: 1, text: "cut hair" },
+    { Id: 2, text: "cut hair" },
+    { Id: 3, text: "cut hair" },
+    { Id: 4, text: "cut hair" },
+    { Id: 5, text: "cut hair" },
+    { Id: 6, text: "cut hair" },
+  ];
+  let treeViewValues = {
+    dataSource: treeViewData,
+    id: "Id",
+    servises: "servises",
+    time: "time",
+  };
 
   const onExportClick = () => {
     let customFields = [
@@ -80,7 +100,6 @@ const Schedule = () => {
     e.preventDefault();
     closeModalWindow(e);
   }
-
   function resourceHeaderTemplate(props) {
     return (
       <div className="template-wrap">
@@ -91,6 +110,41 @@ const Schedule = () => {
       </div>
     );
   }
+
+  const treeTemplate = (props) => {
+    return (
+      <div id="waiting">
+        <div id="waitdetails">
+          <div id="waitlist">{props.Name}</div>
+          <div id="waitcategory">{props.DepartmentName}</div>
+        </div>
+      </div>
+    );
+  };
+  const onItemDrag = (event) => {
+    if (scheduleObj.current.isAdaptive) {
+      let classElement = scheduleObj.current.element.querySelector(
+        ".e-device-hover"
+      );
+      if (classElement) {
+        classElement.classList.remove("e-device-hover");
+      }
+      if (event.target.classList.contains("e-work-cells")) {
+        addClass([event.target], "e-device-hover");
+      }
+    }
+    if (document.body.style.cursor === "not-allowed") {
+      document.body.style.cursor = "";
+    }
+    if (event.name === "nodeDragging") {
+      let dragElementIcon = document.querySelectorAll(
+        ".e-drag-item.treeview-external-drag .e-icon-expandable"
+      );
+      for (let i = 0; i < dragElementIcon.length; i++) {
+        dragElementIcon[i].style.display = "none";
+      }
+    }
+  };
 
   const onActionBegin = (args) => {
     if (args.requestType === "eventCreate" && args.data.length > 0) {
@@ -111,8 +165,52 @@ const Schedule = () => {
       };
       args.items.push(exportItem);
     }
+    if (args.requestType === "eventCreate" && isTreeItemDropped) {
+      let treeViewdata = treeObj.current.fields.dataSource;
+      const filteredPeople = treeViewdata.filter(
+        (item) => item.Id !== parseInt(draggedItemId, 10)
+      );
+      treeObj.current.fields.dataSource = filteredPeople;
+      let elements = document.querySelectorAll(
+        ".e-drag-item.treeview-external-drag"
+      );
+      for (let i = 0; i < elements.length; i++) {
+        remove(elements[i]);
+      }
+    }
   };
-
+  const onTreeDragStop = (event) => {
+    let treeElement = closest(event.target, ".e-treeview");
+    let classElement = scheduleObj.current.element.querySelector(
+      ".e-device-hover"
+    );
+    if (classElement) {
+      classElement.classList.remove("e-device-hover");
+    }
+    if (!treeElement) {
+      event.cancel = true;
+      let scheduleElement = closest(event.target, ".e-content-wrap");
+      if (scheduleElement) {
+        let treeviewData = treeObj.current.fields.dataSource;
+        if (event.target.classList.contains("e-work-cells")) {
+          const filteredData = treeviewData.filter(
+            (item) => item.Id === parseInt(event.draggedNodeData.id, 10)
+          );
+          let cellData = scheduleObj.current.getCellDetails(event.target);
+          let eventData = {
+            Name: filteredData[0].Name,
+            StartTime: cellData.startTime,
+            EndTime: cellData.endTime,
+            IsAllDay: cellData.isAllDay,
+            Description: filteredData[0].Description,
+          };
+          scheduleObj.current.addEvent(eventData);
+          isTreeItemDropped = true;
+          draggedItemId = event.draggedNodeData.id;
+        }
+      }
+    }
+  };
   return ReactDOM.createPortal(
     <div className={css.backdrop} onClick={closeModal}>
       <div
@@ -139,6 +237,7 @@ const Schedule = () => {
                 today.getDate().toString()
               )
             }
+            drag={onItemDrag}
             resourceHeaderTemplate={resourceHeaderTemplate}
             group={group}
             eventSettings={eventSettings}
@@ -160,6 +259,7 @@ const Schedule = () => {
                 today.getDate().toString()
               )
             }
+            timeFormat="HH:mm"
           >
             <ResourcesDirective>
               <ResourceDirective
@@ -203,6 +303,18 @@ const Schedule = () => {
               ]}
             />
           </ScheduleComponent>
+        </div>
+        <div className="treeview-title-container">Services list</div>
+        <div className="treeview-component">
+          <TreeViewComponent
+            fields={treeViewValues}
+            ref={treeObj}
+            cssClass="treeview-external-drag"
+            nodeTemplate={treeTemplate}
+            nodeDragStop={onTreeDragStop}
+            nodeDragging={onItemDrag}
+            allowDragAndDrop={allowDragAndDrops}
+          />
         </div>
       </div>
     </div>,

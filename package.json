@@ -6,8 +6,10 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@syncfusion/ej2-base": "^21.2.3",
-    "@syncfusion/ej2-data": "^21.2.5",
+    "@syncfusion/ej2-data": "^21.2.8",
+    "@syncfusion/ej2-inputs": "^21.2.8",
     "@syncfusion/ej2-react-buttons": "^21.2.5",
+    "@syncfusion/ej2-react-navigations": "^21.2.8",
     "@syncfusion/ej2-react-schedule": "^21.2.5",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^14.0.0",
