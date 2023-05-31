@@ -5,15 +5,16 @@ import {
   Week,
   WorkWeek,
   Month,
-  Agenda,
-  MonthAgenda,
-  TimelineViews,
-  TimelineMonth,
+  // Agenda,
+  // MonthAgenda,
+  // TimelineViews,
+  // TimelineMonth,
   Inject,
   ViewsDirective,
   ViewDirective,
   ResourcesDirective,
   ResourceDirective,
+  ExcelExport,
 } from "@syncfusion/ej2-react-schedule";
 import { fieldsData } from "./Datasource";
 import ReactDOM from "react-dom";
@@ -40,6 +41,20 @@ const Schedule = () => {
     fields: fieldsData,
   };
   const today = new Date();
+  const scheduleObj = React.useRef(null);
+
+  const onExportClick = () => {
+    let customFields = [
+      { name: "Id", text: "Id" },
+      { name: "Subject", text: "Summary" },
+      { name: "StartTime", text: "First Date" },
+      { name: "EndTime", text: "Last Date" },
+      { name: "Location", text: "Place" },
+      { name: "OwnerId", text: "Owners" },
+    ];
+    let exportValues = { fieldsInfo: customFields, includeOccurrences: true };
+    scheduleObj.current.exportToExcel(exportValues);
+  };
 
   function getBarberName(value) {
     return value.resourceData
@@ -77,6 +92,27 @@ const Schedule = () => {
     );
   }
 
+  const onActionBegin = (args) => {
+    if (args.requestType === "eventCreate" && args.data.length > 0) {
+      let eventData = args.data[0];
+      let eventField = scheduleObj.current.eventFields;
+      let startDate = eventData[eventField.startTime];
+      let endDate = eventData[eventField.endTime];
+      args.cancel = !scheduleObj.current.isSlotAvailable(startDate, endDate);
+    }
+    if (args.requestType === "toolbarItemRendering") {
+      let exportItem = {
+        align: "Right",
+        showTextOn: "Both",
+        prefixIcon: "e-icon-schedule-excel-export",
+        text: "Excel Export",
+        cssClass: "e-excel-export",
+        click: onExportClick,
+      };
+      args.items.push(exportItem);
+    }
+  };
+
   return ReactDOM.createPortal(
     <div className={css.backdrop} onClick={closeModal}>
       <div
@@ -108,6 +144,22 @@ const Schedule = () => {
             eventSettings={eventSettings}
             enablePersistence={true}
             rowAutoHeight={true}
+            actionBegin={onActionBegin}
+            ref={scheduleObj}
+            minDate={
+              new Date(
+                today.getFullYear().toString(),
+                today.getMonth().toString(),
+                today.getDate().toString()
+              )
+            }
+            maxDate={
+              new Date(
+                (today.getFullYear() + 1).toString(),
+                today.getMonth().toString(),
+                today.getDate().toString()
+              )
+            }
           >
             <ResourcesDirective>
               <ResourceDirective
@@ -122,18 +174,19 @@ const Schedule = () => {
                 workDaysField="workDays"
                 allowMultiple={true}
                 groupIDField="groupId"
+                cssClass="excel-export"
               ></ResourceDirective>
             </ResourcesDirective>
             <ViewsDirective>
-              <ViewDirective option="Day" startHour="7:00" endHour="21:00" />
-              <ViewDirective option="Week" startHour="7:00" endHour="21:00" />
+              <ViewDirective option="Day" startHour="9:00" endHour="22:00" />
+              <ViewDirective option="Week" startHour="9:00" endHour="22:00" />
               <ViewDirective
                 option="WorkWeek"
-                startHour="7:00"
-                endHour="21:00"
+                startHour="9:00"
+                endHour="22:00"
               />
               <ViewDirective option="Month" showWeekend={true} />
-              <ViewDirective option="Agenda" />
+              {/* <ViewDirective option="Agenda" /> */}
             </ViewsDirective>
 
             <Inject
@@ -142,10 +195,11 @@ const Schedule = () => {
                 Week,
                 WorkWeek,
                 Month,
-                Agenda,
-                MonthAgenda,
-                TimelineViews,
-                TimelineMonth,
+                ExcelExport,
+                // Agenda,
+                // MonthAgenda,
+                // TimelineViews,
+                // TimelineMonth,
               ]}
             />
           </ScheduleComponent>
