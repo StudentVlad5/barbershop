@@ -78,3 +78,20 @@
         transform: translateY(5px);
     }
 }
+
+@keyframes glowing {
+    0% {
+        background-color: #FF6C00;
+        box-shadow: 0 0 3px #FF6C00;
+    }
+
+    50% {
+        background-color: gray;
+        box-shadow: 0 0 10px gray;
+    }
+
+    100% {
+        background-color: #FF6C00;
+        box-shadow: 0 0 3px #FF6C00;
+    }
+}
