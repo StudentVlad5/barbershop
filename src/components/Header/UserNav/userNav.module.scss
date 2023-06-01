@@ -1,0 +1,18 @@
+@import '../../base/main';
+
+.avatar {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+
+    fill: var(--color-text-white);
+    border-radius: 50%;
+    cursor: pointer;
+
+    @include mq(tablet) {
+        width: 28px;
+        height: 28px;
+    }
+}

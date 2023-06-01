@@ -25,13 +25,24 @@
     &:active {
         color: var(--color-text-white);
         background-color: var(--color-accent);
+        text-decoration: none;
     }
 
     &--mode-light {
         color: var(--color-text-main);
+
+        &>svg {
+            fill: currentColor;
+        }
     }
 
     &--mode-dark {
         color: var(--color-text-white);
+    }
+
+    &--size-m {
+        display: flex;
+        justify-content: center;
+        padding: 10px 25px;
     }
 }

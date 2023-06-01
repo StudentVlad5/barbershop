@@ -1,30 +1,43 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { ReactComponent as IconUser } from 'images/svg/icon_user.svg';
 import { getPermission, selectUser, getUserAvatar } from 'redux/auth/selectors';
-import {
-  MobileAccountButton,
-  AccountButton,
-  IconUser,
-  AvatarUser,
-} from './UserNav.styled';
-// import { useTranslation } from 'react-i18next';
+import css from './userNav.module.scss';
 
 export const MobileUserNav = () => {
   const user = useSelector(selectUser);
   const avatar = useSelector(getUserAvatar);
   const permission = useSelector(getPermission);
-  // const { t } = useTranslation();
 
   return permission === 'admin' ? (
-    <MobileAccountButton>
-      {avatar ? <AvatarUser src={avatar} alt="User" /> : <IconUser />}
+    <NavLink
+      to="/admin"
+      className={
+        css.btn + ' ' + css['btn--mode-light'] + ' ' + css['btn--size-m']
+      }
+    >
+      {avatar ? (
+        <img className={css.avatar} src={avatar} alt="User" />
+      ) : (
+        <IconUser className={css.avatar} />
+      )}
       {user}
-    </MobileAccountButton>
+    </NavLink>
   ) : (
-    <MobileAccountButton>
-      {avatar ? <AvatarUser src={avatar} alt="User" /> : <IconUser />}
+    <NavLink
+      to="/user"
+      className={
+        css.btn + ' ' + css['btn--mode-light'] + ' ' + css['btn--size-m']
+      }
+    >
+      {avatar ? (
+        <img className={css.avatar} src={avatar} alt="User" />
+      ) : (
+        <IconUser className={css.avatar} />
+      )}
       {user}
-    </MobileAccountButton>
+    </NavLink>
   );
 };
 
@@ -34,14 +47,32 @@ export const UserNav = () => {
   const permission = useSelector(getPermission);
 
   return permission === 'admin' ? (
-    <AccountButton>
-      {avatar ? <AvatarUser src={avatar} alt="User" /> : <IconUser />}
+    <NavLink
+      to="/admin"
+      className={
+        css.btn + ' ' + css['btn--mode-dark'] + ' ' + css['btn--size-m']
+      }
+    >
+      {avatar ? (
+        <img className={css.avatar} src={avatar} alt="User" />
+      ) : (
+        <IconUser className={css.avatar} />
+      )}
       {user}
-    </AccountButton>
+    </NavLink>
   ) : (
-    <AccountButton>
-      {avatar ? <AvatarUser src={avatar} alt="User" /> : <IconUser />}
+    <NavLink
+      to="/user"
+      className={
+        css.btn + ' ' + css['btn--mode-dark'] + ' ' + css['btn--size-m']
+      }
+    >
+      {avatar ? (
+        <img className={css.avatar} src={avatar} alt="User" />
+      ) : (
+        <IconUser className={css.avatar} />
+      )}
       {user}
-    </AccountButton>
+    </NavLink>
   );
 };

@@ -2,18 +2,12 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { openModalForm } from 'hooks/modalWindow';
 import css from './mobileMenu.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { logOut } from 'redux/auth/operations';
+import { MobileUserNav } from '../UserNav/UserNav';
 
 const MobileMenu = ({ onClose }) => {
-
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const dispatch = useDispatch();
-
-  const logOutOnButton = () => {
-    dispatch(logOut())
-  }
 
   useEffect(() => {
     // closes modal with a click on the root
@@ -95,19 +89,17 @@ const MobileMenu = ({ onClose }) => {
       >
         +38 044 111 11 11
       </a>
-      { !isLoggedIn ? <button
-        className={css.btn + ' ' + css['btn--mode-light']}
-        type="button"
-        onClick={e => openModalForm(e)}
-      >
-        Log in
-      </button> : <button
-        className={css.btn + ' ' + css['btn--mode-light']}
-        type="button"
-        onClick={logOutOnButton}
-      >
-        Log out
-      </button>}
+      {!isLoggedIn ? (
+        <button
+          className={css.btn + ' ' + css['btn--mode-light']}
+          type="button"
+          onClick={e => openModalForm(e)}
+        >
+          log in
+        </button>
+      ) : (
+        <MobileUserNav />
+      )}
       <ul
         className={
           css['mobile-menu__socials'] + ' ' + css.socials + ' ' + css.list
