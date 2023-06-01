@@ -42,6 +42,7 @@ const Schedule = () => {
     dataSource: dataManager,
     fields: fieldsData,
   };
+
   const today = new Date();
   const scheduleObj = React.useRef(null);
   const treeObj = React.useRef(null);
@@ -49,18 +50,19 @@ const Schedule = () => {
   let draggedItemId = "";
   let allowDragAndDrops = true;
   const treeViewData = [
-    { Id: 1, text: "cut hair" },
-    { Id: 2, text: "cut hair" },
-    { Id: 3, text: "cut hair" },
-    { Id: 4, text: "cut hair" },
-    { Id: 5, text: "cut hair" },
-    { Id: 6, text: "cut hair" },
+    { Id: 1, subject: "cut hair", time: "30", OwnerId: "2" },
+    { Id: 2, subject: "cut hair", time: "30", OwnerId: "2" },
+    { Id: 3, subject: "cut hair", time: "30", OwnerId: "2" },
+    { Id: 4, subject: "cut hair", time: "30", OwnerId: "2" },
+    { Id: 5, subject: "cut hair", time: "30", OwnerId: "2" },
+    { Id: 6, subject: "cut hair", time: "30", OwnerId: "2" },
   ];
   let treeViewValues = {
     dataSource: treeViewData,
     id: "Id",
-    servises: "servises",
+    text: "subject",
     time: "time",
+    OwnerId: "OwnerId",
   };
 
   const onExportClick = () => {
@@ -100,6 +102,7 @@ const Schedule = () => {
     e.preventDefault();
     closeModalWindow(e);
   }
+
   function resourceHeaderTemplate(props) {
     return (
       <div className="template-wrap">
@@ -114,13 +117,14 @@ const Schedule = () => {
   const treeTemplate = (props) => {
     return (
       <div id="waiting">
-        <div id="waitdetails">
-          <div id="waitlist">{props.Name}</div>
-          <div id="waitcategory">{props.DepartmentName}</div>
+        <div id="waitdetails" style={{ display: "flex", flexDirection: "row" }}>
+          <div id="waitlist">{props.Id}</div>
+          <div id="waitcategory">{props.subject}</div>
         </div>
       </div>
     );
   };
+
   const onItemDrag = (event) => {
     if (scheduleObj.current.isAdaptive) {
       let classElement = scheduleObj.current.element.querySelector(
@@ -197,12 +201,14 @@ const Schedule = () => {
             (item) => item.Id === parseInt(event.draggedNodeData.id, 10)
           );
           let cellData = scheduleObj.current.getCellDetails(event.target);
+          console.log(filteredData);
           let eventData = {
-            Name: filteredData[0].Name,
+            Subject: filteredData[0].subject,
             StartTime: cellData.startTime,
             EndTime: cellData.endTime,
             IsAllDay: cellData.isAllDay,
-            Description: filteredData[0].Description,
+            Id: filteredData[0].Id,
+            OwnerId: filteredData[0].OwnerId,
           };
           scheduleObj.current.addEvent(eventData);
           isTreeItemDropped = true;
@@ -211,6 +217,7 @@ const Schedule = () => {
       }
     }
   };
+
   return ReactDOM.createPortal(
     <div className={css.backdrop} onClick={closeModal}>
       <div
@@ -229,7 +236,7 @@ const Schedule = () => {
           <ScheduleComponent
             height="550px"
             width="100%"
-            currentView="WorkWeek"
+            currentView="Week"
             selectedDate={
               new Date(
                 today.getFullYear().toString(),

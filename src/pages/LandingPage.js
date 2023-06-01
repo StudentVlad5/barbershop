@@ -22,7 +22,7 @@ const LandingPage = () => {
       <Team />
       <Gallery />
       <Contacts />
-      <ButtonForOrder onClick={e => openModalWindow(e)}>
+      <ButtonForOrder onClick={e => {openModalWindow(e), document.querySelector('[aria-label="Day"]').click()}}>
         Book service
       </ButtonForOrder>
       <ModalWindowForForm />
