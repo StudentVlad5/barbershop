@@ -45,4 +45,31 @@
         justify-content: center;
         padding: 10px 25px;
     }
+
+    &--form-circle {
+        display: inline-block;
+
+        width: 100px;
+        height: 100px;
+        min-width: 100px;
+        min-height: 100px;
+        padding: 10px 10px;
+
+        font-size: 18px;
+        color: var(--color-text-white);
+        text-align: center;
+        text-decoration: none;
+        text-transform: none;
+
+        background-color: var(--color-accent);
+        border-radius: 50%;
+        border: none;
+
+        cursor: pointer;
+
+        @include mq(desktop) {
+            width: 130px;
+            height: 130px;
+        }
+    }
 }

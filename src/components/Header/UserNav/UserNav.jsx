@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as IconUser } from 'images/svg/icon_user.svg';
+import { ReactComponent as IconUser } from 'images/icons/icon_user.svg';
 import { getPermission, selectUser, getUserAvatar } from 'redux/auth/selectors';
 import css from './userNav.module.scss';
 

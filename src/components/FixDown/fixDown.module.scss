@@ -1,0 +1,31 @@
+@import '../base/main';
+
+.fix-down {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 100vw;
+
+    & .container {
+        position: relative;
+        width: 100%;
+
+        @include mq(desktop) {
+            max-width: 1300px;
+        }
+    }
+
+    & .scroll-to-top {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    & .btn--form-circle {
+        position: absolute;
+        bottom: 50px;
+        right: 50px;
+
+        animation: glowing 1300ms infinite;
+    }
+}

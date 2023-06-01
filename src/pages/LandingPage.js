@@ -6,10 +6,9 @@ import Benefits from 'components/Sections/Benefits/Benefits';
 import Team from 'components/Sections/Team/Team';
 import Gallery from 'components/Sections/Gallery/Gallery';
 import Contacts from 'components/Sections/Contacts/Contacts';
-import { ButtonForOrder } from 'components/ButtonForOffer/ButtonForOrder.styled';
-import Schedule from "components/Schedule/Schedule";
-import { openModalWindow } from 'hooks/modalWindow';
+import Schedule from 'components/Schedule/Schedule';
 import { ModalWindowForForm } from 'components/AuthForms/ModalWindowForForm/ModalWindowForForm';
+import FixDown from 'components/FixDown/FixDown';
 
 const LandingPage = () => {
   return (
@@ -22,11 +21,9 @@ const LandingPage = () => {
       <Team />
       <Gallery />
       <Contacts />
-      <ButtonForOrder onClick={e => {openModalWindow(e), document.querySelector('[aria-label="Day"]').click()}}>
-        Book service
-      </ButtonForOrder>
+      <FixDown />
       <ModalWindowForForm />
-      <Schedule/>
+      <Schedule />
     </>
   );
 };
