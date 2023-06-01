@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm';
-import { ReactComponent as CloseIcon } from 'images/svg/icon_close.svg';
+import { ReactComponent as CloseIcon } from 'images/icons/close_40px.svg';
 import { closeModalForm } from 'hooks/modalWindow';
 import { useState } from 'react';
 import css from './modalWindowForForm.module.scss';

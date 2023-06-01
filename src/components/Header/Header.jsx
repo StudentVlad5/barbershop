@@ -3,18 +3,18 @@ import css from './header.module.scss';
 import MobileMenu from './MobileMenu/MobileMenu';
 import { openModalForm } from 'hooks/modalWindow';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { useSelector } from 'react-redux';
+import { UserNav } from './UserNav/UserNav';
 
 import { ReactComponent as Logo } from 'images/icons/logo.svg';
 import { ReactComponent as Menu } from 'images/icons/menu_40px.svg';
 import { ReactComponent as Close } from 'images/icons/close_40px.svg';
-import { useSelector } from 'react-redux';
-import { UserNav } from './UserNav/UserNav';
-
 
 export const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal(state => !state);
-    const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   window.onscroll = () => changeHeaderBackground();
 
@@ -42,7 +42,6 @@ export const Header = () => {
               />
             </svg>
           </a>
-           {isLoggedIn && <UserNav />}
           <nav className={css.navigation}>
             <ul className={css.navigation__list + ' ' + css.list}>
               <li className={css.navigation__item}>
@@ -91,13 +90,17 @@ export const Header = () => {
             >
               +38 044 111 11 11
             </a>
-            <button
-              className={css.btn + ' ' + css['btn--mode-dark']}
-              type="button"
-              onClick={e => openModalForm(e)}
-            >
-              log in
-            </button>
+            {!isLoggedIn ? (
+              <button
+                className={css.btn + ' ' + css['btn--mode-dark']}
+                type="button"
+                onClick={e => openModalForm(e)}
+              >
+                log in
+              </button>
+            ) : (
+              <UserNav />
+            )}
           </div>
           <button
             className={css['mobile-btn']}
