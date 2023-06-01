@@ -156,6 +156,7 @@ const Schedule = () => {
       let eventField = scheduleObj.current.eventFields;
       let startDate = eventData[eventField.startTime];
       let endDate = eventData[eventField.endTime];
+      console.log(eventData[eventField.startTime])
       args.cancel = !scheduleObj.current.isSlotAvailable(startDate, endDate);
     }
     if (args.requestType === "toolbarItemRendering") {
@@ -201,7 +202,6 @@ const Schedule = () => {
             (item) => item.Id === parseInt(event.draggedNodeData.id, 10)
           );
           let cellData = scheduleObj.current.getCellDetails(event.target);
-          console.log(filteredData);
           let eventData = {
             Subject: filteredData[0].subject,
             StartTime: cellData.startTime,
