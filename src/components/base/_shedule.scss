@@ -1,0 +1,11 @@
+:global {
+    .e-list-parent {
+        display: flex;
+        flex-wrap: wrap;
+        width: auto;
+    }
+
+    .e-fullrow {
+        display: none;
+    }
+}

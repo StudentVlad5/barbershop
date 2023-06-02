@@ -16,6 +16,18 @@
         transition: opacity .3s linear 50ms, visibility .3s linear 50ms;
     }
 
+    #popup-root {
+        &.is-hide {
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            display: none;
+
+            width: 0;
+            height: 0;
+        }
+    }
+
     #popup-register-root {
         position: fixed;
         top: 0;
@@ -33,17 +45,7 @@
         transition: opacity .3s linear 50ms, visibility .3s linear 50ms;
     }
 
-    #popup-root {
-        &.is-hide {
-            pointer-events: none;
-            opacity: 0;
-            visibility: hidden;
-            display: none;
 
-            width: 0;
-            height: 0;
-        }
-    }
 
     #popup-register-root {
         &.is-hide {
