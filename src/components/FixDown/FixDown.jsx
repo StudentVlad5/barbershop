@@ -16,7 +16,7 @@ const FixDown = () => {
           aria-label="Book a service"
           onClick={e => {
             openModalWindow(e),
-              document.querySelector('[aria-label="Day"]').click();
+              setTimeout(()=>{document.querySelector('[aria-label="Day"]').click()},250)
           }}
         >
           Book service
