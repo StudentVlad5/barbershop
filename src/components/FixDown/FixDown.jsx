@@ -6,22 +6,22 @@ const FixDown = () => {
   window.onscroll = () => changeHeaderBackground();
 
   function changeHeaderBackground() {
-    const fixDown = document.getElementById('fix-down');
+    const scroll = document.getElementById('scroll');
     const header = document.getElementById('header');
     const headerOffsetTrigger = header.offsetTop;
     const pageOffset = window.scrollY;
 
     if (pageOffset > headerOffsetTrigger) {
-      fixDown.classList.add(css['js-no-transparency']);
+      scroll.classList.remove(css['is-hide']);
     } else {
-      fixDown.classList.remove(css['js-no-transparency']);
+      scroll.classList.add(css['is-hide']);
     }
   }
 
   return (
-    <div className={css['fix-down']} id="fix-down">
+    <div className={css['fix-down']}>
       <div className={css.container}>
-        <a className={css['scroll-to-top']} href="#hero">
+        <a className={css['scroll-to-top']} href="#hero" id="scroll">
           <svg className={css['arrow-top']}>
             <use href={sprite + '#circle-up'}></use>
           </svg>
@@ -33,7 +33,9 @@ const FixDown = () => {
           aria-label="Book a service"
           onClick={e => {
             openModalWindow(e),
-              setTimeout(()=>{document.querySelector('[aria-label="Day"]').click()},250)
+              setTimeout(() => {
+                document.querySelector('[aria-label="Day"]').click();
+              }, 250);
           }}
         >
           Book service

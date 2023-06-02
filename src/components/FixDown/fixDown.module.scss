@@ -37,15 +37,22 @@
     bottom: 125px;
     right: 44px;
 
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     margin-left: auto;
 
+    background-color: transparent;
     cursor: pointer;
 
-    &.js-no-transparency {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    @include mq(desktop) {
+        bottom: 160px;
+        right: 55px;
+    }
+
+    &.is-hide {
+        display: none;
     }
 }
 
