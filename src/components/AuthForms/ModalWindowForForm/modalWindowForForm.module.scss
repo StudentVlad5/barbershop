@@ -36,7 +36,7 @@
     justify-content: center;
     align-items: center;
 
-    padding: 30px;
+    padding: 50px 30px 30px;
 
     width: 100%;
     max-width: calc(100vw - 60px);
@@ -70,28 +70,19 @@
     }
 }
 
-.modal__title {
-    margin-bottom: 12px;
-
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 1.15;
-    text-align: center;
-}
-
 // ========== modal-button ==========
 
 .modal__btn-close {
     position: absolute;
-    top: 28px;
-    right: 28px;
+    top: 18px;
+    right: 18px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 
     color: var(--color-text-black);
     background: var(--color-background-main);

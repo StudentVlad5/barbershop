@@ -8,7 +8,6 @@ export const App = () => {
   // const dispatch = useDispatch();
   // const isRefreshing = useSelector(selectIsRefreshing);
   // const permission = useSelector(getPermission);
-  // const { t } = useTranslation();
 
   // useEffect(() => {
   //   dispatch(refreshUser());
@@ -20,18 +19,8 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<LandingPage />} />
-            {/*
-            <Route
-              path="register"
-              element={
-                <RestrictedRoute
-                  redirectTo="/user"
-                  component={<RegisterPage />}
-                />
-              }
-            />
 
-            {permission === 'admin' ? (
+            {/* {permission === 'admin' ? (
               <Route
                 path="login"
                 element={

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ReactDOM from 'react-dom';
 import {
   ScheduleComponent,
   Day,
@@ -18,12 +19,11 @@ import {
 } from '@syncfusion/ej2-react-schedule';
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import { closest, remove, addClass } from '@syncfusion/ej2-base';
-import { fieldsData } from './Datasource';
-import ReactDOM from 'react-dom';
 import { DataManager, ODataV4Adaptor, UrlAdaptor } from '@syncfusion/ej2-data';
+import { fieldsData } from './Datasource';
 import { closeModalWindow } from 'hooks/modalWindow';
+import sprite from 'images/sprite.svg';
 import css from './shedule.module.scss';
-import { ReactComponent as CloseIcon } from 'images/icons/close_40px.svg';
 
 const Schedule = () => {
   let dataManager = new DataManager({
@@ -155,7 +155,7 @@ const Schedule = () => {
       let eventField = scheduleObj.current.eventFields;
       let startDate = eventData[eventField.startTime];
       let endDate = eventData[eventField.endTime];
-      console.log(eventData[eventField.startTime])
+      console.log(eventData[eventField.startTime]);
       args.cancel = !scheduleObj.current.isSlotAvailable(startDate, endDate);
     }
     if (args.requestType === 'toolbarItemRendering') {
@@ -225,7 +225,9 @@ const Schedule = () => {
           onClick={closeModal}
           aria-label="Close modal"
         >
-          <CloseIcon style={{ fill: 'black', width: '25px', height: '25px' }} />
+          <svg width="25px" height="25px">
+            <use href={sprite + '#close_40px'}></use>
+          </svg>
         </button>
         <div>
           <ScheduleComponent

@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useFormik, Formik, Form, Field } from 'formik';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
-import { theme } from 'components/baseStyles/Variables.styled';
 import schemas from 'components/Schemas/schemas';
 import { register } from 'redux/auth/operations';
 import css from './registerForm.module.scss';
@@ -107,12 +106,12 @@ const RegisterForm = ({ setStatusLogin }) => {
               {!formik.values.email ? null : !formik.errors.email ? (
                 <FaCheck
                   className={css['form__icon-check']}
-                  color={theme.light.success}
+                  color={'#3CBC81'}
                 />
               ) : (
                 <FaTimes
                   className={css['form__icon-check']}
-                  color={theme.light.error}
+                  color={'#E2001A'}
                 />
               )}
               {formik.errors.email && formik.touched.email ? (
@@ -211,12 +210,12 @@ const RegisterForm = ({ setStatusLogin }) => {
               {!formik.values.name ? null : !formik.errors.name ? (
                 <FaCheck
                   className={css['form__icon-check']}
-                  color={theme.light.success}
+                  color={'#3CBC81'}
                 />
               ) : (
                 <FaTimes
                   className={css['form__icon-check']}
-                  color={theme.light.error}
+                  color={'#E2001A'}
                 />
               )}
               {formik.errors.name && formik.touched.name ? (
@@ -248,12 +247,12 @@ const RegisterForm = ({ setStatusLogin }) => {
               {!formik.values.location ? null : !formik.errors.location ? (
                 <FaCheck
                   className={css['form__icon-check']}
-                  color={theme.light.success}
+                  color={'#3CBC81'}
                 />
               ) : (
                 <FaTimes
                   className={css['form__icon-check']}
-                  color={theme.light.error}
+                  color={'#E2001A'}
                 />
               )}
               {formik.errors.location && formik.touched.location ? (
@@ -284,12 +283,12 @@ const RegisterForm = ({ setStatusLogin }) => {
               {!formik.values.phone ? null : !formik.errors.phone ? (
                 <FaCheck
                   className={css['form__icon-check']}
-                  color={theme.light.success}
+                  color={'#3CBC81'}
                 />
               ) : (
                 <FaTimes
                   className={css['form__icon-check']}
-                  color={theme.light.error}
+                  color={'#E2001A'}
                 />
               )}
               {formik.errors.phone && formik.touched.phone ? (

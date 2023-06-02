@@ -7,6 +7,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 25px;
 
     width: 280px;
     margin: 0 auto;
@@ -14,6 +15,7 @@
     @include mq(tablet) {
         width: 608px;
         margin: 0 auto;
+        gap: 32px;
     }
 
     @include mq(desktop) {
@@ -26,7 +28,7 @@
 }
 
 .form__title {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 
     font-weight: 700;
     font-size: 20px;
@@ -41,7 +43,7 @@
 }
 
 .form__wrapper {
-    margin-bottom: 32px;
+    position: relative;
 }
 
 .form__input {
@@ -93,18 +95,15 @@
 .form__icon-check {
     display: inline-block;
     position: absolute;
-    width: 20px;
-    height: 20px;
     right: 6%;
     top: 62%;
+
+    width: 20px;
+    height: 20px;
+
     transform: translateY(-80%);
     color: grey;
     cursor: pointer;
-
-    svg {
-        width: inherit;
-        height: inherit;
-    }
 }
 
 .form__icon-show {
@@ -128,8 +127,8 @@
     position: relative;
 
     width: 100%;
-    margin: 8px 0 40px 0;
-    padding: 11px 0 12px 14px;
+    margin-bottom: 20px;
+    padding: 12px;
 
     text-align: center;
     color: var(--color-text-white);
@@ -181,13 +180,14 @@
 
     @include mq(tablet) {
         width: 458px;
+        margin-bottom: 40px;
         font-size: 20px;
     }
 }
 
 .form__btn--back {
     width: 100%;
-    margin: -24px 0 40px 0;
+    margin: -24px 0 20px 0;
     padding: 11px 0 12px 14px;
 
     text-align: center;
@@ -227,6 +227,7 @@
 
     @include mq(tablet) {
         width: 458px;
+        margin: -24px 0 40px 0;
         font-size: 20px;
     }
 }
