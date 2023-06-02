@@ -20,7 +20,7 @@ import {
 import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import { closest, remove, addClass } from '@syncfusion/ej2-base';
 import { DataManager, ODataV4Adaptor, UrlAdaptor } from '@syncfusion/ej2-data';
-import { fieldsData } from './Datasource';
+import { fieldsData, treeViewData, timeServices } from './Datasource';
 import { closeModalWindow } from 'hooks/modalWindow';
 import sprite from 'images/sprite.svg';
 import css from './shedule.module.scss';
@@ -49,19 +49,11 @@ const Schedule = () => {
   let isTreeItemDropped = false;
   let draggedItemId = '';
   let allowDragAndDrops = true;
-  const treeViewData = [
-    { Id: 1, subject: 'cut hair', time: '30', OwnerId: '2' },
-    { Id: 2, subject: 'cut hair', time: '30', OwnerId: '2' },
-    { Id: 3, subject: 'cut hair', time: '30', OwnerId: '2' },
-    { Id: 4, subject: 'cut hair', time: '30', OwnerId: '2' },
-    { Id: 5, subject: 'cut hair', time: '30', OwnerId: '2' },
-    { Id: 6, subject: 'cut hair', time: '30', OwnerId: '2' },
-  ];
+
   let treeViewValues = {
     dataSource: treeViewData,
     id: 'Id',
     text: 'subject',
-    time: 'time',
     OwnerId: 'OwnerId',
   };
 
@@ -118,8 +110,9 @@ const Schedule = () => {
     return (
       <div id="waiting">
         <div id="waitdetails" style={{ display: 'flex', flexDirection: 'row' }}>
-          <div id="waitlist">{props.Id}</div>
+          <div id="waitlist"></div>
           <div id="waitcategory">{props.subject}</div>
+          <div id="waittime"> : {timeServices[props.Id]} minutes</div>
         </div>
       </div>
     );
@@ -153,9 +146,11 @@ const Schedule = () => {
     if (args.requestType === 'eventCreate' && args.data.length > 0) {
       let eventData = args.data[0];
       let eventField = scheduleObj.current.eventFields;
+      eventField.StartTimezone = 'Europe/Kiev';
+      eventField.EndTimezone = 'Europe/Kiev';
       let startDate = eventData[eventField.startTime];
       let endDate = eventData[eventField.endTime];
-      console.log(eventData[eventField.startTime]);
+      // console.log(eventData[eventField.startTime]);
       args.cancel = !scheduleObj.current.isSlotAvailable(startDate, endDate);
     }
     if (args.requestType === 'toolbarItemRendering') {
@@ -200,13 +195,27 @@ const Schedule = () => {
             item => item.Id === parseInt(event.draggedNodeData.id, 10),
           );
           let cellData = scheduleObj.current.getCellDetails(event.target);
+          //
+          let endDate = new Date(cellData.startTime);
+
+          console.log(endDate);
+          endDate = new Date(
+            endDate.setMinutes(
+              endDate.getMinutes() + timeServices[filteredData[0].Id],
+            ),
+          );
+          console.log(endDate);
+
+          // set time for items
           let eventData = {
             Subject: filteredData[0].subject,
             StartTime: cellData.startTime,
-            EndTime: cellData.endTime,
+            EndTime: endDate,
             IsAllDay: cellData.isAllDay,
             Id: filteredData[0].Id,
-            OwnerId: filteredData[0].OwnerId,
+            OwnerId: cellData.groupIndex + 1,
+            StartTimezone: 'Europe/Kiev',
+            EndTimezone: 'Europe/Kiev',
           };
           scheduleObj.current.addEvent(eventData);
           isTreeItemDropped = true;
@@ -230,95 +239,117 @@ const Schedule = () => {
           </svg>
         </button>
         <div>
-          <ScheduleComponent
-            height="550px"
-            width="100%"
-            currentView="Week"
-            selectedDate={
-              new Date(
-                today.getFullYear().toString(),
-                today.getMonth().toString(),
-                today.getDate().toString(),
-              )
-            }
-            drag={onItemDrag}
-            resourceHeaderTemplate={resourceHeaderTemplate}
-            group={group}
-            eventSettings={eventSettings}
-            enablePersistence={true}
-            rowAutoHeight={true}
-            actionBegin={onActionBegin}
-            ref={scheduleObj}
-            minDate={
-              new Date(
-                today.getFullYear().toString(),
-                today.getMonth().toString(),
-                today.getDate().toString(),
-              )
-            }
-            maxDate={
-              new Date(
-                (today.getFullYear() + 1).toString(),
-                today.getMonth().toString(),
-                today.getDate().toString(),
-              )
-            }
-            timeFormat="HH:mm"
-          >
-            <ResourcesDirective>
-              <ResourceDirective
-                field="OwnerId"
-                title="Subject"
-                name="Barbers"
-                dataSource={ownerData}
-                textField="ownerText"
-                idField="Id"
-                DesignationField="designation"
-                colorField="ownerColor"
-                workDaysField="workDays"
-                allowMultiple={true}
-                groupIDField="groupId"
-                cssClass="excel-export"
-              ></ResourceDirective>
-            </ResourcesDirective>
-            <ViewsDirective>
-              <ViewDirective option="Day" startHour="9:00" endHour="22:00" />
-              <ViewDirective option="Week" startHour="9:00" endHour="22:00" />
-              <ViewDirective
-                option="WorkWeek"
-                startHour="9:00"
-                endHour="22:00"
-              />
-              <ViewDirective option="Month" showWeekend={true} />
-              {/* <ViewDirective option="Agenda" /> */}
-            </ViewsDirective>
+          {/* START SHEDULE */}
+          <div className="schedule-control-section">
+            <div className="col-lg-12 control-section">
+              <div className="content-wrapper">
+                <div className="schedule-container">
+                  <div className="title-container">
+                    <div className="title-text">Scheduler</div>
+                  </div>
 
-            <Inject
-              services={[
-                Day,
-                Week,
-                WorkWeek,
-                Month,
-                ExcelExport,
-                // Agenda,
-                // MonthAgenda,
-                // TimelineViews,
-                // TimelineMonth,
-              ]}
-            />
-          </ScheduleComponent>
-        </div>
-        <div className="treeview-title-container">Services list</div>
-        <div className="treeview-component">
-          <TreeViewComponent
-            fields={treeViewValues}
-            ref={treeObj}
-            cssClass="treeview-external-drag"
-            nodeTemplate={treeTemplate}
-            nodeDragStop={onTreeDragStop}
-            nodeDragging={onItemDrag}
-            allowDragAndDrop={allowDragAndDrops}
-          />
+                  <ScheduleComponent
+                    height="550px"
+                    width="100%"
+                    currentView="Week"
+                    selectedDate={
+                      new Date(
+                        today.getFullYear().toString(),
+                        today.getMonth().toString(),
+                        today.getDate().toString(),
+                      )
+                    }
+                    drag={onItemDrag}
+                    resourceHeaderTemplate={resourceHeaderTemplate}
+                    group={group}
+                    eventSettings={eventSettings}
+                    enablePersistence={true}
+                    rowAutoHeight={true}
+                    actionBegin={onActionBegin}
+                    ref={scheduleObj}
+                    minDate={
+                      new Date(
+                        today.getFullYear().toString(),
+                        today.getMonth().toString(),
+                        today.getDate().toString(),
+                      )
+                    }
+                    maxDate={
+                      new Date(
+                        (today.getFullYear() + 1).toString(),
+                        today.getMonth().toString(),
+                        today.getDate().toString(),
+                      )
+                    }
+                    timeFormat="HH:mm"
+                  >
+                    <ResourcesDirective>
+                      <ResourceDirective
+                        field="OwnerId"
+                        title="Subject"
+                        name="Barbers"
+                        dataSource={ownerData}
+                        textField="ownerText"
+                        idField="Id"
+                        DesignationField="designation"
+                        colorField="ownerColor"
+                        workDaysField="workDays"
+                        allowMultiple={true}
+                        groupIDField="groupId"
+                        cssClass="excel-export"
+                      ></ResourceDirective>
+                    </ResourcesDirective>
+                    <ViewsDirective>
+                      <ViewDirective
+                        option="Day"
+                        startHour="9:00"
+                        endHour="22:00"
+                      />
+                      <ViewDirective
+                        option="Week"
+                        startHour="9:00"
+                        endHour="22:00"
+                      />
+                      <ViewDirective
+                        option="WorkWeek"
+                        startHour="9:00"
+                        endHour="22:00"
+                      />
+                      <ViewDirective option="Month" showWeekend={true} />
+                      {/* <ViewDirective option="Agenda" /> */}
+                    </ViewsDirective>
+
+                    <Inject
+                      services={[
+                        Day,
+                        Week,
+                        WorkWeek,
+                        Month,
+                        ExcelExport,
+                        // Agenda,
+                        // MonthAgenda,
+                        // TimelineViews,
+                        // TimelineMonth,
+                      ]}
+                    />
+                  </ScheduleComponent>
+                </div>
+                <div className="treeview-title-container">Services list</div>
+                <div className="treeview-component">
+                  <TreeViewComponent
+                    fields={treeViewValues}
+                    ref={treeObj}
+                    cssClass="treeview-external-drag"
+                    nodeTemplate={treeTemplate}
+                    nodeDragStop={onTreeDragStop}
+                    nodeDragging={onItemDrag}
+                    allowDragAndDrop={allowDragAndDrops}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          ;
         </div>
       </div>
     </div>,
