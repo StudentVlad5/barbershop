@@ -352,4 +352,14 @@ input::-webkit-calendar-picker-indicator:hover {
   cursor: pointer;
 }
 
+/* SCHEDURE STYLES */
+.e-list-parent{
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+}
+.e-fullrow{
+display: none;
+}
+
 `;

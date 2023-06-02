@@ -110,7 +110,7 @@ const Schedule = () => {
     return (
       <div id="waiting">
         <div id="waitdetails" style={{ display: "flex", flexDirection: "row" }}>
-          <div id="waitlist">{props.Id}</div>
+          <div id="waitlist"></div>
           <div id="waitcategory">{props.subject}</div>
           <div id="waittime"> : {timeServices[props.Id]} minutes</div>
         </div>

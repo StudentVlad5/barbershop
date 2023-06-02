@@ -15,4 +15,4 @@ export const treeViewData = [
   { Id: 6, subject: "clear skin", OwnerId: "2" },
 ];
 
-export const timeServices = { 1: 30, 2: 60, 3: 20, 4: 10, 6: 60 };
+export const timeServices = { 1: 30, 2: 60, 3: 20, 4: 10, 5: 35, 6: 60 };
