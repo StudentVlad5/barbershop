@@ -13,8 +13,10 @@ const FixDown = () => {
 
     if (pageOffset > headerOffsetTrigger) {
       scroll.classList.remove(css['is-hide']);
+      header.classList.add(css['js-no-transparency']);
     } else {
       scroll.classList.add(css['is-hide']);
+      header.classList.remove(css['js-no-transparency']);
     }
   }
 

@@ -13,20 +13,6 @@ export const Header = () => {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  window.onscroll = () => changeHeaderBackground();
-
-  function changeHeaderBackground() {
-    const header = document.getElementById('header');
-    const headerOffsetTrigger = header.offsetTop;
-    const pageOffset = window.scrollY;
-
-    if (pageOffset > headerOffsetTrigger) {
-      header.classList.add(css['js-no-transparency']);
-    } else {
-      header.classList.remove(css['js-no-transparency']);
-    }
-  }
-
   return (
     <>
       <header className={css.header} id="header">
