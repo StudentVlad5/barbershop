@@ -8,24 +8,61 @@
 
     & .container {
         position: relative;
-        width: 100%;
+
+        @include mq(mobile) {
+            max-width: 100vw;
+        }
+
+        @include mq(tablet) {
+            max-width: 100vw;
+        }
 
         @include mq(desktop) {
             max-width: 1300px;
         }
     }
 
-    & .scroll-to-top {
+    & .btn--form-circle {
         position: absolute;
         bottom: 15px;
         right: 15px;
-    }
-
-    & .btn--form-circle {
-        position: absolute;
-        bottom: 50px;
-        right: 50px;
 
         animation: glowing 1300ms infinite;
+    }
+}
+
+// scroll to top
+.scroll-to-top {
+    position: absolute;
+    bottom: 125px;
+    right: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;
+
+    background-color: transparent;
+    cursor: pointer;
+
+    @include mq(desktop) {
+        bottom: 160px;
+        right: 55px;
+    }
+
+    &.is-hide {
+        display: none;
+    }
+}
+
+.arrow-top {
+    fill: rgba(255, 106, 0, 0.4);
+    width: 45px;
+    height: 45px;
+
+    @include mq(tablet) {
+        width: 50px;
+        height: 50px;
     }
 }

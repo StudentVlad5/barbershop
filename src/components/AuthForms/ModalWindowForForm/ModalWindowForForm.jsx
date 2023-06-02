@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm';
-import { ReactComponent as CloseIcon } from 'images/icons/close_40px.svg';
+import sprite from 'images/sprite.svg';
 import { closeModalForm } from 'hooks/modalWindow';
 import { useState } from 'react';
 import css from './modalWindowForForm.module.scss';
@@ -23,7 +23,9 @@ export const ModalWindowForForm = () => {
           onClick={closeModal}
           aria-label="Close modal"
         >
-          <CloseIcon className={css.modal__icon} width="40" height="40" />
+          <svg className={css.modal__icon} width="40" height="40">
+            <use href={sprite + '#close_40px'}></use>
+          </svg>
         </button>
         {statusLogin ? (
           <LoginForm setStatusLogin={setStatusLogin} />

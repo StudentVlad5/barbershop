@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as IconUser } from 'images/icons/icon_user.svg';
 import { getPermission, selectUser, getUserAvatar } from 'redux/auth/selectors';
+import sprite from 'images/sprite.svg';
 import css from './userNav.module.scss';
 
 export const MobileUserNav = () => {
@@ -20,7 +20,9 @@ export const MobileUserNav = () => {
       {avatar ? (
         <img className={css.avatar} src={avatar} alt="User" />
       ) : (
-        <IconUser className={css.avatar} />
+        <svg className={css.avatar}>
+          <use href={sprite + '#user'}></use>
+        </svg>
       )}
       {user}
     </NavLink>
@@ -34,7 +36,9 @@ export const MobileUserNav = () => {
       {avatar ? (
         <img className={css.avatar} src={avatar} alt="User" />
       ) : (
-        <IconUser className={css.avatar} />
+        <svg className={css.avatar}>
+          <use href={sprite + '#user'}></use>
+        </svg>
       )}
       {user}
     </NavLink>
@@ -56,7 +60,9 @@ export const UserNav = () => {
       {avatar ? (
         <img className={css.avatar} src={avatar} alt="User" />
       ) : (
-        <IconUser className={css.avatar} />
+        <svg className={css.avatar}>
+          <use href={sprite + '#user'}></use>
+        </svg>
       )}
       {user}
     </NavLink>
@@ -70,7 +76,9 @@ export const UserNav = () => {
       {avatar ? (
         <img className={css.avatar} src={avatar} alt="User" />
       ) : (
-        <IconUser className={css.avatar} />
+        <svg className={css.avatar}>
+          <use href={sprite + '#user'}></use>
+        </svg>
       )}
       {user}
     </NavLink>

@@ -1,14 +1,11 @@
 import { useState } from 'react';
-import css from './header.module.scss';
-import MobileMenu from './MobileMenu/MobileMenu';
+import { useSelector } from 'react-redux';
 import { openModalForm } from 'hooks/modalWindow';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { useSelector } from 'react-redux';
+import MobileMenu from './MobileMenu/MobileMenu';
 import { UserNav } from './UserNav/UserNav';
-
-import { ReactComponent as Logo } from 'images/icons/logo.svg';
-import { ReactComponent as Menu } from 'images/icons/menu_40px.svg';
-import { ReactComponent as Close } from 'images/icons/close_40px.svg';
+import sprite from 'images/sprite.svg';
+import css from './header.module.scss';
 
 export const Header = () => {
   const [showModal, setShowModal] = useState(false);
@@ -16,30 +13,15 @@ export const Header = () => {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  window.onscroll = () => changeHeaderBackground();
-
-  function changeHeaderBackground() {
-    const header = document.getElementById('header');
-    const headerOffsetTrigger = header.offsetTop;
-    const pageOffset = window.scrollY;
-
-    if (pageOffset > headerOffsetTrigger) {
-      header.classList.add(css['js-no-transparency']);
-    } else {
-      header.classList.remove(css['js-no-transparency']);
-    }
-  }
-
   return (
     <>
       <header className={css.header} id="header">
         <div className={css.header__container + ' ' + css.container}>
           <a className={css.link} href="./index.html" aria-label="logo company">
             <svg className={css.logo} width="69" height="56">
-              <Logo
-                className={css.logo}
-                style={{ width: '69', height: '56' }}
-              />
+              <svg className={css.logo} width="69" height="56">
+                <use href={sprite + '#logo'}></use>
+              </svg>
             </svg>
           </a>
           <nav className={css.navigation}>
@@ -112,9 +94,13 @@ export const Header = () => {
           >
             <svg className={css['mobile-btn__icon']} width="40" height="40">
               {!showModal ? (
-                <Menu className={css['mobile-btn__icon-open']} />
+                <svg className={css['mobile-btn__icon-open']}>
+                  <use href={sprite + '#menu_40px'}></use>
+                </svg>
               ) : (
-                <Close className={css['mobile-btn__icon-close']} />
+                <svg className={css['mobile-btn__icon-close']}>
+                  <use href={sprite + '#close_40px'}></use>
+                </svg>
               )}
             </svg>
           </button>
