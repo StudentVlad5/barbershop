@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'; //Navigate
 import { Suspense } from 'react';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import LandingPage from 'pages/LandingPage';
+import { User } from 'components/Sections/User/User';
 
 export const App = () => {
   // const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<LandingPage />} />
+            <Route path="user" element={<User />} />
             {/*
             <Route
               path="register"

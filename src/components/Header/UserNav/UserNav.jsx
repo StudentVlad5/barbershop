@@ -7,6 +7,7 @@ import {
   IconUser,
   AvatarUser,
 } from './UserNav.styled';
+import { User } from 'components/Sections/User/User';
 // import { useTranslation } from 'react-i18next';
 
 export const MobileUserNav = () => {
@@ -33,15 +34,20 @@ export const UserNav = () => {
   const avatar = useSelector(getUserAvatar);
   const permission = useSelector(getPermission);
 
+  const handleButtonClick = () => {
+    window.location.href = 'barbershop/user';
+  };
+
   return permission === 'admin' ? (
-    <AccountButton>
-      {avatar ? <AvatarUser src={avatar} alt="User" /> : <IconUser />}
-      {user}
-    </AccountButton>
+      <AccountButton onClick={handleButtonClick}>
+        {avatar ? <AvatarUser src={avatar} alt="User" /> : <IconUser />}
+        {user}
+        {/* {user && <Link ref={<User />}>Account</Link>} */}
+      </AccountButton>
   ) : (
-    <AccountButton>
-      {avatar ? <AvatarUser src={avatar} alt="User" /> : <IconUser />}
-      {user}
-    </AccountButton>
+      <AccountButton onClick={handleButtonClick}>
+        {avatar ? <AvatarUser src={avatar} alt="User" /> : <IconUser />}
+        {user}
+      </AccountButton>
   );
 };
