@@ -25,7 +25,9 @@ import { fieldsData, treeViewData, timeServices } from "./Datasource";
 import { closeModalWindow } from "hooks/modalWindow";
 import sprite from "images/sprite.svg";
 import css from "./shedule.module.scss";
-
+import juliaPics from "images/barbers/julia.jpg";
+import grigoriiPics from "images/barbers/grigirii.jpg";
+import vladPics from "images/barbers/vlad.jpg";
 
 const Schedule = () => {
   let dataManager = new DataManager({
@@ -92,6 +94,20 @@ const Schedule = () => {
     }
   }
 
+  function getBarberUrl(value) {
+    let resourceName = getBarberName(value);
+    switch (resourceName) {
+      case "Julia":
+        return juliaPics;
+      case "Grogoriy":
+        return grigoriiPics;
+      case "Vlad":
+        return vladPics;
+      default:
+        break;
+    }
+  }
+
   function closeModal(e) {
     e.preventDefault();
     closeModalWindow(e);
@@ -100,9 +116,16 @@ const Schedule = () => {
   function resourceHeaderTemplate(props) {
     return (
       <div className="template-wrap">
-        <div className="resource-detail">
+        <div className={`resource-detail ${css.resurse_container}`}>
+          <img
+            className={css.resource_img}
+            src={getBarberUrl(props)}
+            alt="barber photo"
+          />
+          <div className={css.resource_name_container}>
           <div className="resource-name">{getBarberName(props)}</div>
           <div className="resource-designation">{getBarberLevel(props)}</div>
+          </div>
         </div>
       </div>
     );

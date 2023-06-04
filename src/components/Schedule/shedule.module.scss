@@ -67,3 +67,18 @@
       right: 24px;
     }
 }
+.resource_img{
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+.resurse_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.resource_name_container{
+  display: block;
+  margin-left: 20px;
+}
