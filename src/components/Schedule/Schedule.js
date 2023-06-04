@@ -47,7 +47,7 @@ const Schedule = () => {
   const scheduleObj = React.useRef(null);
   const treeObj = React.useRef(null);
   let isTreeItemDropped = false;
-  let draggedItemId = '';
+  // let draggedItemId = '';
   let allowDragAndDrops = true;
 
   let treeViewValues = {
@@ -167,7 +167,8 @@ const Schedule = () => {
     if (args.requestType === 'eventCreate' && isTreeItemDropped) {
       let treeViewdata = treeObj.current.fields.dataSource;
       const filteredPeople = treeViewdata.filter(
-        item => item.Id !== parseInt(draggedItemId, 10),
+        item => item
+        // .Id !== parseInt(draggedItemId, 10),
       );
       treeObj.current.fields.dataSource = filteredPeople;
       let elements = document.querySelectorAll(
@@ -219,7 +220,7 @@ const Schedule = () => {
           };
           scheduleObj.current.addEvent(eventData);
           isTreeItemDropped = true;
-          draggedItemId = event.draggedNodeData.id;
+          // draggedItemId = event.draggedNodeData.id;
         }
       }
     }
