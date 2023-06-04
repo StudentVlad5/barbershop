@@ -1,5 +1,5 @@
-import * as React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from "react";
+import ReactDOM from "react-dom";
 import {
   ScheduleComponent,
   Day,
@@ -16,28 +16,30 @@ import {
   ResourcesDirective,
   ResourceDirective,
   ExcelExport,
-} from '@syncfusion/ej2-react-schedule';
-import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
-import { closest, remove, addClass } from '@syncfusion/ej2-base';
-import { DataManager, ODataV4Adaptor, UrlAdaptor } from '@syncfusion/ej2-data';
-import { fieldsData, treeViewData, timeServices } from './Datasource';
-import { closeModalWindow } from 'hooks/modalWindow';
-import sprite from 'images/sprite.svg';
-import css from './shedule.module.scss';
+} from "@syncfusion/ej2-react-schedule";
+import { TreeViewComponent } from "@syncfusion/ej2-react-navigations";
+import { closest, remove, addClass } from "@syncfusion/ej2-base";
+import { DataManager, ODataV4Adaptor, UrlAdaptor } from "@syncfusion/ej2-data";
+import { v4 as uuidv4 } from "uuid";
+import { fieldsData, treeViewData, timeServices } from "./Datasource";
+import { closeModalWindow } from "hooks/modalWindow";
+import sprite from "images/sprite.svg";
+import css from "./shedule.module.scss";
+
 
 const Schedule = () => {
   let dataManager = new DataManager({
-    url: 'http://localhost:3030/api/get_event',
-    crudUrl: 'http://localhost:3030/api/batch_event',
+    url: "http://localhost:3030/api/get_event",
+    crudUrl: "http://localhost:3030/api/batch_event",
     adaptor: new UrlAdaptor(),
     crossDomain: true,
   });
   let ownersData = new DataManager({
-    url: 'http://localhost:3030/api/owner',
+    url: "http://localhost:3030/api/owner",
     adaptor: new ODataV4Adaptor(),
   });
   const [ownerData] = React.useState(ownersData);
-  const group = { resources: ['Barbers'] };
+  const group = { resources: ["Barbers"] };
   const eventSettings = {
     dataSource: dataManager,
     fields: fieldsData,
@@ -52,19 +54,19 @@ const Schedule = () => {
 
   let treeViewValues = {
     dataSource: treeViewData,
-    id: 'Id',
-    text: 'subject',
-    OwnerId: 'OwnerId',
+    id: "Id",
+    text: "subject",
+    OwnerId: "OwnerId",
   };
 
   const onExportClick = () => {
     let customFields = [
-      { name: 'Id', text: 'Id' },
-      { name: 'Subject', text: 'Summary' },
-      { name: 'StartTime', text: 'First Date' },
-      { name: 'EndTime', text: 'Last Date' },
-      { name: 'Location', text: 'Place' },
-      { name: 'OwnerId', text: 'Owners' },
+      { name: "Id", text: "Id" },
+      { name: "Subject", text: "Summary" },
+      { name: "StartTime", text: "First Date" },
+      { name: "EndTime", text: "Last Date" },
+      { name: "Location", text: "Place" },
+      { name: "OwnerId", text: "Owners" },
     ];
     let exportValues = { fieldsInfo: customFields, includeOccurrences: true };
     scheduleObj.current.exportToExcel(exportValues);
@@ -79,12 +81,12 @@ const Schedule = () => {
   function getBarberLevel(value) {
     let resourceName = getBarberName(value);
     switch (resourceName) {
-      case 'Julia':
-        return 'High level barber';
-      case 'Grogoriy':
-        return 'Master';
-      case 'Vlad':
-        return 'Dr. BARber';
+      case "Julia":
+        return "High level barber";
+      case "Grogoriy":
+        return "Master";
+      case "Vlad":
+        return "Dr. BARber";
       default:
         break;
     }
@@ -106,10 +108,10 @@ const Schedule = () => {
     );
   }
 
-  const treeTemplate = props => {
+  const treeTemplate = (props) => {
     return (
       <div id="waiting">
-        <div id="waitdetails" style={{ display: 'flex', flexDirection: 'row' }}>
+        <div id="waitdetails" style={{ display: "flex", flexDirection: "row" }}>
           <div id="waitlist"></div>
           <div id="waitcategory">{props.subject}</div>
           <div id="waittime"> : {timeServices[props.Id]} minutes</div>
@@ -118,94 +120,93 @@ const Schedule = () => {
     );
   };
 
-  const onItemDrag = event => {
+  const onItemDrag = (event) => {
     if (scheduleObj.current.isAdaptive) {
-      let classElement =
-        scheduleObj.current.element.querySelector('.e-device-hover');
+      let classElement = scheduleObj.current.element.querySelector(
+        ".e-device-hover"
+      );
       if (classElement) {
-        classElement.classList.remove('e-device-hover');
+        classElement.classList.remove("e-device-hover");
       }
-      if (event.target.classList.contains('e-work-cells')) {
-        addClass([event.target], 'e-device-hover');
+      if (event.target.classList.contains("e-work-cells")) {
+        addClass([event.target], "e-device-hover");
       }
     }
-    if (document.body.style.cursor === 'not-allowed') {
-      document.body.style.cursor = '';
+    if (document.body.style.cursor === "not-allowed") {
+      document.body.style.cursor = "";
     }
-    if (event.name === 'nodeDragging') {
+    if (event.name === "nodeDragging") {
       let dragElementIcon = document.querySelectorAll(
-        '.e-drag-item.treeview-external-drag .e-icon-expandable',
+        ".e-drag-item.treeview-external-drag .e-icon-expandable"
       );
       for (let i = 0; i < dragElementIcon.length; i++) {
-        dragElementIcon[i].style.display = 'none';
+        dragElementIcon[i].style.display = "none";
       }
     }
   };
 
-  const onActionBegin = args => {
-    if (args.requestType === 'eventCreate' && args.data.length > 0) {
+  const onActionBegin = (args) => {
+    if (args.requestType === "eventCreate" && args.data.length > 0) {
       let eventData = args.data[0];
       let eventField = scheduleObj.current.eventFields;
-      eventField.StartTimezone = 'Europe/Kiev';
-      eventField.EndTimezone = 'Europe/Kiev';
+      eventField.StartTimezone = "Europe/Kiev";
+      eventField.EndTimezone = "Europe/Kiev";
+      eventField.Id = uuidv4();
       let startDate = eventData[eventField.startTime];
       let endDate = eventData[eventField.endTime];
-      // console.log(eventData[eventField.startTime]);
       args.cancel = !scheduleObj.current.isSlotAvailable(startDate, endDate);
     }
-    if (args.requestType === 'toolbarItemRendering') {
+    if (args.requestType === "toolbarItemRendering") {
       let exportItem = {
-        align: 'Right',
-        showTextOn: 'Both',
-        prefixIcon: 'e-icon-schedule-excel-export',
-        text: 'Excel Export',
-        cssClass: 'e-excel-export',
+        align: "Right",
+        showTextOn: "Both",
+        prefixIcon: "e-icon-schedule-excel-export",
+        text: "Excel Export",
+        cssClass: "e-excel-export",
         click: onExportClick,
       };
       args.items.push(exportItem);
     }
-    if (args.requestType === 'eventCreate' && isTreeItemDropped) {
+    if (args.requestType === "eventCreate" && isTreeItemDropped) {
       let treeViewdata = treeObj.current.fields.dataSource;
       const filteredPeople = treeViewdata.filter(
-        item => item
+        (item) => item
         // .Id !== parseInt(draggedItemId, 10),
       );
       treeObj.current.fields.dataSource = filteredPeople;
       let elements = document.querySelectorAll(
-        '.e-drag-item.treeview-external-drag',
+        ".e-drag-item.treeview-external-drag"
       );
       for (let i = 0; i < elements.length; i++) {
         remove(elements[i]);
       }
     }
   };
-  const onTreeDragStop = event => {
-    let treeElement = closest(event.target, '.e-treeview');
-    let classElement =
-      scheduleObj.current.element.querySelector('.e-device-hover');
+  const onTreeDragStop = (event) => {
+    let treeElement = closest(event.target, ".e-treeview");
+    let classElement = scheduleObj.current.element.querySelector(
+      ".e-device-hover"
+    );
     if (classElement) {
-      classElement.classList.remove('e-device-hover');
+      classElement.classList.remove("e-device-hover");
     }
     if (!treeElement) {
       event.cancel = true;
-      let scheduleElement = closest(event.target, '.e-content-wrap');
+      let scheduleElement = closest(event.target, ".e-content-wrap");
       if (scheduleElement) {
         let treeviewData = treeObj.current.fields.dataSource;
-        if (event.target.classList.contains('e-work-cells')) {
+        if (event.target.classList.contains("e-work-cells")) {
           const filteredData = treeviewData.filter(
-            item => item.Id === parseInt(event.draggedNodeData.id, 10),
+            (item) => item.Id === parseInt(event.draggedNodeData.id, 10)
           );
           let cellData = scheduleObj.current.getCellDetails(event.target);
           //
           let endDate = new Date(cellData.startTime);
-
-          console.log(endDate);
           endDate = new Date(
             endDate.setMinutes(
-              endDate.getMinutes() + timeServices[filteredData[0].Id],
-            ),
+              endDate.getMinutes() + timeServices[filteredData[0].Id]
+            )
           );
-          console.log(endDate);
 
           // set time for items
           let eventData = {
@@ -213,10 +214,11 @@ const Schedule = () => {
             StartTime: cellData.startTime,
             EndTime: endDate,
             IsAllDay: cellData.isAllDay,
-            Id: filteredData[0].Id,
+            // Id: filteredData[0].Id,
+            Id: uuidv4(),
             OwnerId: cellData.groupIndex + 1,
-            StartTimezone: 'Europe/Kiev',
-            EndTimezone: 'Europe/Kiev',
+            StartTimezone: "Europe/Kiev",
+            EndTimezone: "Europe/Kiev",
           };
           scheduleObj.current.addEvent(eventData);
           isTreeItemDropped = true;
@@ -228,7 +230,10 @@ const Schedule = () => {
 
   return ReactDOM.createPortal(
     <div className={css.backdrop} onClick={closeModal}>
-      <div className={css.sheduleContainer} onClick={e => e.stopPropagation()}>
+      <div
+        className={css.sheduleContainer}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           className={css.btnCloseModal}
           type="button"
@@ -236,7 +241,7 @@ const Schedule = () => {
           aria-label="Close modal"
         >
           <svg width="25px" height="25px">
-            <use href={sprite + '#close_40px'}></use>
+            <use href={sprite + "#close_40px"}></use>
           </svg>
         </button>
         <div>
@@ -257,7 +262,7 @@ const Schedule = () => {
                       new Date(
                         today.getFullYear().toString(),
                         today.getMonth().toString(),
-                        today.getDate().toString(),
+                        today.getDate().toString()
                       )
                     }
                     drag={onItemDrag}
@@ -272,14 +277,14 @@ const Schedule = () => {
                       new Date(
                         today.getFullYear().toString(),
                         today.getMonth().toString(),
-                        today.getDate().toString(),
+                        today.getDate().toString()
                       )
                     }
                     maxDate={
                       new Date(
                         (today.getFullYear() + 1).toString(),
                         today.getMonth().toString(),
-                        today.getDate().toString(),
+                        today.getDate().toString()
                       )
                     }
                     timeFormat="HH:mm"
@@ -354,7 +359,7 @@ const Schedule = () => {
         </div>
       </div>
     </div>,
-    document.querySelector('#popup-root'),
+    document.querySelector("#popup-root")
   );
 };
 export default Schedule;

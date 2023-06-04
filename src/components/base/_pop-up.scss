@@ -58,4 +58,52 @@
             height: 0;
         }
     }
+    // css for schedule service list
+
+    .e-control.e-treeview.e-lib.treeview-external-drag.e-fullrow-wrap.e-interaction.e-draggable.e-droppable.e-touch.e-keyboard >.e-list-parent {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        gap: 2px;
+
+        @media screen and (min-width: 768px) {
+            margin-top: 0;
+            // width: 704px;
+            grid-template-columns: 1fr 1fr 1fr;
+          }
+    }
+    .e-fullrow {
+        display: none;
+    }
+    .e-treeview .e-text-content {
+        background-color: #337AB7;
+          border: 1px solid #337AB7;
+          border-radius: 4px;
+          box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+          box-sizing: border-box;
+          color: #fff;
+          cursor: pointer;
+          font-size: 12px;
+          font-weight: 400;
+          outline: none;
+          outline: 0;
+          padding: 2px 5px;
+          text-align: center;
+          transform: translateY(0);
+          transition: transform 150ms, box-shadow 150ms;
+          -webkit-user-select: none;
+          user-select: none;
+          touch-action: manipulation;
+          text-decoration: none;
+        }
+        
+        .e-text-content:hover {
+          box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+          transform: translateY(-2px);
+        }
+        .e-treeview .e-list-text {
+            color: #fff;
+        }
 }

@@ -7,12 +7,23 @@ export const fieldsData = {
 };
 
 export const treeViewData = [
-  { Id: 1, subject: "cut hair" },
-  { Id: 2, subject: "painting" },
-  { Id: 3, subject: "cut beard" },
-  { Id: 4, subject: "make up" },
-  { Id: 5, subject: "massage face" },
-  { Id: 6, subject: "clear skin" },
+  { Id: 1, subject: "Mans Haircut" },
+  { Id: 2, subject: "Beard Trim" },
+  { Id: 3, subject: "Mushache Trim" },
+  { Id: 4, subject: "Straigth Razor Shave" },
+  { Id: 5, subject: "Trainee Haircut" },
+  { Id: 6, subject: "Buzz Cut" },
+  { Id: 7, subject: "Kids Haircut" },
+  { Id: 8, subject: "Gray Coverage" },
 ];
 
-export const timeServices = { 1: 30, 2: 60, 3: 20, 4: 10, 5: 35, 6: 60 };
+export const timeServices = {
+  1: 20,
+  2: 15,
+  3: 10,
+  4: 20,
+  5: 60,
+  6: 20,
+  7: 15,
+  8: 20,
+};

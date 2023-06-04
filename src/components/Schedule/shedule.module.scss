@@ -9,27 +9,11 @@
     overflow: scroll;
 }
 .sheduleContainer{
-    position: relative;
-    display: block;
-    width: 280px;
-    margin-top: 50px;
-    padding: 10px 20px 40px 20px;
-    background-color: var(--color-background-main);
-    border-radius: 20px;
-    -webkit-box-shadow: 7px 4px 14px 7px var(--color-shadow);
-    -moz-box-shadow: 7px 4px 14px 7px var(--color-shadow);
-    box-shadow: 7px 4px 14px 7px var(--color-shadow);
-  
-    @media screen and (min-width: 768px) {
-      margin-top: 0;
-      width: 704px;
-      padding: 45px 20px 32px 20px;
-    }
-}
-.sheduleContainer{
   position: relative;
   display: block;
-  width: 280px;
+  // width: 280px;
+  width: 100%;
+  height: auto;
   margin-top: 50px;
   padding: 10px 20px 40px 20px;
   background-color: var(--color-background-main);
@@ -40,7 +24,7 @@
 
   @media screen and (min-width: 768px) {
     margin-top: 0;
-    width: 704px;
+    // width: 704px;
     padding: 45px 20px 32px 20px;
   }
 }
