@@ -79,5 +79,5 @@
   "bugs": {
     "url": "https://github.com/StudentVlad5/barbershop/issues"
   },
-  "proxy": "http://localhost:3030"
+  "proxy": "https://drab-pear-gazelle-belt.cyclic.app/api"
 }

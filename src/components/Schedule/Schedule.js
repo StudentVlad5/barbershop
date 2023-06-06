@@ -30,14 +30,15 @@ import grigoriiPics from "images/barbers/grigirii.jpg";
 import vladPics from "images/barbers/vlad.jpg";
 
 const Schedule = () => {
+  const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
   let dataManager = new DataManager({
-    url: "http://localhost:3030/api/get_event",
-    crudUrl: "http://localhost:3030/api/batch_event",
+    url: `${BASE_URL}/get_event`,
+    crudUrl: `${BASE_URL}/batch_event`,
     adaptor: new UrlAdaptor(),
     crossDomain: true,
   });
   let ownersData = new DataManager({
-    url: "http://localhost:3030/api/owner",
+    url: `${BASE_URL}/owner`,
     adaptor: new ODataV4Adaptor(),
   });
   const [ownerData] = React.useState(ownersData);

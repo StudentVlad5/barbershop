@@ -1,5 +1,6 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:3030/api";
+const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
+// const BASE_URL = "http://localhost:3030/api";
 
 export const signUp = async (credentials) => {
   try {
