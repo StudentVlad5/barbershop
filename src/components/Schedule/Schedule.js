@@ -123,8 +123,8 @@ const Schedule = () => {
             alt="barber photo"
           />
           <div className={css.resource_name_container}>
-          <div className="resource-name">{getBarberName(props)}</div>
-          <div className="resource-designation">{getBarberLevel(props)}</div>
+            <div className="resource-name">{getBarberName(props)}</div>
+            <div className="resource-designation">{getBarberLevel(props)}</div>
           </div>
         </div>
       </div>
@@ -169,7 +169,21 @@ const Schedule = () => {
   };
 
   const onActionBegin = (args) => {
-    if (args.requestType === "eventCreate" && args.data.length > 0) {
+    if (args.requestType === "eventCreate" && isTreeItemDropped) {
+      let treeViewdata = treeObj.current.fields.dataSource;
+      const filteredPeople = treeViewdata.filter(
+        (item) => item
+        // .Id !== parseInt(draggedItemId, 10),
+      );
+      treeObj.current.fields.dataSource = filteredPeople;
+      let elements = document.querySelectorAll(
+        ".e-drag-item.treeview-external-drag"
+      );
+      for (let i = 0; i < elements.length; i++) {
+        remove(elements[i]);
+      }
+    }
+    if (args.requestType === "eventCreate" && args.data.length > 0 && !isTreeItemDropped) {
       let eventData = args.data[0];
       let eventField = scheduleObj.current.eventFields;
       eventField.StartTimezone = "Europe/Kiev";
@@ -190,20 +204,7 @@ const Schedule = () => {
       };
       args.items.push(exportItem);
     }
-    if (args.requestType === "eventCreate" && isTreeItemDropped) {
-      let treeViewdata = treeObj.current.fields.dataSource;
-      const filteredPeople = treeViewdata.filter(
-        (item) => item
-        // .Id !== parseInt(draggedItemId, 10),
-      );
-      treeObj.current.fields.dataSource = filteredPeople;
-      let elements = document.querySelectorAll(
-        ".e-drag-item.treeview-external-drag"
-      );
-      for (let i = 0; i < elements.length; i++) {
-        remove(elements[i]);
-      }
-    }
+
   };
   const onTreeDragStop = (event) => {
     let treeElement = closest(event.target, ".e-treeview");
@@ -323,7 +324,7 @@ const Schedule = () => {
                         DesignationField="designation"
                         colorField="ownerColor"
                         workDaysField="workDays"
-                        allowMultiple={true}
+                        allowMultiple={false}
                         groupIDField="groupId"
                         cssClass="excel-export"
                       ></ResourceDirective>
