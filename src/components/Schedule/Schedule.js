@@ -41,7 +41,7 @@ const Schedule = () => {
     adaptor: new ODataV4Adaptor(),
   });
   const [ownerData] = React.useState(ownersData);
-  const group = { resources: ["Barbers"] };
+  const group = { resources: ["Barbers"], allowMultiple: false };
   const eventSettings = {
     dataSource: dataManager,
     fields: fieldsData,
@@ -183,7 +183,11 @@ const Schedule = () => {
         remove(elements[i]);
       }
     }
-    if (args.requestType === "eventCreate" && args.data.length > 0 && !isTreeItemDropped) {
+    if (
+      args.requestType === "eventCreate" &&
+      args.data.length > 0 &&
+      !isTreeItemDropped
+    ) {
       let eventData = args.data[0];
       let eventField = scheduleObj.current.eventFields;
       eventField.StartTimezone = "Europe/Kiev";
@@ -204,7 +208,6 @@ const Schedule = () => {
       };
       args.items.push(exportItem);
     }
-
   };
   const onTreeDragStop = (event) => {
     let treeElement = closest(event.target, ".e-treeview");
