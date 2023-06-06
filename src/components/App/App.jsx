@@ -1,19 +1,24 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { Route, Routes } from 'react-router-dom'; //Navigate
-import { Suspense } from 'react';
+import { useEffect, Suspense } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUser } from 'redux/auth/operations';
+import { selectIsRefreshing } from 'redux/auth/selectors'; // getPermission
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import LandingPage from 'pages/LandingPage';
 
 export const App = () => {
-  // const dispatch = useDispatch();
-  // const isRefreshing = useSelector(selectIsRefreshing);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
   // const permission = useSelector(getPermission);
 
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <></>
+  ) : (
     <HelmetProvider>
       <Suspense fallback={<div>{'Loading...'}</div>}>
         <Routes>
