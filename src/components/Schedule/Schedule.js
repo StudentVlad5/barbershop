@@ -30,7 +30,8 @@ import grigoriiPics from "images/barbers/grigirii.jpg";
 import vladPics from "images/barbers/vlad.jpg";
 
 const Schedule = () => {
-  const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
+  // const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
+  const BASE_URL = "http://localhost:3030/api";
   let dataManager = new DataManager({
     url: `${BASE_URL}/get_event`,
     crudUrl: `${BASE_URL}/batch_event`,
@@ -86,7 +87,7 @@ const Schedule = () => {
     switch (resourceName) {
       case "Julia":
         return "High level barber";
-      case "Grogoriy":
+      case "Heorhii":
         return "Master";
       case "Vlad":
         return "Dr. BARber";
@@ -100,7 +101,7 @@ const Schedule = () => {
     switch (resourceName) {
       case "Julia":
         return juliaPics;
-      case "Grogoriy":
+      case "Heorhii":
         return grigoriiPics;
       case "Vlad":
         return vladPics;
