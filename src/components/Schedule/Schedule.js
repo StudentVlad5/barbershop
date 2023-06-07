@@ -175,7 +175,8 @@ const Schedule = () => {
   };
 
   const onActionBegin = (args) => {
-    if (!user) {
+    console.log(user);
+    if (user._id === null || user._id === undefined) {
       return alert("Please login for booking a service");
     }
     if (
@@ -184,11 +185,11 @@ const Schedule = () => {
     ) {
       alert("You can't delete this event");
       args.data[0].StatusForChange = false;
-    } 
+    }
     if (args.requestType === "eventChange" && args.data.CreateId !== user._id) {
       alert("You can't change this event");
       args.data.StatusForChange = false;
-    } 
+    }
     if (args.requestType === "eventCreate" && isTreeItemDropped) {
       let treeViewdata = treeObj.current.fields.dataSource;
       const filteredPeople = treeViewdata.filter(
