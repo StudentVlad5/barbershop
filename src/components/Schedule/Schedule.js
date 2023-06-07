@@ -178,6 +178,17 @@ const Schedule = () => {
     if (!user) {
       return alert("Please login for booking a service");
     }
+    if (
+      args.requestType === "eventRemove" &&
+      args.data[0].CreateId !== user._id
+    ) {
+      alert("You can't delete this event");
+      args.data[0].StatusForChange = false;
+    } 
+    if (args.requestType === "eventChange" && args.data.CreateId !== user._id) {
+      alert("You can't change this event");
+      args.data.StatusForChange = false;
+    } 
     if (args.requestType === "eventCreate" && isTreeItemDropped) {
       let treeViewdata = treeObj.current.fields.dataSource;
       const filteredPeople = treeViewdata.filter(
@@ -203,6 +214,7 @@ const Schedule = () => {
       eventData.EndTimezone = "Europe/Kiev";
       eventData.Id = uuidv4();
       eventData.Description = `${eventData.Description} ${user.userName} ${user.phone}`;
+      eventData.CreateId = user._id;
       console.log(eventData);
       let startDate = eventData[eventField.startTime];
       let endDate = eventData[eventField.endTime];
@@ -262,6 +274,7 @@ const Schedule = () => {
             StartTimezone: "Europe/Kiev",
             EndTimezone: "Europe/Kiev",
             Description: `${description}`,
+            CreateId: user._id,
           };
           scheduleObj.current.addEvent(eventData);
           isTreeItemDropped = true;
