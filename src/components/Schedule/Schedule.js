@@ -214,7 +214,7 @@ const Schedule = () => {
       eventData.StartTimezone = "Europe/Kiev";
       eventData.EndTimezone = "Europe/Kiev";
       eventData.Id = uuidv4();
-      eventData.Description = `${eventData.Description} ${user.userName} ${user.phone}`;
+      eventData.Description = `${user.userName} ${user.phone}`;
       eventData.CreateId = user._id;
       console.log(eventData);
       let startDate = eventData[eventField.startTime];
@@ -261,10 +261,8 @@ const Schedule = () => {
           );
 
           // set time for items
-          let description = "";
-          if (filteredData[0].description) {
-            description = filteredData[0].description;
-          }
+          let description = `${user.userName} ${user.phone}`;
+
           let eventData = {
             Subject: filteredData[0].subject,
             StartTime: cellData.startTime,
