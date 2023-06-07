@@ -73,3 +73,34 @@
         }
     }
 }
+
+// ========== modal-button ==========
+
+.modal__btn-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    color: var(--color-text-black);
+    background: var(--color-background-main);
+    border: none;
+
+    cursor: pointer;
+    transition: color var(--animation);
+
+    &:hover,
+    &:focus {
+        color: var(--color-accent);
+    }
+}
+
+.modal__icon {
+    fill: currentColor;
+}
