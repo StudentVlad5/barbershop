@@ -1,0 +1,24 @@
+@import '../../../base/main.scss';
+
+.error{
+    color: var(--color-accent);
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 500;
+    border: 1px solid var(--color-accent);
+    background-color: var( --color-background-input);
+  
+    padding: 1px, 8px;
+    box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+  
+    border-radius: 40px;
+  
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    z-index: 2;
+  
+    @media screen and (min-width: 768px) {
+      font-size: 12px;
+    }
+}

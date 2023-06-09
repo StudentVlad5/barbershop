@@ -42,7 +42,6 @@ export const UserNav = () => {
       <AccountButton onClick={handleButtonClick}>
         {avatar ? <AvatarUser src={avatar} alt="User" /> : <IconUser />}
         {user}
-        {/* {user && <Link ref={<User />}>Account</Link>} */}
       </AccountButton>
   ) : (
       <AccountButton onClick={handleButtonClick}>
