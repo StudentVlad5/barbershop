@@ -175,7 +175,6 @@ const Schedule = () => {
   };
 
   const onActionBegin = (args) => {
-    console.log(user);
     if (user._id === null || user._id === undefined) {
       return alert("Please login for booking a service");
     }
