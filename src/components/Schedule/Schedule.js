@@ -174,8 +174,19 @@ const Schedule = () => {
   };
 
   const onActionBegin = args => {
-    if (!user) {
+    if (user._id === null || user._id === undefined) {
       return alert('Please login for booking a service');
+    }
+    if (
+      args.requestType === 'eventRemove' &&
+      args.data[0].CreateId !== user._id
+    ) {
+      alert("You can't delete this event");
+      args.data[0].StatusForChange = false;
+    }
+    if (args.requestType === 'eventChange' && args.data.CreateId !== user._id) {
+      alert("You can't change this event");
+      args.data.StatusForChange = false;
     }
     if (args.requestType === 'eventCreate' && isTreeItemDropped) {
       let treeViewdata = treeObj.current.fields.dataSource;
@@ -201,7 +212,8 @@ const Schedule = () => {
       eventData.StartTimezone = 'Europe/Kiev';
       eventData.EndTimezone = 'Europe/Kiev';
       eventData.Id = uuidv4();
-      eventData.Description = `${eventData.Description} ${user.userName} ${user.phone}`;
+      eventData.Description = `${user.userName} ${user.phone}`;
+      eventData.CreateId = user._id;
       console.log(eventData);
       let startDate = eventData[eventField.startTime];
       let endDate = eventData[eventField.endTime];
@@ -246,10 +258,7 @@ const Schedule = () => {
           );
 
           // set time for items
-          let description = '';
-          if (filteredData[0].description) {
-            description = filteredData[0].description;
-          }
+          let description = `${user.userName} ${user.phone}`;
           let eventData = {
             Subject: filteredData[0].subject,
             StartTime: cellData.startTime,
@@ -260,6 +269,7 @@ const Schedule = () => {
             StartTimezone: 'Europe/Kiev',
             EndTimezone: 'Europe/Kiev',
             Description: `${description}`,
+            CreateId: user._id,
           };
           scheduleObj.current.addEvent(eventData);
           isTreeItemDropped = true;

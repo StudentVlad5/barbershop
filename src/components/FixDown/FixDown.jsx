@@ -36,7 +36,7 @@ const FixDown = () => {
           onClick={e => {
             openModalWindow(e),
               setTimeout(() => {
-                document.querySelector('[aria-label="Day"]').click();
+                if(document.querySelector('[aria-label="Day"]')){document.querySelector('[aria-label="Day"]').click();}
               }, 250);
           }}
         >
