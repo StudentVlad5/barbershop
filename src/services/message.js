@@ -15,7 +15,7 @@ const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
 export function leaveMessage(body) {
   return axios.post(`${BASE_URL}/message`, body, {
     headers: {
-      "Content-Type": "multipart/form-data",
+      "content-type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
     },

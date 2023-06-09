@@ -2,11 +2,14 @@ import { leaveMessage } from 'services/message';
 import css from './contacts.module.scss';
 import sprite from 'images/sprite.svg';
 import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Contacts = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+  const notify = () => toast('message sent successfully');
  
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
@@ -30,15 +33,13 @@ const Contacts = () => {
   
   const handleSubmit = async () => {
 console.log(name, phone, message)
-const body = {};
-body.name = name;
-body.phone = phone;
-body.message = message;
+const credential = {name, phone, message};
+console.log(credential)
 
     // const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
     try {
-          const res = await leaveMessage(body);
-          console.log("res", res);
+          const res = await leaveMessage(credential);
+          notify();
           return res;
         } catch (error) {
           return error.message;
@@ -107,6 +108,7 @@ body.message = message;
             send
           </button>
           </form>
+          <Toaster />
         </div>
         {/*========= CONTACTS COMPANY ===========*/}
         <div className={css.contacts__group}>
