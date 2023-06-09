@@ -1,0 +1,222 @@
+@import '../../base/main.scss';
+
+.modal {
+  position: relative;
+  display: block;
+
+  max-width: calc(100vw - 40px);
+  margin-top: 150px;
+  padding: 10px;
+
+  background-color: var(--color-background-main);
+  border: 1px solid var(--color-shadow);
+  border-radius: 20px;
+  box-shadow: var(--color-shadow) 7px 4px 14px;
+
+  @include mq(tablet) {
+    max-width: 600px;
+    margin-top: 0;
+    padding: 20px;
+  }
+
+  @include mq(desktop) {
+    max-width: 800px;
+    padding: 40px;
+  }
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  margin: 0 auto;
+  padding: 35px 0 12px;
+}
+
+.form__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: stretch;
+  gap: 5px;
+
+  @include mq(tablet) {
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+}
+
+.form__field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3px;
+
+  @include mq(tablet) {
+    width: 45%;
+  }
+
+  & .react-select-container {
+    padding: 5px;
+    height: 30px;
+    max-width: 165px;
+    margin-bottom: 0;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+}
+
+.form__label {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+}
+
+.form__input {
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+
+  background-color: var(--color-background-main);
+  color: var(--color-text-main);
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  outline: none;
+  transition: all var(--animation);
+
+  &::placeholder {
+    color: rgba(27, 27, 27, 0.6);
+  }
+
+  &:hover,
+  &:focus {
+    outline: 2px solid var(--color-accent);
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  *:disabled {
+    background-color: var(--color-text-main);
+    color: var(--color-text-light);
+  }
+
+}
+
+.form__field-item {
+  all: unset;
+  height: 50px;
+  width: 50px;
+
+  margin-bottom: 4px;
+  background-color: var(--color-background-main);
+  border-radius: 4px;
+  border: 1px solid var(--color-accent);
+  outline: none;
+
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzEiIGhlaWdodD0iNzEiIHZpZXdCb3g9IjAgMCA3MSA3MSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTM1LjQ5OTkgNTkuMTY2M1YzNS40OTk3TTM1LjQ5OTkgMzUuNDk5N1YxMS44MzNNMzUuNDk5OSAzNS40OTk3SDU5LjE2NjZNMzUuNDk5OSAzNS40OTk3SDExLjgzMzMiIHN0cm9rZT0iIzExMTExMSIgc3Ryb2tlLW9wYWNpdHk9IjAuNiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+);
+  background-size: 24px,
+    24px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: all 500ms ease;
+
+  color: transparent;
+
+  &:hover {
+    outline: 3px solid var(--color-accent);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &::file-selector-button {
+    display: none;
+  }
+
+  &::file-selector-text {
+    display: none;
+  }
+
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  color: var(--color-text-main);
+  background-color: var(--color-background-main);
+  border-color: var(--color-text-main);
+  border-radius: 50%;
+  backdrop-filter: blur(2px);
+  z-index: 50;
+
+  cursor: pointer;
+}
+
+.done-btn {
+  position: absolute;
+  top: 10px;
+  right: 45px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  color: var(--color-accent);
+  background-color: transparent;
+  border-color: var(--color-accent);
+  border-radius: 50%;
+  backdrop-filter: blur(2px);
+  z-index: 50;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: var(--color-text-white);
+    background-color: var(--color-accent);
+  }
+
+}
+
+.error {
+  position: absolute;
+  top: 18px;
+  right: 0px;
+  z-index: 99;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.375;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: var(--color-accent);
+}
