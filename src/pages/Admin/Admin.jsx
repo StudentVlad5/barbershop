@@ -9,7 +9,7 @@ const AdminPage = () => {
       <SEO title="Administration" description="Page Administration" />
       <section className={'admin' + ' ' + css.section} id="admin">
         <div className={css.container}>
-          <div className={css.admin__group + ' ' + css['title-group']}>
+          <div className={css['title-group']}>
             <h2 className={css['section-title'] + ' ' + css['visually-hidden']}>
               Administration
             </h2>
@@ -23,6 +23,11 @@ const AdminPage = () => {
             <li className={css.admin__item}>
               <NavLink className={css.admin__link} to="services">
                 Services
+              </NavLink>
+            </li>
+            <li className={css.admin__item}>
+              <NavLink className={css.admin__link} to="owners">
+                Specialist
               </NavLink>
             </li>
           </ul>

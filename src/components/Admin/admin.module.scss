@@ -1,5 +1,11 @@
 @import '../base/main.scss';
 
+.admin__container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
 .admin__list {
   display: flex;
   flex-wrap: wrap;
@@ -94,7 +100,7 @@
   padding: 0.25rem;
   font-size: 10px;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.03;
 
   border-bottom: 1px solid var(--color-border);
 
@@ -170,9 +176,12 @@
 }
 
 .learn-more-btn {
+  display: block;
   margin-left: auto;
   padding: 4px;
+
   font-size: 10px;
+  font-weight: 500;
   color: var(--color-text-main);
   background-color: transparent;
   border: 1px solid var(--color-border);
@@ -196,8 +205,8 @@
 
   font-family: inherit;
   font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
+  font-weight: 500;
+  font-size: 10px;
   line-height: 1.33;
   color: var(--color-text-main);
   text-decoration: none;

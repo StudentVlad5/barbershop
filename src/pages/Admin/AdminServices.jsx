@@ -75,13 +75,11 @@ const AdminServicesPage = () => {
     }
   };
 
-  const date = date => (date ? new Date(date).toISOString().slice(0, 10) : '');
-
   return (
     <>
       <SEO title="Services list" description="Services administration page" />
       <section className={'admin' + ' ' + css.section}>
-        <div className={css.container}>
+        <div className={css.admin__container}>
           <Link to={backLinkHref} className={css['back-btn']}>
             <HiArrowLeft size="10" /> Go back
           </Link>
@@ -92,19 +90,21 @@ const AdminServicesPage = () => {
               Less
             </button>
           ) : (
-            <button onClick={toggleLearnMore}>More</button>
+            <button className={css['learn-more-btn']} onClick={toggleLearnMore}>
+              More
+            </button>
           )}
           <table className={css.admin__table}>
             <thead>
-              <tr className={css.admin__row}>
-                <th className={css.admin__head}>ID</th>
-                <th className={css.admin__head}>Subject</th>
-                <th className={css.admin__head}>Time</th>
+              <tr className={css.table__row}>
+                <th className={css.table__head}>ID</th>
+                <th className={css.table__head}>Subject</th>
+                <th className={css.table__head}>Time</th>
                 {isLearnMore && (
                   <>
-                    <th className={css.admin__head}>Price</th>
-                    <th className={css.admin__head}>Location</th>
-                    <th className={css.admin__head}>Specialist</th>
+                    <th className={css.table__head}>Price</th>
+                    <th className={css.table__head}>Location</th>
+                    <th className={css.table__head}>Specialist</th>
                   </>
                 )}
               </tr>
@@ -113,18 +113,18 @@ const AdminServicesPage = () => {
               {services.length > 0 &&
                 !error &&
                 services.map(service => (
-                  <tr key={service._id} className={css.admin__row}>
-                    <td className={css.admin__data}>{service._id}</td>
-                    <td className={css.admin__data}>{service.subject}</td>
-                    <td className={css.admin__data}>{service.time}</td>
+                  <tr key={service._id} className={css.table__row}>
+                    <td className={css.table__data}>{service._id}</td>
+                    <td className={css.table__data}>{service.subject}</td>
+                    <td className={css.table__data}>{service.time}</td>
                     {isLearnMore && (
                       <>
-                        <td className={css.admin__data}>{service.price}</td>
-                        <td className={css.admin__data}>{service.location}</td>
-                        <td className={css.admin__data}>{service.owner}</td>
+                        <td className={css.table__data}>{service.price}</td>
+                        <td className={css.table__data}>{service.location}</td>
+                        <td className={css.table__data}>{service.owner}</td>
                       </>
                     )}
-                    <td className={css.admin__data}>
+                    <td className={css.table__data}>
                       <button
                         className={css['icon-btn']}
                         type="button"
@@ -133,7 +133,7 @@ const AdminServicesPage = () => {
                           openModal(e);
                         }}
                         data-modal="admin"
-                        data-id={services._id}
+                        data-id={service._id}
                       >
                         <MdEdit size={15} />
                       </button>
@@ -142,7 +142,7 @@ const AdminServicesPage = () => {
                         type="button"
                         aria-label="Delete services"
                         onClick={e => {
-                          deleteService(services._id);
+                          deleteService(service._id);
                         }}
                       >
                         <MdClose size={15} />

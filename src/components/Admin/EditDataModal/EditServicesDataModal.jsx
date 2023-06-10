@@ -8,7 +8,6 @@ import { cleanModal } from 'redux/modal/operation';
 import { modalComponent } from 'redux/modal/selectors';
 import { addReload } from 'redux/reload/slice';
 import { fetchData, updateServiceData } from 'services/APIservice';
-import { setImage } from 'utils/setimage';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoaded, onLoading } from 'helpers/Loader/Loader';
 import css from './editDataModal.module.scss';

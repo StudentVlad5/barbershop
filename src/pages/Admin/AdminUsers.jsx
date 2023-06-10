@@ -86,7 +86,7 @@ const AdminUsersPage = () => {
     <>
       <SEO title="Users list" description="User administration page" />
       <section className={'admin' + ' ' + css.section}>
-        <div className={css.container}>
+        <div className={css.admin__container}>
           <Link to={backLinkHref} className={css['back-btn']}>
             <HiArrowLeft size="10" /> Go back
           </Link>
@@ -97,52 +97,54 @@ const AdminUsersPage = () => {
               Less
             </button>
           ) : (
-            <button onClick={toggleLearnMore}>More</button>
+            <button className={css['learn-more-btn']} onClick={toggleLearnMore}>
+              More
+            </button>
           )}
           <table className={css.admin__table}>
             <thead>
-              <tr className={css.admin__row}>
+              <tr className={css.table__row}>
                 {/* <th >ID</th > */}
-                <th className={css.admin__head}>Name</th>
-                <th className={css.admin__head}>Email</th>
+                <th className={css.table__head}>Name</th>
+                <th className={css.table__head}>Email</th>
                 {isLearnMore && (
                   <>
-                    <th className={css.admin__head}>Phone</th>
-                    <th className={css.admin__head}>Location</th>
-                    <th className={css.admin__head}>Birthday</th>
-                    <th className={css.admin__head}>Create</th>
-                    <th className={css.admin__head}>Avatar</th>
+                    <th className={css.table__head}>Phone</th>
+                    <th className={css.table__head}>Location</th>
+                    <th className={css.table__head}>Birthday</th>
+                    <th className={css.table__head}>Create</th>
+                    <th className={css.table__head}>Avatar</th>
                   </>
                 )}
-                <th className={css.admin__head}>Role</th>
-                <th className={css.admin__head}>Action</th>
+                <th className={css.table__head}>Role</th>
+                <th className={css.table__head}>Action</th>
               </tr>
             </thead>
             <tbody>
               {users.length > 0 &&
                 !error &&
                 users.map(user => (
-                  <tr key={user._id} className={css.admin__row}>
+                  <tr key={user._id} className={css.table__row}>
                     {/* <td>{user._id}</td> */}
-                    <td className={css.admin__data}>{user.userName}</td>
-                    <td className={css.admin__data}>{user.email}</td>
+                    <td className={css.table__data}>{user.userName}</td>
+                    <td className={css.table__data}>{user.email}</td>
                     {isLearnMore && (
                       <>
-                        <td className={css.admin__data}>{user.phone}</td>
-                        <td className={css.admin__data}>{user.location}</td>
-                        <td className={css.admin__data}>
+                        <td className={css.table__data}>{user.phone}</td>
+                        <td className={css.table__data}>{user.location}</td>
+                        <td className={css.table__data}>
                           {date(user.birthday)}
                         </td>
-                        <td className={css.admin__data}>
+                        <td className={css.table__data}>
                           {date(user.createdAt)}
                         </td>
-                        <td className={css.admin__data}>
+                        <td className={css.table__data}>
                           {user.avatar ? 'yes' : 'no'}
                         </td>
                       </>
                     )}
-                    <td className={css.admin__data}>{user.role}</td>
-                    <td className={css.admin__data}>
+                    <td className={css.table__data}>{user.role}</td>
+                    <td className={css.table__data}>
                       <button
                         className={css['icon-btn']}
                         type="button"
