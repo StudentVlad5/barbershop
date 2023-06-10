@@ -1,8 +1,8 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-// const { BASE_URL } = window.global;
-const BASE_URL = 'http://localhost:3030/api';
+const BASE_URL = 'https://drab-pear-gazelle-belt.cyclic.app/api';
+// const BASE_URL = 'http://localhost:3030/api';
 
 async function fetchData(pathParams) {
   const axiosInstance = axios.create({
