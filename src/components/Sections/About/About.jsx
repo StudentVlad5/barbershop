@@ -1,3 +1,4 @@
+import { openModalWindow } from 'hooks/modalWindow';
 import css from './about.module.scss';
 
 import work1_desk from './../../../images/about/work-1-desk.webp';
@@ -102,12 +103,21 @@ const About = () => {
               everyone who comes to us!
             </p>
           </div>
-          <a
+          <button
             className={css.link + ' ' + css.btn + ' ' + css['btn--mode-light']}
-            href="#contacts"
+            type="button"
+            aria-label="Book a service"
+            onClick={e => {
+              openModalWindow(e),
+                setTimeout(() => {
+                  if (document.querySelector('[aria-label="Day"]')) {
+                    document.querySelector('[aria-label="Day"]').click();
+                  }
+                }, 250);
+            }}
           >
-            book a Service
-          </a>
+            Book a service
+          </button>
         </div>
       </div>
     </section>
