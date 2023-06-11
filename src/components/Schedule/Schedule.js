@@ -1,5 +1,6 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
+import toast, { Toaster } from "react-hot-toast";
 import {
   ScheduleComponent,
   Day,
@@ -176,17 +177,17 @@ const Schedule = () => {
 
   const onActionBegin = (args) => {
     if (user._id === null || user._id === undefined) {
-      return alert("Please login for booking a service");
+      return toast("Please login for booking a service");
     }
     if (
       args.requestType === "eventRemove" &&
       args.data[0].CreateId !== user._id
     ) {
-      alert("You can't delete this event");
+      toast("You can't delete this event");
       args.data[0].StatusForChange = false;
     }
     if (args.requestType === "eventChange" && args.data.CreateId !== user._id) {
-      alert("You can't change this event");
+      toast("You can't change this event");
       args.data.StatusForChange = false;
     }
     if (args.requestType === "eventCreate" && isTreeItemDropped) {
@@ -299,6 +300,7 @@ const Schedule = () => {
           </svg>
         </button>
         <div>
+          <Toaster />
           {/* START SHEDULE */}
           <div className="schedule-control-section">
             <div className="col-lg-12 control-section">
