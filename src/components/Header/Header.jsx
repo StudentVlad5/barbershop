@@ -15,7 +15,8 @@ export const Header = () => {
 
   const header = document.getElementById('header');
   const admin = document.getElementById('admin');
-  if (admin.isConnected) {
+  if (admin) {
+  // if (admin.isConnected) {
     header.classList.add(css['js-no-transparency']);
   }
 
