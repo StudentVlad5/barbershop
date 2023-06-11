@@ -161,7 +161,7 @@ const AdminUsersPage = () => {
                         className={css['icon-btn']}
                         type="button"
                         aria-label="Delete user"
-                        onClick={e => {
+                        onClick={() => {
                           deleteUser(user._id);
                         }}
                       >

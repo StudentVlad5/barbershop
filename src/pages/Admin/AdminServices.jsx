@@ -141,7 +141,7 @@ const AdminServicesPage = () => {
                         className={css['icon-btn']}
                         type="button"
                         aria-label="Delete services"
-                        onClick={e => {
+                        onClick={() => {
                           deleteService(service._id);
                         }}
                       >
