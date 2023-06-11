@@ -13,6 +13,12 @@ export const Header = () => {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
+  const header = document.getElementById('header');
+  const admin = document.getElementById('admin');
+  if (admin.isConnected) {
+    header.classList.add(css['js-no-transparency']);
+  }
+
   return (
     <>
       <header className={css.header} id="header">

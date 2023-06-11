@@ -10,3 +10,7 @@ body {
     color: var(--color-text-main);
     background-color: var(--color-background-main);
 }
+
+main {
+    min-height: calc(100vh - 140px);
+}
