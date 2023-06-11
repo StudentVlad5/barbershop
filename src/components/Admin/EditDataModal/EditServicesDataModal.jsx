@@ -113,8 +113,8 @@ export const EditServiceDataModal = () => {
                 className={css.form}
                 autoComplete="off"
                 onSubmit={handleSubmit}
-                onChange={e => {
-                  handleChange(e);
+                onChange={() => {
+                  handleChange();
                 }}
               >
                 <div className={css.form__list}>
@@ -221,8 +221,8 @@ export const EditServiceDataModal = () => {
                         placeholder="Type location"
                         value={values.location}
                         onBlur={handleBlur}
-                        onChange={e => {
-                          handleChange(e);
+                        onChange={() => {
+                          handleChange();
                         }}
                       />
                     </div>
