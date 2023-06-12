@@ -6,6 +6,7 @@ import MobileMenu from './MobileMenu/MobileMenu';
 import { UserNav } from './UserNav/UserNav';
 import sprite from 'images/sprite.svg';
 import css from './header.module.scss';
+import { LogOut } from 'components/LogOut/LogOut';
 
 export const Header = () => {
   const [showModal, setShowModal] = useState(false);
@@ -88,7 +89,7 @@ export const Header = () => {
                 log in
               </button>
             ) : (
-              <UserNav />
+              <><UserNav /><LogOut type="button" style={{margin:"10px"}}/></>
             )}
           </div>
           <button

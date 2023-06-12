@@ -5,6 +5,7 @@ import css from './mobileMenu.module.scss';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { MobileUserNav } from '../UserNav/UserNav';
+import { LogOut } from 'components/LogOut/LogOut';
 
 const MobileMenu = ({ onClose }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -98,7 +99,7 @@ const MobileMenu = ({ onClose }) => {
           log in
         </button>
       ) : (
-        <MobileUserNav />
+        <div><MobileUserNav /><LogOut type="button" style={{margin:"10px"}}/></div>
       )}
       <ul
         className={
