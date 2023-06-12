@@ -1,6 +1,8 @@
 :global {
     // css for schedule service list
-
+    .e-schedule{
+    overflow: auto;
+    }
     .e-control.e-treeview.e-lib.treeview-external-drag.e-fullrow-wrap.e-interaction.e-draggable.e-droppable.e-touch.e-keyboard >.e-list-parent {
         display: grid;
         grid-template-columns: 1fr 1fr;
