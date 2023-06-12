@@ -9,6 +9,7 @@ import LandingPage from 'pages/LandingPage';
 import AdminPage from 'pages/Admin/Admin';
 import AdminUsersPage from 'pages/Admin/AdminUsers';
 import AdminServicesPage from 'pages/Admin/AdminServices';
+import { User } from 'components/Sections/User/User';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<LandingPage />} />
-
+            <Route path="user" element={<User />} />
             {/* {permission === 'admin' ? ( */}
             <Route path="admin" element={<AdminPage />} />
             {/* ) : (

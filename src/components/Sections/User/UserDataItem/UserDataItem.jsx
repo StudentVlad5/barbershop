@@ -1,0 +1,173 @@
+import { useDispatch } from 'react-redux';
+import css from './UserDataItem.module.scss';
+import { useState } from 'react';
+import { update } from 'redux/auth/operations';
+import PropTypes from 'prop-types';
+import check from '../../../../images/sprite.svg';
+import pencil from '../../../../images/sprite.svg';
+
+export const UserDataItem = ({
+  name,
+  label,
+  type,
+  defaultValue,
+  profile,
+  active,
+  setActive,
+}) => {
+  const emailRegExp = /^.+@.+\..+$/;
+  const cityRegex = /^[a-zA-Z\s,'-]+$/;
+  const phoneRegExp = /^\+380\d{9}$/;
+  const dayToday = new Date().toLocaleDateString();
+  const minDate = new Date('01.01.1910').toLocaleDateString();
+
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState(defaultValue ?? '');
+  const [isError, setIsError] = useState('');
+
+  const handleChange = e => {
+    const { name, value } = e.currentTarget;
+
+    if (name === 'userName') {
+      setInputValue(value);
+    }
+    if (name === 'email') {
+      setInputValue(value);
+    } else if (name === 'birthday') {
+      setInputValue(value);
+    } else if (name === 'phone') {
+      setInputValue(value);
+    } else if (name === 'location') {
+      setInputValue(value);
+    }
+  };
+
+  const handleSubmit = name => {
+    if (name === 'userName') {
+      setActive('userName');
+      if (
+        inputValue.length !== 0 &&
+        (inputValue.length < 2 || inputValue.length > 16)
+      ) {
+        setIsError('type from 2 to 16 letters');
+        return;
+      }
+      setIsError('');
+      setActive('');
+      dispatch(update({ userName: inputValue }));
+    } else if (name === 'email') {
+      setActive('email');
+      if (!inputValue.match(emailRegExp)) {
+        setIsError('please type valid email');
+        return;
+      }
+      setIsError('');
+      setActive('');
+      dispatch(update({ email: inputValue }));
+    } else if (name === 'birthday') {
+      setActive('birthday');
+      if (inputValue > dayToday) {
+        setIsError('date must be current');
+        return;
+      }
+      if (inputValue < minDate) {
+        setIsError('date must be current');
+        return;
+      }
+      setIsError('');
+      setActive('');
+      dispatch(
+        update({
+          birthday: inputValue,
+        }),
+      );
+    } else if (name === 'phone') {
+      setActive('phone');
+      if (!phoneRegExp.test(inputValue)) {
+        setIsError('please type valid phone number starting with +380');
+        return;
+      }
+      if (inputValue.length !== 13) {
+        setIsError('phone number should contain 13 digits');
+        return;
+      }
+      setIsError('');
+      setActive('');
+      dispatch(update({ phone: inputValue }));
+    } else if (name === 'location') {
+      setActive('location');
+      if (!inputValue.match(cityRegex)) {
+        setIsError('use format Kyiv, Brovary');
+        return;
+      }
+      setIsError('');
+      setActive('');
+      dispatch(update({ location: inputValue }));
+    }
+  };
+
+  const activeHandleClick = name => {
+    if (!active) setActive(name);
+  };
+
+  return (
+    <>
+      <div>
+        <label htmlFor={name} className={css['title-name']}>
+          {label}
+        </label>
+
+        <div>
+          <input
+            value={!profile ? inputValue : defaultValue}
+            onChange={handleChange}
+            className={
+              active === name ? css.active : '' + css['input-list__item']
+            }
+            disabled={active !== name}
+            type={type}
+            name={name}
+            id={name}
+          />
+          {isError && active === name ? (
+            <div className={css.error}>{isError}</div>
+          ) : null}
+
+          {!profile &&
+            (active == name ? (
+              <button
+                className={css['btn-icon']}
+                type="button"
+                onClick={() => handleSubmit(name)}
+              >
+                <svg className={css['icon']} width="20" height="20">
+                  <use href={check + '#check'}></use>
+                </svg>
+              </button>
+            ) : (
+              <button
+                className={css['btn-icon']}
+                type="button"
+                disabled={active && active !== name}
+                onClick={() => activeHandleClick(name)}
+              >
+                <svg className={css['icon']} width="20" height="20">
+                  <use href={pencil + '#pencil'}></use>
+                </svg>
+              </button>
+            ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+UserDataItem.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string,
+  type: PropTypes.string,
+  defaultValue: PropTypes.string,
+  profile: PropTypes.bool,
+  active: PropTypes.string,
+  setActive: PropTypes.func,
+};
