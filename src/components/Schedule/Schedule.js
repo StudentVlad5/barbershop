@@ -7,10 +7,6 @@ import {
   Week,
   WorkWeek,
   Month,
-  // Agenda,
-  // MonthAgenda,
-  // TimelineViews,
-  // TimelineMonth,
   Inject,
   ViewsDirective,
   ViewDirective,
@@ -31,11 +27,11 @@ import heorhiiPics from "images/barbers/heorhii.jpg";
 import vladPics from "images/barbers/vlad.jpg";
 import { useSelector } from "react-redux";
 import { getUser } from "redux/auth/selectors";
-import { getServices } from "services/serivices";
 import { useEffect } from "react";
 import { useState } from "react";
 import { onFetchError } from "helpers/Messages/NotifyMessages";
 import { onLoaded, onLoading } from "helpers/Loader/Loader";
+import { fetchData } from "services/APIservice";
 
 const Schedule = () => {
   const user = useSelector(getUser);
@@ -66,12 +62,10 @@ const Schedule = () => {
   const scheduleObj = React.useRef(null);
   const treeObj = React.useRef(null);
   let isTreeItemDropped = false;
-  // let draggedItemId = '';
   let allowDragAndDrops = true;
 
   let treeViewValues = {
     dataSource: dataService,
-    // dataSource: treeViewData,
     id: "Id",
     text: "subject",
     OwnerId: "OwnerId",
@@ -81,9 +75,8 @@ const Schedule = () => {
     (async function getListOfServices() {
       setIsLoading(true);
       try {
-        const { data } = await getServices();
+        const { data } = await fetchData('/admin/services');
         setDataService(data);
-        console.log("data", dataService);
         if (!data) {
           return onFetchError("Whoops, something went wrong");
         }
@@ -408,7 +401,6 @@ const Schedule = () => {
                         endHour="22:00"
                       />
                       <ViewDirective option="Month" showWeekend={true} />
-                      {/* <ViewDirective option="Agenda" /> */}
                     </ViewsDirective>
 
                     <Inject
@@ -418,10 +410,6 @@ const Schedule = () => {
                         WorkWeek,
                         Month,
                         ExcelExport,
-                        // Agenda,
-                        // MonthAgenda,
-                        // TimelineViews,
-                        // TimelineMonth,
                       ]}
                     />
                   </ScheduleComponent>
