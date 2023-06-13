@@ -10,6 +10,7 @@ import AdminPage from 'pages/Admin/Admin';
 import AdminUsersPage from 'pages/Admin/AdminUsers';
 import AdminServicesPage from 'pages/Admin/AdminServices';
 import { User } from 'components/Sections/User/User';
+import AdminSpecialistPage from 'pages/Admin/AdminSpecialist';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ export const App = () => {
 
             <Route path="admin/users" element={<AdminUsersPage />} />
             <Route path="admin/services" element={<AdminServicesPage />} />
+            <Route path="admin/owners" element={<AdminSpecialistPage />} />
 
             <Route path="*" element={<LandingPage />} />
           </Route>

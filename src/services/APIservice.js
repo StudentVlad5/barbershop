@@ -1,8 +1,8 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-const BASE_URL = 'https://drab-pear-gazelle-belt.cyclic.app/api';
-// const BASE_URL = 'http://localhost:3030/api';
+// const BASE_URL = 'https://drab-pear-gazelle-belt.cyclic.app/api';
+const BASE_URL = 'http://localhost:3030/api';
 
 async function fetchData(pathParams) {
   const axiosInstance = axios.create({
@@ -55,6 +55,25 @@ async function updateServiceData(pathParams, body) {
   });
 }
 
+async function updateSpecialistData(pathParams, body) {
+  const formData = new FormData();
+  formData.append('ownerText', body.ownerText);
+  formData.append('ownerColor', body.ownerColor);
+  formData.append('designation', body.designation);
+  formData.append('workDays', body.workDays);
+  formData.append('startHour', body.startHour);
+  formData.append('endHour', body.endHour);
+  formData.append('groupId', body.groupId);
+
+  return await axios.patch(`${BASE_URL}${pathParams}`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+
 async function deleteData(pathParams) {
   const formData = new FormData();
   return axios.delete(`${BASE_URL}${pathParams}`, formData, {
@@ -85,4 +104,10 @@ updateServiceData.propTypes = {
   formData: PropTypes.string.isRequired,
 };
 
-export { fetchData, updateUserData, updateServiceData, deleteData };
+export {
+  fetchData,
+  updateUserData,
+  updateServiceData,
+  updateSpecialistData,
+  deleteData,
+};
