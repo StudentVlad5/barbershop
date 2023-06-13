@@ -54,6 +54,22 @@ async function updateServiceData(pathParams, body) {
     },
   });
 }
+async function createServiceData(pathParams, body) {
+  const formData = new FormData();
+  formData.append("subject", body.subject);
+  formData.append("time", body.time);
+  formData.append("location", body.location);
+  formData.append("price", body.price);
+  formData.append("owner", body.owner);
+
+  return await axios.post(`${BASE_URL}${pathParams}`, formData, {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+    },
+  });
+}
 
 async function deleteData(pathParams) {
   const formData = new FormData();
@@ -85,4 +101,15 @@ updateServiceData.propTypes = {
   formData: PropTypes.string.isRequired,
 };
 
-export { fetchData, updateUserData, updateServiceData, deleteData };
+createServiceData.propTypes = {
+  pathParams: PropTypes.string.isRequired,
+  formData: PropTypes.string.isRequired,
+};
+
+export {
+  fetchData,
+  updateUserData,
+  updateServiceData,
+  deleteData,
+  createServiceData,
+};

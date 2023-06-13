@@ -13,6 +13,7 @@ import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { SEO } from 'utils/SEO';
 import { EditServiceDataModal } from 'components/Admin/EditDataModal/EditServicesDataModal';
 import css from 'components/Admin/admin.module.scss';
+import { CreateServiceDataModal } from 'components/Admin/CreateDataModal/CreateServicesDataModal';
 
 const AdminServicesPage = () => {
   const [services, setServices] = useState([]);
@@ -26,6 +27,7 @@ const AdminServicesPage = () => {
       try {
         const { data } = await fetchData('/admin/services');
         setServices(data);
+        localStorage.setItem("services", data.length)
         if (!data) {
           return onFetchError('Whoops, something went wrong');
         }
@@ -155,7 +157,7 @@ const AdminServicesPage = () => {
           <button
                         className={css['icon-btn']}
                         type="button"
-                        aria-label="Edit services"
+                        aria-label="Create services"
                         onClick={e => {
                           openModal(e);
                         }}
@@ -167,6 +169,7 @@ const AdminServicesPage = () => {
         </div>
       </section>
       <EditServiceDataModal />
+      <CreateServiceDataModal/>
     </>
   );
 };
