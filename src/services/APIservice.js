@@ -130,5 +130,6 @@ export {
   updateUserData,
   updateSpecialistData,
   createServiceData,
+  updateServiceData,
   deleteData,
 };

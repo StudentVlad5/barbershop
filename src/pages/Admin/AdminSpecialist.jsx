@@ -80,8 +80,6 @@ const AdminSpecialistPage = () => {
     }
   };
 
-  const date = date => (date ? new Date(date).toISOString().slice(0, 10) : '');
-
   return (
     <>
       <SEO
@@ -136,7 +134,7 @@ const AdminSpecialistPage = () => {
                     {isLearnMore && (
                       <>
                         <td className={css.table__data}>
-                          {specialist.workDays.toString()}
+                          {specialist.workDays?.toString()}
                         </td>
                         <td className={css.table__data}>
                           {specialist.startHour}
