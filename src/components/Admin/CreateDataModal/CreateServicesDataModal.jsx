@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdClose, MdDone } from 'react-icons/md';
@@ -7,45 +7,45 @@ import { closeModalWindow } from 'hooks/modalWindow';
 import { cleanModal } from 'redux/modal/operation';
 import { modalComponent } from 'redux/modal/selectors';
 import { addReload } from 'redux/reload/slice';
-import { fetchData, updateServiceData } from 'services/APIservice';
+import { createServiceData } from 'services/APIservice';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoaded, onLoading } from 'helpers/Loader/Loader';
-import css from './editDataModal.module.scss';
+import css from './createDataModal.module.scss';
 
-export const EditServiceDataModal = () => {
-  const [dataUpdate, setDataUpdate] = useState([]);
+export const CreateServiceDataModal = () => {
+  // const [dataUpdate, setDataUpdate] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const modal = useSelector(modalComponent);
   const dispatch = useDispatch();
 
-  const itemForFetch = `/admin/services/${modal.id}`;
+  // const itemForFetch = `/admin/services/${modal.id}`;
 
-  useEffect(() => {
-    async function getData() {
-      setIsLoading(true);
-      try {
-        const { data } = await fetchData(itemForFetch);
-        setDataUpdate(data);
-        if (!data) {
-          return onFetchError('Whoops, something went wrong');
-        }
-      } catch (error) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    if (modal.id !== '') {
-      getData();
-    }
-  }, [itemForFetch, modal.id]);
+  // useEffect(() => {
+  //   async function getData() {
+  //     setIsLoading(true);
+  //     try {
+  //       const { data } = await fetchData(itemForFetch);
+  //       setDataUpdate(data);
+  //       if (!data) {
+  //         return onFetchError('Whoops, something went wrong');
+  //       }
+  //     } catch (error) {
+  //       setError(error);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+  //   if (modal.id !== '') {
+  //     getData();
+  //   }
+  // }, [itemForFetch, modal.id]);
 
-  async function editService(values) {
+  async function createService(values) {
     setIsLoading(true);
     try {
-      const { code } = await updateServiceData(
-        `/admin/services/${modal.id}`,
+      const { code } = await createServiceData(
+        `/admin/services/create`,
         values,
       );
       if (code && code !== 201) {
@@ -75,7 +75,7 @@ export const EditServiceDataModal = () => {
       >
         <div className={css.modal} onClick={e => e.stopPropagation()}>
           <button
-            className={css['close-btn']}
+            className={css['modal__btn-close']}
             type="button"
             onClick={e => closeDataModal(e)}
             aria-label="Close modal"
@@ -86,15 +86,15 @@ export const EditServiceDataModal = () => {
           {error && onFetchError('Whoops, something went wrong')}
           <Formik
             initialValues={{
-              id: dataUpdate?._id ? dataUpdate._id : '',
-              subject: dataUpdate?.subject ? dataUpdate.subject : '',
-              time: dataUpdate?.time ? dataUpdate.time : '',
-              location: dataUpdate?.location ? dataUpdate.location : '',
-              price: dataUpdate?.price ? dataUpdate.price : '',
-              owner: dataUpdate?.owner ? dataUpdate.owner : '',
+              id: +localStorage.getItem('services')+1,
+              subject: '',
+              time: '',
+              location: '',
+              price: '',
+              owner: '',
             }}
             onSubmit={(values, { setSubmitting }) => {
-              editService(values);
+              createService(values);
               dispatch(addReload(false));
               setSubmitting(false);
             }}
@@ -114,6 +114,9 @@ export const EditServiceDataModal = () => {
                 autoComplete="off"
                 onSubmit={handleSubmit}
                 onChange={handleChange}
+                // onChange={() => {
+                //   handleChange();
+                // }}
               >
                 <div className={css.form__list}>
                   <div className={css.form__field}>

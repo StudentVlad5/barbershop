@@ -7,10 +7,6 @@ import {
   Week,
   WorkWeek,
   Month,
-  // Agenda,
-  // MonthAgenda,
-  // TimelineViews,
-  // TimelineMonth,
   Inject,
   ViewsDirective,
   ViewDirective,
@@ -22,7 +18,7 @@ import { TreeViewComponent } from "@syncfusion/ej2-react-navigations";
 import { closest, remove, addClass } from "@syncfusion/ej2-base";
 import { DataManager, ODataV4Adaptor, UrlAdaptor } from "@syncfusion/ej2-data";
 import { v4 as uuidv4 } from "uuid";
-import { fieldsData, treeViewData, timeServices } from "./Datasource";
+import { fieldsData } from "./Datasource";
 import { closeModalWindow } from "hooks/modalWindow";
 import sprite from "images/sprite.svg";
 import css from "./shedule.module.scss";
@@ -31,9 +27,18 @@ import heorhiiPics from "images/barbers/heorhii.jpg";
 import vladPics from "images/barbers/vlad.jpg";
 import { useSelector } from "react-redux";
 import { getUser } from "redux/auth/selectors";
+import { useEffect } from "react";
+import { useState } from "react";
+import { onFetchError } from "helpers/Messages/NotifyMessages";
+import { onLoaded, onLoading } from "helpers/Loader/Loader";
+import { fetchData } from "services/APIservice";
 
 const Schedule = () => {
   const user = useSelector(getUser);
+  // data services
+  const [dataService, setDataService] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
 
@@ -53,20 +58,35 @@ const Schedule = () => {
     dataSource: dataManager,
     fields: fieldsData,
   };
-
   const today = new Date();
   const scheduleObj = React.useRef(null);
   const treeObj = React.useRef(null);
   let isTreeItemDropped = false;
-  // let draggedItemId = '';
   let allowDragAndDrops = true;
 
   let treeViewValues = {
-    dataSource: treeViewData,
+    dataSource: dataService,
     id: "Id",
     text: "subject",
     OwnerId: "OwnerId",
   };
+
+  useEffect(() => {
+    (async function getListOfServices() {
+      setIsLoading(true);
+      try {
+        const { data } = await fetchData('/admin/services');
+        setDataService(data);
+        if (!data) {
+          return onFetchError("Whoops, something went wrong");
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
 
   const onExportClick = () => {
     let customFields = [
@@ -144,7 +164,7 @@ const Schedule = () => {
         <div id="waitdetails" style={{ display: "flex", flexDirection: "row" }}>
           <div id="waitlist"></div>
           <div id="waitcategory">{props.subject}</div>
-          <div id="waittime"> : {timeServices[props.Id]} minutes</div>
+          <div id="waittime"> : {props.time} minutes</div>
         </div>
       </div>
     );
@@ -258,7 +278,7 @@ const Schedule = () => {
           let endDate = new Date(cellData.startTime);
           endDate = new Date(
             endDate.setMinutes(
-              endDate.getMinutes() + timeServices[filteredData[0].Id]
+              endDate.getMinutes() + filteredData[0].time
             )
           );
 
@@ -302,6 +322,8 @@ const Schedule = () => {
         </button>
         <div>
           <Toaster />
+          {isLoading ? onLoading() : onLoaded()}
+          {error && onFetchError("Whoops, something went wrong")}
           {/* START SHEDULE */}
           <div className="schedule-control-section">
             <div className="col-lg-12 control-section">
@@ -379,7 +401,6 @@ const Schedule = () => {
                         endHour="22:00"
                       />
                       <ViewDirective option="Month" showWeekend={true} />
-                      {/* <ViewDirective option="Agenda" /> */}
                     </ViewsDirective>
 
                     <Inject
@@ -389,10 +410,6 @@ const Schedule = () => {
                         WorkWeek,
                         Month,
                         ExcelExport,
-                        // Agenda,
-                        // MonthAgenda,
-                        // TimelineViews,
-                        // TimelineMonth,
                       ]}
                     />
                   </ScheduleComponent>

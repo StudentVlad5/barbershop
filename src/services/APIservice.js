@@ -1,8 +1,8 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-// const BASE_URL = 'https://drab-pear-gazelle-belt.cyclic.app/api';
-const BASE_URL = 'http://localhost:3030/api';
+const BASE_URL = 'https://drab-pear-gazelle-belt.cyclic.app/api';
+// const BASE_URL = 'http://localhost:3030/api';
 
 async function fetchData(pathParams) {
   const axiosInstance = axios.create({
@@ -48,7 +48,23 @@ async function updateServiceData(pathParams, body) {
 
   return await axios.patch(`${BASE_URL}${pathParams}`, formData, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+async function createServiceData(pathParams, body) {
+  const formData = new FormData();
+  formData.append('subject', body.subject);
+  formData.append('time', body.time);
+  formData.append('location', body.location);
+  formData.append('price', body.price);
+  formData.append('owner', body.owner);
+
+  return await axios.post(`${BASE_URL}${pathParams}`, formData, {
+    headers: {
+      'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
     },
@@ -104,10 +120,15 @@ updateServiceData.propTypes = {
   formData: PropTypes.string.isRequired,
 };
 
+createServiceData.propTypes = {
+  pathParams: PropTypes.string.isRequired,
+  formData: PropTypes.string.isRequired,
+};
+
 export {
   fetchData,
   updateUserData,
-  updateServiceData,
   updateSpecialistData,
+  createServiceData,
   deleteData,
 };

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdClose, MdEdit } from 'react-icons/md';
+import { MdClose, MdEdit, MdAddCard } from 'react-icons/md';
 import { HiArrowLeft } from 'react-icons/hi';
 import { openModalWindow } from 'hooks/modalWindow';
 import { addModal } from 'redux/modal/operation';
@@ -13,6 +13,7 @@ import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { SEO } from 'utils/SEO';
 import { EditServiceDataModal } from 'components/Admin/EditDataModal/EditServicesDataModal';
 import css from 'components/Admin/admin.module.scss';
+import { CreateServiceDataModal } from 'components/Admin/CreateDataModal/CreateServicesDataModal';
 
 const AdminServicesPage = () => {
   const [services, setServices] = useState([]);
@@ -26,6 +27,7 @@ const AdminServicesPage = () => {
       try {
         const { data } = await fetchData('/admin/services');
         setServices(data);
+        localStorage.setItem("services", data.length)
         if (!data) {
           return onFetchError('Whoops, something went wrong');
         }
@@ -40,7 +42,7 @@ const AdminServicesPage = () => {
   async function deleteService(id) {
     setIsLoading(true);
     try {
-      const { date } = await deleteData(`/services/${id}`);
+      const { date } = await deleteData(`/admin/services/${id}`);
       return date;
     } catch (error) {
       setError(error);
@@ -152,9 +154,22 @@ const AdminServicesPage = () => {
                 ))}
             </tbody>
           </table>
+          <button
+                        className={css['icon-btn']}
+                        type="button"
+                        aria-label="Create services"
+                        onClick={e => {
+                          openModal(e);
+                        }}
+                        data-modal="admin"
+                        // data-id={service._id}
+                      >
+                        <MdAddCard size={25}/>
+                      </button>
         </div>
       </section>
       <EditServiceDataModal />
+      <CreateServiceDataModal/>
     </>
   );
 };
