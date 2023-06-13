@@ -40,7 +40,7 @@ const AdminServicesPage = () => {
   async function deleteService(id) {
     setIsLoading(true);
     try {
-      const { date } = await deleteData(`/services/${id}`);
+      const { date } = await deleteData(`/admin/services/${id}`);
       return date;
     } catch (error) {
       setError(error);

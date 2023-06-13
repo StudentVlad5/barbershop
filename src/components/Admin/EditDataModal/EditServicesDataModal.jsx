@@ -19,7 +19,7 @@ export const EditServiceDataModal = () => {
   const modal = useSelector(modalComponent);
   const dispatch = useDispatch();
 
-  const itemForFetch = `/services/${modal.id}`;
+  const itemForFetch = `/admin/services/${modal.id}`;
 
   useEffect(() => {
     async function getData() {
@@ -113,9 +113,10 @@ export const EditServiceDataModal = () => {
                 className={css.form}
                 autoComplete="off"
                 onSubmit={handleSubmit}
-                onChange={() => {
-                  handleChange();
-                }}
+                onChange={handleChange}
+                // onChange={() => {
+                //   handleChange();
+                // }}
               >
                 <div className={css.form__list}>
                   <div className={css.form__field}>
@@ -189,17 +190,17 @@ export const EditServiceDataModal = () => {
                     <div style={{ position: 'relative' }}>
                       <Field
                         className={css.form__input}
-                        onFocus={e => {
-                          e.target.setAttribute('type', 'date');
-                        }}
-                        onBlur={e => {
-                          e.target.setAttribute('type', 'text');
-                        }}
+                        // onFocus={e => {
+                        //   e.target.setAttribute('type', 'date');
+                        // }}
+                        // onBlur={e => {
+                        //   e.target.setAttribute('type', 'text');
+                        // }}
                         type="text"
                         id="time"
                         name="time"
-                        min={'1900-01-01'}
-                        max={`${new Date().toISOString().split('T')[0]}`}
+                        // min={'1900-01-01'}
+                        // max={`${new Date().toISOString().split('T')[0]}`}
                         placeholder="Type time"
                         value={values.time}
                       />
@@ -221,9 +222,9 @@ export const EditServiceDataModal = () => {
                         placeholder="Type location"
                         value={values.location}
                         onBlur={handleBlur}
-                        onChange={() => {
-                          handleChange();
-                        }}
+                        // onChange={() => {
+                        //   handleChange();
+                        // }}
                       />
                     </div>
                   </div>
