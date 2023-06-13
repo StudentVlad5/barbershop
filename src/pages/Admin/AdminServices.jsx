@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdClose, MdEdit } from 'react-icons/md';
+import { MdClose, MdEdit, MdAddCard } from 'react-icons/md';
 import { HiArrowLeft } from 'react-icons/hi';
 import { openModalWindow } from 'hooks/modalWindow';
 import { addModal } from 'redux/modal/operation';
@@ -152,6 +152,18 @@ const AdminServicesPage = () => {
                 ))}
             </tbody>
           </table>
+          <button
+                        className={css['icon-btn']}
+                        type="button"
+                        aria-label="Edit services"
+                        onClick={e => {
+                          openModal(e);
+                        }}
+                        data-modal="admin"
+                        // data-id={service._id}
+                      >
+                        <MdAddCard size={25}/>
+                      </button>
         </div>
       </section>
       <EditServiceDataModal />
