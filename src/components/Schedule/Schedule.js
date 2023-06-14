@@ -75,7 +75,7 @@ const Schedule = () => {
     (async function getListOfServices() {
       setIsLoading(true);
       try {
-        const { data } = await fetchData('/admin/services');
+        const { data } = await fetchData("/admin/services");
         setDataService(data);
         if (!data) {
           return onFetchError("Whoops, something went wrong");
@@ -277,9 +277,7 @@ const Schedule = () => {
           //
           let endDate = new Date(cellData.startTime);
           endDate = new Date(
-            endDate.setMinutes(
-              endDate.getMinutes() + filteredData[0].time
-            )
+            endDate.setMinutes(endDate.getMinutes() + filteredData[0].time)
           );
 
           // set time for items
@@ -404,13 +402,7 @@ const Schedule = () => {
                     </ViewsDirective>
 
                     <Inject
-                      services={[
-                        Day,
-                        Week,
-                        WorkWeek,
-                        Month,
-                        ExcelExport,
-                      ]}
+                      services={[Day, Week, WorkWeek, Month, ExcelExport]}
                     />
                   </ScheduleComponent>
                 </div>

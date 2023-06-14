@@ -66,7 +66,7 @@ export const CreateServiceDataModal = () => {
   };
 
   return createPortal(
-    Object.values(modal)[0] === 'admin' && (
+    Object.values(modal)[0] === 'admin_create' && (
       <div
         className={css.backdrop}
         onClick={e => {

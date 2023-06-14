@@ -61,6 +61,7 @@ async function createServiceData(pathParams, body) {
   formData.append("location", body.location);
   formData.append("price", body.price);
   formData.append("owner", body.owner);
+  formData.append("Id", body.id);
 
   return await axios.post(`${BASE_URL}${pathParams}`, formData, {
     headers: {
