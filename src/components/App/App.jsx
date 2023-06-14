@@ -11,6 +11,8 @@ import AdminUsersPage from 'pages/Admin/AdminUsers';
 import AdminServicesPage from 'pages/Admin/AdminServices';
 import { User } from 'components/Sections/User/User';
 import AdminSpecialistPage from 'pages/Admin/AdminSpecialist';
+import { PrivateRoute } from 'routes/PrivateRoute';
+// import { RestrictedRoute } from 'routes/PrivateRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -29,16 +31,14 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<LandingPage />} />
-            <Route path="user" element={<User />} />
-            {permission === 'admin' ? (
-              <Route path="admin" element={<AdminPage />} />
-            ) : (
-              <Route path="user" element={<User />} />
+             {permission === 'admin' ? (
+              <Route path="admin" element={<PrivateRoute redirectTo="/" component={<AdminPage />} /> }/>) : (
+              <Route path="user" element={<PrivateRoute redirectTo="/" component={<User />} />}/>
             )}
 
-            <Route path="admin/users" element={<AdminUsersPage />} />
-            <Route path="admin/services" element={<AdminServicesPage />} />
-            <Route path="admin/owners" element={<AdminSpecialistPage />} />
+            <Route path="admin/users" element={<PrivateRoute redirectTo="/" component={<AdminUsersPage />} />}/>
+            <Route path="admin/services" element={<PrivateRoute redirectTo="/" component={<AdminServicesPage />} />}/>
+            <Route path="admin/owners" element={<PrivateRoute redirectTo="/" component={<AdminSpecialistPage />}  />}/>
 
             <Route path="*" element={<LandingPage />} />
           </Route>
