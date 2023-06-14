@@ -5,13 +5,13 @@ import { useDispatch } from "react-redux";
 export const LogOut = () => {
   const dispatch = useDispatch();
   const logout = () => {
-     dispatch(logOut());
+    dispatch(logOut());
   };
   return (
     <button
       onClick={logout}
       className={
-        css.btn + " " + css["btn--mode-dark"] + " " + css["btn--size-m"]
+        css.btn + " " + css["btn--mode-light"] + " " + css["btn--size-m"]
       }
     >
       LOG OUT
