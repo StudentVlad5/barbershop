@@ -45,7 +45,7 @@ const MobileMenu = ({ onClose }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="#about"
+              href="/barbershop#about"
               aria-label="About"
               onClick={() => onClose()}
             >
@@ -55,7 +55,7 @@ const MobileMenu = ({ onClose }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="#price"
+              href="/barbershop#price"
               aria-label="Services and Prices"
               onClick={() => onClose()}
             >
@@ -65,7 +65,7 @@ const MobileMenu = ({ onClose }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="#team"
+              href="/barbershop#team"
               aria-label="Barbers"
               onClick={() => onClose()}
             >
@@ -75,7 +75,7 @@ const MobileMenu = ({ onClose }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="#contacts"
+              href="/barbershop#contacts"
               aria-label="Contacts"
               onClick={() => onClose()}
             >
@@ -99,7 +99,10 @@ const MobileMenu = ({ onClose }) => {
           log in
         </button>
       ) : (
-        <div><MobileUserNav /><LogOut type="button" style={{margin:"10px"}}/></div>
+        <div>
+          <MobileUserNav />
+          <LogOut type="button" style={{ margin: '10px' }} />
+        </div>
       )}
       <ul
         className={

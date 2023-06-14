@@ -79,15 +79,18 @@
     }
 
     & .form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
         @include mq(tablet) {
-            display: flex;
             flex-wrap: wrap;
         }
     }
 
     & .form__field {
         position: relative;
-        margin-bottom: 44px;
+        // margin-bottom: 44px;
         padding-top: 20px;
 
         @include mq(tablet) {
@@ -229,6 +232,11 @@
             color: var(--color-text-white);
             transform: translateY(0);
         }
+    }
+
+    & .form__btn {
+        width: 160px;
+        height: 40px;
     }
 }
 
