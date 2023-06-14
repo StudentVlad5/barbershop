@@ -13,33 +13,11 @@ import { onLoaded, onLoading } from 'helpers/Loader/Loader';
 import css from './createDataModal.module.scss';
 
 export const CreateServiceDataModal = () => {
-  // const [dataUpdate, setDataUpdate] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const modal = useSelector(modalComponent);
   const dispatch = useDispatch();
-
-  // const itemForFetch = `/admin/services/${modal.id}`;
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     setIsLoading(true);
-  //     try {
-  //       const { data } = await fetchData(itemForFetch);
-  //       setDataUpdate(data);
-  //       if (!data) {
-  //         return onFetchError('Whoops, something went wrong');
-  //       }
-  //     } catch (error) {
-  //       setError(error);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   }
-  //   if (modal.id !== '') {
-  //     getData();
-  //   }
-  // }, [itemForFetch, modal.id]);
 
   async function createService(values) {
     setIsLoading(true);
@@ -75,7 +53,7 @@ export const CreateServiceDataModal = () => {
       >
         <div className={css.modal} onClick={e => e.stopPropagation()}>
           <button
-            className={css['modal__btn-close']}
+            className={css['close-btn']}
             type="button"
             onClick={e => closeDataModal(e)}
             aria-label="Close modal"
@@ -114,9 +92,6 @@ export const CreateServiceDataModal = () => {
                 autoComplete="off"
                 onSubmit={handleSubmit}
                 onChange={handleChange}
-                // onChange={() => {
-                //   handleChange();
-                // }}
               >
                 <div className={css.form__list}>
                   <div className={css.form__field}>
@@ -190,17 +165,9 @@ export const CreateServiceDataModal = () => {
                     <div style={{ position: 'relative' }}>
                       <Field
                         className={css.form__input}
-                        // onFocus={e => {
-                        //   e.target.setAttribute('type', 'date');
-                        // }}
-                        // onBlur={e => {
-                        //   e.target.setAttribute('type', 'text');
-                        // }}
                         type="text"
                         id="time"
                         name="time"
-                        // min={'1900-01-01'}
-                        // max={`${new Date().toISOString().split('T')[0]}`}
                         placeholder="Type time"
                         value={values.time}
                       />
@@ -222,9 +189,7 @@ export const CreateServiceDataModal = () => {
                         placeholder="Type location"
                         value={values.location}
                         onBlur={handleBlur}
-                        // onChange={() => {
-                        //   handleChange();
-                        // }}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -234,7 +199,6 @@ export const CreateServiceDataModal = () => {
                   className={css['done-btn']}
                   type="submit"
                   disabled={isSubmitting}
-                  // onClick={e => closeDataModal(e)}
                   aria-label="Submit"
                 >
                   <MdDone size={15} />

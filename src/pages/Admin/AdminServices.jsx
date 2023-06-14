@@ -66,7 +66,7 @@ const AdminServicesPage = () => {
   const openModal = e => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.currentTarget.dataset.modal === 'admin') {
+    if (e.currentTarget.dataset.modal === 'admin' || e.currentTarget.dataset.modal === 'admin_create') {
       dispatch(
         addModal({
           modal: e.currentTarget.dataset.modal,
