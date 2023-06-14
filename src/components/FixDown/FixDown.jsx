@@ -12,10 +12,10 @@ const FixDown = () => {
     const pageOffset = window.scrollY;
 if(scroll){
     if (pageOffset > headerOffsetTrigger) {
-      scroll.classList.remove(css['is-hide']);
+      scroll && scroll.classList.remove(css['is-hide']);
       header.classList.add(css['js-no-transparency']);
     } else {
-      scroll.classList.add(css['is-hide']);
+      scroll && scroll.classList.add(css['is-hide']);
       header.classList.remove(css['js-no-transparency']);
     }
   }}
@@ -36,7 +36,9 @@ if(scroll){
           onClick={e => {
             openModalWindow(e),
               setTimeout(() => {
-                if(document.querySelector('[aria-label="Day"]')){document.querySelector('[aria-label="Day"]').click();}
+                if (document.querySelector('[aria-label="Day"]')) {
+                  document.querySelector('[aria-label="Day"]').click();
+                }
               }, 250);
           }}
         >

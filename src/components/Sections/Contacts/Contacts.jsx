@@ -4,14 +4,13 @@ import sprite from 'images/sprite.svg';
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
-
 const Contacts = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const notify = () => toast('message sent successfully');
- 
-  const handleChange = (e) => {
+
+  const handleChange = e => {
     const { name, value } = e.currentTarget;
     switch (name) {
       case 'user-name':
@@ -30,25 +29,25 @@ const Contacts = () => {
         return;
     }
   };
-  
+
   const handleSubmit = async () => {
-console.log(name, phone, message)
-const credential = {name, phone, message};
-console.log(credential)
+    console.log(name, phone, message);
+    const credential = { name, phone, message };
+    console.log(credential);
 
     // const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
     try {
-          const res = await leaveMessage(credential);
-          notify();
-          return res;
-        } catch (error) {
-          return error.message;
-        } finally { 
-          setName('');
-          setPhone('');
-          setMessage('')
-        }
-  }
+      const res = await leaveMessage(credential);
+      notify();
+      return res;
+    } catch (error) {
+      return error.message;
+    } finally {
+      setName('');
+      setPhone('');
+      setMessage('');
+    }
+  };
   return (
     <section className={css.contacts + ' ' + css.section} id="contacts">
       <div className={css.contacts__container + ' ' + css.container}>
@@ -59,9 +58,17 @@ console.log(credential)
               css['section-title'] + ' ' + css['section-title--mode-light']
             }
           >
-            Book a Service
+            Leave your message
           </h2>
-          <form className={css.form} name="form-contacts" autoComplete="on" onSubmit={e=>{e.preventDefault(); handleSubmit()}}>
+          <form
+            className={css.form}
+            name="form-contacts"
+            autoComplete="on"
+            onSubmit={e => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+          >
             <label className={css.form__field} aria-label="Name">
               <input
                 className={css.form__input}
@@ -70,7 +77,7 @@ console.log(credential)
                 required
                 placeholder="John"
                 value={name}
-                onChange={e=>handleChange(e)}
+                onChange={e => handleChange(e)}
               />
               <span className={css.form__label}>Name*</span>
             </label>
@@ -82,7 +89,7 @@ console.log(credential)
                 required
                 placeholder="+19739476185"
                 value={phone}
-                onChange={e=>handleChange(e)}
+                onChange={e => handleChange(e)}
               />
               <span className={css.form__label}>Telephone*</span>
             </label>
@@ -95,18 +102,18 @@ console.log(credential)
                 name="comment"
                 placeholder="Your comment"
                 value={message}
-                onChange={e=>handleChange(e)}
+                onChange={e => handleChange(e)}
               ></textarea>
               <span className={css.form__label}>Message</span>
             </label>
-           <button
-            className={
-              css.form__btn + ' ' + css.btn + ' ' + css['btn--mode-dark']
-            }
-            type="submit"
-          >
-            send
-          </button>
+            <button
+              className={
+                css.form__btn + ' ' + css.btn + ' ' + css['btn--mode-dark']
+              }
+              type="submit"
+            >
+              send
+            </button>
           </form>
           <Toaster />
         </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { openModalForm } from 'hooks/modalWindow';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
@@ -14,18 +14,18 @@ export const Header = () => {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  const header = document.getElementById('header');
-  const admin = document.getElementById('admin');
-  if (admin) {
-  // if (admin.isConnected) {
-    header.classList.add(css['js-no-transparency']);
-  }
+  useEffect(() => {
+    if (window.location.pathname !== '/barbershop') {
+      const header = document.getElementById('header');
+      header && header.classList.add(css['js-no-transparency']);
+    }
+  }, [window.location.pathname]);
 
   return (
     <>
       <header className={css.header} id="header">
         <div className={css.header__container + ' ' + css.container}>
-          <a className={css.link} href="./index.html" aria-label="logo company">
+          <a className={css.link} href="/barbershop" aria-label="logo company">
             <svg className={css.logo} width="69" height="56">
               <svg className={css.logo} width="69" height="56">
                 <use href={sprite + '#logo'}></use>
@@ -37,7 +37,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="#about"
+                  href="/barbershop#about"
                   aria-label="About"
                 >
                   About
@@ -46,7 +46,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="#price"
+                  href="/barbershop#price"
                   aria-label="Services and Prices"
                 >
                   Services and Prices
@@ -55,7 +55,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="#team"
+                  href="/barbershop#team"
                   aria-label="Barbers"
                 >
                   Barbers
@@ -64,7 +64,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="#contacts"
+                  href="/barbershop#contacts"
                   aria-label="Contacts"
                 >
                   Contacts
@@ -89,7 +89,10 @@ export const Header = () => {
                 log in
               </button>
             ) : (
-              <><UserNav /><LogOut type="button" style={{margin:"10px"}}/></>
+              <>
+                <UserNav />
+                <LogOut type="button" style={{ margin: '10px' }} />
+              </>
             )}
           </div>
           <button

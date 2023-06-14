@@ -75,7 +75,7 @@ export const EditUserDataModal = () => {
       >
         <div className={css.modal} onClick={e => e.stopPropagation()}>
           <button
-            className={css['modal__btn-close']}
+            className={css['close-btn']}
             type="button"
             onClick={e => closeDataModal(e)}
             aria-label="Close modal"
@@ -115,9 +115,7 @@ export const EditUserDataModal = () => {
                 className={css.form}
                 autoComplete="off"
                 onSubmit={handleSubmit}
-                onChange={() => {
-                  handleChange();
-                }}
+                onChange={handleChange}
               >
                 <div className={css.form__list}>
                   <div className={css.form__field}>

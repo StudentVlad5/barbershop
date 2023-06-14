@@ -7,19 +7,19 @@ import { closeModalWindow } from 'hooks/modalWindow';
 import { cleanModal } from 'redux/modal/operation';
 import { modalComponent } from 'redux/modal/selectors';
 import { addReload } from 'redux/reload/slice';
-import { fetchData, updateServiceData } from 'services/APIservice';
+import { fetchData, updateSpecialistData } from 'services/APIservice';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoaded, onLoading } from 'helpers/Loader/Loader';
 import css from './editDataModal.module.scss';
 
-export const EditServiceDataModal = () => {
+export const EditSpecialistDataModal = () => {
   const [dataUpdate, setDataUpdate] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
   const modal = useSelector(modalComponent);
   const dispatch = useDispatch();
-
-  const itemForFetch = `/admin/services/${modal.id}`;
+  const itemForFetch = `/admin/owners/${modal.id}`;
 
   useEffect(() => {
     async function getData() {
@@ -41,16 +41,15 @@ export const EditServiceDataModal = () => {
     }
   }, [itemForFetch, modal.id]);
 
-  async function editService(values) {
+  async function editSpecialist(formData) {
     setIsLoading(true);
     try {
-      const { code } = await updateServiceData(
-        `/admin/services/${modal.id}`,
-        values,
-      );
-      if (code && code !== 201) {
+      const { date } = await updateSpecialistData(itemForFetch, formData);
+      console.log('editSpecialist ~ date:', date);
+      if (date && date !== 201) {
         return onFetchError('Whoops, something went wrong');
       }
+      return date;
     } catch (error) {
       setError(error);
     } finally {
@@ -87,14 +86,20 @@ export const EditServiceDataModal = () => {
           <Formik
             initialValues={{
               id: dataUpdate?._id ? dataUpdate._id : '',
-              subject: dataUpdate?.subject ? dataUpdate.subject : '',
-              time: dataUpdate?.time ? dataUpdate.time : '',
-              location: dataUpdate?.location ? dataUpdate.location : '',
-              price: dataUpdate?.price ? dataUpdate.price : '',
-              owner: dataUpdate?.owner ? dataUpdate.owner : '',
+              groupId: dataUpdate?.groupId ? dataUpdate.groupId : '',
+              ownerText: dataUpdate?.ownerText ? dataUpdate.ownerText : '',
+              ownerColor: dataUpdate?.ownerColor ? dataUpdate.ownerColor : '',
+              designation: dataUpdate?.designation
+                ? dataUpdate.designation
+                : '',
+              workDays: dataUpdate?.workDays?.toString()
+                ? dataUpdate.workDays?.toString()
+                : '',
+              startHour: dataUpdate?.startHour ? dataUpdate.startHour : '',
+              endHour: dataUpdate?.endHour ? dataUpdate.endHour : '',
             }}
             onSubmit={(values, { setSubmitting }) => {
-              editService(values);
+              editSpecialist(values);
               dispatch(addReload(false));
               setSubmitting(false);
             }}
@@ -103,7 +108,6 @@ export const EditServiceDataModal = () => {
             {({
               handleChange,
               handleSubmit,
-              handleBlur,
               isSubmitting,
               values,
               errors,
@@ -125,105 +129,125 @@ export const EditServiceDataModal = () => {
                       id="id"
                       type="text"
                       name="id"
-                      placeholder="Service id"
+                      placeholder="Specialist id"
                       disabled
                     />
                   </div>
                   <div className={css.form__field}>
-                    <label className={css.form__label} htmlFor="subject">
-                      <span>Subject</span>
-                      {errors.subject && touched.subject ? (
-                        <span className={css.error}>{errors.subject}</span>
+                    <label className={css.form__label} htmlFor="groupId">
+                      <span>Group Id</span>
+                      {errors.groupId && touched.groupId ? (
+                        <span className={css.error}>{errors.groupId}</span>
                       ) : null}
                     </label>
                     <Field
                       className={css.form__input}
                       type="text"
-                      id="subject"
-                      name="subject"
-                      placeholder="Type service subject"
-                      value={values.subject}
+                      id="groupId"
+                      name="groupId"
+                      placeholder="Type Specialist group Id"
+                      value={values.groupId}
                     />
                   </div>
                   <div className={css.form__field}>
-                    <label className={css.form__label} htmlFor="price">
-                      <span>Price</span>
-                      {errors.price && touched.price ? (
-                        <span className={css.error}>{errors.price}</span>
+                    <label className={css.form__label} htmlFor="ownerText">
+                      <span>Name</span>
+                      {errors.ownerText && touched.ownerText ? (
+                        <span className={css.error}>{errors.ownerText}</span>
                       ) : null}
                     </label>
                     <Field
                       className={css.form__input}
                       type="text"
-                      id="price"
-                      name="price"
-                      placeholder="Type service price"
-                      value={values.price}
+                      id="ownerText"
+                      name="ownerText"
+                      placeholder="Type Specialist name"
+                      value={values.ownerText}
                     />
                   </div>
                   <div className={css.form__field}>
-                    <label className={css.form__label} htmlFor="owner">
-                      <span>owner</span>
-                      {errors.owner && touched.owner ? (
-                        <span className={css.error}>{errors.owner}</span>
-                      ) : null}
-                    </label>
-                    <Field
-                      className={css.form__input}
-                      type="text"
-                      id="owner"
-                      name="owner"
-                      placeholder="Type service owner"
-                      value={values.owner}
-                    />
-                  </div>
-                  <div className={css.form__field}>
-                    <label className={css.form__label} htmlFor="time">
-                      <span>Time</span>
-                      {errors.time && touched.time ? (
-                        <span className={css.error}>{errors.time}</span>
-                      ) : null}
-                    </label>
-                    <div style={{ position: 'relative' }}>
-                      <Field
-                        className={css.form__input}
-                        // onFocus={e => {
-                        //   e.target.setAttribute('type', 'date');
-                        // }}
-                        // onBlur={e => {
-                        //   e.target.setAttribute('type', 'text');
-                        // }}
-                        type="text"
-                        id="time"
-                        name="time"
-                        // min={'1900-01-01'}
-                        // max={`${new Date().toISOString().split('T')[0]}`}
-                        placeholder="Type time"
-                        value={values.time}
-                      />
-                    </div>
-                  </div>
-                  <div className={css.form__field}>
-                    <label className={css.form__label} htmlFor="location">
-                      <span>Location</span>
-                      {errors.location && touched.location ? (
-                        <span className={css.error}>{errors.location}</span>
+                    <label className={css.form__label} htmlFor="ownerColor">
+                      <span>Color</span>
+                      {errors.ownerColor && touched.ownerColor ? (
+                        <span className={css.error}>{errors.ownerColor}</span>
                       ) : null}
                     </label>
                     <div style={{ position: 'relative' }}>
                       <Field
                         className={css.form__input}
                         type="text"
-                        id="location"
-                        name="location"
-                        placeholder="Type location"
-                        value={values.location}
-                        onBlur={handleBlur}
-                        // onChange={() => {
-                        //   handleChange();
-                        // }}
+                        id="ownerColor"
+                        name="ownerColor"
+                        placeholder="Type Color"
+                        value={values.ownerColor}
                       />
                     </div>
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="designation">
+                      <span>Designation</span>
+                      {errors.designation && touched.designation ? (
+                        <span className={css.error}>{errors.designation}</span>
+                      ) : null}
+                    </label>
+                    <div>
+                      <Field
+                        className={css.form__input}
+                        type="text"
+                        id="designation"
+                        name="designation"
+                        placeholder="Type designation"
+                        value={values.designation}
+                      />
+                    </div>
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="workDays">
+                      <span>Work days</span>
+                      {errors.workDays && touched.workDays ? (
+                        <span className={css.error}>{errors.workDays}</span>
+                      ) : null}
+                    </label>
+                    <Field
+                      className={css.form__input}
+                      type="text"
+                      id="workDays"
+                      name="workDays"
+                      placeholder="Type Specialist workDays"
+                      value={values.workDays}
+                    />
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="startHour">
+                      <span>Start work hour</span>
+                      {errors.startHour && touched.startHour ? (
+                        <span className={css.error}>{errors.startHour}</span>
+                      ) : null}
+                    </label>
+                    <Field
+                      className={css.form__input}
+                      type="text"
+                      id="startHour"
+                      name="startHour"
+                      placeholder="Type Specialist startHour"
+                      value={values.startHour}
+                    />
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="endHour">
+                      <span>End work hour</span>
+                      {errors.endHour && touched.endHour ? (
+                        <span className={css.error}>{errors.endHour}</span>
+                      ) : null}
+                    </label>
+                    <Field
+                      className={css.form__input}
+                      type="text"
+                      id="endHour"
+                      name="endHour"
+                      placeholder="Type Specialist endHour"
+                      value={values.endHour}
+                    />
                   </div>
                 </div>
 

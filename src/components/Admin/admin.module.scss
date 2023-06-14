@@ -12,7 +12,9 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
+
     gap: 16px;
+    margin-top: 20px;
     max-width: calc(100vw - 40px);
 
     @include mq(tablet) {
