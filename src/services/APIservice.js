@@ -1,8 +1,9 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-const BASE_URL = 'https://drab-pear-gazelle-belt.cyclic.app/api';
-// const BASE_URL = 'http://localhost:3030/api';
+// const { BASE_URL } = window.global;
+// const BASE_URL = 'https://drab-pear-gazelle-belt.cyclic.app/api';
+const BASE_URL = 'http://localhost:3030/api';
 
 async function fetchData(pathParams) {
   const axiosInstance = axios.create({
@@ -38,6 +39,26 @@ async function updateUserData(pathParams, body, file) {
   });
 }
 
+async function createUserData(pathParams, body, file) {
+  const formData = new FormData();
+  file && formData.set('avatar', file);
+  formData.append('email', body.email);
+  formData.append('birthday', body.birthday);
+  formData.append('location', body.location);
+  formData.append('password', body.password);
+  formData.append('phone', body.phone);
+  formData.append('role', body.role);
+  formData.append('userName', body.userName);
+
+  return await axios.post(`${BASE_URL}${pathParams}`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    },
+  });
+}
+
 async function updateServiceData(pathParams, body) {
   const formData = new FormData();
   formData.append('subject', body.subject);
@@ -56,12 +77,12 @@ async function updateServiceData(pathParams, body) {
 }
 async function createServiceData(pathParams, body) {
   const formData = new FormData();
-  formData.append("subject", body.subject);
-  formData.append("time", body.time);
-  formData.append("location", body.location);
-  formData.append("price", body.price);
-  formData.append("owner", body.owner);
-  formData.append("Id", body.id);
+  formData.append('subject', body.subject);
+  formData.append('time', body.time);
+  formData.append('location', body.location);
+  formData.append('price', body.price);
+  formData.append('owner', body.owner);
+  formData.append('Id', body.id);
 
   return await axios.post(`${BASE_URL}${pathParams}`, formData, {
     headers: {
@@ -116,6 +137,12 @@ updateUserData.propTypes = {
   file: PropTypes.string,
 };
 
+createUserData.propTypes = {
+  pathParams: PropTypes.string.isRequired,
+  formData: PropTypes.string.isRequired,
+  file: PropTypes.string,
+};
+
 updateServiceData.propTypes = {
   pathParams: PropTypes.string.isRequired,
   formData: PropTypes.string.isRequired,
@@ -129,6 +156,7 @@ createServiceData.propTypes = {
 export {
   fetchData,
   updateUserData,
+  createUserData,
   updateSpecialistData,
   createServiceData,
   updateServiceData,

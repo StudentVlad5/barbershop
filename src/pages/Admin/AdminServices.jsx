@@ -12,8 +12,8 @@ import { onLoading, onLoaded } from 'helpers/Loader/Loader';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { SEO } from 'utils/SEO';
 import { EditServiceDataModal } from 'components/Admin/EditDataModal/EditServicesDataModal';
-import css from 'components/Admin/admin.module.scss';
 import { CreateServiceDataModal } from 'components/Admin/CreateDataModal/CreateServicesDataModal';
+import css from 'components/Admin/admin.module.scss';
 
 const AdminServicesPage = () => {
   const [services, setServices] = useState([]);
@@ -27,7 +27,7 @@ const AdminServicesPage = () => {
       try {
         const { data } = await fetchData('/admin/services');
         setServices(data);
-        localStorage.setItem("services", data.length)
+        localStorage.setItem('services', data.length);
         if (!data) {
           return onFetchError('Whoops, something went wrong');
         }
@@ -66,7 +66,10 @@ const AdminServicesPage = () => {
   const openModal = e => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.currentTarget.dataset.modal === 'admin' || e.currentTarget.dataset.modal === 'admin_create') {
+    if (
+      e.currentTarget.dataset.modal === 'admin' ||
+      e.currentTarget.dataset.modal === 'admin_create'
+    ) {
       dispatch(
         addModal({
           modal: e.currentTarget.dataset.modal,
@@ -155,21 +158,21 @@ const AdminServicesPage = () => {
             </tbody>
           </table>
           <button
-                        className={css['icon-btn']}
-                        type="button"
-                        aria-label="Create services"
-                        onClick={e => {
-                          openModal(e);
-                        }}
-                        data-modal="admin_create"
-                        // data-id={service._id}
-                      >
-                        <MdAddCard size={25}/>
-                      </button>
+            className={css['icon-btn']}
+            type="button"
+            aria-label="Create services"
+            onClick={e => {
+              openModal(e);
+            }}
+            data-modal="admin_create"
+            // data-id={service._id}
+          >
+            <MdAddCard size={25} />
+          </button>
         </div>
       </section>
       <EditServiceDataModal />
-      <CreateServiceDataModal/>
+      <CreateServiceDataModal />
     </>
   );
 };
