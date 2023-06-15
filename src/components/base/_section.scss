@@ -61,11 +61,13 @@
     }
 
     &--size-s {
-        font-size: 28px;
-        line-height: 1.18;
+        margin-bottom: 20px;
+
+        font-size: 20px;
+        line-height: 1.13;
 
         @include mq(desktop) {
-            font-size: 42px;
+            font-size: 36px;
             line-height: 1.17;
         }
     }

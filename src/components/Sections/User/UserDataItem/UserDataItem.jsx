@@ -1,10 +1,10 @@
-import { useDispatch } from 'react-redux';
-import css from './UserDataItem.module.scss';
 import { useState } from 'react';
-import { update } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import check from '../../../../images/sprite.svg';
-import pencil from '../../../../images/sprite.svg';
+import { update } from 'redux/auth/operations';
+import check from 'images/sprite.svg';
+import pencil from 'images/sprite.svg';
+import css from './UserDataItem.module.scss';
 
 export const UserDataItem = ({
   name,
@@ -112,19 +112,17 @@ export const UserDataItem = ({
 
   return (
     <>
-      <div className={css['user-data-item-wrapper']}>
+      <li className={css['item-wrapper']}>
         <label htmlFor={name} className={css['title-name']}>
           {label}
         </label>
 
-        <div className={css['user-data-item-input-btn-wrapper']}>
+        <div className={css['item-input-btn-wrapper']}>
           <div className={css['input-wrapper']}>
             <input
               value={!profile ? inputValue : defaultValue}
               onChange={handleChange}
-              className={
-                active === name ? css.active : '' + css['user-data-item-input']
-              }
+              className={active === name ? css.active : '' + css['item-input']}
               disabled={active !== name}
               type={type}
               name={name}
@@ -138,7 +136,7 @@ export const UserDataItem = ({
           {!profile &&
             (active == name ? (
               <button
-                className={css['user-data-item-btn']}
+                className={css['item-btn']}
                 type="button"
                 onClick={() => handleSubmit(name)}
               >
@@ -148,7 +146,7 @@ export const UserDataItem = ({
               </button>
             ) : (
               <button
-                className={css['user-data-item-btn']}
+                className={css['item-btn']}
                 type="button"
                 disabled={active && active !== name}
                 onClick={() => activeHandleClick(name)}
@@ -159,7 +157,7 @@ export const UserDataItem = ({
               </button>
             ))}
         </div>
-      </div>
+      </li>
     </>
   );
 };

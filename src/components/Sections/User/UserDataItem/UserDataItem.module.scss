@@ -1,6 +1,6 @@
 @import '../../../base/main.scss';
 
-.user-data-item-wrapper{
+.item-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,12 +17,12 @@
   }
 }
 
-.user-data-item-input-btn-wrapper{
+.item-input-btn-wrapper {
   display: flex;
   align-items: center;
 }
 
-.title-name{
+.title-name {
   display: block;
   font-family: Manrope, sans-serif;
   font-size: 12px;
@@ -36,7 +36,7 @@
   }
 }
 
-.user-data-item-input{
+.item-input {
   box-sizing: border-box;
   font-size: 12px;
   font-weight: 400;
@@ -46,14 +46,10 @@
   height: 24px;
   padding: 4px 18px;
   border-radius: 40px;
-  // background-color: ${p =>
-  //   p.disabled ? var(--color-background-main) : var(--color-background-input)};
-  // border: ${p => (p.disabled ? '1px solid' : 'none')};
-  // border-color: ${p =>
-  //   p.disabled ? 'transparent' : #fac9ab};
+  background-color: var(--color-background-main);
 
-  :focus {
-    outline-color: #fac9ab;
+  &:focus {
+    outline-color: var(--color-accent)
   }
 
   @media screen and (min-width: 768px) {
@@ -66,11 +62,11 @@
   }
 }
 
-.input-wrapper{
+.input-wrapper {
   position: relative;
 }
 
-.error{
+.error {
   color: var(--color-accent);
   font-size: 10px;
   line-height: 1;
@@ -93,7 +89,7 @@
   }
 }
 
-.user-data-item-btn{
+.item-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,7 +123,7 @@
   }
 }
 
-.icon-pencil{
+.icon-pencil {
   width: 14px;
   height: 14px;
   fill: #F59256;
@@ -139,12 +135,13 @@
   }
 }
 
-.icon-check{
+.icon-check {
   width: 14px;
   height: 14px;
   fill: #F59256;
   transform: all 150ms linear;
   transition: all 0.25s ease-in;
+
   &:hover,
   :focus {
     fill: var(--color-accent);
