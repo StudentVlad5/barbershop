@@ -87,7 +87,7 @@ async function updateSpecialistData(pathParams, body) {
 
   return await axios.patch(`${BASE_URL}${pathParams}`, formData, {
     headers: {
-      "Content-Type": "multipart/form-data",
+      "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
       "Access-Control-Expose-Headers": "Content-Range",

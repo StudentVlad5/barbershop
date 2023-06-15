@@ -17,6 +17,13 @@ export const EditSpecialistDataModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  let [sunday, setSunday] = useState(false);
+  let [monday, setMonday] = useState(false);
+  let [tuesday, setTuesday] = useState(false);
+  let [wednesday, setWednesday] = useState(false);
+  let [thursday, setThursday] = useState(false);
+  let [friday, setFriday] = useState(false);
+  let [saturday, setSaturday] = useState(false);
   const modal = useSelector(modalComponent);
   const dispatch = useDispatch();
   const itemForFetch = `/admin/owners/${modal.id}`;
@@ -27,6 +34,14 @@ export const EditSpecialistDataModal = () => {
       try {
         const { data } = await fetchData(itemForFetch);
         setDataUpdate(data);
+        if(data.workDays?.includes("7")){setSunday(true)}
+        if(data.workDays?.includes("1")){setMonday(true)}
+        if(data.workDays?.includes("2")){setTuesday(true)}
+        if(data.workDays?.includes("3")){setWednesday(true)}
+        if(data.workDays?.includes("4")){setThursday(true)}
+        if(data.workDays?.includes("5")){setFriday(true)}
+        if(data.workDays?.includes("6")){setSaturday(true)}
+        if(data.workDays?.includes("1")){setMonday(true)}
         if (!data) {
           return onFetchError('Whoops, something went wrong');
         }
@@ -41,8 +56,10 @@ export const EditSpecialistDataModal = () => {
     }
   }, [itemForFetch, modal.id]);
 
+
   async function editSpecialist(formData) {
     setIsLoading(true);
+    console.log("formData", formData)
     try {
       const { date } = await updateSpecialistData(itemForFetch, formData);
       console.log('editSpecialist ~ date:', date);
@@ -62,6 +79,14 @@ export const EditSpecialistDataModal = () => {
     e.preventDefault();
     dispatch(cleanModal());
     closeModalWindow(e);
+    setSunday(false);
+    setMonday(false);
+    setTuesday(false);
+    setWednesday(false);
+    setThursday(false);
+    setFriday(false);
+    setSaturday(false);
+    setMonday(false);
   };
 
   return createPortal(
@@ -92,9 +117,7 @@ export const EditSpecialistDataModal = () => {
               designation: dataUpdate?.designation
                 ? dataUpdate.designation
                 : '',
-              workDays: dataUpdate?.workDays?.toString()
-                ? dataUpdate.workDays?.toString()
-                : '',
+              workDays: dataUpdate?.workDays ? dataUpdate.workDays.split(',') : '',
               startHour: dataUpdate?.startHour ? dataUpdate.startHour : '',
               endHour: dataUpdate?.endHour ? dataUpdate.endHour : '',
             }}
@@ -202,22 +225,6 @@ export const EditSpecialistDataModal = () => {
                     </div>
                   </div>
                   <div className={css.form__field}>
-                    <label className={css.form__label} htmlFor="workDays">
-                      <span>Work days</span>
-                      {errors.workDays && touched.workDays ? (
-                        <span className={css.error}>{errors.workDays}</span>
-                      ) : null}
-                    </label>
-                    <Field
-                      className={css.form__input}
-                      type="text"
-                      id="workDays"
-                      name="workDays"
-                      placeholder="Type Specialist workDays"
-                      value={values.workDays}
-                    />
-                  </div>
-                  <div className={css.form__field}>
                     <label className={css.form__label} htmlFor="startHour">
                       <span>Start work hour</span>
                       {errors.startHour && touched.startHour ? (
@@ -248,6 +255,45 @@ export const EditSpecialistDataModal = () => {
                       placeholder="Type Specialist endHour"
                       value={values.endHour}
                     />
+                  </div>
+                  <div className={css.form__field}>
+                    <div id="checkbox-group">workDays</div>
+                    <div role="group" aria-labelledby="checkbox-group" style={{display:"flex", flexDirection:"column"}}>
+                    <div>
+                    <label>
+                    <Field type="checkbox" name="workDays" value="7" checked={sunday} onChange={()=>setSunday(!sunday)}/> 
+                    Sunday
+                    </label>
+                    <label>
+                    <Field type="checkbox" name="workDays" value="1" checked={monday} onChange={()=>setMonday(!monday)}/> 
+                    Monday
+                    </label>
+                    </div>
+                    <div>
+                    <label>
+                    <Field type="checkbox" name="workDays" value="2" checked={tuesday} onChange={()=>setTuesday(!tuesday)}/> 
+                    Tuesday
+                    </label>
+                    <label>
+                    <Field type="checkbox" name="workDays" value="3" checked={wednesday} onChange={()=>setWednesday(!wednesday)}/> 
+                    Wednesday 
+                    </label>
+                    </div>
+                    <div>
+                    <label>
+                    <Field type="checkbox" name="workDays" value="4" checked={thursday} onChange={()=>setThursday(!thursday)}/> 
+                    Thursday  
+                    </label>
+                    <label>
+                    <Field type="checkbox" name="workDays" value="5" checked={friday} onChange={()=>setFriday(!friday)}/> 
+                    Friday   
+                    </label>
+                    </div>
+                    <label>
+                    <Field type="checkbox" name="workDays" value="6" checked={saturday} onChange={()=>setSaturday(!saturday)}/> 
+                    Saturday    
+                    </label>
+                    </div>
                   </div>
                 </div>
 
