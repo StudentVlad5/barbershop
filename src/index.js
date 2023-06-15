@@ -9,8 +9,8 @@ import { App } from './components/App/App';
 
 import AOS from 'aos';
 
-window.global = { BASE_URL: 'http://localhost:3030/api' };
-// window.global = { BASE_URL: 'https://drab-pear-gazelle-belt.cyclic.app/api' };
+// window.global = { BASE_URL: 'http://localhost:3030/api' };
+window.global = { BASE_URL: 'https://drab-pear-gazelle-belt.cyclic.app/api' };
 AOS.init();
 
 ReactDOM.createRoot(document.getElementById('root')).render(

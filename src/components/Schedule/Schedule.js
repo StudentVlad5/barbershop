@@ -22,9 +22,9 @@ import { fieldsData } from './Datasource';
 import { closeModalWindow } from 'hooks/modalWindow';
 import sprite from 'images/sprite.svg';
 import css from './shedule.module.scss';
-import juliaPics from 'images/barbers/julia.jpg';
-import heorhiiPics from 'images/barbers/heorhii.jpg';
-import vladPics from 'images/barbers/vlad.jpg';
+import member1 from 'images/team/member-1-mob.jpg';
+import member2 from 'images/team/member-2-mob.jpg';
+import member3 from 'images/team/member-3-mob.jpg';
 import { useSelector } from 'react-redux';
 import { getUser } from 'redux/auth/selectors';
 import { useEffect } from 'react';
@@ -110,12 +110,12 @@ const Schedule = () => {
   function getBarberLevel(value) {
     let resourceName = getBarberName(value);
     switch (resourceName) {
-      case 'Julia':
-        return 'High level barber';
-      case 'Heorhii':
-        return 'Master';
-      case 'Vlad':
-        return 'Dr. BARber';
+      case 'John Smith':
+        return 'Extreme Barber';
+      case 'Michele Doe':
+        return 'Extreme Barber';
+      case 'Alan Black':
+        return 'Extreme Barber';
       default:
         break;
     }
@@ -124,12 +124,12 @@ const Schedule = () => {
   function getBarberUrl(value) {
     let resourceName = getBarberName(value);
     switch (resourceName) {
-      case 'Julia':
-        return juliaPics;
-      case 'Heorhii':
-        return heorhiiPics;
-      case 'Vlad':
-        return vladPics;
+      case 'John Smith':
+        return member1;
+      case 'Michele Doe':
+        return member2;
+      case 'Alan Black':
+        return member3;
       default:
         break;
     }
