@@ -34,9 +34,12 @@ export const User = () => {
           alt="User"
         />
         <div>
-          <label htmlFor="user_photo">
-            <span className={css['edit-photo-text']}>Edit photo</span>
-          </label>
+
+          <div className={css['edit-camera-warapper']}>
+            <label htmlFor="user_photo" className={css['lable-user']}>
+              <span className={css['edit-photo-text']}>Edit photo</span>
+            </label>
+          </div>
 
           <input
             className={css['change-photo-user']}
