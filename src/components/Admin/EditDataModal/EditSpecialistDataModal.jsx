@@ -11,6 +11,8 @@ import { fetchData, updateSpecialistData } from 'services/APIservice';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoaded, onLoading } from 'helpers/Loader/Loader';
 import css from './editDataModal.module.scss';
+import { listOfColors } from '../../../helpers/Constants/colors';
+
 
 export const EditSpecialistDataModal = () => {
   const [dataUpdate, setDataUpdate] = useState([]);
@@ -27,6 +29,7 @@ export const EditSpecialistDataModal = () => {
   const modal = useSelector(modalComponent);
   const dispatch = useDispatch();
   const itemForFetch = `/admin/owners/${modal.id}`;
+  const arr = Object.keys(listOfColors);
 
   useEffect(() => {
     async function getData() {
@@ -88,6 +91,8 @@ export const EditSpecialistDataModal = () => {
     setSaturday(false);
     setMonday(false);
   };
+
+
 
   return createPortal(
     Object.values(modal)[0] === 'admin' && (
@@ -198,12 +203,13 @@ export const EditSpecialistDataModal = () => {
                     <div style={{ position: 'relative' }}>
                       <Field
                         className={css.form__input}
-                        type="text"
+                        as="select"
                         id="ownerColor"
                         name="ownerColor"
-                        placeholder="Type Color"
-                        value={values.ownerColor}
-                      />
+                        placeholder={values.ownerColor}
+                      >
+                       {arr.map((item) => <option key={item} value={listOfColors.item}>{item}</option>)}
+                        </Field>
                     </div>
                   </div>
                   <div className={css.form__field}>
