@@ -35,6 +35,7 @@ async function updateUserData(pathParams, body, file) {
       'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+      'Access-Control-Expose-Headers': 'Content-Range',
     },
   });
 }
@@ -72,6 +73,7 @@ async function updateServiceData(pathParams, body) {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+      'Access-Control-Expose-Headers': 'Content-Range',
     },
   });
 }
@@ -89,6 +91,7 @@ async function createServiceData(pathParams, body) {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+      'Access-Control-Expose-Headers': 'Content-Range',
     },
   });
 }
@@ -105,9 +108,10 @@ async function updateSpecialistData(pathParams, body) {
 
   return await axios.patch(`${BASE_URL}${pathParams}`, formData, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+      'Access-Control-Expose-Headers': 'Content-Range',
     },
   });
 }
@@ -119,6 +123,7 @@ async function deleteData(pathParams) {
       'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+      'Access-Control-Expose-Headers': 'Content-Range',
     },
   });
 }
