@@ -10,8 +10,9 @@ import { addReload } from 'redux/reload/slice';
 import { createOwnerData } from 'services/APIservice';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoaded, onLoading } from 'helpers/Loader/Loader';
-import css from './createDataModal.module.scss';
 import { listOfColors } from 'helpers/Constants/colors';
+import { setImage } from 'utils/setimage';
+import css from './createDataModal.module.scss';
 
 export const CreateOwnerDataModal = () => {
 
@@ -34,10 +35,11 @@ export const CreateOwnerDataModal = () => {
 
   async function createOwner(values) {
     setIsLoading(true);
+    const file = document.querySelector('#avatar')?.files[0];
     try {
       const { code } = await createOwnerData(
         `/admin/owners/create`,
-        values,
+        values, file
       );
       if (code && code !== 201) {
         return onFetchError('Whoops, something went wrong');
@@ -88,6 +90,7 @@ const closeDataModal = e => {
               id: '',
               groupId: '',
               ownerText: '',
+              avatar: '',
               ownerColor: '',
               designation: '',
               workDays: '',
@@ -234,6 +237,35 @@ const closeDataModal = e => {
                       placeholder="Type Specialist endHour"
                       value={values.endHour}
                     />
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="avatar">
+                      <span>Avatar</span>
+                      {errors.avatar && touched.avatar ? (
+                        <span className={css.error}>{errors.avatar}</span>
+                      ) : null}
+                    </label>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+                        gap: '4px',
+                      }}
+                    >
+                       <Field
+                          className={css['form__field-item']}
+                          type="file"
+                          id="avatar"
+                          name="avatar"
+                          accept=".jpeg,.jpg,.png,.gif"
+                          onChange={e => {
+                            handleChange(e);
+                            setImage(e);
+                          }}
+
+                        />
+                    </div>
                   </div>
                   <div className={css.form__field}>
                     <div id="checkbox-group">workDays</div>
