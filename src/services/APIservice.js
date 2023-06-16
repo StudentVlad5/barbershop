@@ -56,13 +56,34 @@ async function updateServiceData(pathParams, body) {
     },
   });
 }
-async function createServiceData(pathParams, body) {
+async function createOwnerData(pathParams, body) {
   const formData = new FormData();
   formData.append("subject", body.subject);
   formData.append("time", body.time);
   formData.append("location", body.location);
   formData.append("price", body.price);
   formData.append("owner", body.owner);
+  formData.append("Id", body.id);
+
+  return await axios.post(`${BASE_URL}${pathParams}`, formData, {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+      "Access-Control-Expose-Headers": "Content-Range",
+    },
+  });
+}
+
+async function createServiceData(pathParams, body) {
+  const formData = new FormData();
+  formData.append("startHour", body.startHour);
+  formData.append("endHour", body.endHour);
+  formData.append("designation", body.designation);
+  formData.append("workDays", body.workDays);
+  formData.append("groupId", body.groupId);
+  formData.append("ownerColor", body.ownerColor);
+  formData.append("ownerText", body.ownerText);
   formData.append("Id", body.id);
 
   return await axios.post(`${BASE_URL}${pathParams}`, formData, {
@@ -131,6 +152,11 @@ createServiceData.propTypes = {
   formData: PropTypes.string.isRequired,
 };
 
+createOwnerData.propTypes = {
+  pathParams: PropTypes.string.isRequired,
+  formData: PropTypes.string.isRequired,
+};
+
 export {
   fetchData,
   updateUserData,
@@ -138,4 +164,5 @@ export {
   createServiceData,
   updateServiceData,
   deleteData,
+  createOwnerData,
 };
