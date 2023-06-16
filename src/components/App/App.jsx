@@ -11,8 +11,8 @@ import LandingPage from 'pages/LandingPage';
 import AdminPage from 'pages/Admin/Admin';
 import AdminUsersPage from 'pages/Admin/AdminUsers';
 import AdminServicesPage from 'pages/Admin/AdminServices';
-import AdminSpecialistPage from 'pages/Admin/AdminSpecialist';
 import { User } from 'components/Sections/User/User';
+import AdminOwnerPage from 'pages/Admin/AdminOwners';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -44,7 +44,6 @@ export const App = () => {
                 element={<PrivateRoute redirectTo="/" component={<User />} />}
               />
             )}
-
             <Route
               path="admin/users"
               element={
@@ -68,7 +67,7 @@ export const App = () => {
               element={
                 <PrivateRoute
                   redirectTo="/admin"
-                  component={<AdminSpecialistPage />}
+                  component={<AdminOwnerPage />}
                 />
               }
             />
