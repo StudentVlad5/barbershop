@@ -13,7 +13,7 @@ import { onLoaded, onLoading } from 'helpers/Loader/Loader';
 import css from './createDataModal.module.scss';
 import { listOfColors } from 'helpers/Constants/colors';
 
-export const CreateSpecialistDataModal = () => {
+export const CreateOwnerDataModal = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -126,8 +126,7 @@ const closeDataModal = e => {
                       type="text"
                       name="id"
                       placeholder="Specialist id"
-                      disabled
-                    />
+                                          />
                   </div>
                   <div className={css.form__field}>
                     <label className={css.form__label} htmlFor="groupId">

@@ -7,14 +7,14 @@ import { closeModalWindow } from 'hooks/modalWindow';
 import { cleanModal } from 'redux/modal/operation';
 import { modalComponent } from 'redux/modal/selectors';
 import { addReload } from 'redux/reload/slice';
-import { fetchData, updateSpecialistData } from 'services/APIservice';
+import { fetchData, updateOwnerData } from 'services/APIservice';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoaded, onLoading } from 'helpers/Loader/Loader';
 import css from './editDataModal.module.scss';
 import { listOfColors } from '../../../helpers/Constants/colors';
 
 
-export const EditSpecialistDataModal = () => {
+export const EditOwnerDataModal = () => {
   const [dataUpdate, setDataUpdate] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -54,18 +54,17 @@ export const EditSpecialistDataModal = () => {
         setIsLoading(false);
       }
     }
-    if (modal.id !== '') {
+    if (modal.id !== '' && modal.id !== undefined) {
       getData();
     }
   }, [itemForFetch, modal.id]);
 
 
-  async function editSpecialist(formData) {
+  async function editOwner(formData) {
     setIsLoading(true);
     console.log("formData", formData)
     try {
-      const { date } = await updateSpecialistData(itemForFetch, formData);
-      console.log('editSpecialist ~ date:', date);
+      const { date } = await updateOwnerData(itemForFetch, formData);
       if (date && date !== 201) {
         return onFetchError('Whoops, something went wrong');
       }
@@ -127,7 +126,7 @@ export const EditSpecialistDataModal = () => {
               endHour: dataUpdate?.endHour ? dataUpdate.endHour : '',
             }}
             onSubmit={(values, { setSubmitting }) => {
-              editSpecialist(values);
+              editOwner(values);
               dispatch(addReload(false));
               setSubmitting(false);
             }}

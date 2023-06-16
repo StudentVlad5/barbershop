@@ -36,7 +36,7 @@ export const EditServiceDataModal = () => {
         setIsLoading(false);
       }
     }
-    if (modal.id !== '') {
+    if (modal.id !== '' && modal.id !== undefined) {
       getData();
     }
   }, [itemForFetch, modal.id]);

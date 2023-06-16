@@ -11,11 +11,11 @@ import { fetchData, deleteData } from 'services/APIservice';
 import { onLoading, onLoaded } from 'helpers/Loader/Loader';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { SEO } from 'utils/SEO';
-import { EditSpecialistDataModal } from 'components/Admin/EditDataModal/EditSpecialistDataModal';
+import { EditOwnerDataModal } from 'components/Admin/EditDataModal/EditOwnerDataModal';
 import css from 'components/Admin/admin.module.scss';
-import { CreateSpecialistDataModal } from 'components/Admin/CreateDataModal/CreateOwnerDataModal';
+import { CreateOwnerDataModal } from 'components/Admin/CreateDataModal/CreateOwnerDataModal';
 
-const AdminSpecialistPage = () => {
+const AdminOwnerPage = () => {
   const [specialists, setSpecialists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -106,7 +106,7 @@ const AdminSpecialistPage = () => {
           <table className={css.admin__table}>
             <thead>
               <tr className={css.table__row}>
-                <th className={css.table__head}>Group ID</th>
+                <th className={css.table__head}>ID</th>
                 <th className={css.table__head}>Name</th>
                 <th className={css.table__head}>Color</th>
                 <th className={css.table__head}>Designation</th>
@@ -126,7 +126,7 @@ const AdminSpecialistPage = () => {
                 !error &&
                 specialists.map(specialist => (
                   <tr key={specialist._id} className={css.table__row} style={{backgroundColor:`${specialist.ownerColor}`}}>
-                    <td className={css.table__data}>{specialist.groupId}</td>
+                    <td className={css.table__data}>{specialist.Id}</td>
                     <td className={css.table__data}>{specialist.ownerText}</td>
                     <td className={css.table__data}>{specialist.ownerColor}</td>
                     <td className={css.table__data}>
@@ -190,10 +190,10 @@ const AdminSpecialistPage = () => {
                       </button>
         </div>
       </section>
-      <EditSpecialistDataModal />
-      <CreateSpecialistDataModal/>
+      <EditOwnerDataModal />
+      <CreateOwnerDataModal/>
     </>
   );
 };
 
-export default AdminSpecialistPage;
+export default AdminOwnerPage;

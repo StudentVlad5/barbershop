@@ -56,7 +56,7 @@ async function updateServiceData(pathParams, body) {
     },
   });
 }
-async function createOwnerData(pathParams, body) {
+async function createServiceData(pathParams, body) {
   const formData = new FormData();
   formData.append("subject", body.subject);
   formData.append("time", body.time);
@@ -75,7 +75,7 @@ async function createOwnerData(pathParams, body) {
   });
 }
 
-async function createServiceData(pathParams, body) {
+async function createOwnerData(pathParams, body) {
   const formData = new FormData();
   formData.append("startHour", body.startHour);
   formData.append("endHour", body.endHour);
@@ -96,7 +96,7 @@ async function createServiceData(pathParams, body) {
   });
 }
 
-async function updateSpecialistData(pathParams, body) {
+async function updateOwnerData(pathParams, body) {
   const formData = new FormData();
   formData.append("ownerText", body.ownerText);
   formData.append("ownerColor", body.ownerColor);
@@ -160,7 +160,7 @@ createOwnerData.propTypes = {
 export {
   fetchData,
   updateUserData,
-  updateSpecialistData,
+  updateOwnerData,
   createServiceData,
   updateServiceData,
   deleteData,

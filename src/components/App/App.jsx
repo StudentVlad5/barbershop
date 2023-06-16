@@ -10,7 +10,7 @@ import AdminPage from 'pages/Admin/Admin';
 import AdminUsersPage from 'pages/Admin/AdminUsers';
 import AdminServicesPage from 'pages/Admin/AdminServices';
 import { User } from 'components/Sections/User/User';
-import AdminSpecialistPage from 'pages/Admin/AdminSpecialist';
+import AdminOwnerPage from 'pages/Admin/AdminOwners';
 import { PrivateRoute } from 'routes/PrivateRoute';
 // import { RestrictedRoute } from 'routes/PrivateRoute';
 
@@ -38,7 +38,7 @@ export const App = () => {
 
             <Route path="admin/users" element={<PrivateRoute redirectTo="/" component={<AdminUsersPage />} />}/>
             <Route path="admin/services" element={<PrivateRoute redirectTo="/" component={<AdminServicesPage />} />}/>
-            <Route path="admin/owners" element={<PrivateRoute redirectTo="/" component={<AdminSpecialistPage />}  />}/>
+            <Route path="admin/owners" element={<PrivateRoute redirectTo="/" component={<AdminOwnerPage />}  />}/>
 
             <Route path="*" element={<LandingPage />} />
           </Route>
