@@ -112,46 +112,48 @@ export const UserDataItem = ({
 
   return (
     <>
-      <div>
+      <div className={css['user-data-item-wrapper']}>
         <label htmlFor={name} className={css['title-name']}>
           {label}
         </label>
 
-        <div>
-          <input
-            value={!profile ? inputValue : defaultValue}
-            onChange={handleChange}
-            className={
-              active === name ? css.active : '' + css['input-list__item']
-            }
-            disabled={active !== name}
-            type={type}
-            name={name}
-            id={name}
-          />
-          {isError && active === name ? (
-            <div className={css.error}>{isError}</div>
-          ) : null}
+        <div className={css['user-data-item-input-btn-wrapper']}>
+          <div className={css['input-wrapper']}>
+            <input
+              value={!profile ? inputValue : defaultValue}
+              onChange={handleChange}
+              className={
+                active === name ? css.active : '' + css['user-data-item-input']
+              }
+              disabled={active !== name}
+              type={type}
+              name={name}
+              id={name}
+            />
+            {isError && active === name ? (
+              <div className={css.error}>{isError}</div>
+            ) : null}
+          </div>
 
           {!profile &&
             (active == name ? (
               <button
-                className={css['btn-icon']}
+                className={css['user-data-item-btn']}
                 type="button"
                 onClick={() => handleSubmit(name)}
               >
-                <svg className={css['icon']} width="20" height="20">
+                <svg className={css['icon-check']} width="20" height="20">
                   <use href={check + '#check'}></use>
                 </svg>
               </button>
             ) : (
               <button
-                className={css['btn-icon']}
+                className={css['user-data-item-btn']}
                 type="button"
                 disabled={active && active !== name}
                 onClick={() => activeHandleClick(name)}
               >
-                <svg className={css['icon']} width="20" height="20">
+                <svg className={css['icon-pencil']} width="20" height="20">
                   <use href={pencil + '#pencil'}></use>
                 </svg>
               </button>
