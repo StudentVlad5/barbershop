@@ -1,8 +1,6 @@
 @import '../../base/main';
 
 .user {
-  padding-bottom: 0;
-
   @include mq(tablet) {
     display: flex;
     flex-direction: row-reverse;
@@ -26,13 +24,14 @@
 
   &__wrapper {
     position: relative;
+    margin-bottom: 40px;
+    margin-top: 18px;
+    padding: 20px;
+
     background-color: var(--color-background-second);
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.11) 7px 4px 14px;
-    margin-bottom: 40px;
-    margin-top: 18px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+
 
     @include mq(tablet) {
       margin-bottom: 40px;
@@ -92,6 +91,7 @@
   cursor: pointer;
   padding-right: 24px;
 
+  font-family: var(--font-family-main);
   font-size: 12px;
   font-weight: 400;
   line-height: 1.8;
@@ -147,6 +147,8 @@
 }
 
 .input-list {
+  padding-left: 0;
+
   @include mq(tablet) {
     padding-top: 16px;
     padding-bottom: 55px;
@@ -155,6 +157,7 @@
 
   @include mq(tablet) {
     margin-left: 32px;
+    width: 450px;
   }
 
   @include mq(desktop) {

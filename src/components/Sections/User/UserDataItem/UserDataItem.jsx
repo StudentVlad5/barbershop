@@ -118,20 +118,18 @@ export const UserDataItem = ({
         </label>
 
         <div className={css['item-input-btn-wrapper']}>
-          <div className={css['input-wrapper']}>
-            <input
-              value={!profile ? inputValue : defaultValue}
-              onChange={handleChange}
-              className={active === name ? css.active : '' + css['item-input']}
-              disabled={active !== name}
-              type={type}
-              name={name}
-              id={name}
-            />
-            {isError && active === name ? (
-              <div className={css.error}>{isError}</div>
-            ) : null}
-          </div>
+          <input
+            value={!profile ? inputValue : defaultValue}
+            onChange={handleChange}
+            className={active === name ? css.active : '' + css['item-input']}
+            disabled={active !== name}
+            type={type}
+            name={name}
+            id={name}
+          />
+          {isError && active === name ? (
+            <div className={css.error}>{isError}</div>
+          ) : null}
 
           {!profile &&
             (active == name ? (

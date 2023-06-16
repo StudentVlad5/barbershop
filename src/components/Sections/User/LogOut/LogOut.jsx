@@ -9,13 +9,9 @@ export const LogOut = () => {
     dispatch(logOut());
   };
   return (
-    <button
-      onClick={logout}
-      className={
-        css.btn + ' ' + css['btn--mode-light'] + ' ' + css['btn--size-m']
-      }
-    >
-      LOG OUT
+    <button className={css['btn--without-border']} onClick={logout}>
+      <MdLogout size={18} />
+      Log out
     </button>
   );
 };

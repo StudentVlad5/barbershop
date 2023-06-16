@@ -5,6 +5,7 @@ import { update } from 'redux/auth/operations';
 import { TiCamera } from 'react-icons/ti';
 import defaultUserPhoto from 'images/user/defaultUserPhoto.jpg';
 import { UserDataItem } from './UserDataItem/UserDataItem';
+import { LogOut } from './LogOut/LogOut';
 import css from './user.module.scss';
 
 export const User = () => {
@@ -119,6 +120,12 @@ export const User = () => {
                 id="city"
               />
             </ul>
+            <LogOut />
+          </div>
+        </div>
+        <div>
+          <div className={css['title-group']}>
+            <h2 className={css['section-title--size-s']}>My visits:</h2>
           </div>
         </div>
       </div>

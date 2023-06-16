@@ -27,6 +27,7 @@
 }
 
 .form__title {
+    font-family: var(--font-family-title);
     font-weight: 700;
     font-size: 20px;
     line-height: 1.15;
@@ -62,10 +63,6 @@
     &:hover {
         border-color: var(--color-accent);
         outline: none;
-    }
-
-    @include mq(mobile) {
-        width: 280px;
     }
 
     @include mq(tablet) {
@@ -108,7 +105,7 @@
     color: grey;
     cursor: pointer;
 
-    svg {
+    & svg {
         width: inherit;
         height: inherit;
     }
@@ -125,7 +122,7 @@
     color: grey;
     cursor: pointer;
 
-    svg {
+    & svg {
         width: inherit;
         height: inherit;
     }
@@ -186,10 +183,6 @@
         transition: none;
     }
 
-    @include mq(mobile) {
-        width: 280px;
-    }
-
     @include mq(tablet) {
         width: 458px;
         margin-bottom: 40px;
@@ -202,7 +195,7 @@
     align-items: center;
     text-align: center;
 
-    font-family: "Manrope";
+    font-family: var(--font-family-main);
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
