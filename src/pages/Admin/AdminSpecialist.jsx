@@ -124,7 +124,7 @@ const AdminSpecialistPage = () => {
               {specialists.length > 0 &&
                 !error &&
                 specialists.map(specialist => (
-                  <tr key={specialist._id} className={css.table__row}>
+                  <tr key={specialist._id} className={css.table__row} style={{backgroundColor:`${specialist.ownerColor}`}}>
                     <td className={css.table__data}>{specialist.groupId}</td>
                     <td className={css.table__data}>{specialist.ownerText}</td>
                     <td className={css.table__data}>{specialist.ownerColor}</td>

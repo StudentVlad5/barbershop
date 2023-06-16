@@ -239,7 +239,10 @@ export const EditSpecialistDataModal = () => {
                     </label>
                     <Field
                       className={css.form__input}
-                      type="text"
+                      type="time"
+                      min="06:00" 
+                      max="18:00" 
+                      required
                       id="startHour"
                       name="startHour"
                       placeholder="Type Specialist startHour"
@@ -255,7 +258,10 @@ export const EditSpecialistDataModal = () => {
                     </label>
                     <Field
                       className={css.form__input}
-                      type="text"
+                      type="time"
+                      min="09:00" 
+                      max="22:00" 
+                      required
                       id="endHour"
                       name="endHour"
                       placeholder="Type Specialist endHour"
