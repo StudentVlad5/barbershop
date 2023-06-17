@@ -26,7 +26,22 @@ export const singOut = async () => {
 };
 
 export const updateUserData = async (updateData) => {
-  const { data } = await axios.patch(`${BASE_URL}/user`, updateData);
+  const asArray = Object.entries(updateData);
+  const filtered = asArray.filter(([key]) => key !== "_id");
+  const justOne = Object.fromEntries(filtered);
+  console.log(justOne);
+  const { data } = await axios.patch(
+    `${BASE_URL}/user/${updateData._id}`,
+    justOne,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+        "Access-Control-Expose-Headers": "Content-Range",
+      },
+    }
+  );
   return data;
 };
 

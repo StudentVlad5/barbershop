@@ -12,8 +12,10 @@ export const User = () => {
   let { userIn } = useAuth();
 
   const changeAvatar = e => {
+    console.log(userIn._id)
     const data = new FormData();
     data.append('avatar', e.target.files[0]);
+    data.append('_id', userIn._id);
     dispatch(update(data));
   };
 
@@ -62,6 +64,7 @@ export const User = () => {
           active={active}
           setActive={setActive}
           id="name"
+          dataId={userIn._id}
         />
 
         <UserDataItem
@@ -74,6 +77,7 @@ export const User = () => {
           active={active}
           setActive={setActive}
           id="email"
+          dataId={userIn._id}
         />
 
         <UserDataItem
@@ -86,6 +90,7 @@ export const User = () => {
           active={active}
           setActive={setActive}
           id="birthday"
+          dataId={userIn._id}
         />
 
         <UserDataItem
@@ -98,6 +103,7 @@ export const User = () => {
           active={active}
           setActive={setActive}
           id="phone"
+          dataId={userIn._id}
         />
 
         <UserDataItem
@@ -110,6 +116,7 @@ export const User = () => {
           active={active}
           setActive={setActive}
           id="city"
+          dataId={userIn._id}
         />
       </ul>
     </div>

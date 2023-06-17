@@ -14,6 +14,7 @@ export const UserDataItem = ({
   profile,
   active,
   setActive,
+  dataId
 }) => {
   const emailRegExp = /^.+@.+\..+$/;
   const cityRegex = /^[a-zA-Z\s,'-]+$/;
@@ -54,7 +55,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ userName: inputValue }));
+      dispatch(update({ userName: inputValue, _id : dataId}));
     } else if (name === 'email') {
       setActive('email');
       if (!inputValue.match(emailRegExp)) {
@@ -63,7 +64,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ email: inputValue }));
+      dispatch(update({ email: inputValue, _id : dataId}));
     } else if (name === 'birthday') {
       setActive('birthday');
       if (inputValue > dayToday) {
@@ -93,7 +94,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ phone: inputValue }));
+      dispatch(update({ phone: inputValue, _id : dataId }));
     } else if (name === 'location') {
       setActive('location');
       if (!inputValue.match(cityRegex)) {
@@ -102,7 +103,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ location: inputValue }));
+      dispatch(update({ location: inputValue, _id : dataId }));
     }
   };
 
@@ -166,6 +167,7 @@ export const UserDataItem = ({
 
 UserDataItem.propTypes = {
   name: PropTypes.string,
+  dataId: PropTypes.string,
   label: PropTypes.string,
   type: PropTypes.string,
   defaultValue: PropTypes.string,
