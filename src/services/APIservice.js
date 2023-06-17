@@ -2,8 +2,8 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 
 // const { BASE_URL } = window.global;
-const BASE_URL = 'https://drab-pear-gazelle-belt.cyclic.app/api';
-// const BASE_URL = 'http://localhost:3030/api';
+// const BASE_URL = 'https://drab-pear-gazelle-belt.cyclic.app/api';
+const BASE_URL = 'http://localhost:3030/api';
 
 async function fetchData(pathParams) {
   const axiosInstance = axios.create({
@@ -25,7 +25,6 @@ async function updateUserData(pathParams, body, file) {
   formData.append('email', body.email);
   formData.append('birthday', body.birthday);
   formData.append('location', body.location);
-  formData.append('password', body.password);
   formData.append('phone', body.phone);
   formData.append('role', body.role);
   formData.append('userName', body.userName);
@@ -43,19 +42,20 @@ async function updateUserData(pathParams, body, file) {
 async function createUserData(pathParams, body, file) {
   const formData = new FormData();
   file && formData.set('avatar', file);
+  formData.append('userName', body.userName);
   formData.append('email', body.email);
-  formData.append('birthday', body.birthday);
-  formData.append('location', body.location);
   formData.append('password', body.password);
   formData.append('phone', body.phone);
+  formData.append('birthday', body.birthday);
+  formData.append('location', body.location);
   formData.append('role', body.role);
-  formData.append('userName', body.userName);
 
   return await axios.post(`${BASE_URL}${pathParams}`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+      'Access-Control-Expose-Headers': 'Content-Range',
     },
   });
 }

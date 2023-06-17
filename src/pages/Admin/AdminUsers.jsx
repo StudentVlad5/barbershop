@@ -70,14 +70,20 @@ const AdminUsersPage = () => {
   const openModal = e => {
     e.preventDefault();
     e.stopPropagation();
-    if (
-      e.currentTarget.dataset.modal === 'admin' ||
-      e.currentTarget.dataset.modal === 'admin_create-user'
-    ) {
+    if (e.currentTarget.dataset.modal === 'admin') {
       dispatch(
         addModal({
           modal: e.currentTarget.dataset.modal,
           id: e.currentTarget.dataset.id,
+        }),
+      );
+      setTimeout(() => openModalWindow(e, null), 500);
+    }
+
+    if (e.currentTarget.dataset.modal === 'admin_create-user') {
+      dispatch(
+        addModal({
+          modal: e.currentTarget.dataset.modal,
         }),
       );
       setTimeout(() => openModalWindow(e, null), 500);

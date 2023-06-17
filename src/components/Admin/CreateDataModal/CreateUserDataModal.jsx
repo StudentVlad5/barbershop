@@ -65,8 +65,9 @@ export const CreateUserDataModal = () => {
           {error && onFetchError('Whoops, something went wrong')}
           <Formik
             initialValues={{
-              id: '',
+              // id: '',
               userName: '',
+              password: '',
               birthday: '',
               location: '',
               avatar: '',
@@ -97,7 +98,7 @@ export const CreateUserDataModal = () => {
                 onChange={handleChange}
               >
                 <div className={css.form__list}>
-                  <div className={css.form__field}>
+                  {/* <div className={css.form__field}>
                     <label className={css.form__label} htmlFor="id">
                       ID
                     </label>
@@ -109,7 +110,7 @@ export const CreateUserDataModal = () => {
                       placeholder="User id"
                       disabled
                     />
-                  </div>
+                  </div> */}
                   <div className={css.form__field}>
                     <label className={css.form__label} htmlFor="userName">
                       <span>Name</span>
@@ -140,6 +141,22 @@ export const CreateUserDataModal = () => {
                       name="email"
                       placeholder="Type user email"
                       value={values.email}
+                    />
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="password">
+                      <span>Password</span>
+                      {errors.password && touched.password ? (
+                        <span className={css.error}>{errors.password}</span>
+                      ) : null}
+                    </label>
+                    <Field
+                      className={css.form__input}
+                      type="text"
+                      id="password"
+                      name="password"
+                      placeholder="Type user password"
+                      value={values.password}
                     />
                   </div>
                   <div className={css.form__field}>
