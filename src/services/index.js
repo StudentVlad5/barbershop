@@ -8,7 +8,6 @@ const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
 // const BASE_URL = "http://localhost:3030/api";
 
 axios.defaults.baseURL = BASE_URL;
-console.log(BASE_URL);
 export * from "./auth";
 
 axios.interceptors.request.use(

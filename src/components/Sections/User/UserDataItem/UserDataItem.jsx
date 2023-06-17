@@ -1,6 +1,7 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import css from './UserDataItem.module.scss';
 import { useState } from 'react';
+import { getUser } from 'redux/auth/selectors';
 import { update } from 'redux/auth/operations';
 import PropTypes from 'prop-types';
 import check from '../../../../images/sprite.svg';
@@ -14,7 +15,6 @@ export const UserDataItem = ({
   profile,
   active,
   setActive,
-  dataId
 }) => {
   const emailRegExp = /^.+@.+\..+$/;
   const cityRegex = /^[a-zA-Z\s,'-]+$/;
@@ -25,6 +25,8 @@ export const UserDataItem = ({
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState(defaultValue ?? '');
   const [isError, setIsError] = useState('');
+  const dataUserId = useSelector(getUser)
+ 
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -55,7 +57,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ userName: inputValue, _id : dataId}));
+      dispatch(update({ userName: inputValue, _id : dataUserId._id}));
     } else if (name === 'email') {
       setActive('email');
       if (!inputValue.match(emailRegExp)) {
@@ -64,7 +66,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ email: inputValue, _id : dataId}));
+      dispatch(update({ email: inputValue, _id : dataUserId._id}));
     } else if (name === 'birthday') {
       setActive('birthday');
       if (inputValue > dayToday) {
@@ -94,7 +96,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ phone: inputValue, _id : dataId }));
+      dispatch(update({ phone: inputValue, _id : dataUserId._id }));
     } else if (name === 'location') {
       setActive('location');
       if (!inputValue.match(cityRegex)) {
@@ -103,7 +105,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ location: inputValue, _id : dataId }));
+      dispatch(update({ location: inputValue, _id : dataUserId._id }));
     }
   };
 
@@ -167,7 +169,6 @@ export const UserDataItem = ({
 
 UserDataItem.propTypes = {
   name: PropTypes.string,
-  dataId: PropTypes.string,
   label: PropTypes.string,
   type: PropTypes.string,
   defaultValue: PropTypes.string,

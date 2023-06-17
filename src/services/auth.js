@@ -29,7 +29,6 @@ export const updateUserData = async (updateData) => {
   const asArray = Object.entries(updateData);
   const filtered = asArray.filter(([key]) => key !== "_id");
   const justOne = Object.fromEntries(filtered);
-  console.log(justOne);
   const { data } = await axios.patch(
     `${BASE_URL}/user/${updateData._id}`,
     justOne,
