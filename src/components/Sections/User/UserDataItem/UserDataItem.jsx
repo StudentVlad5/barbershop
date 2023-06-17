@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getUser } from 'redux/auth/selectors';
 import { update } from 'redux/auth/operations';
 import check from 'images/sprite.svg';
 import pencil from 'images/sprite.svg';
@@ -24,6 +25,7 @@ export const UserDataItem = ({
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState(defaultValue ?? '');
   const [isError, setIsError] = useState('');
+  const dataUserId = useSelector(getUser);
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -54,7 +56,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ userName: inputValue }));
+      dispatch(update({ userName: inputValue, _id: dataUserId._id }));
     } else if (name === 'email') {
       setActive('email');
       if (!inputValue.match(emailRegExp)) {
@@ -63,7 +65,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ email: inputValue }));
+      dispatch(update({ email: inputValue, _id: dataUserId._id }));
     } else if (name === 'birthday') {
       setActive('birthday');
       if (inputValue > dayToday) {
@@ -93,7 +95,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ phone: inputValue }));
+      dispatch(update({ phone: inputValue, _id: dataUserId._id }));
     } else if (name === 'location') {
       setActive('location');
       if (!inputValue.match(cityRegex)) {
@@ -102,7 +104,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ location: inputValue }));
+      dispatch(update({ location: inputValue, _id: dataUserId._id }));
     }
   };
 

@@ -116,6 +116,7 @@ const AdminOwnerPage = () => {
                     <th className={css.table__head}>Start Work Hour</th>
                     <th className={css.table__head}>End Work Hour</th>
                     <th className={css.table__head}>Group ID</th>
+                    <th className={css.table__head}>Avatar</th>
                   </>
                 )}
                 <th className={css.table__head}>Action</th>
@@ -145,6 +146,9 @@ const AdminOwnerPage = () => {
                         </td>
                         <td className={css.table__data}>
                           {specialist.groupId}
+                        </td>
+                        <td className={css.table__data}>
+                          {specialist.avatar ? 'yes' : 'no'}
                         </td>
                       </>
                     )}

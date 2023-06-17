@@ -31,9 +31,7 @@ const Contacts = () => {
   };
 
   const handleSubmit = async () => {
-    console.log(name, phone, message);
     const credential = { name, phone, message };
-    console.log(credential);
 
     // const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
     try {

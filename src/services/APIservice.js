@@ -96,8 +96,9 @@ async function createServiceData(pathParams, body) {
   });
 }
 
-async function createOwnerData(pathParams, body) {
+async function createOwnerData(pathParams, body, file) {
   const formData = new FormData();
+  file && formData.set('avatar', file);
   formData.append('startHour', body.startHour);
   formData.append('endHour', body.endHour);
   formData.append('designation', body.designation);
@@ -109,7 +110,7 @@ async function createOwnerData(pathParams, body) {
 
   return await axios.post(`${BASE_URL}${pathParams}`, formData, {
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
       'Access-Control-Expose-Headers': 'Content-Range',
@@ -117,8 +118,9 @@ async function createOwnerData(pathParams, body) {
   });
 }
 
-async function updateOwnerData(pathParams, body) {
+async function updateOwnerData(pathParams, body, file) {
   const formData = new FormData();
+  file && formData.set('avatar', file);
   formData.append('ownerText', body.ownerText);
   formData.append('ownerColor', body.ownerColor);
   formData.append('designation', body.designation);
@@ -129,7 +131,7 @@ async function updateOwnerData(pathParams, body) {
 
   return await axios.patch(`${BASE_URL}${pathParams}`, formData, {
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
       'Access-Control-Expose-Headers': 'Content-Range',

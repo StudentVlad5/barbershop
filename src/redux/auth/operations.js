@@ -54,7 +54,7 @@ export const logOut = createAsyncThunk("/auth/logout", async (_, thunkAPI) => {
 });
 
 export const update = createAsyncThunk(
-  "/update",
+  "/user",
   async (updateData, thunkAPI) => {
     try {
       const result = await updateUserData(updateData);

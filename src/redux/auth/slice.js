@@ -64,7 +64,7 @@ export const authSlice = createSlice({
       })
       .addCase(update.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.data;
+        state.user = action.payload;
         state.isError = null;
       })
       .addCase(update.rejected, (state, { payload }) => {

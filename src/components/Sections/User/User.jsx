@@ -14,9 +14,7 @@ export const User = () => {
   let { userIn } = useAuth();
 
   const changeAvatar = e => {
-    const data = new FormData();
-    data.append('avatar', e.target.files[0]);
-    dispatch(update(data));
+    dispatch(update({"avatar": e.target.files[0], '_id': userIn._id}));
   };
 
   let profile = false;

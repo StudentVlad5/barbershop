@@ -22,9 +22,7 @@ import { fieldsData } from './Datasource';
 import { closeModalWindow } from 'hooks/modalWindow';
 import sprite from 'images/sprite.svg';
 import css from './shedule.module.scss';
-import member1 from 'images/team/member-1-mob.jpg';
-import member2 from 'images/team/member-2-mob.jpg';
-import member3 from 'images/team/member-3-mob.jpg';
+import avatarAnonimus from 'images/barbers/png-heroes-thumbnail.png';
 import { useSelector } from 'react-redux';
 import { getUser } from 'redux/auth/selectors';
 import { useEffect } from 'react';
@@ -108,31 +106,11 @@ const Schedule = () => {
   }
 
   function getBarberLevel(value) {
-    let resourceName = getBarberName(value);
-    switch (resourceName) {
-      case 'John Smith':
-        return 'Extreme Barber';
-      case 'Michele Doe':
-        return 'Extreme Barber';
-      case 'Alan Black':
-        return 'Extreme Barber';
-      default:
-        break;
-    }
+    return value.resourceData ? value.resourceData.designation : 'Barber';
   }
 
   function getBarberUrl(value) {
-    let resourceName = getBarberName(value);
-    switch (resourceName) {
-      case 'John Smith':
-        return member1;
-      case 'Michele Doe':
-        return member2;
-      case 'Alan Black':
-        return member3;
-      default:
-        break;
-    }
+    return value.resourceData ? value.resourceData.avatar : avatarAnonimus;
   }
 
   function closeModal(e) {
