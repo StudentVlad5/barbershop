@@ -10,6 +10,7 @@ import { addReload } from 'redux/reload/slice';
 import { fetchData, updateOwnerData } from 'services/APIservice';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoaded, onLoading } from 'helpers/Loader/Loader';
+import { setImage } from 'utils/setimage';
 import css from './editDataModal.module.scss';
 import { listOfColors } from '../../../helpers/Constants/colors';
 
@@ -61,10 +62,10 @@ export const EditOwnerDataModal = () => {
 
 
   async function editOwner(formData) {
+    const file = document.querySelector('#avatar')?.files[0];
     setIsLoading(true);
-    console.log("formData", formData)
     try {
-      const { date } = await updateOwnerData(itemForFetch, formData);
+      const { date } = await updateOwnerData(itemForFetch, formData, file);
       if (date && date !== 201) {
         return onFetchError('Whoops, something went wrong');
       }
@@ -122,6 +123,7 @@ export const EditOwnerDataModal = () => {
                 ? dataUpdate.designation
                 : '',
               workDays: dataUpdate?.workDays ? dataUpdate.workDays.split(',') : '',
+              avatar: '',
               startHour: dataUpdate?.startHour ? dataUpdate.startHour : '',
               endHour: dataUpdate?.endHour ? dataUpdate.endHour : '',
             }}
@@ -266,6 +268,52 @@ export const EditOwnerDataModal = () => {
                       placeholder="Type Specialist endHour"
                       value={values.endHour}
                     />
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="avatar">
+                      <span>Avatar</span>
+                      {errors.avatar && touched.avatar ? (
+                        <span className={css.error}>{errors.avatar}</span>
+                      ) : null}
+                    </label>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+                        gap: '4px',
+                      }}
+                    >
+                      {dataUpdate?.avatar ? (
+                        <Field
+                          className={css['form__field-item']}
+                          style={{
+                            backgroundImage: `url(${dataUpdate?.avatar})`,
+                            backgroundSize: '50px,50px',
+                          }}
+                          type="file"
+                          id="avatar"
+                          name="avatar"
+                          accept=".jpeg,.jpg,.png,.gif"
+                          onChange={e => {
+                            handleChange;
+                            setImage(e);
+                          }}
+                        />
+                      ) : (
+                        <Field
+                          className={css['form__field-item']}
+                          type="file"
+                          id="avatar"
+                          name="avatar"
+                          accept=".jpeg,.jpg,.png,.gif"
+                          onChange={e => {
+                            handleChange;
+                            setImage(e);
+                          }}
+                        />
+                      )}
+                    </div>
                   </div>
                   <div className={css.form__field}>
                     <div id="checkbox-group">workDays</div>
