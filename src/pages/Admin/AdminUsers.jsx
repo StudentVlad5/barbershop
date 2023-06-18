@@ -12,7 +12,6 @@ import { onLoading, onLoaded } from 'helpers/Loader/Loader';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { SEO } from 'utils/SEO';
 import { EditUserDataModal } from 'components/Admin/EditDataModal/EditUserDataModal';
-import { CreateUserDataModal } from 'components/Admin/CreateDataModal/CreateUserDataModal';
 import css from 'components/Admin/admin.module.scss';
 import { CreateUserDataModal } from 'components/Admin/CreateDataModal/CreateUserDataModal';
 
