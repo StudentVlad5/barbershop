@@ -39,6 +39,27 @@ async function updateUserData(pathParams, body, file) {
   });
 }
 
+async function createUserData(pathParams, body, file) {
+  const formData = new FormData();
+  file && formData.set("avatar", file);
+  formData.append("email", body.email);
+  formData.append("birthday", body.birthday);
+  formData.append("location", body.location);
+  formData.append("password", body.password);
+  formData.append("phone", body.phone);
+  formData.append("role", body.role);
+  formData.append("userName", body.userName);
+
+  return await axios.post(`${BASE_URL}${pathParams}`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+      "Access-Control-Expose-Headers": "Content-Range",
+    },
+  });
+}
+
 async function updateServiceData(pathParams, body) {
   const formData = new FormData();
   formData.append("subject", body.subject);
@@ -167,4 +188,5 @@ export {
   updateServiceData,
   deleteData,
   createOwnerData,
+  createUserData,
 };

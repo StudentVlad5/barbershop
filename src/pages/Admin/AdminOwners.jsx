@@ -183,7 +183,7 @@ const AdminOwnerPage = () => {
           <button
                         className={css['icon-btn']}
                         type="button"
-                        aria-label="Create services"
+                        aria-label="Create owner"
                         onClick={e => {
                           openModal(e);
                         }}

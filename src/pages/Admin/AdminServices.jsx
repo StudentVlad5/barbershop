@@ -66,7 +66,7 @@ const AdminServicesPage = () => {
   const openModal = e => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.currentTarget.dataset.modal === 'admin' || e.currentTarget.dataset.modal === 'admin_create') {
+    if (e.currentTarget.dataset.modal === 'admin' || e.currentTarget.dataset.modal === 'admin_create_service') {
       dispatch(
         addModal({
           modal: e.currentTarget.dataset.modal,
@@ -161,7 +161,7 @@ const AdminServicesPage = () => {
                         onClick={e => {
                           openModal(e);
                         }}
-                        data-modal="admin_create"
+                        data-modal="admin_create_service"
                         // data-id={service._id}
                       >
                         <MdAddCard size={25}/>
