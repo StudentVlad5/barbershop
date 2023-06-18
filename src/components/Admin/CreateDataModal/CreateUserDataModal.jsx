@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdClose, MdDone } from 'react-icons/md';
@@ -7,46 +7,25 @@ import { closeModalWindow } from 'hooks/modalWindow';
 import { cleanModal } from 'redux/modal/operation';
 import { modalComponent } from 'redux/modal/selectors';
 import { addReload } from 'redux/reload/slice';
-import { fetchData, updateUserData } from 'services/APIservice';
+import { createUserData } from 'services/APIservice';
 import { setImage } from 'utils/setimage';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoaded, onLoading } from 'helpers/Loader/Loader';
-import css from './editDataModal.module.scss';
+import css from '../EditDataModal/editDataModal.module.scss';
 
-export const EditUserDataModal = () => {
-  const [dataUpdate, setDataUpdate] = useState([]);
+export const CreateUserDataModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const modal = useSelector(modalComponent);
   const dispatch = useDispatch();
-  const itemForFetch = `/admin/users/${modal.id}`;
+  const itemForFetch = `/admin/users/create`;
 
-  useEffect(() => {
-    async function getData() {
-      setIsLoading(true);
-      try {
-        const { data } = await fetchData(itemForFetch);
-        setDataUpdate(data);
-        if (!data) {
-          return onFetchError('Whoops, something went wrong');
-        }
-      } catch (error) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    if (modal.id !== '') {
-      getData();
-    }
-  }, [itemForFetch, modal.id]);
-
-  async function editUser(formData) {
+  async function createUser(formData) {
     const file = document.querySelector('#avatar')?.files[0];
     setIsLoading(true);
     try {
-      const { date } = await updateUserData(itemForFetch, formData, file);
+      const { date } = await createUserData(itemForFetch, formData, file);
       if (date && date !== 201) {
         return onFetchError('Whoops, something went wrong');
       }
@@ -66,7 +45,7 @@ export const EditUserDataModal = () => {
   };
 
   return createPortal(
-    Object.values(modal)[0] === 'admin' && (
+    Object.values(modal)[0] === 'admin_create-user' && (
       <div
         className={css.backdrop}
         onClick={e => {
@@ -75,7 +54,7 @@ export const EditUserDataModal = () => {
       >
         <div className={css.modal} onClick={e => e.stopPropagation()}>
           <button
-            className={css['modal__btn-close']}
+            className={css['close-btn']}
             type="button"
             onClick={e => closeDataModal(e)}
             aria-label="Close modal"
@@ -86,17 +65,18 @@ export const EditUserDataModal = () => {
           {error && onFetchError('Whoops, something went wrong')}
           <Formik
             initialValues={{
-              id: dataUpdate?._id ? dataUpdate._id : '',
-              userName: dataUpdate?.userName ? dataUpdate.userName : '',
-              birthday: dataUpdate?.birthday ? dataUpdate.birthday : '',
-              location: dataUpdate?.location ? dataUpdate.location : '',
+              // id: '',
+              userName: '',
+              password: '',
+              birthday: '',
+              location: '',
               avatar: '',
-              email: dataUpdate?.email ? dataUpdate.email : '',
-              phone: dataUpdate?.phone ? dataUpdate.phone : '',
-              role: dataUpdate?.role ? dataUpdate.role : 'user',
+              email: '',
+              phone: '',
+              role: 'user',
             }}
             onSubmit={(values, { setSubmitting }) => {
-              editUser(values);
+              createUser(values);
               dispatch(addReload(false));
               setSubmitting(false);
             }}
@@ -115,12 +95,10 @@ export const EditUserDataModal = () => {
                 className={css.form}
                 autoComplete="off"
                 onSubmit={handleSubmit}
-                onChange={() => {
-                  handleChange();
-                }}
+                onChange={handleChange}
               >
                 <div className={css.form__list}>
-                  <div className={css.form__field}>
+                  {/* <div className={css.form__field}>
                     <label className={css.form__label} htmlFor="id">
                       ID
                     </label>
@@ -132,7 +110,7 @@ export const EditUserDataModal = () => {
                       placeholder="User id"
                       disabled
                     />
-                  </div>
+                  </div> */}
                   <div className={css.form__field}>
                     <label className={css.form__label} htmlFor="userName">
                       <span>Name</span>
@@ -163,6 +141,22 @@ export const EditUserDataModal = () => {
                       name="email"
                       placeholder="Type user email"
                       value={values.email}
+                    />
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="password">
+                      <span>Password</span>
+                      {errors.password && touched.password ? (
+                        <span className={css.error}>{errors.password}</span>
+                      ) : null}
+                    </label>
+                    <Field
+                      className={css.form__input}
+                      type="text"
+                      id="password"
+                      name="password"
+                      placeholder="Type user password"
+                      value={values.password}
                     />
                   </div>
                   <div className={css.form__field}>
@@ -223,9 +217,7 @@ export const EditUserDataModal = () => {
                         placeholder="Type location"
                         value={values.location}
                         onBlur={handleBlur}
-                        onChange={() => {
-                          handleChange();
-                        }}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -244,35 +236,17 @@ export const EditUserDataModal = () => {
                         gap: '4px',
                       }}
                     >
-                      {dataUpdate?.avatar ? (
-                        <Field
-                          className={css['form__field-item']}
-                          style={{
-                            backgroundImage: `url(${dataUpdate?.avatar})`,
-                            backgroundSize: '50px,50px',
-                          }}
-                          type="file"
-                          id="avatar"
-                          name="avatar"
-                          accept=".jpeg,.jpg,.png,.gif"
-                          onChange={e => {
-                            handleChange();
-                            setImage(e);
-                          }}
-                        />
-                      ) : (
-                        <Field
-                          className={css['form__field-item']}
-                          type="file"
-                          id="avatar"
-                          name="avatar"
-                          accept=".jpeg,.jpg,.png,.gif"
-                          onChange={e => {
-                            handleChange();
-                            setImage(e);
-                          }}
-                        />
-                      )}
+                      <Field
+                        className={css['form__field-item']}
+                        type="file"
+                        id="avatar"
+                        name="avatar"
+                        accept=".jpeg,.jpg,.png,.gif"
+                        onChange={e => {
+                          handleChange(e);
+                          setImage(e);
+                        }}
+                      />
                     </div>
                   </div>
                   <div className={css.form__field}>

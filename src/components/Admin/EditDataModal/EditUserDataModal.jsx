@@ -254,7 +254,7 @@ export const EditUserDataModal = () => {
                           name="avatar"
                           accept=".jpeg,.jpg,.png,.gif"
                           onChange={e => {
-                            handleChange();
+                            handleChange(e);
                             setImage(e);
                           }}
                         />
@@ -266,7 +266,7 @@ export const EditUserDataModal = () => {
                           name="avatar"
                           accept=".jpeg,.jpg,.png,.gif"
                           onChange={e => {
-                            handleChange();
+                            handleChange(e);
                             setImage(e);
                           }}
                         />
@@ -295,7 +295,6 @@ export const EditUserDataModal = () => {
                   className={css['done-btn']}
                   type="submit"
                   disabled={isSubmitting}
-                  // onClick={e => closeDataModal(e)}
                   aria-label="Submit"
                 >
                   <MdDone size={15} />

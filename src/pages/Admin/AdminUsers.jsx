@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdClose, MdEdit } from 'react-icons/md';
+import { MdAddCard, MdClose, MdEdit } from 'react-icons/md';
 import { HiArrowLeft } from 'react-icons/hi';
 import { openModalWindow } from 'hooks/modalWindow';
 import { addModal } from 'redux/modal/operation';
@@ -12,6 +12,7 @@ import { onLoading, onLoaded } from 'helpers/Loader/Loader';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { SEO } from 'utils/SEO';
 import { EditUserDataModal } from 'components/Admin/EditDataModal/EditUserDataModal';
+import { CreateUserDataModal } from 'components/Admin/CreateDataModal/CreateUserDataModal';
 import css from 'components/Admin/admin.module.scss';
 
 const AdminUsersPage = () => {
@@ -74,6 +75,15 @@ const AdminUsersPage = () => {
         addModal({
           modal: e.currentTarget.dataset.modal,
           id: e.currentTarget.dataset.id,
+        }),
+      );
+      setTimeout(() => openModalWindow(e, null), 500);
+    }
+
+    if (e.currentTarget.dataset.modal === 'admin_create-user') {
+      dispatch(
+        addModal({
+          modal: e.currentTarget.dataset.modal,
         }),
       );
       setTimeout(() => openModalWindow(e, null), 500);
@@ -172,9 +182,21 @@ const AdminUsersPage = () => {
                 ))}
             </tbody>
           </table>
+          <button
+            className={css['icon-btn']}
+            type="button"
+            aria-label="Create user"
+            onClick={e => {
+              openModal(e);
+            }}
+            data-modal="admin_create-user"
+          >
+            <MdAddCard size={25} />
+          </button>
         </div>
       </section>
       <EditUserDataModal />
+      <CreateUserDataModal />
     </>
   );
 };

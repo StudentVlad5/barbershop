@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
-import css from './UserDataItem.module.scss';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getUser } from 'redux/auth/selectors';
 import { update } from 'redux/auth/operations';
-import PropTypes from 'prop-types';
-import check from '../../../../images/sprite.svg';
-import pencil from '../../../../images/sprite.svg';
+import check from 'images/sprite.svg';
+import pencil from 'images/sprite.svg';
+import css from './UserDataItem.module.scss';
 
 export const UserDataItem = ({
   name,
@@ -25,8 +25,7 @@ export const UserDataItem = ({
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState(defaultValue ?? '');
   const [isError, setIsError] = useState('');
-  const dataUserId = useSelector(getUser)
- 
+  const dataUserId = useSelector(getUser);
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -57,7 +56,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ userName: inputValue, _id : dataUserId._id}));
+      dispatch(update({ userName: inputValue, _id: dataUserId._id }));
     } else if (name === 'email') {
       setActive('email');
       if (!inputValue.match(emailRegExp)) {
@@ -66,7 +65,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ email: inputValue, _id : dataUserId._id}));
+      dispatch(update({ email: inputValue, _id: dataUserId._id }));
     } else if (name === 'birthday') {
       setActive('birthday');
       if (inputValue > dayToday) {
@@ -96,7 +95,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ phone: inputValue, _id : dataUserId._id }));
+      dispatch(update({ phone: inputValue, _id: dataUserId._id }));
     } else if (name === 'location') {
       setActive('location');
       if (!inputValue.match(cityRegex)) {
@@ -105,7 +104,7 @@ export const UserDataItem = ({
       }
       setIsError('');
       setActive('');
-      dispatch(update({ location: inputValue, _id : dataUserId._id }));
+      dispatch(update({ location: inputValue, _id: dataUserId._id }));
     }
   };
 
@@ -115,33 +114,29 @@ export const UserDataItem = ({
 
   return (
     <>
-      <div className={css['user-data-item-wrapper']}>
+      <li className={css['item-wrapper']}>
         <label htmlFor={name} className={css['title-name']}>
           {label}
         </label>
 
-        <div className={css['user-data-item-input-btn-wrapper']}>
-          <div className={css['input-wrapper']}>
-            <input
-              value={!profile ? inputValue : defaultValue}
-              onChange={handleChange}
-              className={
-                active === name ? css.active : '' + css['user-data-item-input']
-              }
-              disabled={active !== name}
-              type={type}
-              name={name}
-              id={name}
-            />
-            {isError && active === name ? (
-              <div className={css.error}>{isError}</div>
-            ) : null}
-          </div>
+        <div className={css['item-input-btn-wrapper']}>
+          <input
+            value={!profile ? inputValue : defaultValue}
+            onChange={handleChange}
+            className={active === name ? css.active : '' + css['item-input']}
+            disabled={active !== name}
+            type={type}
+            name={name}
+            id={name}
+          />
+          {isError && active === name ? (
+            <div className={css.error}>{isError}</div>
+          ) : null}
 
           {!profile &&
             (active == name ? (
               <button
-                className={css['user-data-item-btn']}
+                className={css['item-btn']}
                 type="button"
                 onClick={() => handleSubmit(name)}
               >
@@ -151,7 +146,7 @@ export const UserDataItem = ({
               </button>
             ) : (
               <button
-                className={css['user-data-item-btn']}
+                className={css['item-btn']}
                 type="button"
                 disabled={active && active !== name}
                 onClick={() => activeHandleClick(name)}
@@ -162,7 +157,7 @@ export const UserDataItem = ({
               </button>
             ))}
         </div>
-      </div>
+      </li>
     </>
   );
 };
