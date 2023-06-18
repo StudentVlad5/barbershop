@@ -1,8 +1,9 @@
-import axios from "axios";
-const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
+import axios from 'axios';
+
+const BASE_URL = 'https://drab-pear-gazelle-belt.cyclic.app/api';
 // const BASE_URL = "http://localhost:3030/api";
 
-export const signUp = async (credentials) => {
+export const signUp = async credentials => {
   try {
     const res = await axios.post(`${BASE_URL}/auth/signup`, credentials);
     return res;
@@ -11,7 +12,7 @@ export const signUp = async (credentials) => {
   }
 };
 
-export const signIn = async (credentials) => {
+export const signIn = async credentials => {
   try {
     const res = await axios.post(`${BASE_URL}/auth/signin`, credentials);
     return res;
@@ -25,21 +26,21 @@ export const singOut = async () => {
   return res;
 };
 
-export const updateUserData = async (updateData) => {
+export const updateUserData = async updateData => {
   const asArray = Object.entries(updateData);
-  const filtered = asArray.filter(([key]) => key !== "_id");
+  const filtered = asArray.filter(([key]) => key !== '_id');
   const justOne = Object.fromEntries(filtered);
   const { data } = await axios.patch(
     `${BASE_URL}/user/${updateData._id}`,
     justOne,
     {
       headers: {
-        "Content-Type": "multipart/form-data",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
-        "Access-Control-Expose-Headers": "Content-Range",
+        'Content-Type': 'multipart/form-data',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+        'Access-Control-Expose-Headers': 'Content-Range',
       },
-    }
+    },
   );
   return data;
 };

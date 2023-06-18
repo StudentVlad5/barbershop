@@ -10,7 +10,7 @@ const FixDown = () => {
     const header = document.getElementById('header');
     const headerOffsetTrigger = header.offsetTop;
     const pageOffset = window.scrollY;
-if(scroll){
+
     if (pageOffset > headerOffsetTrigger) {
       scroll && scroll.classList.remove(css['is-hide']);
       header.classList.add(css['js-no-transparency']);
@@ -18,7 +18,7 @@ if(scroll){
       scroll && scroll.classList.add(css['is-hide']);
       header.classList.remove(css['js-no-transparency']);
     }
-  }}
+  }
 
   return (
     <div className={css['fix-down']}>

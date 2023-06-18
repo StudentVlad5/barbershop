@@ -20,9 +20,9 @@ export const CreateUserDataModal = () => {
   const modal = useSelector(modalComponent);
   const dispatch = useDispatch();
 
-  // create user
-    async function createUser(values) {
-    setIsLoading(true);
+  
+
+  async function createUser(values) {
     const file = document.querySelector('#avatar')?.files[0];
     try {
       const { date } = await createUserData('/admin/users/create', values, file);
@@ -141,7 +141,7 @@ export const CreateUserDataModal = () => {
                       name="email"
                       placeholder="Type user email"
                       value={values.email}
-              />
+/>
                   </div>
                   <div className={css.form__field}>
                     <label className={css.form__label} htmlFor="password">

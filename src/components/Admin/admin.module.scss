@@ -1,10 +1,20 @@
 @import '../base/main.scss';
 
 .admin {
+  padding-top: 0;
+
   &__container {
     width: 100%;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 25px;
+
+    @include mq(tablet) {
+      padding: 0 35px;
+    }
+
+    @include mq(desktop) {
+      padding: 0 50px;
+    }
   }
 
   &__list {
@@ -51,7 +61,7 @@
     }
 
     @include mq(desktop) {
-      max-width: 390px;
+      max-width: 375px;
     }
 
     & svg {

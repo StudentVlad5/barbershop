@@ -12,8 +12,8 @@ import { onLoading, onLoaded } from 'helpers/Loader/Loader';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { SEO } from 'utils/SEO';
 import { EditServiceDataModal } from 'components/Admin/EditDataModal/EditServicesDataModal';
-import css from 'components/Admin/admin.module.scss';
 import { CreateServiceDataModal } from 'components/Admin/CreateDataModal/CreateServicesDataModal';
+import css from 'components/Admin/admin.module.scss';
 
 const AdminServicesPage = () => {
   const [services, setServices] = useState([]);
@@ -27,7 +27,7 @@ const AdminServicesPage = () => {
       try {
         const { data } = await fetchData('/admin/services');
         setServices(data);
-        localStorage.setItem("services", data.length)
+        localStorage.setItem('services', data.length);
         if (!data) {
           return onFetchError('Whoops, something went wrong');
         }
@@ -99,7 +99,7 @@ const AdminServicesPage = () => {
           <table className={css.admin__table}>
             <thead>
               <tr className={css.table__row}>
-                <th className={css.table__head}>ID</th>
+                {/* <th className={css.table__head}>ID</th> */}
                 <th className={css.table__head}>Subject</th>
                 <th className={css.table__head}>Time</th>
                 {isLearnMore && (
@@ -109,6 +109,7 @@ const AdminServicesPage = () => {
                     <th className={css.table__head}>Specialist</th>
                   </>
                 )}
+                <th className={css.table__head}>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -116,7 +117,7 @@ const AdminServicesPage = () => {
                 !error &&
                 services.map(service => (
                   <tr key={service._id} className={css.table__row}>
-                    <td className={css.table__data}>{service._id}</td>
+                    {/* <td className={css.table__data}>{service._id}</td> */}
                     <td className={css.table__data}>{service.subject}</td>
                     <td className={css.table__data}>{service.time}</td>
                     {isLearnMore && (
@@ -169,7 +170,7 @@ const AdminServicesPage = () => {
         </div>
       </section>
       <EditServiceDataModal />
-      <CreateServiceDataModal/>
+      <CreateServiceDataModal />
     </>
   );
 };

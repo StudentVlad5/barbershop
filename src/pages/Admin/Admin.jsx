@@ -9,8 +9,8 @@ const AdminPage = () => {
     <>
       <SEO title="Administration" description="Page Administration" />
       <User />
-      <section className={'admin' + ' ' + css.section} id="admin">
-        <div className={css.admin__container}>
+      <section className={css.admin + ' ' + css.section} id="admin">
+        <div className={css.admin__container + ' ' + css.container}>
           <div className={css['title-group']}>
             <h2 className={css['section-title--size-s']}>Administration:</h2>
           </div>

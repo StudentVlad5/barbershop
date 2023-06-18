@@ -1,7 +1,9 @@
 import { HelmetProvider } from 'react-helmet-async';
-import { Route, Routes } from 'react-router-dom';
 import { useEffect, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+// import { RestrictedRoute } from 'routes/RestrictedRoute';
+import { PrivateRoute } from 'routes/PrivateRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { selectIsRefreshing, getPermission } from 'redux/auth/selectors';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
@@ -11,8 +13,6 @@ import AdminUsersPage from 'pages/Admin/AdminUsers';
 import AdminServicesPage from 'pages/Admin/AdminServices';
 import { User } from 'components/Sections/User/User';
 import AdminOwnerPage from 'pages/Admin/AdminOwners';
-import { PrivateRoute } from 'routes/PrivateRoute';
-// import { RestrictedRoute } from 'routes/PrivateRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -31,14 +31,46 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<LandingPage />} />
-             {permission === 'admin' ? (
-              <Route path="admin" element={<PrivateRoute redirectTo="/" component={<AdminPage />} /> }/>) : (
-              <Route path="user" element={<PrivateRoute redirectTo="/" component={<User />} />}/>
+            {permission === 'admin' ? (
+              <Route
+                path="admin"
+                element={
+                  <PrivateRoute redirectTo="/" component={<AdminPage />} />
+                }
+              />
+            ) : (
+              <Route
+                path="user"
+                element={<PrivateRoute redirectTo="/" component={<User />} />}
+              />
             )}
-
-            <Route path="admin/users" element={<PrivateRoute redirectTo="/" component={<AdminUsersPage />} />}/>
-            <Route path="admin/services" element={<PrivateRoute redirectTo="/" component={<AdminServicesPage />} />}/>
-            <Route path="admin/owners" element={<PrivateRoute redirectTo="/" component={<AdminOwnerPage />}  />}/>
+            <Route
+              path="admin/users"
+              element={
+                <PrivateRoute
+                  redirectTo="/admin"
+                  component={<AdminUsersPage />}
+                />
+              }
+            />
+            <Route
+              path="admin/services"
+              element={
+                <PrivateRoute
+                  redirectTo="/admin"
+                  component={<AdminServicesPage />}
+                />
+              }
+            />
+            <Route
+              path="admin/owners"
+              element={
+                <PrivateRoute
+                  redirectTo="/admin"
+                  component={<AdminOwnerPage />}
+                />
+              }
+            />
 
             <Route path="*" element={<LandingPage />} />
           </Route>
