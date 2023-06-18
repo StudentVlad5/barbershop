@@ -151,6 +151,19 @@ async function deleteData(pathParams) {
   });
 }
 
+async function changePassword(pathParams, body) {
+  const formData = new FormData();
+  formData.append("password", body);
+  return axios.patch(`${BASE_URL}${pathParams}`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+      "Access-Control-Expose-Headers": "Content-Range",
+    },
+  });
+}
+
 fetchData.propTypes = {
   pathParams: PropTypes.string.isRequired,
 };
@@ -195,4 +208,5 @@ export {
   updateServiceData,
   deleteData,
   createOwnerData,
+  changePassword,
 };

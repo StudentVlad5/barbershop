@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdClose, MdEdit, MdAddCard } from 'react-icons/md';
+import { MdClose, MdEdit, MdAddCard, MdChangeCircle } from 'react-icons/md';
 import { HiArrowLeft } from 'react-icons/hi';
 import { openModalWindow } from 'hooks/modalWindow';
 import { addModal } from 'redux/modal/operation';
 import { addReload } from 'redux/reload/slice';
 import { reloadValue } from 'redux/reload/selectors';
-import { fetchData, deleteData } from 'services/APIservice';
+import { fetchData, deleteData, changePassword } from 'services/APIservice';
 import { onLoading, onLoaded } from 'helpers/Loader/Loader';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { SEO } from 'utils/SEO';
@@ -48,6 +48,19 @@ const AdminUsersPage = () => {
     setIsLoading(true);
     try {
       const { date } = await deleteData(`/admin/users/${id}`);
+      return date;
+    } catch (error) {
+      setError(error);
+    } finally {
+      dispatch(addReload(true));
+      setIsLoading(false);
+    }
+  }
+
+  async function changePasswordUser(id, email) {
+    setIsLoading(true);
+    try {
+      const { date } = await changePassword(`/admin/users/${id}`, email);
       return date;
     } catch (error) {
       setError(error);
@@ -128,6 +141,7 @@ const AdminUsersPage = () => {
                 )}
                 <th className={css.table__head}>Role</th>
                 <th className={css.table__head}>Action</th>
+                <th className={css.table__head}>Change PW</th>
               </tr>
             </thead>
             <tbody>
@@ -177,6 +191,19 @@ const AdminUsersPage = () => {
                       >
                         <MdClose size={15} />
                       </button>
+                    </td>
+                    <td className={css.table__data}>
+                    <button
+                        className={css['icon-btn']}
+                        type="button"
+                        aria-label="Change password"
+                        onClick={() => {
+                          changePasswordUser(user._id, user.email);
+                        }}
+                      >
+                        <MdChangeCircle size={15} />
+                      </button>
+                    
                     </td>
                   </tr>
                 ))}
