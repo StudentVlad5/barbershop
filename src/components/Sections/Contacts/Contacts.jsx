@@ -33,7 +33,7 @@ const Contacts = () => {
   const handleSubmit = async () => {
     const credential = { name, phone, message };
 
-    // const BASE_URL = "https://drab-pear-gazelle-belt.cyclic.app/api";
+    // const BASE_URL = "https://tame-ruby-lizard-coat.cyclic.app/api";
     try {
       const res = await leaveMessage(credential);
       notify();
