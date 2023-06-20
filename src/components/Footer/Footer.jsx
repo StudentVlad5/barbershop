@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addModal } from 'redux/modal/operation';
 import { openModalWindow } from 'hooks/modalWindow';
@@ -6,6 +7,7 @@ import css from './footer.module.scss';
 
 export const Footer = () => {
   const dispatch = useDispatch();
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const openModal = e => {
     e.preventDefault();
@@ -16,6 +18,7 @@ export const Footer = () => {
           modal: e.currentTarget.dataset.modal,
         }),
       );
+      setIsOpenModal(true);
       setTimeout(() => openModalWindow(e, null), 500);
     }
   };
@@ -65,7 +68,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <ModalDev />
+      {isOpenModal && <ModalDev />}
     </footer>
   );
 };
