@@ -3,13 +3,15 @@ import { useSelector } from 'react-redux';
 import { openModalForm } from 'hooks/modalWindow';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import MobileMenu from './MobileMenu/MobileMenu';
+import { ModalWindowForForm } from 'components/AuthForms/ModalWindowForForm/ModalWindowForForm';
 import { UserNav } from './UserNav/UserNav';
 import sprite from 'images/sprite.svg';
 import css from './header.module.scss';
 
 export const Header = () => {
-  const [showModal, setShowModal] = useState(false);
-  const toggleModal = () => setShowModal(state => !state);
+  const [showMenu, setShowMenu] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const toggleModal = () => setShowMenu(state => !state);
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
@@ -83,7 +85,9 @@ export const Header = () => {
               <button
                 className={css.btn + ' ' + css['btn--mode-dark']}
                 type="button"
-                onClick={e => openModalForm(e)}
+                onClick={e => {
+                  openModalForm(e), setIsOpenModal(true);
+                }}
               >
                 log in
               </button>
@@ -102,7 +106,7 @@ export const Header = () => {
             onClick={toggleModal}
           >
             <svg className={css['mobile-btn__icon']} width="40" height="40">
-              {!showModal ? (
+              {!showMenu ? (
                 <svg className={css['mobile-btn__icon-open']}>
                   <use href={sprite + '#menu_40px'}></use>
                 </svg>
@@ -114,8 +118,9 @@ export const Header = () => {
             </svg>
           </button>
         </div>
-        {showModal && <MobileMenu onClose={toggleModal} />}
+        {showMenu && <MobileMenu onClose={toggleModal} />}
       </header>
+      {isOpenModal && <ModalWindowForForm />}
     </>
   );
 };

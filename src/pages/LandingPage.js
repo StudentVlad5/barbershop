@@ -6,8 +6,6 @@ import Benefits from 'components/Sections/Benefits/Benefits';
 import Team from 'components/Sections/Team/Team';
 import Gallery from 'components/Sections/Gallery/Gallery';
 import Contacts from 'components/Sections/Contacts/Contacts';
-import Schedule from 'components/Schedule/Schedule';
-import { ModalWindowForForm } from 'components/AuthForms/ModalWindowForForm/ModalWindowForForm';
 import FixDown from 'components/FixDown/FixDown';
 
 const LandingPage = () => {
@@ -22,8 +20,6 @@ const LandingPage = () => {
       <Gallery />
       <Contacts />
       <FixDown />
-      <ModalWindowForForm />
-      <Schedule />
     </>
   );
 };

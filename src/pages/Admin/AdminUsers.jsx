@@ -83,7 +83,7 @@ const AdminUsersPage = () => {
   const openModal = e => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.currentTarget.dataset.modal === 'admin' || e.currentTarget.dataset.modal === 'admin_create_user') {
+    if (e.currentTarget.dataset.modal === 'admin') {
       dispatch(
         addModal({
           modal: e.currentTarget.dataset.modal,
@@ -193,7 +193,7 @@ const AdminUsersPage = () => {
                       </button>
                     </td>
                     <td className={css.table__data}>
-                    <button
+                      <button
                         className={css['icon-btn']}
                         type="button"
                         aria-label="Change password"
@@ -203,28 +203,27 @@ const AdminUsersPage = () => {
                       >
                         <MdChangeCircle size={15} />
                       </button>
-                    
                     </td>
                   </tr>
                 ))}
             </tbody>
           </table>
           <button
-                        className={css['icon-btn']}
-                        type="button"
-                        aria-label="Create user"
-                        onClick={e => {
-                          openModal(e);
-                        }}
-                        data-modal="admin_create_user"
-                        // data-id={service._id}
-                      >
-                        <MdAddCard size={25}/>
-                      </button>
+            className={css['icon-btn']}
+            type="button"
+            aria-label="Create user"
+            onClick={e => {
+              openModal(e);
+            }}
+            data-modal="admin_create_user"
+            // data-id={service._id}
+          >
+            <MdAddCard size={25} />
+          </button>
         </div>
       </section>
       <EditUserDataModal />
-      <CreateUserDataModal/>
+      <CreateUserDataModal />
     </>
   );
 };
