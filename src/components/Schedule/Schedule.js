@@ -38,7 +38,7 @@ const Schedule = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { BASE_URL } = window.global;
-  const [ownersData, setOwnersData] = useState(
+  const [ownersData] = useState(
     new DataManager({
       // url: `${BASE_URL}/owner/6468ae6f933f75d6f510c808`,
       url: `${BASE_URL}/owner`,
