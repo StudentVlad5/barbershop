@@ -1,6 +1,25 @@
+import { useDispatch } from 'react-redux';
+import { addModal } from 'redux/modal/operation';
+import { openModalWindow } from 'hooks/modalWindow';
+import { ModalDev } from './ModalDev/ModalDev';
 import css from './footer.module.scss';
 
 export const Footer = () => {
+  const dispatch = useDispatch();
+
+  const openModal = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.currentTarget.dataset.modal === 'developers') {
+      dispatch(
+        addModal({
+          modal: e.currentTarget.dataset.modal,
+        }),
+      );
+      setTimeout(() => openModalWindow(e, null), 500);
+    }
+  };
+
   return (
     <footer className={css.footer}>
       <div className={css.footer__container + ' ' + css.container}>
@@ -35,6 +54,9 @@ export const Footer = () => {
             <p className={css.developers__text}>Developed by</p>
             <button
               className={css.developers__btn}
+              onClick={e => {
+                openModal(e);
+              }}
               aria-label="Developers"
               data-modal="developers"
             >
@@ -43,6 +65,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+      <ModalDev />
     </footer>
   );
 };
