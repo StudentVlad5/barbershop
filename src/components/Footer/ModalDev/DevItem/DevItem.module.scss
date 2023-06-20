@@ -1,0 +1,67 @@
+@import '../../../base/main';
+
+.dev__item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 125px;
+  height: auto;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.11) 7px 4px 14px;
+
+  @include mq(tablet) {
+    width: 200px;
+  }
+}
+
+.dev__img {
+  width: 100px;
+  height: 150px;
+
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: var(--color-accent);
+  object-fit: cover;
+
+  @include mq(tablet) {
+    width: 120px;
+  }
+
+}
+
+.dev__info {
+  margin-bottom: 8px;
+  font-family: var(--font-family-main);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--color-text-main);
+
+  @include mq(tablet) {
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+}
+
+.dev__link {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.link {
+  color: var(--color-text-light);
+
+  &:hover,
+  &:focus {
+    color: var(--color-accent);
+  }
+}

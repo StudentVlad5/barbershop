@@ -1,0 +1,51 @@
+@import '../../base/main';
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  max-width: calc(100vw - 40px);
+  padding: 30px;
+
+  background-color: var(--color-background-main);
+  border-radius: 20px;
+  box-shadow: var(--color-shadow) 7px 4px 14px;
+
+  @include mq(tablet) {
+    max-width: 600px;
+    padding: 20px;
+  }
+
+  @include mq(desktop) {
+    max-width: 1280px;
+    padding: 40px;
+  }
+
+  &__title {
+    margin: 20px auto;
+
+    font-family: var(--font-family-title);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.17;
+    letter-spacing: 0.05em;
+  }
+}
+
+.dev__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  padding: 0;
+
+  @include mq(tablet) {
+    gap: 30px;
+  }
+
+  @include mq(desktop) {
+    justify-content: space-between;
+  }
+}
