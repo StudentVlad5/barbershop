@@ -216,7 +216,6 @@ const AdminUsersPage = () => {
               openModal(e);
             }}
             data-modal="admin_create_user"
-            // data-id={service._id}
           >
             <MdAddCard size={25} />
           </button>

@@ -1,9 +1,34 @@
+import { useState, useEffect } from 'react';
 import { openModalWindow } from 'hooks/modalWindow';
+import { fetchData } from 'services/APIservice';
+import { onFetchError } from 'helpers/Messages/NotifyMessages';
+import { onLoaded, onLoading } from 'helpers/Loader/Loader';
 import css from './price.module.scss';
 
 const Price = () => {
+  const [services, setServices] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    (async function getData() {
+      setIsLoading(true);
+      try {
+        const { data } = await fetchData('/services');
+        setServices(data);
+        if (!data) {
+          return onFetchError('Whoops, something went wrong');
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
+
   return (
-    <section className={css.price + ' ' + css.section} id="price" style={{}}>
+    <section className={css.price + ' ' + css.section} id="price">
       <div className={css.container}>
         <div className={css.price__group + ' ' + css['title-group']}>
           <p className={css.uppertitle + ' ' + css['uppertitle--mode-light']}>
@@ -17,48 +42,44 @@ const Price = () => {
             Services and Prices
           </h2>
         </div>
-        <ul className={css.price__list + ' ' + css.list}>
-          <li className={css.price__item}>
-            <ul className={css['price__inner-list'] + ' ' + css.list}>
-              <li className={css['price__inner-item']}>
-                <span>Mens Haircut</span>
-                <span>from 300 UAH</span>
-              </li>
-              <li className={css['price__inner-item']}>
-                <span>Beard Trim</span>
-                <span>from 200 UAH</span>
-              </li>
-              <li className={css['price__inner-item']}>
-                <span>Mustache Trim</span>
-                <span>from 200 UAH</span>
-              </li>
-              <li className={css['price__inner-item']}>
-                <span>Straight Razor Shave</span>
-                <span>from 200 UAH</span>
-              </li>
-            </ul>
-          </li>
-          <li className={css.price__item}>
-            <ul className={css['price__inner-list'] + ' ' + css.list}>
-              <li className={css['price__inner-item']}>
-                <span>Trainee Haircut</span>
-                <span>from 50 UAH</span>
-              </li>
-              <li className={css['price__inner-item']}>
-                <span>Buzz Cut</span>
-                <span>from 200 UAH</span>
-              </li>
-              <li className={css['price__inner-item']}>
-                <span>Kids Haircut (before 12 y.o.)</span>
-                <span>from 300 UAH</span>
-              </li>
-              <li className={css['price__inner-item']}>
-                <span>Gray Coverage</span>
-                <span>from 200 UAH</span>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        {isLoading ? onLoading() : onLoaded()}
+        {error && onFetchError('Whoops, something went wrong')}
+        {services.length > 0 && !error && (
+          <ul className={css.price__list + ' ' + css.list}>
+            <li className={css.price__item}>
+              <ul className={css['price__inner-list'] + ' ' + css.list}>
+                {services.map(
+                  (service, idx) =>
+                    idx <= Math.floor(services.length / 2) && (
+                      <li
+                        className={css['price__inner-item']}
+                        key={services._id}
+                      >
+                        <span>{service.subject}</span>
+                        <span>from {service.price} UAH</span>
+                      </li>
+                    ),
+                )}
+              </ul>
+            </li>
+            <li className={css.price__item}>
+              <ul className={css['price__inner-list'] + ' ' + css.list}>
+                {services.map(
+                  (service, idx) =>
+                    idx > Math.floor(services.length / 2) && (
+                      <li
+                        className={css['price__inner-item']}
+                        key={services._id}
+                      >
+                        <span>{service.subject}</span>
+                        <span>from {service.price} UAH</span>
+                      </li>
+                    ),
+                )}
+              </ul>
+            </li>
+          </ul>
+        )}
         <button
           className={css.link + ' ' + css.btn + ' ' + css['btn--mode-dark']}
           type="button"
