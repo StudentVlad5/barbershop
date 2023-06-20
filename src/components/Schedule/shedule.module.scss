@@ -52,3 +52,40 @@
   display: block;
   margin-left: 20px;
 }
+.template_wrap{
+ transition: all .25s ease-in 0.25s;
+}
+
+.template_wrap:hover{
+  transform: scale(1.2);
+  background-color: yellowgreen;
+  cursor: pointer;
+}
+.handleRemoveFilterOwner{
+  margin-left: 20px;
+  background-color: #337AB7;
+  border: 1px solid #337AB7;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px;
+  text-align: center;
+  transition: all .3s ease-out;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  text-decoration: none;
+}
+  .handleRemoveFilterOwner:hover,
+  .handleRemoveFilterOwner:focus {
+    transform: translateY(0);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+  }

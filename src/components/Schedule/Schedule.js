@@ -13,23 +13,23 @@ import {
   ResourcesDirective,
   ResourceDirective,
   ExcelExport,
-} from '@syncfusion/ej2-react-schedule';
-import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
-import { closest, remove, addClass } from '@syncfusion/ej2-base';
-import { DataManager, ODataV4Adaptor, UrlAdaptor } from '@syncfusion/ej2-data';
-import { v4 as uuidv4 } from 'uuid';
-import { fieldsData } from './Datasource';
-import { closeModalWindow } from 'hooks/modalWindow';
-import sprite from 'images/sprite.svg';
-import css from './shedule.module.scss';
-import avatarAnonimus from 'images/team/png-heroes-thumbnail.png';
-import { useSelector } from 'react-redux';
-import { getUser } from 'redux/auth/selectors';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { onFetchError } from 'helpers/Messages/NotifyMessages';
-import { onLoaded, onLoading } from 'helpers/Loader/Loader';
-import { fetchData } from 'services/APIservice';
+} from "@syncfusion/ej2-react-schedule";
+import { TreeViewComponent } from "@syncfusion/ej2-react-navigations";
+import { closest, remove, addClass } from "@syncfusion/ej2-base";
+import { DataManager, ODataV4Adaptor, UrlAdaptor } from "@syncfusion/ej2-data";
+import { v4 as uuidv4 } from "uuid";
+import { fieldsData } from "./Datasource";
+import { closeModalWindow } from "hooks/modalWindow";
+import sprite from "images/sprite.svg";
+import css from "./shedule.module.scss";
+import avatarAnonimus from "images/team/png-heroes-thumbnail.png";
+import { useSelector } from "react-redux";
+import { getUser } from "redux/auth/selectors";
+import { useEffect } from "react";
+import { useState } from "react";
+import { onFetchError } from "helpers/Messages/NotifyMessages";
+import { onLoaded, onLoading } from "helpers/Loader/Loader";
+import { fetchData } from "services/APIservice";
 
 const Schedule = () => {
   const user = useSelector(getUser);
@@ -40,7 +40,6 @@ const Schedule = () => {
   const { BASE_URL } = window.global;
   const [ownersData] = useState(
     new DataManager({
-      // url: `${BASE_URL}/owner/6468ae6f933f75d6f510c808`,
       url: `${BASE_URL}/owner`,
       adaptor: new ODataV4Adaptor(),
     })
@@ -53,11 +52,6 @@ const Schedule = () => {
     adaptor: new UrlAdaptor(),
     crossDomain: true,
   });
-
-  // ownersData = new DataManager({
-  //   url: `${BASE_URL}/owner`,
-  //   adaptor: new ODataV4Adaptor(),
-  // });
 
   const [ownerData, setOwnerData] = React.useState(ownersData);
   const group = { resources: ["Barbers"], allowMultiple: false };
@@ -134,7 +128,7 @@ const Schedule = () => {
   function handleFilterOwner(e) {
     e.preventDefault();
     e.stopPropagation();
-    setStatusFilter(!statusFilter);
+    setStatusFilter(true);
     setOwnerData(
       new DataManager({
         url: `${BASE_URL}/owner/${e.currentTarget.dataset.id}`,
@@ -146,7 +140,7 @@ const Schedule = () => {
   function handleRemoveFilterOwner(e) {
     e.preventDefault();
     e.stopPropagation();
-    setStatusFilter(!statusFilter);
+    setStatusFilter(false);
     setOwnerData(
       new DataManager({
         url: `${BASE_URL}/owner`,
@@ -158,7 +152,7 @@ const Schedule = () => {
   function resourceHeaderTemplate(props) {
     return (
       <div
-        className="template-wrap"
+        className={`template-wrap ${css.template_wrap}`}
         data-id={getBarberId(props)}
         onClick={handleFilterOwner}
       >
@@ -176,7 +170,7 @@ const Schedule = () => {
             <div className="resource-designation">{getBarberLevel(props)}</div>
           </div>
           {statusFilter && (
-            <button type="button" onClick={handleRemoveFilterOwner}>
+            <button type="button" onClick={handleRemoveFilterOwner} className={css.handleRemoveFilterOwner}>
               ALL Spesialists
             </button>
           )}
