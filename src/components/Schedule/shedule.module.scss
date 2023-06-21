@@ -57,9 +57,10 @@
 }
 
 .template_wrap:hover{
-  transform: scale(1.2);
+  transform: scale(1.05);
   background-color: yellowgreen;
   cursor: pointer;
+  border-radius: 20px;
 }
 .handleRemoveFilterOwner{
   margin-left: 20px;

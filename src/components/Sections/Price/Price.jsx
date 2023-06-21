@@ -53,7 +53,7 @@ const Price = () => {
                     idx <= Math.floor(services.length / 2) && (
                       <li
                         className={css['price__inner-item']}
-                        key={services._id}
+                        key={service._id}
                       >
                         <span>{service.subject}</span>
                         <span>from {service.price} UAH</span>
@@ -69,7 +69,7 @@ const Price = () => {
                     idx > Math.floor(services.length / 2) && (
                       <li
                         className={css['price__inner-item']}
-                        key={services._id}
+                        key={service._id}
                       >
                         <span>{service.subject}</span>
                         <span>from {service.price} UAH</span>
