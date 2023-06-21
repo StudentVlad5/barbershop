@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm';
 import sprite from 'images/sprite.svg';
@@ -14,7 +14,7 @@ export const ModalWindowForForm = () => {
     closeModalForm(e);
   }
 
-  return ReactDOM.createPortal(
+  return createPortal(
     <div className={css.backdrop} onClick={closeModal}>
       <div className={css.modal} onClick={e => e.stopPropagation()}>
         <button
@@ -34,6 +34,5 @@ export const ModalWindowForForm = () => {
         )}
       </div>
     </div>,
-    document.querySelector('#popup-register-root'),
-  );
-};
+    document.querySelector('#popup-register-root')
+)};

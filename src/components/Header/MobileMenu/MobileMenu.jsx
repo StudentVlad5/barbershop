@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { MobileUserNav } from '../UserNav/UserNav';
 
-const MobileMenu = ({ onClose }) => {
+const MobileMenu = ({ onClose, setIsOpenModal }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-
+console.log(setIsOpenModal)
   useEffect(() => {
     // closes modal with a click on the root
     const handleBackdropClick = () => {
@@ -93,7 +93,7 @@ const MobileMenu = ({ onClose }) => {
         <button
           className={css.btn + ' ' + css['btn--mode-light']}
           type="button"
-          onClick={e => openModalForm(e)}
+          onClick={e => {openModalForm(e), setIsOpenModal(true)}}
         >
           log in
         </button>
@@ -134,4 +134,4 @@ const MobileMenu = ({ onClose }) => {
 
 export default MobileMenu;
 
-MobileMenu.propTypes = { onClose: PropTypes.func.isRequired };
+MobileMenu.propTypes = { onClose: PropTypes.func.isRequired, setIsOpenModal: PropTypes.any.isRequired };
