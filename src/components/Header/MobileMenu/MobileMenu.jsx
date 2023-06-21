@@ -8,7 +8,6 @@ import { MobileUserNav } from '../UserNav/UserNav';
 
 const MobileMenu = ({ onClose, setIsOpenModal }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-console.log(setIsOpenModal)
   useEffect(() => {
     // closes modal with a click on the root
     const handleBackdropClick = () => {

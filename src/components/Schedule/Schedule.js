@@ -37,6 +37,7 @@ const Schedule = () => {
   const [dataService, setDataService] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [ownerId, setOwnerId] = useState("");
   const { BASE_URL } = window.global;
   const [ownersData] = useState(
     new DataManager({
@@ -120,6 +121,11 @@ const Schedule = () => {
     return value.resourceData ? value.resourceData._id : "";
   }
 
+  function getOwnerId(value) {
+    console.log(value);
+    return value.resourceData ? value.resourceData.Id : "";
+  }
+
   function closeModal(e) {
     e.preventDefault();
     closeModalWindow(e);
@@ -129,6 +135,7 @@ const Schedule = () => {
     e.preventDefault();
     e.stopPropagation();
     setStatusFilter(true);
+    setOwnerId(e.currentTarget.dataset.ownerid);
     setOwnerData(
       new DataManager({
         url: `${BASE_URL}/owner/${e.currentTarget.dataset.id}`,
@@ -141,6 +148,7 @@ const Schedule = () => {
     e.preventDefault();
     e.stopPropagation();
     setStatusFilter(false);
+    setOwnerId("");
     setOwnerData(
       new DataManager({
         url: `${BASE_URL}/owner`,
@@ -154,11 +162,13 @@ const Schedule = () => {
       <div
         className={`template-wrap ${css.template_wrap}`}
         data-id={getBarberId(props)}
+        data-ownerid={getOwnerId(props)}
         onClick={handleFilterOwner}
       >
         <div
           className={`resource-detail ${css.resource_container}`}
           data-id={getBarberId(props)}
+          data-ownerid={getOwnerId(props)}
         >
           <img
             className={css.resource_img}
@@ -170,7 +180,11 @@ const Schedule = () => {
             <div className="resource-designation">{getBarberLevel(props)}</div>
           </div>
           {statusFilter && (
-            <button type="button" onClick={handleRemoveFilterOwner} className={css.handleRemoveFilterOwner}>
+            <button
+              type="button"
+              onClick={handleRemoveFilterOwner}
+              className={css.handleRemoveFilterOwner}
+            >
               ALL Spesialists
             </button>
           )}
@@ -303,13 +317,19 @@ const Schedule = () => {
 
           // set time for items
           let description = `${user.userName} ${user.phone}`;
+          let s = "";
+          if (ownerId === "" || ownerId === undefined) {
+            s = cellData.groupIndex + 1;
+          } else {
+            s = ownerId;
+          }
           let eventData = {
             Subject: filteredData[0].subject,
             StartTime: cellData.startTime,
             EndTime: endDate,
             IsAllDay: cellData.isAllDay,
             Id: uuidv4(),
-            OwnerId: cellData.groupIndex + 1,
+            OwnerId: s,
             StartTimezone: "Europe/Kiev",
             EndTimezone: "Europe/Kiev",
             Description: `${description}`,
