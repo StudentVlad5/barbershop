@@ -45,7 +45,7 @@
     @include mq(tablet) {
       flex-wrap: wrap;
       flex-direction: row;
-      align-items: flex-end;
+      align-items: flex-start;
     }
 
   }
@@ -152,6 +152,11 @@
       display: none;
     }
 
+  }
+
+  &__checkbox-list {
+    display: flex;
+    gap: 3px;
   }
 }
 
