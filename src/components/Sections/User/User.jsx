@@ -1,17 +1,61 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { update } from 'redux/auth/operations';
 import { TiCamera } from 'react-icons/ti';
 import defaultUserPhoto from 'images/user/defaultUserPhoto.jpg';
 import { UserDataItem } from './UserDataItem/UserDataItem';
 import { LogOut } from './LogOut/LogOut';
+import { reloadValue } from 'redux/reload/selectors';
+import { fetchData } from 'services/APIservice';
+import { onFetchError } from 'helpers/Messages/NotifyMessages';
+import { onLoading, onLoaded } from 'helpers/Loader/Loader';
+
 import css from './user.module.scss';
 
 export const User = () => {
   const [active, setActive] = useState('');
+  const [specialists, setSpecialists] = useState([]);
+  const [userEvents, setUserEvents] = useState('');
   const dispatch = useDispatch();
   let { userIn } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const reload = useSelector(reloadValue);
+
+  useEffect(() => {
+    (async function getData() {
+      setIsLoading(true);
+      try {
+        const { data } = await fetchData(`/user/events/${userIn._id}`);
+        if (!data) {
+          return onFetchError('Whoops, something went wrong');
+        }
+        setUserEvents(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, [reload]);
+
+  useEffect(() => {
+    (async function getData() {
+      setIsLoading(true);
+      try {
+        const { data } = await fetchData('/admin/owners');
+        if (!data) {
+          return onFetchError('Whoops, something went wrong');
+        }
+        setSpecialists(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, [reload]);
 
   const changeAvatar = e => {
     dispatch(update({"avatar": e.target.files[0], '_id': userIn._id}));
@@ -25,6 +69,8 @@ export const User = () => {
 
   return (
     <section className={css.user + ' ' + css.section}>
+          {isLoading ? onLoading() : onLoaded()}
+          {error && onFetchError('Whoops, something went wrong')}
       <div className={css.user__container + ' ' + css.container}>
         <div>
           <div className={css['title-group']}>
@@ -121,9 +167,30 @@ export const User = () => {
             <LogOut />
           </div>
         </div>
-        <div>
-          <div className={css['title-group']}>
+        <div style={{width:'100%', display:'flex', justifyContent:"center",     margin:'0 40px'}}>
+          <div className={css['title-group']} style={{width:'100%'}}>
             <h2 className={css['section-title--size-s']}>My visits:</h2>
+            <table className={css.table__table}>
+              <thead>
+              <tr className={css.table__row}>
+                <th className={css.table__head}>Service</th>
+                <th className={css.table__head}>Date</th>
+                <th className={css.table__head}>Specialist</th>
+                </tr>
+              </thead>
+              <tbody>
+              {userEvents.length > 0 &&  !error && userEvents.map( item => (<tr key={item._id} className={css.table__row}>
+                <td className={css.table__data}>
+                {item.Subject}
+                </td>
+                <td className={css.table__data}>
+                {item.StartTime.split('T')[0].split('-').reverse().join(' ')}
+                </td>
+                <td className={css.table__data}>
+                {specialists .length > 0 && !error && specialists.map(key => {if(key.Id === item.OwnerId){return key.ownerText}})}
+                </td></tr>))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
