@@ -15,7 +15,6 @@ import { setImage } from 'utils/setimage';
 import css from './createDataModal.module.scss';
 
 export const CreateOwnerDataModal = () => {
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -39,7 +38,8 @@ export const CreateOwnerDataModal = () => {
     try {
       const { code } = await createOwnerData(
         `/admin/owners/create`,
-        values, file
+        values,
+        file,
       );
       if (code && code !== 201) {
         return onFetchError('Whoops, something went wrong');
@@ -52,7 +52,7 @@ export const CreateOwnerDataModal = () => {
     }
   }
 
-const closeDataModal = e => {
+  const closeDataModal = e => {
     e.preventDefault();
     dispatch(cleanModal());
     closeModalWindow(e);
@@ -96,6 +96,10 @@ const closeDataModal = e => {
               workDays: '',
               startHour: '',
               endHour: '',
+              facebook: '',
+              instagram: '',
+              linkedin: '',
+              twitter: '',
             }}
             onSubmit={(values, { setSubmitting }) => {
               createOwner(values);
@@ -129,7 +133,7 @@ const closeDataModal = e => {
                       type="text"
                       name="id"
                       placeholder="Specialist id"
-                                          />
+                    />
                   </div>
                   <div className={css.form__field}>
                     <label className={css.form__label} htmlFor="groupId">
@@ -178,8 +182,12 @@ const closeDataModal = e => {
                         name="ownerColor"
                         placeholder={values.ownerColor}
                       >
-                       {arr.map((item) => <option key={item} value={listOfColors.item}>{item}</option>)}
-                        </Field>
+                        {arr.map(item => (
+                          <option key={item} value={listOfColors.item}>
+                            {item}
+                          </option>
+                        ))}
+                      </Field>
                     </div>
                   </div>
                   <div className={css.form__field}>
@@ -201,6 +209,106 @@ const closeDataModal = e => {
                     </div>
                   </div>
                   <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="facebook">
+                      <span>Facebook</span>
+                      {errors.facebook && touched.facebook ? (
+                        <span className={css.error}>{errors.facebook}</span>
+                      ) : null}
+                    </label>
+                    <div>
+                      <Field
+                        className={css.form__input}
+                        type="text"
+                        id="facebook"
+                        name="facebook"
+                        placeholder="Type facebook"
+                        value={values.facebook}
+                      />
+                    </div>
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="instagram">
+                      <span>Instagram</span>
+                      {errors.instagram && touched.instagram ? (
+                        <span className={css.error}>{errors.instagram}</span>
+                      ) : null}
+                    </label>
+                    <div>
+                      <Field
+                        className={css.form__input}
+                        type="text"
+                        id="instagram"
+                        name="instagram"
+                        placeholder="Type instagram"
+                        value={values.instagram}
+                      />
+                    </div>
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="linkedin">
+                      <span>Linkedin</span>
+                      {errors.linkedin && touched.linkedin ? (
+                        <span className={css.error}>{errors.linkedin}</span>
+                      ) : null}
+                    </label>
+                    <div>
+                      <Field
+                        className={css.form__input}
+                        type="text"
+                        id="linkedin"
+                        name="linkedin"
+                        placeholder="Type linkedin"
+                        value={values.linkedin}
+                      />
+                    </div>
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="twitter">
+                      <span>Twitter</span>
+                      {errors.twitter && touched.twitter ? (
+                        <span className={css.error}>{errors.twitter}</span>
+                      ) : null}
+                    </label>
+                    <div>
+                      <Field
+                        className={css.form__input}
+                        type="text"
+                        id="twitter"
+                        name="twitter"
+                        placeholder="Type twitter"
+                        value={values.twitter}
+                      />
+                    </div>
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="avatar">
+                      <span>Avatar</span>
+                      {errors.avatar && touched.avatar ? (
+                        <span className={css.error}>{errors.avatar}</span>
+                      ) : null}
+                    </label>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+                        gap: '4px',
+                      }}
+                    >
+                      <Field
+                        className={css['form__field-item']}
+                        type="file"
+                        id="avatar"
+                        name="avatar"
+                        accept=".jpeg,.jpg,.png,.gif"
+                        onChange={e => {
+                          handleChange(e);
+                          setImage(e);
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div className={css.form__field}>
                     <label className={css.form__label} htmlFor="startHour">
                       <span>Start work hour</span>
                       {errors.startHour && touched.startHour ? (
@@ -210,8 +318,8 @@ const closeDataModal = e => {
                     <Field
                       className={css.form__input}
                       type="time"
-                      min="06:00" 
-                      max="18:00" 
+                      min="06:00"
+                      max="18:00"
                       required
                       id="startHour"
                       name="startHour"
@@ -229,8 +337,8 @@ const closeDataModal = e => {
                     <Field
                       className={css.form__input}
                       type="time"
-                      min="09:00" 
-                      max="22:00" 
+                      min="09:00"
+                      max="22:00"
                       required
                       id="endHour"
                       name="endHour"
@@ -239,72 +347,99 @@ const closeDataModal = e => {
                     />
                   </div>
                   <div className={css.form__field}>
-                    <label className={css.form__label} htmlFor="avatar">
-                      <span>Avatar</span>
-                      {errors.avatar && touched.avatar ? (
-                        <span className={css.error}>{errors.avatar}</span>
-                      ) : null}
+                    <label className={css.form__label} id="checkbox-group">
+                      workDays
                     </label>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'flex-start',
-                        gap: '4px',
-                      }}
+                    <ul
+                      className={css.list + ' ' + css['form__checkbox-list']}
+                      role="group"
+                      aria-labelledby="checkbox-group"
                     >
-                       <Field
-                          className={css['form__field-item']}
-                          type="file"
-                          id="avatar"
-                          name="avatar"
-                          accept=".jpeg,.jpg,.png,.gif"
-                          onChange={e => {
-                            handleChange(e);
-                            setImage(e);
-                          }}
-
-                        />
-                    </div>
-                  </div>
-                  <div className={css.form__field}>
-                    <div id="checkbox-group">workDays</div>
-                    <div role="group" aria-labelledby="checkbox-group" style={{display:"flex", flexDirection:"column"}}>
-                    <div>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="7" checked={sunday} onChange={()=>setSunday(!sunday)}/> 
-                    Sunday
-                    </label>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="1" checked={monday} onChange={()=>setMonday(!monday)}/> 
-                    Monday
-                    </label>
-                    </div>
-                    <div>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="2" checked={tuesday} onChange={()=>setTuesday(!tuesday)}/> 
-                    Tuesday
-                    </label>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="3" checked={wednesday} onChange={()=>setWednesday(!wednesday)}/> 
-                    Wednesday 
-                    </label>
-                    </div>
-                    <div>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="4" checked={thursday} onChange={()=>setThursday(!thursday)}/> 
-                    Thursday  
-                    </label>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="5" checked={friday} onChange={()=>setFriday(!friday)}/> 
-                    Friday   
-                    </label>
-                    </div>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="6" checked={saturday} onChange={()=>setSaturday(!saturday)}/> 
-                    Saturday    
-                    </label>
-                    </div>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="7"
+                            checked={sunday}
+                            onChange={() => setSunday(!sunday)}
+                          />{' '}
+                          Sun
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="1"
+                            checked={monday}
+                            onChange={() => setMonday(!monday)}
+                          />{' '}
+                          Mon
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="2"
+                            checked={tuesday}
+                            onChange={() => setTuesday(!tuesday)}
+                          />{' '}
+                          Tue
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="3"
+                            checked={wednesday}
+                            onChange={() => setWednesday(!wednesday)}
+                          />{' '}
+                          Wed
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="4"
+                            checked={thursday}
+                            onChange={() => setThursday(!thursday)}
+                          />{' '}
+                          Thu
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="5"
+                            checked={friday}
+                            onChange={() => setFriday(!friday)}
+                          />{' '}
+                          Fri
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="6"
+                            checked={saturday}
+                            onChange={() => setSaturday(!saturday)}
+                          />{' '}
+                          Sat
+                        </label>
+                      </li>
+                    </ul>
                   </div>
                 </div>
 

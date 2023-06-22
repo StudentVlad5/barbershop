@@ -70,7 +70,10 @@ const AdminOwnerPage = () => {
   const openModal = e => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.currentTarget.dataset.modal === 'admin' || e.currentTarget.dataset.modal === 'admin_create_owner') {
+    if (
+      e.currentTarget.dataset.modal === 'admin' ||
+      e.currentTarget.dataset.modal === 'admin_create_owner'
+    ) {
       dispatch(
         addModal({
           modal: e.currentTarget.dataset.modal,
@@ -117,6 +120,10 @@ const AdminOwnerPage = () => {
                     <th className={css.table__head}>End Work Hour</th>
                     <th className={css.table__head}>Group ID</th>
                     <th className={css.table__head}>Avatar</th>
+                    <th className={css.table__head}>Facebook</th>
+                    <th className={css.table__head}>Instagram</th>
+                    <th className={css.table__head}>Linkedin</th>
+                    <th className={css.table__head}>Twitter</th>
                   </>
                 )}
                 <th className={css.table__head}>Action</th>
@@ -126,7 +133,11 @@ const AdminOwnerPage = () => {
               {specialists.length > 0 &&
                 !error &&
                 specialists.map(specialist => (
-                  <tr key={specialist._id} className={css.table__row} style={{backgroundColor:`${specialist.ownerColor}`}}>
+                  <tr
+                    key={specialist._id}
+                    className={css.table__row}
+                    style={{ backgroundColor: `${specialist.ownerColor}` }}
+                  >
                     <td className={css.table__data}>{specialist.Id}</td>
                     <td className={css.table__data}>{specialist.ownerText}</td>
                     <td className={css.table__data}>{specialist.ownerColor}</td>
@@ -149,6 +160,18 @@ const AdminOwnerPage = () => {
                         </td>
                         <td className={css.table__data}>
                           {specialist.avatar ? 'yes' : 'no'}
+                        </td>
+                        <td className={css.table__data}>
+                          {specialist.facebook ? 'yes' : 'no'}
+                        </td>
+                        <td className={css.table__data}>
+                          {specialist.instagram ? 'yes' : 'no'}
+                        </td>
+                        <td className={css.table__data}>
+                          {specialist.linkedin ? 'yes' : 'no'}
+                        </td>
+                        <td className={css.table__data}>
+                          {specialist.twitter ? 'yes' : 'no'}
                         </td>
                       </>
                     )}
@@ -181,21 +204,21 @@ const AdminOwnerPage = () => {
             </tbody>
           </table>
           <button
-                        className={css['icon-btn']}
-                        type="button"
-                        aria-label="Create owner"
-                        onClick={e => {
-                          openModal(e);
-                        }}
-                        data-modal="admin_create_owner"
-                        // data-id={service._id}
-                      >
-                        <MdAddCard size={25}/>
-                      </button>
+            className={css['icon-btn']}
+            type="button"
+            aria-label="Create owner"
+            onClick={e => {
+              openModal(e);
+            }}
+            data-modal="admin_create_owner"
+            // data-id={service._id}
+          >
+            <MdAddCard size={25} />
+          </button>
         </div>
       </section>
       <EditOwnerDataModal />
-      <CreateOwnerDataModal/>
+      <CreateOwnerDataModal />
     </>
   );
 };

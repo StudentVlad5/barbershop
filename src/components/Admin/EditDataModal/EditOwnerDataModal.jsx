@@ -14,7 +14,6 @@ import { setImage } from 'utils/setimage';
 import css from './editDataModal.module.scss';
 import { listOfColors } from '../../../helpers/Constants/colors';
 
-
 export const EditOwnerDataModal = () => {
   const [dataUpdate, setDataUpdate] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -38,14 +37,30 @@ export const EditOwnerDataModal = () => {
       try {
         const { data } = await fetchData(itemForFetch);
         setDataUpdate(data);
-        if(data.workDays?.includes("7")){setSunday(true)}
-        if(data.workDays?.includes("1")){setMonday(true)}
-        if(data.workDays?.includes("2")){setTuesday(true)}
-        if(data.workDays?.includes("3")){setWednesday(true)}
-        if(data.workDays?.includes("4")){setThursday(true)}
-        if(data.workDays?.includes("5")){setFriday(true)}
-        if(data.workDays?.includes("6")){setSaturday(true)}
-        if(data.workDays?.includes("1")){setMonday(true)}
+        if (data.workDays?.includes('7')) {
+          setSunday(true);
+        }
+        if (data.workDays?.includes('1')) {
+          setMonday(true);
+        }
+        if (data.workDays?.includes('2')) {
+          setTuesday(true);
+        }
+        if (data.workDays?.includes('3')) {
+          setWednesday(true);
+        }
+        if (data.workDays?.includes('4')) {
+          setThursday(true);
+        }
+        if (data.workDays?.includes('5')) {
+          setFriday(true);
+        }
+        if (data.workDays?.includes('6')) {
+          setSaturday(true);
+        }
+        if (data.workDays?.includes('1')) {
+          setMonday(true);
+        }
         if (!data) {
           return onFetchError('Whoops, something went wrong');
         }
@@ -59,7 +74,6 @@ export const EditOwnerDataModal = () => {
       getData();
     }
   }, [itemForFetch, modal.id]);
-
 
   async function editOwner(formData) {
     const file = document.querySelector('#avatar')?.files[0];
@@ -92,8 +106,6 @@ export const EditOwnerDataModal = () => {
     setMonday(false);
   };
 
-
-
   return createPortal(
     Object.values(modal)[0] === 'admin' && (
       <div
@@ -122,10 +134,16 @@ export const EditOwnerDataModal = () => {
               designation: dataUpdate?.designation
                 ? dataUpdate.designation
                 : '',
-              workDays: dataUpdate?.workDays ? dataUpdate.workDays.split(',') : '',
+              workDays: dataUpdate?.workDays
+                ? dataUpdate.workDays.split(',')
+                : '',
               avatar: '',
               startHour: dataUpdate?.startHour ? dataUpdate.startHour : '',
               endHour: dataUpdate?.endHour ? dataUpdate.endHour : '',
+              facebook: dataUpdate?.facebook ? dataUpdate?.facebook : '',
+              instagram: dataUpdate?.instagram ? dataUpdate?.instagram : '',
+              linkedin: dataUpdate?.linkedin ? dataUpdate?.linkedin : '',
+              twitter: dataUpdate?.twitter ? dataUpdate?.twitter : '',
             }}
             onSubmit={(values, { setSubmitting }) => {
               editOwner(values);
@@ -209,8 +227,12 @@ export const EditOwnerDataModal = () => {
                         name="ownerColor"
                         placeholder={values.ownerColor}
                       >
-                       {arr.map((item) => <option key={item} value={listOfColors.item}>{item}</option>)}
-                        </Field>
+                        {arr.map(item => (
+                          <option key={item} value={listOfColors.item}>
+                            {item}
+                          </option>
+                        ))}
+                      </Field>
                     </div>
                   </div>
                   <div className={css.form__field}>
@@ -232,42 +254,76 @@ export const EditOwnerDataModal = () => {
                     </div>
                   </div>
                   <div className={css.form__field}>
-                    <label className={css.form__label} htmlFor="startHour">
-                      <span>Start work hour</span>
-                      {errors.startHour && touched.startHour ? (
-                        <span className={css.error}>{errors.startHour}</span>
+                    <label className={css.form__label} htmlFor="facebook">
+                      <span>Facebook</span>
+                      {errors.facebook && touched.facebook ? (
+                        <span className={css.error}>{errors.facebook}</span>
                       ) : null}
                     </label>
-                    <Field
-                      className={css.form__input}
-                      type="time"
-                      min="06:00" 
-                      max="18:00" 
-                      required
-                      id="startHour"
-                      name="startHour"
-                      placeholder="Type Specialist startHour"
-                      value={values.startHour}
-                    />
+                    <div>
+                      <Field
+                        className={css.form__input}
+                        type="text"
+                        id="facebook"
+                        name="facebook"
+                        placeholder="Type facebook"
+                        value={values.facebook}
+                      />
+                    </div>
                   </div>
                   <div className={css.form__field}>
-                    <label className={css.form__label} htmlFor="endHour">
-                      <span>End work hour</span>
-                      {errors.endHour && touched.endHour ? (
-                        <span className={css.error}>{errors.endHour}</span>
+                    <label className={css.form__label} htmlFor="instagram">
+                      <span>Instagram</span>
+                      {errors.instagram && touched.instagram ? (
+                        <span className={css.error}>{errors.instagram}</span>
                       ) : null}
                     </label>
-                    <Field
-                      className={css.form__input}
-                      type="time"
-                      min="09:00" 
-                      max="22:00" 
-                      required
-                      id="endHour"
-                      name="endHour"
-                      placeholder="Type Specialist endHour"
-                      value={values.endHour}
-                    />
+                    <div>
+                      <Field
+                        className={css.form__input}
+                        type="text"
+                        id="instagram"
+                        name="instagram"
+                        placeholder="Type instagram"
+                        value={values.instagram}
+                      />
+                    </div>
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="linkedin">
+                      <span>Linkedin</span>
+                      {errors.linkedin && touched.linkedin ? (
+                        <span className={css.error}>{errors.linkedin}</span>
+                      ) : null}
+                    </label>
+                    <div>
+                      <Field
+                        className={css.form__input}
+                        type="text"
+                        id="linkedin"
+                        name="linkedin"
+                        placeholder="Type linkedin"
+                        value={values.linkedin}
+                      />
+                    </div>
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="twitter">
+                      <span>Twitter</span>
+                      {errors.twitter && touched.twitter ? (
+                        <span className={css.error}>{errors.twitter}</span>
+                      ) : null}
+                    </label>
+                    <div>
+                      <Field
+                        className={css.form__input}
+                        type="text"
+                        id="twitter"
+                        name="twitter"
+                        placeholder="Type twitter"
+                        value={values.twitter}
+                      />
+                    </div>
                   </div>
                   <div className={css.form__field}>
                     <label className={css.form__label} htmlFor="avatar">
@@ -316,43 +372,137 @@ export const EditOwnerDataModal = () => {
                     </div>
                   </div>
                   <div className={css.form__field}>
-                    <div id="checkbox-group">workDays</div>
-                    <div role="group" aria-labelledby="checkbox-group" style={{display:"flex", flexDirection:"column"}}>
-                    <div>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="7" checked={sunday} onChange={()=>setSunday(!sunday)}/> 
-                    Sunday
+                    <label className={css.form__label} htmlFor="startHour">
+                      <span>Start work hour</span>
+                      {errors.startHour && touched.startHour ? (
+                        <span className={css.error}>{errors.startHour}</span>
+                      ) : null}
                     </label>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="1" checked={monday} onChange={()=>setMonday(!monday)}/> 
-                    Monday
+                    <Field
+                      className={css.form__input}
+                      type="time"
+                      min="06:00"
+                      max="18:00"
+                      required
+                      id="startHour"
+                      name="startHour"
+                      placeholder="Type Specialist startHour"
+                      value={values.startHour}
+                    />
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} htmlFor="endHour">
+                      <span>End work hour</span>
+                      {errors.endHour && touched.endHour ? (
+                        <span className={css.error}>{errors.endHour}</span>
+                      ) : null}
                     </label>
-                    </div>
-                    <div>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="2" checked={tuesday} onChange={()=>setTuesday(!tuesday)}/> 
-                    Tuesday
+                    <Field
+                      className={css.form__input}
+                      type="time"
+                      min="09:00"
+                      max="22:00"
+                      required
+                      id="endHour"
+                      name="endHour"
+                      placeholder="Type Specialist endHour"
+                      value={values.endHour}
+                    />
+                  </div>
+                  <div className={css.form__field}>
+                    <label className={css.form__label} id="checkbox-group">
+                      workDays
                     </label>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="3" checked={wednesday} onChange={()=>setWednesday(!wednesday)}/> 
-                    Wednesday 
-                    </label>
-                    </div>
-                    <div>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="4" checked={thursday} onChange={()=>setThursday(!thursday)}/> 
-                    Thursday  
-                    </label>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="5" checked={friday} onChange={()=>setFriday(!friday)}/> 
-                    Friday   
-                    </label>
-                    </div>
-                    <label>
-                    <Field type="checkbox" name="workDays" value="6" checked={saturday} onChange={()=>setSaturday(!saturday)}/> 
-                    Saturday    
-                    </label>
-                    </div>
+                    <ul
+                      className={css.list + ' ' + css['form__checkbox-list']}
+                      role="group"
+                      aria-labelledby="checkbox-group"
+                    >
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="7"
+                            checked={sunday}
+                            onChange={() => setSunday(!sunday)}
+                          />{' '}
+                          Sun
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="1"
+                            checked={monday}
+                            onChange={() => setMonday(!monday)}
+                          />{' '}
+                          Mon
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="2"
+                            checked={tuesday}
+                            onChange={() => setTuesday(!tuesday)}
+                          />{' '}
+                          Tue
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="3"
+                            checked={wednesday}
+                            onChange={() => setWednesday(!wednesday)}
+                          />{' '}
+                          Wed
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="4"
+                            checked={thursday}
+                            onChange={() => setThursday(!thursday)}
+                          />{' '}
+                          Thu
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="5"
+                            checked={friday}
+                            onChange={() => setFriday(!friday)}
+                          />{' '}
+                          Fri
+                        </label>
+                      </li>
+                      <li className={css['form__checkbox-item']}>
+                        <label className={css.form__label}>
+                          <Field
+                            type="checkbox"
+                            name="workDays"
+                            value="6"
+                            checked={saturday}
+                            onChange={() => setSaturday(!saturday)}
+                          />{' '}
+                          Sat
+                        </label>
+                      </li>
+                    </ul>
                   </div>
                 </div>
 
