@@ -10,10 +10,8 @@ import { reloadValue } from 'redux/reload/selectors';
 import { fetchData } from 'services/APIservice';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoading, onLoaded } from 'helpers/Loader/Loader';
-import Pagination  from "https://cdn.skypack.dev/rc-pagination@3.1.15";
-import { MdFastRewind, MdFastForward } from 'react-icons/md';
-
 import css from './user.module.scss';
+import { PaginationBlock } from 'helpers/Pagination/Pagination';
 
 export const User = () => {
   const [active, setActive] = useState('');
@@ -29,29 +27,6 @@ export const User = () => {
 const [perPage, ] = useState(10);
 const [size, setSize] = useState(perPage);
 const [current, setCurrent] = useState(1);
-
-const PerPageChange = (value) => {
-    setSize(value);
-    const newPerPage = Math.ceil(  userEvents.length / value);
-    if (current > newPerPage) {
-        setCurrent(newPerPage);
-    }
-}
-
-const PaginationChange = (page, pageSize) => {
-    setCurrent(page);
-    setSize(pageSize)
-}
-
-const PrevNextArrow = (current, type, originalElement) => {
-    if (type === 'prev') {
-        return <button><MdFastRewind/></button>;
-    }
-    if (type === 'next') {
-        return <button><MdFastForward/></button>;
-    }
-    return originalElement;
-}
 // __________________________________________________
 
   useEffect(() => {
@@ -203,22 +178,7 @@ const PrevNextArrow = (current, type, originalElement) => {
                     <div className="col-md-10">
                         <div className="card">
                         <div className="card-body p-0">
-                            
-                            <div className="table-filter-info">
-                                
-                                <Pagination
-                                    className="pagination-data"
-                                    showTotal={(total, range) => `Showing ${range[0]}-${range[1]} of ${total}`}
-                                    onChange={PaginationChange}
-                                    total={ userEvents.length}
-                                    current={current}
-                                    pageSize={size}
-                                    showSizeChanger={false}
-                                    itemRender={PrevNextArrow}
-                                    onShowSizeChange={PerPageChange}
-                                    showTitle={false}
-                                />
-                            </div>
+                            <PaginationBlock  items={userEvents} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
                             <div className="table-responsive">
                                 <table className="table table-text-small mb-0">
                                     <thead className="thead-primary table-sorting">
@@ -242,20 +202,7 @@ const PrevNextArrow = (current, type, originalElement) => {
                                     </tbody>
                                 </table>
                             </div>
-                          <div className="table-filter-info">
-                                
-                                <Pagination
-                                    className="pagination-data"
-                                    showTotal={(total, range) => `Showing ${range[0]}-${range[1]} of ${total}`}
-                                    onChange={PaginationChange}
-                                    total={userEvents.length}
-                                    current={current}
-                                    pageSize={size}
-                                    showSizeChanger={false}
-                                    itemRender={PrevNextArrow}
-                                    onShowSizeChange={PerPageChange}
-                                />
-                            </div>
+                            <PaginationBlock  items={userEvents} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
                         </div>
                     </div>
                     </div>
