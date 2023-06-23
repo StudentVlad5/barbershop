@@ -1,4 +1,4 @@
-import Pagination from "https://cdn.skypack.dev/rc-pagination@3.1.15";
+import Pagination from 'rc-pagination';
 import { MdFastRewind, MdFastForward } from "react-icons/md";
 import PropTypes from "prop-types";
 
