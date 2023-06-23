@@ -12,8 +12,9 @@ import { onLoading, onLoaded } from 'helpers/Loader/Loader';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { SEO } from 'utils/SEO';
 import { EditUserDataModal } from 'components/Admin/EditDataModal/EditUserDataModal';
-import css from 'components/Admin/admin.module.scss';
 import { CreateUserDataModal } from 'components/Admin/CreateDataModal/CreateUserDataModal';
+import { PaginationBlock } from 'helpers/Pagination/Pagination';
+import css from 'components/Admin/admin.module.scss';
 
 const AdminUsersPage = () => {
   const [users, setUsers] = useState([]);
@@ -21,6 +22,12 @@ const AdminUsersPage = () => {
   const [error, setError] = useState(null);
   const reload = useSelector(reloadValue);
   const dispatch = useDispatch();
+
+      // table pagination and filter
+const [perPage, ] = useState(10);
+const [size, setSize] = useState(perPage);
+const [current, setCurrent] = useState(1);
+// __________________________________________________
 
   useEffect(() => {
     async function getData() {
@@ -109,6 +116,7 @@ const AdminUsersPage = () => {
     <>
       <SEO title="Users list" description="User administration page" />
       <section className={'admin' + ' ' + css.section}>
+      <PaginationBlock  items={users} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
         <div className={css.admin__container}>
           <Link to={backLinkHref} className={css['back-btn']}>
             <HiArrowLeft size="10" /> Go back
@@ -220,6 +228,7 @@ const AdminUsersPage = () => {
             <MdAddCard size={25} />
           </button>
         </div>
+        <PaginationBlock  items={users} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
       </section>
       <EditUserDataModal />
       <CreateUserDataModal />
