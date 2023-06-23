@@ -20,16 +20,15 @@ import { DataManager, ODataV4Adaptor, UrlAdaptor } from "@syncfusion/ej2-data";
 import { v4 as uuidv4 } from "uuid";
 import { fieldsData } from "./Datasource";
 import { closeModalWindow } from "hooks/modalWindow";
-import sprite from "images/sprite.svg";
-import css from "./shedule.module.scss";
-import avatarAnonimus from "images/team/png-heroes-thumbnail.png";
 import { useSelector } from "react-redux";
 import { getUser } from "redux/auth/selectors";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { onFetchError } from "helpers/Messages/NotifyMessages";
 import { onLoaded, onLoading } from "helpers/Loader/Loader";
 import { fetchData } from "services/APIservice";
+import css from "./shedule.module.scss";
+import sprite from "images/sprite.svg";
+import avatarAnonimus from "images/team/png-heroes-thumbnail.png";
 
 const Schedule = () => {
   const user = useSelector(getUser);

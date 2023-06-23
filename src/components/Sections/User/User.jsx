@@ -10,6 +10,8 @@ import { reloadValue } from 'redux/reload/selectors';
 import { fetchData } from 'services/APIservice';
 import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoading, onLoaded } from 'helpers/Loader/Loader';
+import Pagination  from "https://cdn.skypack.dev/rc-pagination@3.1.15";
+import { MdFastRewind, MdFastForward } from 'react-icons/md';
 
 import css from './user.module.scss';
 
@@ -22,6 +24,35 @@ export const User = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const reload = useSelector(reloadValue);
+
+// table pagination and filter
+const [perPage, ] = useState(10);
+const [size, setSize] = useState(perPage);
+const [current, setCurrent] = useState(1);
+
+const PerPageChange = (value) => {
+    setSize(value);
+    const newPerPage = Math.ceil(  userEvents.length / value);
+    if (current > newPerPage) {
+        setCurrent(newPerPage);
+    }
+}
+
+const PaginationChange = (page, pageSize) => {
+    setCurrent(page);
+    setSize(pageSize)
+}
+
+const PrevNextArrow = (current, type, originalElement) => {
+    if (type === 'prev') {
+        return <button><MdFastRewind/></button>;
+    }
+    if (type === 'next') {
+        return <button><MdFastForward/></button>;
+    }
+    return originalElement;
+}
+// __________________________________________________
 
   useEffect(() => {
     (async function getData() {
@@ -167,32 +198,69 @@ export const User = () => {
             <LogOut />
           </div>
         </div>
-        <div style={{width:'100%', display:'flex', justifyContent:"center",     margin:'0 40px'}}>
-          <div className={css['title-group']} style={{width:'100%'}}>
-            <h2 className={css['section-title--size-s']}>My visits:</h2>
-            <table className={css.table__table}>
-              <thead>
-              <tr className={css.table__row}>
-                <th className={css.table__head}>Service</th>
-                <th className={css.table__head}>Date</th>
-                <th className={css.table__head}>Specialist</th>
-                </tr>
-              </thead>
-              <tbody>
-              {userEvents.length > 0 &&  !error && userEvents.map( item => (<tr key={item._id} className={css.table__row}>
-                <td className={css.table__data}>
-                {item.Subject}
-                </td>
-                <td className={css.table__data}>
-                {item.StartTime.split('T')[0].split('-').reverse().join(' ')}
-                </td>
-                <td className={css.table__data}>
-                {specialists .length > 0 && !error && specialists.map(key => {if(key.Id === item.OwnerId){return key.ownerText}})}
-                </td></tr>))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+            <div className="container-fluid mt-5 mb-5">
+                <div className="row justify-content-center">
+                    <div className="col-md-10">
+                        <div className="card">
+                        <div className="card-body p-0">
+                            
+                            <div className="table-filter-info">
+                                
+                                <Pagination
+                                    className="pagination-data"
+                                    showTotal={(total, range) => `Showing ${range[0]}-${range[1]} of ${total}`}
+                                    onChange={PaginationChange}
+                                    total={ userEvents.length}
+                                    current={current}
+                                    pageSize={size}
+                                    showSizeChanger={false}
+                                    itemRender={PrevNextArrow}
+                                    onShowSizeChange={PerPageChange}
+                                    showTitle={false}
+                                />
+                            </div>
+                            <div className="table-responsive">
+                                <table className="table table-text-small mb-0">
+                                    <thead className="thead-primary table-sorting">
+                                        <tr>
+                                            <th className={css.table__head}>Service</th>
+                                            <th className={css.table__head}>Date</th>
+                                            <th className={css.table__head}>Specialist</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {userEvents.length > 0 &&  !error && userEvents.slice((current - 1) * size, current * size).map( item => (<tr key={item._id} className={css.table__row}>
+                                    <td className={css.table__data}>
+                                    {item.Subject}
+                                    </td>
+                                    <td className={css.table__data}>
+                                    {item.StartTime.split('T')[0].split('-').reverse().join(' ')}
+                                    </td>
+                                    <td className={css.table__data}>
+                                    {specialists .length > 0 && !error && specialists.map(key => {if(key.Id === item.OwnerId){return key.ownerText}})}
+                                    </td></tr>))}
+                                    </tbody>
+                                </table>
+                            </div>
+                          <div className="table-filter-info">
+                                
+                                <Pagination
+                                    className="pagination-data"
+                                    showTotal={(total, range) => `Showing ${range[0]}-${range[1]} of ${total}`}
+                                    onChange={PaginationChange}
+                                    total={userEvents.length}
+                                    current={current}
+                                    pageSize={size}
+                                    showSizeChanger={false}
+                                    itemRender={PrevNextArrow}
+                                    onShowSizeChange={PerPageChange}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
       </div>
     </section>
   );
