@@ -65,6 +65,8 @@ const [current, setCurrent] = useState(1);
   }
 
   async function changePasswordUser(id, email) {
+    let isChangePasswordUser = confirm("Are you sure?");
+    if(isChangePasswordUser){
     setIsLoading(true);
     try {
       const { date } = await changePassword(`/admin/users/${id}`, email);
@@ -75,6 +77,7 @@ const [current, setCurrent] = useState(1);
       dispatch(addReload(true));
       setIsLoading(false);
     }
+  }
   }
 
   // add link to back
