@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://tame-ruby-lizard-coat.cyclic.app/api";
+const BASE_URL = "https://rich-rose-shoulder-pads.cyclic.app/api";
 // const BASE_URL = "http://localhost:3030/api";
 
 export const signUp = async (credentials) => {

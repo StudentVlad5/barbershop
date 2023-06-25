@@ -37,7 +37,7 @@ const [current, setCurrent] = useState(1);
         if (!data) {
           return onFetchError('Whoops, something went wrong');
         }
-        setUserEvents(data);
+        setUserEvents(data.sort((a,b)=>(Date.parse(b.StartTime) - Date.parse(a.StartTime))));
       } catch (error) {
         setError(error);
       } finally {

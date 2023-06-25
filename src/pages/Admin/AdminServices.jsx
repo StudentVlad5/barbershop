@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdClose, MdEdit, MdAddCard } from 'react-icons/md';
+import { MdClose, MdEdit, MdAddCard, MdDone } from 'react-icons/md';
 import { HiArrowLeft } from 'react-icons/hi';
 import { openModalWindow } from 'hooks/modalWindow';
 import { addModal } from 'redux/modal/operation';
@@ -22,7 +22,68 @@ const AdminServicesPage = () => {
   const [error, setError] = useState(null);
   const reload = useSelector(reloadValue);
 
-  // table pagination and filter
+  // table filter
+  const [filterServices,setFilterServices] = useState([]); 
+  const [filterSubject, setFilterSubject] = useState('');
+  const [filterTime, setFilterTime] = useState('');
+  const [filterPrice, setFilterPrice] = useState('');
+  const [filterLocation, setFilterLocation] = useState('');
+  const [filterSpecialist, setFilterSpecialist] = useState('');
+
+  const handleChangeFilter = (e) => {
+  e.preventDefault;
+  switch(e.currentTarget.name){
+  case "filterSubject": setFilterSubject(e.currentTarget.value); break;
+  case "filterTime": setFilterTime(e.currentTarget.value); break;
+  case "filterPrice": setFilterPrice(e.currentTarget.value); break;
+  case "filterLocation": setFilterLocation(e.currentTarget.value); break;
+  case "filterSpecialist": setFilterSpecialist(e.currentTarget.value); break;
+  default: break;
+  }
+}
+
+const startFilterServices = (e) => {
+  e.preventDefault;
+  const peremOfFilter = [];
+  services.map(item=>{if(
+    item.subject.toString().toLowerCase().includes(filterSubject) &&
+    item.time.toString().toLowerCase().includes(filterTime) && 
+    item.price.toString().toLowerCase().includes(filterPrice) && 
+    item.location.toString().toLowerCase().includes(filterLocation) && 
+    item.owner.toString().toLowerCase().includes(filterSpecialist)){peremOfFilter.push(item)}});
+  setFilterServices(peremOfFilter);
+}
+
+
+const cleanFilterServices = (e) => {
+  e.preventDefault;
+  let filterS = '';
+  let filterT = '';
+  let filterP = '';
+  let filterL = '';
+  let filterSp = '';
+  e.currentTarget.name === "clearFilterSubject" ? setFilterSubject(filterS) : filterS = filterSubject;
+  e.currentTarget.name === "clearFilterTime" ? setFilterTime(filterT) : filterT = filterTime;
+  e.currentTarget.name === "clearFilterPrice" ? setFilterPrice(filterP) : filterP = filterPrice;
+  e.currentTarget.name === "clearFilterLocation" ? setFilterLocation(filterL) : filterL = filterLocation;
+  e.currentTarget.name === "clearFilterSpecialist" ? setFilterSpecialist(filterSp) : filterSp = filterSpecialist;
+  const peremOfFilter = [];
+  services.map(item=>{if(
+    item.subject.toString().toLowerCase().includes(filterS) && 
+    item.time.toString().toLowerCase().includes(filterT) && 
+    item.price.toString().toLowerCase().includes(filterP) && 
+    item.location.toString().toLowerCase().includes(filterL) && 
+    item.owner.toString().toLowerCase().includes(filterSp)
+    ){peremOfFilter.push(item)}});
+  setFilterServices(peremOfFilter);
+}
+
+const handleSearhOnEnter = (e) => {
+  if (e.key=="Enter") {
+    startFilterServices(e)
+}}
+
+  // table pagination 
 const [perPage, ] = useState(10);
 const [size, setSize] = useState(perPage);
 const [current, setCurrent] = useState(1);
@@ -34,6 +95,7 @@ const [current, setCurrent] = useState(1);
       try {
         const { data } = await fetchData('/admin/services');
         setServices(data);
+        setFilterServices(data);
         localStorage.setItem('services', data.length);
         if (!data) {
           return onFetchError('Whoops, something went wrong');
@@ -88,7 +150,7 @@ const [current, setCurrent] = useState(1);
     <>
       <SEO title="Services list" description="Services administration page" />
       <section className={'admin' + ' ' + css.section}>
-      <PaginationBlock  items={services} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
+      <PaginationBlock  items={filterServices} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
         <div className={css.admin__container}>
           <Link to={backLinkHref} className={css['back-btn']}>
             <HiArrowLeft size="10" /> Go back
@@ -107,7 +169,80 @@ const [current, setCurrent] = useState(1);
           <table className={css.admin__table}>
             <thead>
               <tr className={css.table__row}>
-                {/* <th className={css.table__head}>ID</th> */}
+                <th className={css.table__head}>
+                  <input type='text' name="filterSubject" 
+                  placeholder='Search by Name' 
+                  value={filterSubject} 
+                  onKeyDown={(e)=>handleSearhOnEnter(e)} 
+                  onChange={(e)=>handleChangeFilter(e)}/>
+                  <button type="button" onClick={(e)=>startFilterServices(e)}>
+                    <MdDone/>
+                  </button>
+                  <button type="button" name="clearFilterSubject" onClick={(e)=>cleanFilterServices(e)}>
+                    <MdClose/>
+                  </button>
+                </th>
+                <th className={css.table__head}>
+                    <input type='text' name="filterTime" 
+                    placeholder='Search by Time' 
+                    value={filterTime} 
+                    onKeyDown={(e)=>handleSearhOnEnter(e)} 
+                    onChange={(e)=>handleChangeFilter(e)}/>
+                    <button type="button" onClick={(e)=>startFilterServices(e)}>
+                      <MdDone/>
+                    </button>
+                    <button type="button" name="clearFilterTime" onClick={(e)=>cleanFilterServices(e)}>
+                      <MdClose/>
+                    </button>
+                </th>
+                {isLearnMore && (
+                  <>
+                    <th className={css.table__head}>
+                    <input type='text' name="filterPrice" 
+                    placeholder='Search by Price' 
+                    value={filterPrice} 
+                    onKeyDown={(e)=>handleSearhOnEnter(e)} 
+                    onChange={(e)=>handleChangeFilter(e)}/>
+                    <button type="button" onClick={(e)=>startFilterServices(e)}>
+                      <MdDone/>
+                    </button>
+                    <button type="button" name="clearFilterPrice" onClick={(e)=>cleanFilterServices(e)}>
+                      <MdClose/>
+                    </button>
+                    </th>
+                    <th className={css.table__head}>
+                    <input type='text' name="filterLocation" 
+                    placeholder='Search by Location' 
+                    value={filterLocation} 
+                    onKeyDown={(e)=>handleSearhOnEnter(e)} 
+                    onChange={(e)=>handleChangeFilter(e)}/>
+                    <button type="button" onClick={(e)=>startFilterServices(e)}>
+                      <MdDone/>
+                    </button>
+                    <button type="button" name="clearFilterLocation" onClick={(e)=>cleanFilterServices(e)}>
+                      <MdClose/>
+                    </button>
+                    </th>
+                    <th className={css.table__head}>
+                    <input type='text' name="filterSpecialist" 
+                    placeholder='Search by Specialist' 
+                    value={filterSpecialist} 
+                    onKeyDown={(e)=>handleSearhOnEnter(e)} 
+                    onChange={(e)=>handleChangeFilter(e)}/>
+                    <button type="button" onClick={(e)=>startFilterServices(e)}>
+                      <MdDone/>
+                    </button>
+                    <button type="button" name="clearFilterSpecialist" onClick={(e)=>cleanFilterServices(e)}>
+                      <MdClose/>
+                    </button>
+                    </th>
+                  </>
+                )}
+                <th className={css.table__head}>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr className={css.table__row}>
                 <th className={css.table__head}>Subject</th>
                 <th className={css.table__head}>Time</th>
                 {isLearnMore && (
@@ -119,11 +254,9 @@ const [current, setCurrent] = useState(1);
                 )}
                 <th className={css.table__head}>Action</th>
               </tr>
-            </thead>
-            <tbody>
-              {services.length > 0 &&
+              {filterServices.length > 0 &&
                 !error &&
-                services.map(service => (
+                filterServices.map(service => (
                   <tr key={service._id} className={css.table__row}>
                     {/* <td className={css.table__data}>{service._id}</td> */}
                     <td className={css.table__data}>{service.subject}</td>
@@ -176,7 +309,7 @@ const [current, setCurrent] = useState(1);
                         <MdAddCard size={25}/>
                       </button>
         </div>
-        <PaginationBlock  items={services} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
+        <PaginationBlock  items={filterServices} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
       </section>
       <EditServiceDataModal />
       <CreateServiceDataModal />

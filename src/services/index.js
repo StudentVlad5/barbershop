@@ -4,7 +4,7 @@ import { store } from "../redux/store";
 
 // const { BASE_URL } = window.global;
 
-const BASE_URL = "https://tame-ruby-lizard-coat.cyclic.app/api";
+const BASE_URL = "https://rich-rose-shoulder-pads.cyclic.app/api";
 // const BASE_URL = "http://localhost:3030/api";
 
 axios.defaults.baseURL = BASE_URL;

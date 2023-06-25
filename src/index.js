@@ -10,7 +10,7 @@ import { App } from "./components/App/App";
 import AOS from "aos";
 
 // window.global = { BASE_URL: 'http://localhost:3030/api' };
-window.global = { BASE_URL: "https://tame-ruby-lizard-coat.cyclic.app/api" };
+window.global = { BASE_URL: "https://rich-rose-shoulder-pads.cyclic.app/api" };
 AOS.init();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
