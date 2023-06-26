@@ -64,7 +64,7 @@ const AdminOwnerPage = () => {
   e.preventDefault;
   const peremOfFilter = [];
   specialists.map(item=>{
-    console.log(filterAvatar);if(
+    if(
     item.Id.toString().toLowerCase().includes(filterID) &&
     item.ownerText.toString().toLowerCase().includes(filterName) && 
     item.ownerColor.toString().toLowerCase().includes(filterColor) && 
