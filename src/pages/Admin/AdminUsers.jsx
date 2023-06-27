@@ -106,7 +106,7 @@ const AdminUsersPage = () => {
       startFilterUsers(e)
     }}
 
-      // table pagination and filter
+      // table pagination 
 const [perPage, ] = useState(10);
 const [size, setSize] = useState(perPage);
 const [current, setCurrent] = useState(1);
@@ -362,10 +362,10 @@ const [current, setCurrent] = useState(1);
                         <td className={css.table__data}>{user.phone}</td>
                         <td className={css.table__data}>{user.location}</td>
                         <td className={css.table__data}>
-                          {date(user.birthday)}
+                          {new Date(user.birthday).toDateString().split(' ').slice(1).join(' ')}
                         </td>
                         <td className={css.table__data}>
-                          {date(user.createdAt)}
+                          {new Date(user.createdAt).toDateString().split(' ').slice(1).join(' ')}
                         </td>
                         <td className={css.table__data}>
                           {user.avatar ? 'yes' : 'no'}

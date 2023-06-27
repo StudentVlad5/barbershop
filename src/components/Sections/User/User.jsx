@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { update } from 'redux/auth/operations';
 import { TiCamera } from 'react-icons/ti';
+import { MdClose, MdDone } from 'react-icons/md';
 import defaultUserPhoto from 'images/user/defaultUserPhoto.jpg';
 import { UserDataItem } from './UserDataItem/UserDataItem';
 import { LogOut } from './LogOut/LogOut';
@@ -16,12 +17,71 @@ import { PaginationBlock } from 'helpers/Pagination/Pagination';
 export const User = () => {
   const [active, setActive] = useState('');
   const [specialists, setSpecialists] = useState([]);
-  const [userEvents, setUserEvents] = useState('');
+  const [userEvents, setUserEvents] = useState([]);
   const dispatch = useDispatch();
   let { userIn } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const reload = useSelector(reloadValue);
+  // table filter
+  const [filterUserEvents,setFilterUserEvents] = useState([]); 
+  const [filterSubject, setFilterSubject] = useState('');
+  const [filterStartTime, setFilterStartTime] = useState('');
+  const [filterOwnerId, setFilterOwnerId] = useState('');
+
+  const handleChangeFilter = (e) => {
+  e.preventDefault;
+  switch(e.currentTarget.name){
+  case "filterSubject": setFilterSubject(e.currentTarget.value); break;
+  case "filterOwnerId": setFilterOwnerId(e.currentTarget.value); break;
+  case "filterStartTime": setFilterStartTime(e.currentTarget.value); break;
+  default: break;
+  }
+  }
+
+  const startFilterUserEvents = (e) => {
+  e.preventDefault;
+  const peremOfFilter = [];
+
+  userEvents.map(item=>{ 
+    let nameOwner = ''
+    if(item.NameOfOwner !== '' && item.NameOfOwner !== undefined) {nameOwner = item.NameOfOwner}
+    if(
+    item.Subject.toString().toLowerCase().includes(filterSubject) &&
+    new Date(item.StartTime).toDateString().includes(filterStartTime) && 
+    nameOwner.toString().toLowerCase().includes(filterOwnerId))
+    {peremOfFilter.push(item)}});
+
+    setFilterUserEvents(peremOfFilter);
+  }
+
+  const cleanFilterUserEvents = (e) => {
+  e.preventDefault;
+  let filterS = '';
+  let filterST = '';
+  let filterO = '';
+
+  e.currentTarget.name === "clearFilterSubject" ? setFilterSubject(filterS) : filterS = filterSubject;
+  e.currentTarget.name === "clearFilterStartTime" ? setFilterStartTime(filterST) : filterST = filterStartTime;
+  e.currentTarget.name === "filterOwnerId" ? setFilterOwnerId(filterO) : filterO = filterOwnerId;
+  
+  const peremOfFilter = [];
+  userEvents.map(item=>{
+    let nameOwner = ''
+    if(item.NameOfOwner !== '' && item.NameOfOwner !== undefined) {nameOwner = item.NameOfOwner}
+    if(
+    item.Subject.toString().toLowerCase().includes(filterS) &&
+    new Date(item.StartTime).toDateString().includes(filterST) && 
+    nameOwner.toString().toLowerCase().includes(filterO))
+    {peremOfFilter.push(item)}});
+
+    setFilterUserEvents(peremOfFilter);
+  }
+
+  const handleSearhOnEnter = (e) => {
+  if (e.key=="Enter") {
+    startFilterUserEvents(e)
+  }}
 
 // table pagination and filter
 const [perPage, ] = useState(10);
@@ -38,6 +98,7 @@ const [current, setCurrent] = useState(1);
           return onFetchError('Whoops, something went wrong');
         }
         setUserEvents(data.sort((a,b)=>(Date.parse(b.StartTime) - Date.parse(a.StartTime))));
+        setFilterUserEvents(data.sort((a,b)=>(Date.parse(b.StartTime) - Date.parse(a.StartTime))))
       } catch (error) {
         setError(error);
       } finally {
@@ -72,6 +133,9 @@ const [current, setCurrent] = useState(1);
   const birthday = userIn.birthday
     ? new Date(userIn.birthday).toISOString().slice(0, 10)
     : '';
+
+  if(specialists.length > 0){userEvents.map((item)=>{specialists.map(key => {if(key.Id === item.OwnerId){item.NameOfOwner = key.ownerText}})})}
+  if(specialists.length > 0){filterUserEvents.map((item)=>{specialists.map(key => {if(key.Id === item.OwnerId){item.NameOfOwner = key.ownerText}})})}
 
   return (
     <section className={css.user + ' ' + css.section}>
@@ -178,31 +242,76 @@ const [current, setCurrent] = useState(1);
                     <div className="col-md-10">
                         <div className="card">
                         <div className="card-body p-0">
-                            <PaginationBlock  items={userEvents} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
+                            <PaginationBlock  items={filterUserEvents} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
                             <div className="table-responsive">
                                 <table className="table table-text-small mb-0">
                                     <thead className="thead-primary table-sorting">
                                         <tr>
-                                            <th className={css.table__head}>Service</th>
-                                            <th className={css.table__head}>Date</th>
-                                            <th className={css.table__head}>Specialist</th>
+                                            {/* <th className={css.table__head}>Service</th> */}
+                                            <th className={css.table__head}>
+                                              <input type='text' name="filterSubject" 
+                                              placeholder='Search by Service' 
+                                              value={filterSubject} 
+                                              onKeyDown={(e)=>handleSearhOnEnter(e)} 
+                                              onChange={(e)=>handleChangeFilter(e)}/>
+                                              <button type="button" onClick={(e)=>startFilterUserEvents(e)}>
+                                                <MdDone/>
+                                              </button>
+                                              <button type="button" name="clearFilterSubject" onClick={(e)=>cleanFilterUserEvents(e)}>
+                                                <MdClose/>
+                                              </button>
+                                            </th>
+                                            {/* <th className={css.table__head}>Date</th> */}
+                                            <th className={css.table__head}>
+                                              <input type='text' name="filterStartTime" 
+                                              placeholder='Search by Date' 
+                                              value={filterStartTime} 
+                                              onKeyDown={(e)=>handleSearhOnEnter(e)} 
+                                              onChange={(e)=>handleChangeFilter(e)}/>
+                                              <button type="button" onClick={(e)=>startFilterUserEvents(e)}>
+                                                <MdDone/>
+                                              </button>
+                                              <button type="button" name="clearFilterStartTime" onClick={(e)=>cleanFilterUserEvents(e)}>
+                                                <MdClose/>
+                                              </button>
+                                            </th>
+                                            {/* <th className={css.table__head}>Specialist</th> */}
+                                            <th className={css.table__head}>
+                                              <input type='text' name="filterOwnerId" 
+                                              placeholder='Search by Specialist' 
+                                              value={filterOwnerId} 
+                                              onKeyDown={(e)=>handleSearhOnEnter(e)} 
+                                              onChange={(e)=>handleChangeFilter(e)}/>
+                                              <button type="button" onClick={(e)=>startFilterUserEvents(e)}>
+                                                <MdDone/>
+                                              </button>
+                                              <button type="button" name="clearFilterOwnerId" onClick={(e)=>cleanFilterUserEvents(e)}>
+                                                <MdClose/>
+                                              </button>
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {userEvents.length > 0 &&  !error && userEvents.slice((current - 1) * size, current * size).map( item => (<tr key={item._id} className={css.table__row}>
+                                    <tr>
+                                        <th className={css.table__head}>Service</th>
+                                        <th className={css.table__head}>Date</th>
+                                        <th className={css.table__head}>Specialist</th>
+                                    </tr>
+                                    {filterUserEvents.length > 0 &&  !error && filterUserEvents.slice((current - 1) * size, current * size).map( item => (<tr key={item._id} className={css.table__row}>
                                     <td className={css.table__data}>
                                     {item.Subject}
                                     </td>
                                     <td className={css.table__data}>
-                                    {item.StartTime.split('T')[0].split('-').reverse().join(' ')}
+                                    {new Date(item.StartTime).toDateString().split(' ').slice(1).join(' ')}
                                     </td>
                                     <td className={css.table__data}>
-                                    {specialists .length > 0 && !error && specialists.map(key => {if(key.Id === item.OwnerId){return key.ownerText}})}
+                                    {item.NameOfOwner}
+                                    {/* {specialists .length > 0 && !error && specialists.map(key => {if(key.Id === item.OwnerId){return key.ownerText}})} */}
                                     </td></tr>))}
                                     </tbody>
                                 </table>
                             </div>
-                            <PaginationBlock  items={userEvents} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
+                            <PaginationBlock  items={filterUserEvents} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
                         </div>
                     </div>
                     </div>
