@@ -1,6 +1,6 @@
 import Pagination from 'rc-pagination';
-import { MdFastRewind, MdFastForward } from "react-icons/md";
-import PropTypes from "prop-types";
+import { MdFastRewind, MdFastForward } from 'react-icons/md';
+import PropTypes from 'prop-types';
 
 export const PaginationBlock = ({
   items,
@@ -10,7 +10,7 @@ export const PaginationBlock = ({
   setCurrent,
 }) => {
   // table pagination and filter
-  const PerPageChange = (value) => {
+  const PerPageChange = value => {
     setSize(value);
     const newPerPage = Math.ceil(items.length / value);
     if (current > newPerPage) {
@@ -24,14 +24,14 @@ export const PaginationBlock = ({
   };
 
   const PrevNextArrow = (current, type, originalElement) => {
-    if (type === "prev") {
+    if (type === 'prev') {
       return (
         <button>
           <MdFastRewind />
         </button>
       );
     }
-    if (type === "next") {
+    if (type === 'next') {
       return (
         <button>
           <MdFastForward />
@@ -44,9 +44,7 @@ export const PaginationBlock = ({
     <div className="table-filter-info">
       <Pagination
         className="pagination-data"
-        showTotal={(total, range) =>
-          `Showing ${range[0]}-${range[1]} of ${total}`
-        }
+        showTotal={(total, range) => `${range[0]}-${range[1]} of ${total}`}
         onChange={PaginationChange}
         total={items.length}
         current={current}
@@ -54,6 +52,7 @@ export const PaginationBlock = ({
         showSizeChanger={false}
         itemRender={PrevNextArrow}
         onShowSizeChange={PerPageChange}
+        style={{}}
       />
     </div>
   );
