@@ -166,8 +166,10 @@
     margin-left: 16px;
   }
 }
+
 .table {
   &__head {
+    position: relative;
     padding: 0.25rem;
     font-size: 10px;
     font-weight: 700;

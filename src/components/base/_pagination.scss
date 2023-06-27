@@ -1,161 +1,259 @@
 :global {
-a, a:hover, a:focus {
-    // text-decoration: none;
-    transition: 0.5s;
-    outline: none;
-}
 
-/* -----Search-filter */
-.form-control {
-    display: block;
-    width: 100%;
-    height: auto;
-    padding: 15px 20px;
-    font-size: 14px;
-    line-height: 1.4;
-    color: #475f7b;
-    background-color: #fff;
-    border: 1px solid #dfe3e7;
-    border-radius: 0.267rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-.form-control:focus {
-    color: #475f7b;
-    background-color: #fff;
-    border-color: #5a8dee;
-    outline: 0;
-    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
-}
-.card {
-    box-shadow: 0px 5px 10px rgba(90, 116, 148, 0.3);
-    background-color: #fff;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    color: #475f7b;
-    overflow: hidden;
-}
-.pagination-data{
-  padding: 0;
-  margin: 0;
-}
-.pagination-data li{
-  list-style:none;
-}
-.table-filter-info{
-  padding : 15px;
-}
-.thead-primary tr th {
-    background-color: #5a8dee;
-    border-color: #5a8dee;
-    color: #fff;
-}
+    .row {
+        margin-right: 0;
+        margin-left: 0;
+    }
 
-.rc-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-.rc-pagination-item,
-.rc-pagination-prev, 
-.rc-pagination-jump-prev, 
-.rc-pagination-jump-next {
-    margin-right: 8px;
-}
+    .col-md-10 {
+        padding: 0;
 
-.rc-pagination-total-text{
-  margin-right: 12px;
-  cursor: initial;
-}
+        @include mq(tablet) {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
 
-.rc-pagination-jump-next, 
-.rc-pagination-jump-prev, 
-.rc-pagination-next, 
-.rc-pagination-prev {
-    display: inline-block;
-    min-width: 28px;
-    height: 28px;
-    color: rgba(0,0,0,.85);
-    font-family: Arial;
-    line-height: 28px;
-    text-align: center;
-    vertical-align: middle;
-    list-style: none;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all .3s;
-}
-.rc-pagination-jump-next button, 
-.rc-pagination-jump-prev button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #666;
-}
-.rc-pagination-jump-next button:after, 
-.rc-pagination-jump-prev button:after {
-    display: block;
-    content: "•••";
-}
-.rc-pagination-item, 
-.rc-pagination-prev, 
-.rc-pagination-next, 
-.rc-pagination-total-text {
-    min-width: initial;
-    height: auto;
-    line-height: initial;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
-.rc-pagination-item a, 
-.rc-pagination-item button, 
-.rc-pagination-prev a, 
-.rc-pagination-prev button, 
-.rc-pagination-next a, 
-.rc-pagination-next button,
-.rc-pagination-total-text a, 
-.rc-pagination-total-text button {
-    padding: 6px 8px;
-    height: auto;
-    min-width: 32px;
-    min-height: 32px;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 500;
-    color: #656f84 !important;
-    transition: 0.3s;
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -o-transition: 0.3s;
-}
-.rc-pagination-item.rc-pagination-item-active a, 
-.rc-pagination-item.rc-pagination-item-active a:hover, 
-.rc-pagination-prev.rc-pagination-item-active a, 
-.rc-pagination-prev.rc-pagination-item-active a:hover, 
-.rc-pagination-next.rc-pagination-item-active a, 
-.rc-pagination-next.rc-pagination-item-active a:hover, 
-.rc-pagination-total-text.rc-pagination-item-active a, 
-.rc-pagination-total-text.rc-pagination-item-active a:hover {
-    background-color: #5a8dee;
-    border-color: #5a8dee;
-    color: #ffffff !important;
-}
-.rc-pagination-item a:hover, 
-.rc-pagination-item button:hover, 
-.rc-pagination-prev a:hover, 
-.rc-pagination-prev button:hover, 
-.rc-pagination-next a:hover, 
-.rc-pagination-next button:hover, 
-.rc-pagination-total-text a:hover, 
-.rc-pagination-total-text button:hover {
-    background-color: #eceff5;
-    border-color: #eceff5;
-}
+    .container-fluid {
+        padding: 0;
+    }
+
+    .card {
+        background-color: var(--color-background-second);
+        border: none;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.11) 7px 4px 14px;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        color: var(--color-text-second);
+        overflow: hidden;
+    }
+
+    .table-responsive {
+        margin-top: 20px;
+    }
+
+    /* -----Search-filter */
+    .form-control {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 15px 20px;
+        font-size: 10px;
+        line-height: 1.1;
+        color: var(--color-text-second);
+        background-color: var(--color-text-white);
+        border: 1px solid #dfe3e7;
+        border-radius: 0.267rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .form-control:focus {
+        color: var(--color-text-second);
+        background-color: var(--color-text-white);
+        border-color: var(--color-accent-light);
+        outline: 0;
+        box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+    }
+
+    .table-filter-info {
+        padding: 15px;
+    }
+
+    .thead-primary {
+        & tr th {
+            background-color: transparent;
+            border: none;
+            color: var(--color-text-white);
+        }
+
+        & input {
+            padding: 5px 25px 5px 10px;
+
+            font-family: var(--font-family-main);
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 1.33;
+            color: var(--color-text-main);
+            border-color: var(--color-background-second);
+            border-radius: 40px;
+
+            &::placeholder {
+                font-family: var(--font-family-main);
+                font-size: 10px;
+                font-weight: 500;
+                line-height: 1.33;
+            }
+        }
+
+        & .radio-wrapper {
+            display: flex;
+            gap: 2px;
+            width: 125px;
+
+            &>label {
+                display: flex;
+                align-items: flex-end;
+
+                font-family: var(--font-family-main);
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 1.33;
+                color: var(--color-text-main);
+
+                &>input[type=radio] {
+                    margin-top: 0;
+                    margin-right: 3px;
+                }
+            }
+        }
+
+        & .button-wrapper {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+
+            &>button {
+                padding: 1px;
+                border: none;
+                background-color: transparent;
+
+                &>svg {
+                    fill: var(--color-text-second);
+
+                    &:hover,
+                    &:focus {
+                        fill: var(--color-accent);
+                    }
+                }
+            }
+        }
+    }
+
+    /* -----Pagination */
+
+    .pagination-data {
+        padding: 0;
+        margin: 0;
+    }
+
+    .pagination-data li {
+        list-style: none;
+    }
+
+    .rc-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .rc-pagination-item,
+    .rc-pagination-prev,
+    .rc-pagination-jump-prev,
+    .rc-pagination-jump-next {
+        margin-right: 8px;
+    }
+
+    .rc-pagination-total-text {
+        margin-right: 12px;
+        cursor: initial;
+    }
+
+    .rc-pagination-jump-next,
+    .rc-pagination-jump-prev,
+    .rc-pagination-next,
+    .rc-pagination-prev {
+        display: inline-block;
+        min-width: 28px;
+        height: 28px;
+        color: rgba(0, 0, 0, .85);
+        font-family: Arial;
+        line-height: 28px;
+        text-align: center;
+        vertical-align: middle;
+        list-style: none;
+        border-radius: 2px;
+        cursor: pointer;
+        transition: all .3s;
+    }
+
+    .rc-pagination-jump-next button,
+    .rc-pagination-jump-prev button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: var(--color-text-second);
+    }
+
+    .rc-pagination-jump-next button:after,
+    .rc-pagination-jump-prev button:after {
+        display: block;
+        content: "•••";
+    }
+
+    .rc-pagination-item,
+    .rc-pagination-prev,
+    .rc-pagination-next,
+    .rc-pagination-total-text {
+        min-width: initial;
+        height: auto;
+        line-height: initial;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .rc-pagination-item a,
+    .rc-pagination-item button,
+    .rc-pagination-prev a,
+    .rc-pagination-prev button,
+    .rc-pagination-next a,
+    .rc-pagination-next button,
+    .rc-pagination-total-text a,
+    .rc-pagination-total-text button {
+        padding: 6px 8px;
+        height: auto;
+        min-width: 32px;
+        min-height: 32px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 500;
+        color: #656f84 !important;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -o-transition: 0.3s;
+    }
+
+    .rc-pagination-item.rc-pagination-item-active a,
+    .rc-pagination-item.rc-pagination-item-active a:hover,
+    .rc-pagination-prev.rc-pagination-item-active a,
+    .rc-pagination-prev.rc-pagination-item-active a:hover,
+    .rc-pagination-next.rc-pagination-item-active a,
+    .rc-pagination-next.rc-pagination-item-active a:hover,
+    .rc-pagination-total-text.rc-pagination-item-active a,
+    .rc-pagination-total-text.rc-pagination-item-active a:hover {
+        background-color: var(--color-accent-light);
+        border-color: var(--color-accent-light);
+        color: var(--color-text-white) !important;
+    }
+
+    .rc-pagination-item a:hover,
+    .rc-pagination-item button:hover,
+    .rc-pagination-prev a:hover,
+    .rc-pagination-prev button:hover,
+    .rc-pagination-next a:hover,
+    .rc-pagination-next button:hover,
+    .rc-pagination-total-text a:hover,
+    .rc-pagination-total-text button:hover {
+        background-color: var(--color-text-light);
+        border-color: var(--color-text-light);
+    }
 }

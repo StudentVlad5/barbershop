@@ -1,7 +1,7 @@
 @import '../base/main.scss';
 
 .admin {
-  padding-top: 0;
+  padding-bottom: 0;
 
   &__container {
     width: 100%;
@@ -112,6 +112,7 @@
 
 .table {
   &__head {
+    position: relative;
     padding: 0.25rem;
     font-size: 10px;
     font-weight: 700;
@@ -200,7 +201,7 @@
   font-weight: 500;
   color: var(--color-text-main);
   background-color: transparent;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-text-light);
   box-shadow: var(--color-shadow) 3px 3px 5px;
   border-radius: 4px;
 
