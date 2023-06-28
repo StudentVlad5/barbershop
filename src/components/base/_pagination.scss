@@ -69,7 +69,8 @@
         }
 
         & input {
-            padding: 5px 25px 5px 10px;
+            padding: 5px 35px 5px 10px;
+            width: 100%;
 
             font-family: var(--font-family-main);
             font-size: 10px;
@@ -90,7 +91,7 @@
         & .radio-wrapper {
             display: flex;
             gap: 2px;
-            width: 125px;
+            width: 105px;
 
             &>label {
                 display: flex;
@@ -112,7 +113,7 @@
         & .button-wrapper {
             position: absolute;
             top: 50%;
-            right: 20px;
+            right: 10px;
             transform: translateY(-50%);
 
             &>button {
