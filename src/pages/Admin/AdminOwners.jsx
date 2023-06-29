@@ -25,7 +25,7 @@ const AdminOwnerPage = () => {
 
   // table filter
 
-  const [filterSpecialists,setFilterSpecialists] = useState([]); 
+  const [filterSpecialists, setFilterSpecialists] = useState([]);
   const [filterID, setFilterID] = useState('');
   const [filterName, setFilterName] = useState('');
   const [filterColor, setFilterColor] = useState('');
@@ -40,106 +40,167 @@ const AdminOwnerPage = () => {
   const [filterLinkedin, setFilterLinkedin] = useState('');
   const [filterTwitter, setFilterTwitter] = useState('');
 
-  const handleChangeFilter = (e) => {
-  e.preventDefault;
-  switch(e.currentTarget.name){
-  case "filterID": setFilterID(e.currentTarget.value); break;
-  case "filterName": setFilterName(e.currentTarget.value); break;
-  case "filterColor": setFilterColor(e.currentTarget.value); break;
-  case "filterDesignation": setFilterDesignation(e.currentTarget.value); break;
-  case "filterWorkDays": setFilterWorkDays(e.currentTarget.value); break;
-  case "filterStartWorkHour": setFilterStartWorkHour(e.currentTarget.value); break;
-  case "filterEndWorkHour": setFilterEndWorkHour(e.currentTarget.value); break;
-  case "filterGroupID": setFilterGroupID(e.currentTarget.value); break;
-  case "filterAvatar": setFilterAvatar(e.currentTarget.value); break;
-  case "filterFacebook": setFilterFacebook(e.currentTarget.value); break;
-  case "filterInstagram": setFilterInstagram(e.currentTarget.value); break;
-  case "filterLinkedin": setFilterLinkedin(e.currentTarget.value); break;
-  case "filterTwitter": setFilterTwitter(e.currentTarget.value); break;
-  default: break;
-  }
-  }
+  const handleChangeFilter = e => {
+    e.preventDefault;
+    switch (e.currentTarget.name) {
+      case 'filterID':
+        setFilterID(e.currentTarget.value);
+        break;
+      case 'filterName':
+        setFilterName(e.currentTarget.value);
+        break;
+      case 'filterColor':
+        setFilterColor(e.currentTarget.value);
+        break;
+      case 'filterDesignation':
+        setFilterDesignation(e.currentTarget.value);
+        break;
+      case 'filterWorkDays':
+        setFilterWorkDays(e.currentTarget.value);
+        break;
+      case 'filterStartWorkHour':
+        setFilterStartWorkHour(e.currentTarget.value);
+        break;
+      case 'filterEndWorkHour':
+        setFilterEndWorkHour(e.currentTarget.value);
+        break;
+      case 'filterGroupID':
+        setFilterGroupID(e.currentTarget.value);
+        break;
+      case 'filterAvatar':
+        setFilterAvatar(e.currentTarget.value);
+        break;
+      case 'filterFacebook':
+        setFilterFacebook(e.currentTarget.value);
+        break;
+      case 'filterInstagram':
+        setFilterInstagram(e.currentTarget.value);
+        break;
+      case 'filterLinkedin':
+        setFilterLinkedin(e.currentTarget.value);
+        break;
+      case 'filterTwitter':
+        setFilterTwitter(e.currentTarget.value);
+        break;
+      default:
+        break;
+    }
+  };
 
-  const startFilterOwners = (e) => {
-  e.preventDefault;
-  const peremOfFilter = [];
-  specialists.map(item=>{
-    if(
-    item.Id.toString().toLowerCase().includes(filterID) &&
-    item.ownerText.toString().toLowerCase().includes(filterName) && 
-    item.ownerColor.toString().toLowerCase().includes(filterColor) && 
-    item.designation.toString().toLowerCase().includes(filterDesignation) && 
-    item.workDays.toString().toLowerCase().includes(filterWorkDays) && 
-    item.startHour.toString().toLowerCase().includes(filterStartWorkHour) && 
-    item.endHour.toString().toLowerCase().includes(filterEndWorkHour) && 
-    item.groupId.toString().toLowerCase().includes(filterGroupID) && 
-    Boolean(item.avatar).toString() !== filterAvatar.toString() && 
-    Boolean(item.facebook).toString() !== filterFacebook.toString() && 
-    Boolean(item.instagram).toString() !== filterInstagram.toString() && 
-    Boolean(item.linkedin).toString() !== filterLinkedin.toString() && 
-    Boolean(item.twitter).toString() !== filterTwitter.toString())
-    {peremOfFilter.push(item)}});
+  const startFilterOwners = e => {
+    e.preventDefault;
+    const peremOfFilter = [];
+    specialists.map(item => {
+      if (
+        item.Id.toString().toLowerCase().includes(filterID) &&
+        item.ownerText.toString().toLowerCase().includes(filterName) &&
+        item.ownerColor.toString().toLowerCase().includes(filterColor) &&
+        item.designation.toString().toLowerCase().includes(filterDesignation) &&
+        item.workDays.toString().toLowerCase().includes(filterWorkDays) &&
+        item.startHour.toString().toLowerCase().includes(filterStartWorkHour) &&
+        item.endHour.toString().toLowerCase().includes(filterEndWorkHour) &&
+        item.groupId.toString().toLowerCase().includes(filterGroupID) &&
+        Boolean(item.avatar).toString() !== filterAvatar.toString() &&
+        Boolean(item.facebook).toString() !== filterFacebook.toString() &&
+        Boolean(item.instagram).toString() !== filterInstagram.toString() &&
+        Boolean(item.linkedin).toString() !== filterLinkedin.toString() &&
+        Boolean(item.twitter).toString() !== filterTwitter.toString()
+      ) {
+        peremOfFilter.push(item);
+      }
+    });
 
-  setFilterSpecialists(peremOfFilter);
-  }
+    setFilterSpecialists(peremOfFilter);
+  };
 
-  const cleanFilterOwners = (e) => {
-  e.preventDefault;
-  let filterId = '';
-  let filterN = '';
-  let filterC = '';
-  let filterD = '';
-  let filterWd = '';
-  let filterSH = '';
-  let filterEH = '';
-  let filterGrId = '';
-  let filterA = '';
-  let filterF = '';
-  let filterI = '';
-  let filterL = '';
-  let filterT = '';
-  e.currentTarget.name === "clearFilterID" ? setFilterID(filterId) : filterId = filterID;
-  e.currentTarget.name === "clearFilterName" ? setFilterName(filterN) : filterN = filterName;
-  e.currentTarget.name === "clearFilterColor" ? setFilterColor(filterC) : filterC = filterColor;
-  e.currentTarget.name === "clearFilterDesignation" ? setFilterDesignation(filterD) : filterD = filterDesignation;
-  e.currentTarget.name === "clearFilterWorkDays" ? setFilterWorkDays(filterWd) : filterWd = filterWorkDays;
-  e.currentTarget.name === "clearFilterStartWorkHour" ? setFilterStartWorkHour(filterSH) : filterSH = filterStartWorkHour;
-  e.currentTarget.name === "clearFilterEndWorkHour" ? setFilterEndWorkHour(filterEH) : filterEH = filterEndWorkHour;
-  e.currentTarget.name === "clearFilterGroupID" ? setFilterGroupID(filterGrId) : filterGrId = filterGroupID;
-  e.currentTarget.name === "clearFilterAvatar" ? setFilterAvatar(filterA) : filterA = filterAvatar;
-  e.currentTarget.name === "clearFilterFacebook" ? setFilterFacebook(filterF) : filterF = filterFacebook;
-  e.currentTarget.name === "clearFilterInstagram" ? setFilterInstagram(filterI) : filterI = filterInstagram;
-  e.currentTarget.name === "clearFilterLinkedin" ? setFilterLinkedin(filterL) : filterL = filterLinkedin;
-  e.currentTarget.name === "clearFilterTwitter" ? setFilterTwitter(filterT) : filterT = filterTwitter;
-  const peremOfFilter = [];
-  specialists.map(item=>{if(
-    item.Id.toString().toLowerCase().includes(filterId) &&
-    item.ownerText.toString().toLowerCase().includes(filterN) && 
-    item.ownerColor.toString().toLowerCase().includes(filterC) && 
-    item.designation.toString().toLowerCase().includes(filterD) && 
-    item.workDays.toString().toLowerCase().includes(filterWd) && 
-    item.startHour.toString().toLowerCase().includes(filterSH) && 
-    item.endHour.toString().toLowerCase().includes(filterEH) && 
-    item.groupId.toString().toLowerCase().includes(filterGrId) && 
-    Boolean(item.avatar).toString() !== filterA.toString() && 
-    Boolean(item.facebook).toString() !== filterF.toString() && 
-    Boolean(item.instagram).toString() !== filterI.toString() && 
-    Boolean(item.linkedin).toString() !== filterL.toString() && 
-    Boolean(item.twitter).toString() !== filterT.toString())
-    {peremOfFilter.push(item)}});
-  setFilterSpecialists(peremOfFilter);
-  }
+  const cleanFilterOwners = e => {
+    e.preventDefault;
+    let filterId = '';
+    let filterN = '';
+    let filterC = '';
+    let filterD = '';
+    let filterWd = '';
+    let filterSH = '';
+    let filterEH = '';
+    let filterGrId = '';
+    let filterA = '';
+    let filterF = '';
+    let filterI = '';
+    let filterL = '';
+    let filterT = '';
+    e.currentTarget.name === 'clearFilterID'
+      ? setFilterID(filterId)
+      : (filterId = filterID);
+    e.currentTarget.name === 'clearFilterName'
+      ? setFilterName(filterN)
+      : (filterN = filterName);
+    e.currentTarget.name === 'clearFilterColor'
+      ? setFilterColor(filterC)
+      : (filterC = filterColor);
+    e.currentTarget.name === 'clearFilterDesignation'
+      ? setFilterDesignation(filterD)
+      : (filterD = filterDesignation);
+    e.currentTarget.name === 'clearFilterWorkDays'
+      ? setFilterWorkDays(filterWd)
+      : (filterWd = filterWorkDays);
+    e.currentTarget.name === 'clearFilterStartWorkHour'
+      ? setFilterStartWorkHour(filterSH)
+      : (filterSH = filterStartWorkHour);
+    e.currentTarget.name === 'clearFilterEndWorkHour'
+      ? setFilterEndWorkHour(filterEH)
+      : (filterEH = filterEndWorkHour);
+    e.currentTarget.name === 'clearFilterGroupID'
+      ? setFilterGroupID(filterGrId)
+      : (filterGrId = filterGroupID);
+    e.currentTarget.name === 'clearFilterAvatar'
+      ? setFilterAvatar(filterA)
+      : (filterA = filterAvatar);
+    e.currentTarget.name === 'clearFilterFacebook'
+      ? setFilterFacebook(filterF)
+      : (filterF = filterFacebook);
+    e.currentTarget.name === 'clearFilterInstagram'
+      ? setFilterInstagram(filterI)
+      : (filterI = filterInstagram);
+    e.currentTarget.name === 'clearFilterLinkedin'
+      ? setFilterLinkedin(filterL)
+      : (filterL = filterLinkedin);
+    e.currentTarget.name === 'clearFilterTwitter'
+      ? setFilterTwitter(filterT)
+      : (filterT = filterTwitter);
+    const peremOfFilter = [];
+    specialists.map(item => {
+      if (
+        item.Id.toString().toLowerCase().includes(filterId) &&
+        item.ownerText.toString().toLowerCase().includes(filterN) &&
+        item.ownerColor.toString().toLowerCase().includes(filterC) &&
+        item.designation.toString().toLowerCase().includes(filterD) &&
+        item.workDays.toString().toLowerCase().includes(filterWd) &&
+        item.startHour.toString().toLowerCase().includes(filterSH) &&
+        item.endHour.toString().toLowerCase().includes(filterEH) &&
+        item.groupId.toString().toLowerCase().includes(filterGrId) &&
+        Boolean(item.avatar).toString() !== filterA.toString() &&
+        Boolean(item.facebook).toString() !== filterF.toString() &&
+        Boolean(item.instagram).toString() !== filterI.toString() &&
+        Boolean(item.linkedin).toString() !== filterL.toString() &&
+        Boolean(item.twitter).toString() !== filterT.toString()
+      ) {
+        peremOfFilter.push(item);
+      }
+    });
+    setFilterSpecialists(peremOfFilter);
+  };
 
-  const handleSearhOnEnter = (e) => {
-  if (e.key=="Enter") {
-    startFilterOwners(e)
-  }}
+  const handleSearhOnEnter = e => {
+    if (e.key == 'Enter') {
+      startFilterOwners(e);
+    }
+  };
 
-    // table pagination 
-  const [perPage, ] = useState(10);
+  // table pagination
+  const [perPage] = useState(10);
   const [size, setSize] = useState(perPage);
   const [current, setCurrent] = useState(1);
-   // __________________________________________________
+  // __________________________________________________
 
   useEffect(() => {
     async function getData() {
@@ -211,7 +272,6 @@ const AdminOwnerPage = () => {
         description="Specialists administration page"
       />
       <section className={'admin' + ' ' + css.section}>
-      <PaginationBlock  items={filterSpecialists} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
         <div className={css.admin__container}>
           <Link to={backLinkHref} className={css['back-btn']}>
             <HiArrowLeft size="10" /> Go back
@@ -228,186 +288,390 @@ const AdminOwnerPage = () => {
             </button>
           )}
           <table className={css.admin__table}>
-            <thead>
+            <thead className="thead-primary table-sorting">
               <tr className={css.table__row}>
                 <th className={css.table__head}>
-                  <input type='text' name="filterID" 
-                  placeholder='Search by ID' 
-                  value={filterID} 
-                  onKeyDown={(e)=>handleSearhOnEnter(e)} 
-                  onChange={(e)=>handleChangeFilter(e)}/>
-                  <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                    <MdDone/>
-                  </button>
-                  <button type="button" name="clearFilterID" onClick={(e)=>cleanFilterOwners(e)}>
-                    <MdClose/>
-                  </button>
+                  <input
+                    type="text"
+                    name="filterID"
+                    placeholder="Search by ID"
+                    value={filterID}
+                    onKeyDown={e => handleSearhOnEnter(e)}
+                    onChange={e => handleChangeFilter(e)}
+                  />
+                  <div className="button-wrapper">
+                    <button type="button" onClick={e => startFilterOwners(e)}>
+                      <MdDone />
+                    </button>
+                    <button
+                      type="button"
+                      name="clearFilterID"
+                      onClick={e => cleanFilterOwners(e)}
+                    >
+                      <MdClose />
+                    </button>
+                  </div>
                 </th>
                 <th className={css.table__head}>
-                  <input type='text' name="filterName" 
-                  placeholder='Search by Name' 
-                  value={filterName} 
-                  onKeyDown={(e)=>handleSearhOnEnter(e)} 
-                  onChange={(e)=>handleChangeFilter(e)}/>
-                  <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                    <MdDone/>
-                  </button>
-                  <button type="button" name="clearFilterName" onClick={(e)=>cleanFilterOwners(e)}>
-                    <MdClose/>
-                  </button>
+                  <input
+                    type="text"
+                    name="filterName"
+                    placeholder="Search by Name"
+                    value={filterName}
+                    onKeyDown={e => handleSearhOnEnter(e)}
+                    onChange={e => handleChangeFilter(e)}
+                  />
+                  <div className="button-wrapper">
+                    <button type="button" onClick={e => startFilterOwners(e)}>
+                      <MdDone />
+                    </button>
+                    <button
+                      type="button"
+                      name="clearFilterName"
+                      onClick={e => cleanFilterOwners(e)}
+                    >
+                      <MdClose />
+                    </button>
+                  </div>
                 </th>
                 <th className={css.table__head}>
-                  <input type='text' name="filterColor" 
-                  placeholder='Search by Color' 
-                  value={filterColor} 
-                  onKeyDown={(e)=>handleSearhOnEnter(e)} 
-                  onChange={(e)=>handleChangeFilter(e)}/>
-                  <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                    <MdDone/>
-                  </button>
-                  <button type="button" name="clearFilterColor" onClick={(e)=>cleanFilterOwners(e)}>
-                    <MdClose/>
-                  </button>
+                  <input
+                    type="text"
+                    name="filterColor"
+                    placeholder="Search by Color"
+                    value={filterColor}
+                    onKeyDown={e => handleSearhOnEnter(e)}
+                    onChange={e => handleChangeFilter(e)}
+                  />
+                  <div className="button-wrapper">
+                    <button type="button" onClick={e => startFilterOwners(e)}>
+                      <MdDone />
+                    </button>
+                    <button
+                      type="button"
+                      name="clearFilterColor"
+                      onClick={e => cleanFilterOwners(e)}
+                    >
+                      <MdClose />
+                    </button>
+                  </div>
                 </th>
                 <th className={css.table__head}>
-                  <input type='text' name="filterDesignation" 
-                  placeholder='Search by Designation' 
-                  value={filterDesignation} 
-                  onKeyDown={(e)=>handleSearhOnEnter(e)} 
-                  onChange={(e)=>handleChangeFilter(e)}/>
-                  <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                    <MdDone/>
-                  </button>
-                  <button type="button" name="clearFilterDesignation" onClick={(e)=>cleanFilterOwners(e)}>
-                    <MdClose/>
-                  </button>
-                </th>                
+                  <input
+                    type="text"
+                    name="filterDesignation"
+                    placeholder="Search by Designation"
+                    value={filterDesignation}
+                    onKeyDown={e => handleSearhOnEnter(e)}
+                    onChange={e => handleChangeFilter(e)}
+                  />
+                  <div className="button-wrapper">
+                    <button type="button" onClick={e => startFilterOwners(e)}>
+                      <MdDone />
+                    </button>
+                    <button
+                      type="button"
+                      name="clearFilterDesignation"
+                      onClick={e => cleanFilterOwners(e)}
+                    >
+                      <MdClose />
+                    </button>
+                  </div>
+                </th>
                 {isLearnMore && (
                   <>
                     <th className={css.table__head}>
-                      <input type='text' name="filterWorkDays" 
-                      placeholder='Search by Work Days' 
-                      value={filterWorkDays} 
-                      onKeyDown={(e)=>handleSearhOnEnter(e)} 
-                      onChange={(e)=>handleChangeFilter(e)}/>
-                      <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                        <MdDone/>
-                      </button>
-                      <button type="button" name="clearFilterWorkDays" onClick={(e)=>cleanFilterOwners(e)}>
-                        <MdClose/>
-                      </button>
-                    </th>  
+                      <input
+                        type="text"
+                        name="filterWorkDays"
+                        placeholder="Search by Work Days"
+                        value={filterWorkDays}
+                        onKeyDown={e => handleSearhOnEnter(e)}
+                        onChange={e => handleChangeFilter(e)}
+                      />
+                      <div className="button-wrapper">
+                        <button
+                          type="button"
+                          onClick={e => startFilterOwners(e)}
+                        >
+                          <MdDone />
+                        </button>
+                        <button
+                          type="button"
+                          name="clearFilterWorkDays"
+                          onClick={e => cleanFilterOwners(e)}
+                        >
+                          <MdClose />
+                        </button>
+                      </div>
+                    </th>
                     <th className={css.table__head}>
-                      <input type='text' name="filterStartWorkHour" 
-                      placeholder='Search by Start Work Hour' 
-                      value={filterStartWorkHour} 
-                      onKeyDown={(e)=>handleSearhOnEnter(e)} 
-                      onChange={(e)=>handleChangeFilter(e)}/>
-                      <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                        <MdDone/>
-                      </button>
-                      <button type="button" name="clearFilterStartWorkHour" onClick={(e)=>cleanFilterOwners(e)}>
-                        <MdClose/>
-                      </button>
-                    </th>  
+                      <input
+                        type="text"
+                        name="filterStartWorkHour"
+                        placeholder="Search by Start Work Hour"
+                        value={filterStartWorkHour}
+                        onKeyDown={e => handleSearhOnEnter(e)}
+                        onChange={e => handleChangeFilter(e)}
+                      />
+                      <div className="button-wrapper">
+                        <button
+                          type="button"
+                          onClick={e => startFilterOwners(e)}
+                        >
+                          <MdDone />
+                        </button>
+                        <button
+                          type="button"
+                          name="clearFilterStartWorkHour"
+                          onClick={e => cleanFilterOwners(e)}
+                        >
+                          <MdClose />
+                        </button>
+                      </div>
+                    </th>
                     <th className={css.table__head}>
-                      <input type='text' name="filterEndWorkHour" 
-                      placeholder='Search by End Work Hour' 
-                      value={filterEndWorkHour} 
-                      onKeyDown={(e)=>handleSearhOnEnter(e)} 
-                      onChange={(e)=>handleChangeFilter(e)}/>
-                      <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                        <MdDone/>
-                      </button>
-                      <button type="button" name="clearFilterEndWorkHour" onClick={(e)=>cleanFilterOwners(e)}>
-                        <MdClose/>
-                      </button>
-                    </th> 
+                      <input
+                        type="text"
+                        name="filterEndWorkHour"
+                        placeholder="Search by End Work Hour"
+                        value={filterEndWorkHour}
+                        onKeyDown={e => handleSearhOnEnter(e)}
+                        onChange={e => handleChangeFilter(e)}
+                      />
+                      <div className="button-wrapper">
+                        <button
+                          type="button"
+                          onClick={e => startFilterOwners(e)}
+                        >
+                          <MdDone />
+                        </button>
+                        <button
+                          type="button"
+                          name="clearFilterEndWorkHour"
+                          onClick={e => cleanFilterOwners(e)}
+                        >
+                          <MdClose />
+                        </button>
+                      </div>
+                    </th>
                     <th className={css.table__head}>
-                      <input type='text' name="filterGroupID" 
-                      placeholder='Search by Group ID' 
-                      value={filterGroupID} 
-                      onKeyDown={(e)=>handleSearhOnEnter(e)} 
-                      onChange={(e)=>handleChangeFilter(e)}/>
-                      <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                        <MdDone/>
-                      </button>
-                      <button type="button" name="clearFilterGroupID" onClick={(e)=>cleanFilterOwners(e)}>
-                        <MdClose/>
-                      </button>
-                    </th> 
+                      <input
+                        type="text"
+                        name="filterGroupID"
+                        placeholder="Search by Group ID"
+                        value={filterGroupID}
+                        onKeyDown={e => handleSearhOnEnter(e)}
+                        onChange={e => handleChangeFilter(e)}
+                      />
+                      <div className="button-wrapper">
+                        <button
+                          type="button"
+                          onClick={e => startFilterOwners(e)}
+                        >
+                          <MdDone />
+                        </button>
+                        <button
+                          type="button"
+                          name="clearFilterGroupID"
+                          onClick={e => cleanFilterOwners(e)}
+                        >
+                          <MdClose />
+                        </button>
+                      </div>
+                    </th>
                     <th className={css.table__head}>
-                    <label><input type='radio' name="filterAvatar"  value={true} 
-                      onChange={(e)=>handleChangeFilter(e)}/>No</label>
-                     <label><input type='radio' name="filterAvatar" 
-                      value={false} 
-                      onChange={(e)=>handleChangeFilter(e)}/>Yes</label>
-                      <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                        <MdDone/>
-                      </button>
-                      <button type="button" name="clearFilterAvatar" onClick={(e)=>cleanFilterOwners(e)}>
-                        <MdClose/>
-                      </button>
-                    </th> 
+                      <div className="radio-wrapper">
+                        <label>
+                          <input
+                            type="radio"
+                            name="filterAvatar"
+                            value={true}
+                            onChange={e => handleChangeFilter(e)}
+                          />
+                          No
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="filterAvatar"
+                            value={false}
+                            onChange={e => handleChangeFilter(e)}
+                          />
+                          Yes
+                        </label>
+                      </div>
+                      <div className="button-wrapper">
+                        <button
+                          type="button"
+                          onClick={e => startFilterOwners(e)}
+                        >
+                          <MdDone />
+                        </button>
+                        <button
+                          type="button"
+                          name="clearFilterAvatar"
+                          onClick={e => cleanFilterOwners(e)}
+                        >
+                          <MdClose />
+                        </button>
+                      </div>
+                    </th>
                     <th className={css.table__head}>
-                    <label><input type='radio' name="filterFacebook"  value={true} 
-                      onChange={(e)=>handleChangeFilter(e)}/>No</label>
-                     <label><input type='radio' name="filterFacebook" 
-                      value={false} 
-                      onChange={(e)=>handleChangeFilter(e)}/>Yes</label>
-                      <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                        <MdDone/>
-                      </button>
-                      <button type="button" name="clearFilterFacebook" onClick={(e)=>cleanFilterOwners(e)}>
-                        <MdClose/>
-                      </button>
-                    </th> 
+                      <div className="radio-wrapper">
+                        <label>
+                          <input
+                            type="radio"
+                            name="filterFacebook"
+                            value={true}
+                            onChange={e => handleChangeFilter(e)}
+                          />
+                          No
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="filterFacebook"
+                            value={false}
+                            onChange={e => handleChangeFilter(e)}
+                          />
+                          Yes
+                        </label>
+                      </div>
+                      <div className="button-wrapper">
+                        <button
+                          type="button"
+                          onClick={e => startFilterOwners(e)}
+                        >
+                          <MdDone />
+                        </button>
+                        <button
+                          type="button"
+                          name="clearFilterFacebook"
+                          onClick={e => cleanFilterOwners(e)}
+                        >
+                          <MdClose />
+                        </button>
+                      </div>
+                    </th>
                     <th className={css.table__head}>
-                    <label><input type='radio' name="filterInstagram"  value={true} 
-                      onChange={(e)=>handleChangeFilter(e)}/>No</label>
-                     <label><input type='radio' name="filterInstagram" 
-                      value={false} 
-                      onChange={(e)=>handleChangeFilter(e)}/>Yes</label>
-                      <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                        <MdDone/>
-                      </button>
-                      <button type="button" name="clearFilterInstagram" onClick={(e)=>cleanFilterOwners(e)}>
-                        <MdClose/>
-                      </button>
-                    </th> 
+                      <div className="radio-wrapper">
+                        <label>
+                          <input
+                            type="radio"
+                            name="filterInstagram"
+                            value={true}
+                            onChange={e => handleChangeFilter(e)}
+                          />
+                          No
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="filterInstagram"
+                            value={false}
+                            onChange={e => handleChangeFilter(e)}
+                          />
+                          Yes
+                        </label>
+                      </div>
+                      <div className="button-wrapper">
+                        <button
+                          type="button"
+                          onClick={e => startFilterOwners(e)}
+                        >
+                          <MdDone />
+                        </button>
+                        <button
+                          type="button"
+                          name="clearFilterInstagram"
+                          onClick={e => cleanFilterOwners(e)}
+                        >
+                          <MdClose />
+                        </button>
+                      </div>
+                    </th>
                     <th className={css.table__head}>
-                    <label><input type='radio' name="filterLinkedin"  value={true} 
-                      onChange={(e)=>handleChangeFilter(e)}/>No</label>
-                     <label><input type='radio' name="filterLinkedin" 
-                      value={false} 
-                      onChange={(e)=>handleChangeFilter(e)}/>Yes</label>
-                      <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                        <MdDone/>
-                      </button>
-                      <button type="button" name="clearFilterLinkedin" onClick={(e)=>cleanFilterOwners(e)}>
-                        <MdClose/>
-                      </button>
-                    </th> 
+                      <div className="radio-wrapper">
+                        <label>
+                          <input
+                            type="radio"
+                            name="filterLinkedin"
+                            value={true}
+                            onChange={e => handleChangeFilter(e)}
+                          />
+                          No
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="filterLinkedin"
+                            value={false}
+                            onChange={e => handleChangeFilter(e)}
+                          />
+                          Yes
+                        </label>
+                      </div>
+                      <div className="button-wrapper">
+                        <button
+                          type="button"
+                          onClick={e => startFilterOwners(e)}
+                        >
+                          <MdDone />
+                        </button>
+                        <button
+                          type="button"
+                          name="clearFilterLinkedin"
+                          onClick={e => cleanFilterOwners(e)}
+                        >
+                          <MdClose />
+                        </button>
+                      </div>
+                    </th>
                     <th className={css.table__head}>
-                    <label><input type='radio' name="filterTwitter"  value={true} 
-                      onChange={(e)=>handleChangeFilter(e)}/>No</label>
-                     <label><input type='radio' name="filterTwitter" 
-                      value={false} 
-                      onChange={(e)=>handleChangeFilter(e)}/>Yes</label>
-                      <button type="button" onClick={(e)=>startFilterOwners(e)}>
-                        <MdDone/>
-                      </button>
-                      <button type="button" name="clearFilterTwitter" onClick={(e)=>cleanFilterOwners(e)}>
-                        <MdClose/>
-                      </button>
-                    </th> 
+                      <div className="radio-wrapper">
+                        <label>
+                          <input
+                            type="radio"
+                            name="filterTwitter"
+                            value={true}
+                            onChange={e => handleChangeFilter(e)}
+                          />
+                          No
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="filterTwitter"
+                            value={false}
+                            onChange={e => handleChangeFilter(e)}
+                          />
+                          Yes
+                        </label>
+                      </div>
+                      <div className="button-wrapper">
+                        <button
+                          type="button"
+                          onClick={e => startFilterOwners(e)}
+                        >
+                          <MdDone />
+                        </button>
+                        <button
+                          type="button"
+                          name="clearFilterTwitter"
+                          onClick={e => cleanFilterOwners(e)}
+                        >
+                          <MdClose />
+                        </button>
+                      </div>
+                    </th>
                   </>
                 )}
                 <th className={css.table__head}></th>
               </tr>
             </thead>
             <tbody>
-            <tr className={css.table__row}>
+              <tr className={css.table__row}>
                 <th className={css.table__head}>ID</th>
                 <th className={css.table__head}>Name</th>
                 <th className={css.table__head}>Color</th>
@@ -513,7 +777,13 @@ const AdminOwnerPage = () => {
             <MdAddCard size={25} />
           </button>
         </div>
-        <PaginationBlock  items={filterSpecialists} size={size} setSize={setSize}  current={current} setCurrent={setCurrent}/>
+        <PaginationBlock
+          items={filterSpecialists}
+          size={size}
+          setSize={setSize}
+          current={current}
+          setCurrent={setCurrent}
+        />
       </section>
       <EditOwnerDataModal />
       <CreateOwnerDataModal />
