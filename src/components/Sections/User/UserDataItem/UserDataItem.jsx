@@ -18,7 +18,7 @@ export const UserDataItem = ({
 }) => {
   const emailRegExp = /^.+@.+\..+$/;
   const cityRegex = /^[a-zA-Z\s,'-]+$/;
-  const phoneRegExp = /^\+380\d{9}$/;
+  const phoneRegExp = /^380+$/;
   const dayToday = new Date().toLocaleDateString();
   const minDate = new Date('01.01.1910').toLocaleDateString();
 
@@ -68,11 +68,11 @@ export const UserDataItem = ({
       dispatch(update({ email: inputValue, _id: dataUserId._id }));
     } else if (name === 'birthday') {
       setActive('birthday');
-      if (inputValue > dayToday) {
+      if (new Date(inputValue) > dayToday) {
         setIsError('date must be current');
         return;
       }
-      if (inputValue < minDate) {
+      if (new Date(inputValue) < minDate) {
         setIsError('date must be current');
         return;
       }
@@ -80,13 +80,13 @@ export const UserDataItem = ({
       setActive('');
       dispatch(
         update({
-          birthday: inputValue,
+          birthday: inputValue, _id: dataUserId._id
         }),
       );
     } else if (name === 'phone') {
       setActive('phone');
       if (!phoneRegExp.test(inputValue)) {
-        setIsError('please type valid phone number starting with +380');
+        setIsError('please type valid phone number starting with 380');
         return;
       }
       if (inputValue.length !== 13) {
