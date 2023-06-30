@@ -128,6 +128,28 @@ const AdminOwnerPage = () => {
     let filterI = '';
     let filterL = '';
     let filterT = '';
+
+    if(e.currentTarget.name === 'clearFilterAvatar'){
+      document.getElementById('checkIdNoAvatar').checked = false;
+      document.getElementById('checkIdYesAvatar').checked = false;
+    }
+    if(e.currentTarget.name === 'clearFilterFacebook'){
+      document.getElementById('checkIdNoFacebook').checked = false;
+      document.getElementById('checkIdYesFacebook').checked = false;
+    }
+    if(e.currentTarget.name === 'clearFilterInstagram'){
+      document.getElementById('checkIdNoInstagram').checked = false;
+      document.getElementById('checkIdYesInstagram').checked = false;
+    }
+    if(e.currentTarget.name === 'clearFilterLinkedin'){
+      document.getElementById('checkIdNoLinkedin').checked = false;
+      document.getElementById('checkIdYesLinkedin').checked = false;
+    }
+    if(e.currentTarget.name === 'clearFilterTwitter'){
+      document.getElementById('checkIdNoTwitter').checked = false;
+      document.getElementById('checkIdYesTwitter').checked = false;
+    }
+
     e.currentTarget.name === 'clearFilterID'
       ? setFilterID(filterId)
       : (filterId = filterID);
@@ -488,6 +510,7 @@ const AdminOwnerPage = () => {
                             name="filterAvatar"
                             value={true}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdNoAvatar"
                           />
                           No
                         </label>
@@ -497,6 +520,7 @@ const AdminOwnerPage = () => {
                             name="filterAvatar"
                             value={false}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdYesAvatar"
                           />
                           Yes
                         </label>
@@ -525,6 +549,7 @@ const AdminOwnerPage = () => {
                             name="filterFacebook"
                             value={true}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdNoFacebook"
                           />
                           No
                         </label>
@@ -534,6 +559,7 @@ const AdminOwnerPage = () => {
                             name="filterFacebook"
                             value={false}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdYesFacebook"
                           />
                           Yes
                         </label>
@@ -562,6 +588,7 @@ const AdminOwnerPage = () => {
                             name="filterInstagram"
                             value={true}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdNoInstagram"
                           />
                           No
                         </label>
@@ -571,6 +598,7 @@ const AdminOwnerPage = () => {
                             name="filterInstagram"
                             value={false}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdYesInstagram"
                           />
                           Yes
                         </label>
@@ -599,6 +627,7 @@ const AdminOwnerPage = () => {
                             name="filterLinkedin"
                             value={true}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdNoLinkedin"
                           />
                           No
                         </label>
@@ -608,6 +637,7 @@ const AdminOwnerPage = () => {
                             name="filterLinkedin"
                             value={false}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdYesLinkedin"
                           />
                           Yes
                         </label>
@@ -636,6 +666,7 @@ const AdminOwnerPage = () => {
                             name="filterTwitter"
                             value={true}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdNoTwitter"
                           />
                           No
                         </label>
@@ -645,6 +676,7 @@ const AdminOwnerPage = () => {
                             name="filterTwitter"
                             value={false}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdYesTwitter"
                           />
                           Yes
                         </label>

@@ -106,7 +106,10 @@ const AdminUsersPage = () => {
     let filterC = '';
     let filterR = '';
     let filterA = '';
-
+if(e.currentTarget.name === 'clearFilterAvatar'){
+  document.getElementById('checkIdNoAvatar').checked = false;
+  document.getElementById('checkIdYesAvatar').checked = false;
+}
     e.currentTarget.name === 'clearFilterName'
       ? setFilterName(filterN)
       : (filterN = filterName);
@@ -429,6 +432,7 @@ const AdminUsersPage = () => {
                             name="filterAvatar"
                             value={true}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdNoAvatar"
                           />
                           No
                         </label>
@@ -438,6 +442,7 @@ const AdminUsersPage = () => {
                             name="filterAvatar"
                             value={false}
                             onChange={e => handleChangeFilter(e)}
+                            id="checkIdYesAvatar"
                           />
                           Yes
                         </label>
