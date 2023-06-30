@@ -427,7 +427,7 @@ export const User = () => {
         </div>
       </div>
     </section>
-    {isOpenModal && <ChangePasswordForm setIsOpenModal={setIsOpenModal}/>}
+    {isOpenModal && <ChangePasswordForm setIsOpenModal={setIsOpenModal} userinID={userIn._id}/>}
     </>
   );
 };

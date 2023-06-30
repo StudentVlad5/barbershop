@@ -5,15 +5,18 @@ import { useFormik, Formik, Form, Field } from 'formik';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
 // import { FaCheck, FaTimes } from 'react-icons/fa';
 import schemas from 'components/Schemas/schemas';
-// import { logIn } from 'redux/auth/operations';
+import { changePassword } from 'services/APIservice';
 import css from './changePasswordForm.module.scss';
 import { closeModalChangePassword } from 'hooks/modalWindow';
 import sprite from 'images/sprite.svg';
+import { addReload } from 'redux/reload/slice';
+import { onFetchError } from 'helpers/Messages/NotifyMessages';
 
-const ChangePasswordForm = ({setIsOpenModal}) => {
+const ChangePasswordForm = ({setIsOpenModal, userinID}) => {
 
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   
   function closeModal(e) {
@@ -22,19 +25,30 @@ const ChangePasswordForm = ({setIsOpenModal}) => {
     closeModalChangePassword();
   }
 
+  async function changePasswordUser(id, password) {
+    let isChangePasswordUser = confirm('Are you sure?');
+    if (isChangePasswordUser) {
+      setIsLoading(true);
+      try {
+        const { date } = await changePassword(`/user/${id}`, password);
+        return date;
+      } catch (error) {
+        setError(error);
+      } finally {
+        dispatch(addReload(true));
+        setIsLoading(false);
+      }
+    }
+  }
+
 
   const onSubmit = values => {
     setIsLoading(true);
     const { password } = values;
-    console.log("password", password)
-    dispatch(
-      // logIn({
-      //   password,
-      // }),
-
-      closeModalChangePassword(),
-      setIsLoading(false),
-    );
+    console.log("password", password);
+    changePasswordUser(userinID, password);
+      closeModalChangePassword();
+      setIsLoading(false);
   };
   const formik = useFormik({
     initialValues: {
@@ -110,6 +124,7 @@ const ChangePasswordForm = ({setIsOpenModal}) => {
             </Form>
           </Formik>
           {isLoading && <h1 style={{ textAlign: 'center' }}>{'Loading...'}</h1>}
+          {error && onFetchError('Whoops, something went wrong')}
         </div>
       </div>, document.querySelector('#popup-changepassword-root'))
 };
