@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { update } from 'redux/auth/operations';
 import { TiCamera } from 'react-icons/ti';
-import { MdClose, MdDone } from 'react-icons/md';
+import { MdClose, MdDone, MdPrivacyTip } from 'react-icons/md';
 import defaultUserPhoto from 'images/user/defaultUserPhoto.jpg';
 import { UserDataItem } from './UserDataItem/UserDataItem';
 import { LogOut } from './LogOut/LogOut';
@@ -13,6 +13,8 @@ import { onFetchError } from 'helpers/Messages/NotifyMessages';
 import { onLoading, onLoaded } from 'helpers/Loader/Loader';
 import { PaginationBlock } from 'helpers/Pagination/Pagination';
 import css from './user.module.scss';
+import ChangePasswordForm from 'components/ChangePasswordForm/ChangePasswordForm';
+import { openModalChangePassword } from 'hooks/modalWindow';
 
 export const User = () => {
   const [active, setActive] = useState('');
@@ -23,6 +25,8 @@ export const User = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const reload = useSelector(reloadValue);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
   // table filter
   const [filterUserEvents, setFilterUserEvents] = useState([]);
   const [filterSubject, setFilterSubject] = useState('');
@@ -186,6 +190,7 @@ export const User = () => {
   }
 
   return (
+    <>
     <section className={css.user + ' ' + css.section}>
       {isLoading ? onLoading() : onLoaded()}
       {error && onFetchError('Whoops, something went wrong')}
@@ -210,7 +215,6 @@ export const User = () => {
                     <span className={css['edit-photo-text']}>Edit photo</span>
                   </label>
                 </div>
-
                 <input
                   className={css['change-photo-user']}
                   type="file"
@@ -282,7 +286,10 @@ export const User = () => {
                 id="city"
               />
             </ul>
-            <LogOut />
+            <div style={{display:'flex', justifyContent:"space-between", alignItems:"baseline", flexWrap:"nowrap"}}>
+              <div><LogOut /></div>
+              <div><MdPrivacyTip style={{marginRight:'10px', scale:'1.3', cursor:"pointer"}} onClick={(e)=>{setIsOpenModal(true), openModalChangePassword(e)}}/></div>
+            </div>
           </div>
         </div>
         <div>
@@ -298,7 +305,6 @@ export const User = () => {
                       <table className="table table-text-small mb-0">
                         <thead className="thead-primary table-sorting">
                           <tr>
-                            {/* <th className={css.table__head}>Service</th> */}
                             <th className={css.table__head}>
                               <input
                                 type="text"
@@ -324,7 +330,6 @@ export const User = () => {
                                 </button>
                               </div>
                             </th>
-                            {/* <th className={css.table__head}>Date</th> */}
                             <th className={css.table__head}>
                               <input
                                 type="text"
@@ -350,7 +355,6 @@ export const User = () => {
                                 </button>
                               </div>
                             </th>
-                            {/* <th className={css.table__head}>Specialist</th> */}
                             <th className={css.table__head}>
                               <input
                                 type="text"
@@ -402,7 +406,6 @@ export const User = () => {
                                   </td>
                                   <td className={css.table__data}>
                                     {item.NameOfOwner}
-                                    {/* {specialists .length > 0 && !error && specialists.map(key => {if(key.Id === item.OwnerId){return key.ownerText}})} */}
                                   </td>
                                 </tr>
                               ))}
@@ -424,5 +427,7 @@ export const User = () => {
         </div>
       </div>
     </section>
+    {isOpenModal && <ChangePasswordForm setIsOpenModal={setIsOpenModal}/>}
+    </>
   );
 };
