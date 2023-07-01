@@ -94,14 +94,14 @@ export const UserDataItem = ({
         setIsError('Please enter a phone number');
         return;
       }
-      // if (!phoneRegExp.test(inputValue)) {
-      //   setIsError('please type valid phone number starting with 380');
-      //   return;
-      // }
-      // if (inputValue.length !== 13) {
-      //   setIsError('phone number should contain 13 digits');
-      //   return;
-      // }
+      if (!phoneRegExp.test(inputValue)) {
+        setIsError('please type valid phone number starting with 380');
+        return;
+      }
+      if (inputValue.length !== 13) {
+        setIsError('phone number should contain 13 digits');
+        return;
+      }
       setIsError('');
       setActive('');
       dispatch(update({ phone: inputValue, _id: dataUserId._id }));
