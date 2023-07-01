@@ -47,6 +47,10 @@ export const UserDataItem = ({
   const handleSubmit = name => {
     if (name === 'userName') {
       setActive('userName');
+      if (!inputValue) {
+        setIsError('Please enter your name');
+        return;
+      }
       if (
         inputValue.length !== 0 &&
         (inputValue.length < 2 || inputValue.length > 16)
@@ -80,19 +84,24 @@ export const UserDataItem = ({
       setActive('');
       dispatch(
         update({
-          birthday: inputValue, _id: dataUserId._id
+          birthday: inputValue,
+          _id: dataUserId._id,
         }),
       );
     } else if (name === 'phone') {
       setActive('phone');
-      if (!phoneRegExp.test(inputValue)) {
-        setIsError('please type valid phone number starting with 380');
+      if (!inputValue) {
+        setIsError('Please enter a phone number');
         return;
       }
-      if (inputValue.length !== 13) {
-        setIsError('phone number should contain 13 digits');
-        return;
-      }
+      // if (!phoneRegExp.test(inputValue)) {
+      //   setIsError('please type valid phone number starting with 380');
+      //   return;
+      // }
+      // if (inputValue.length !== 13) {
+      //   setIsError('phone number should contain 13 digits');
+      //   return;
+      // }
       setIsError('');
       setActive('');
       dispatch(update({ phone: inputValue, _id: dataUserId._id }));
