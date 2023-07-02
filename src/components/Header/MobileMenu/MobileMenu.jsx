@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { openModalForm } from 'hooks/modalWindow';
 import css from './mobileMenu.module.scss';
@@ -8,6 +8,8 @@ import { MobileUserNav } from '../UserNav/UserNav';
 
 const MobileMenu = ({ onClose, setIsOpenModal }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const [path, setPath] = useState('');
+
   useEffect(() => {
     // closes modal with a click on the root
     const handleBackdropClick = () => {
@@ -32,7 +34,11 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
     };
   }, [onClose]);
 
-  const path = window.location.pathname !== '/barbershop/' ? '/barbershop' : '';
+  useEffect(() => {
+    if (window.location.pathname !== '/barbershop/') {
+      setPath('/barbershop');
+    }
+  }, [window.location.pathname]);
 
   return (
     <div
