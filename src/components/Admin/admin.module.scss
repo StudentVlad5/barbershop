@@ -1,7 +1,16 @@
 @import '../base/main.scss';
 
 .admin {
+  padding-top: 0;
   padding-bottom: 0;
+
+  @include mq(tablet) {
+    padding-top: 0;
+  }
+
+  @include mq(desktop) {
+    padding-top: 0;
+  }
 
   &__container {
     width: 100%;
