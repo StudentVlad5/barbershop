@@ -21,7 +21,7 @@ export const Header = () => {
       const header = document.getElementById('header');
       header && header.classList.add(css['js-no-transparency']);
       setPath('/barbershop');
-    }
+    } else {setPath('')}
   }, [window.location.pathname]);
 
   return (
