@@ -118,7 +118,9 @@ export const Header = () => {
             </svg>
           </button>
         </div>
-        {showMenu && <MobileMenu onClose={toggleModal} setIsOpenModal={setIsOpenModal}/>}
+        {showMenu && (
+          <MobileMenu onClose={toggleModal} setIsOpenModal={setIsOpenModal} />
+        )}
       </header>
       {isOpenModal && <ModalWindowForForm />}
     </>
