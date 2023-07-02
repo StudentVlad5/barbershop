@@ -22,6 +22,8 @@ export const Header = () => {
     }
   }, [window.location.pathname]);
 
+  const path = window.location.pathname !== '/barbershop' ? '/barbershop' : '';
+
   return (
     <>
       <header className={css.header} id="header">
@@ -38,7 +40,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="#about"
+                  href={`${path}#about`}
                   aria-label="About"
                 >
                   About
@@ -47,7 +49,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="#price"
+                  href={`${path}#price`}
                   aria-label="Services and Prices"
                 >
                   Services and Prices
@@ -56,7 +58,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="#team"
+                  href={`${path}#team`}
                   aria-label="Barbers"
                 >
                   Barbers
@@ -65,7 +67,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="#contacts"
+                  href={`${path}#contacts`}
                   aria-label="Contacts"
                 >
                   Contacts

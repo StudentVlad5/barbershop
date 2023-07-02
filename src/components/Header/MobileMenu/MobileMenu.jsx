@@ -32,6 +32,8 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
     };
   }, [onClose]);
 
+  const path = window.location.pathname !== '/barbershop' ? '/barbershop' : '';
+
   return (
     <div
       className={css['header__mobile-menu']}
@@ -43,7 +45,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="#about"
+              href={`${path}#about`}
               aria-label="About"
               onClick={() => onClose()}
             >
@@ -53,7 +55,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="#price"
+              href={`${path}#price`}
               aria-label="Services and Prices"
               onClick={() => onClose()}
             >
@@ -63,7 +65,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="#team"
+              href={`${path}#team`}
               aria-label="Barbers"
               onClick={() => onClose()}
             >
@@ -73,7 +75,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="#contacts"
+              href={`${path}#contacts`}
               aria-label="Contacts"
               onClick={() => onClose()}
             >
