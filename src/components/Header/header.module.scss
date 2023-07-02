@@ -52,6 +52,10 @@
     margin-top: 10px;
     fill: var(--color-text-white);
 
+    @include mq(tablet) {
+        fill: currentColor;
+    }
+
     @include mq(desktop) {
         margin-right: 100px;
     }

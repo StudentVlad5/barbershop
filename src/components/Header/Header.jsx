@@ -22,8 +22,7 @@ export const Header = () => {
     }
   }, [window.location.pathname]);
 
-  const path =
-    window.location.pathname !== '/barbershop' ? '/barbershop#' : '#';
+  const path = window.location.pathname !== '/barbershop/' ? '/barbershop' : '';
 
   return (
     <>
@@ -41,7 +40,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href={`${path}about`}
+                  href={`${path}#about`}
                   aria-label="About"
                 >
                   About
@@ -50,7 +49,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href={`${path}price`}
+                  href={`${path}#price`}
                   aria-label="Services and Prices"
                 >
                   Services and Prices
@@ -59,7 +58,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href={`${path}team`}
+                  href={`${path}#team`}
                   aria-label="Barbers"
                 >
                   Barbers
@@ -68,7 +67,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href={`${path}contacts`}
+                  href={`${path}#contacts`}
                   aria-label="Contacts"
                 >
                   Contacts
