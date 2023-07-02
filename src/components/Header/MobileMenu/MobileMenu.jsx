@@ -43,7 +43,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="/barbershop#about"
+              href="#about"
               aria-label="About"
               onClick={() => onClose()}
             >
@@ -53,7 +53,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="/barbershop#price"
+              href="#price"
               aria-label="Services and Prices"
               onClick={() => onClose()}
             >
@@ -63,7 +63,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="/barbershop#team"
+              href="#team"
               aria-label="Barbers"
               onClick={() => onClose()}
             >
@@ -73,7 +73,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           <li className={css['mobile-menu__navigation-item']}>
             <a
               className={css['mobile-menu__navigation-link'] + ' ' + css.link}
-              href="/barbershop#contacts"
+              href="#contacts"
               aria-label="Contacts"
               onClick={() => onClose()}
             >
@@ -92,7 +92,9 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
         <button
           className={css.btn + ' ' + css['btn--mode-light']}
           type="button"
-          onClick={e => {openModalForm(e), setIsOpenModal(true)}}
+          onClick={e => {
+            openModalForm(e), setIsOpenModal(true);
+          }}
         >
           log in
         </button>
@@ -133,4 +135,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
 
 export default MobileMenu;
 
-MobileMenu.propTypes = { onClose: PropTypes.func.isRequired, setIsOpenModal: PropTypes.any.isRequired };
+MobileMenu.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  setIsOpenModal: PropTypes.any.isRequired,
+};

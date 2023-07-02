@@ -38,7 +38,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="/barbershop#about"
+                  href="#about"
                   aria-label="About"
                 >
                   About
@@ -47,7 +47,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="/barbershop#price"
+                  href="#price"
                   aria-label="Services and Prices"
                 >
                   Services and Prices
@@ -56,7 +56,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="/barbershop#team"
+                  href="#team"
                   aria-label="Barbers"
                 >
                   Barbers
@@ -65,7 +65,7 @@ export const Header = () => {
               <li className={css.navigation__item}>
                 <a
                   className={css.navigation__link + ' ' + css.link}
-                  href="/barbershop#contacts"
+                  href="#contacts"
                   aria-label="Contacts"
                 >
                   Contacts
@@ -118,7 +118,9 @@ export const Header = () => {
             </svg>
           </button>
         </div>
-        {showMenu && <MobileMenu onClose={toggleModal} setIsOpenModal={setIsOpenModal}/>}
+        {showMenu && (
+          <MobileMenu onClose={toggleModal} setIsOpenModal={setIsOpenModal} />
+        )}
       </header>
       {isOpenModal && <ModalWindowForForm />}
     </>
