@@ -11,18 +11,18 @@ import css from './header.module.scss';
 export const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [path, setPath] = useState('');
   const toggleModal = () => setShowMenu(state => !state);
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
-    if (window.location.pathname !== '/barbershop') {
+    if (window.location.pathname !== '/barbershop/') {
       const header = document.getElementById('header');
       header && header.classList.add(css['js-no-transparency']);
+      setPath('/barbershop');
     }
   }, [window.location.pathname]);
-
-  const path = window.location.pathname !== '/barbershop/' ? '/barbershop' : '';
 
   return (
     <>
