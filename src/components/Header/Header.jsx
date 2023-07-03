@@ -22,6 +22,8 @@ export const Header = () => {
       header && header.classList.add(css['js-no-transparency']);
       setPath('/barbershop');
     } else {setPath('')}
+    const id = window.location.hash;
+    if(document.querySelector('.'+ id.slice(1) +'-teg')){document.querySelector('.'+ id.slice(1) +'-teg').click()}
   }, [window.location.pathname]);
 
   return (
@@ -48,7 +50,7 @@ export const Header = () => {
               </li>
               <li className={css.navigation__item}>
                 <a
-                  className={css.navigation__link + ' ' + css.link}
+                  className={css.navigation__link + ' ' + css.link + " " + "price-teg"}
                   href={`${path}#price`}
                   aria-label="Services and Prices"
                 >
@@ -57,7 +59,7 @@ export const Header = () => {
               </li>
               <li className={css.navigation__item}>
                 <a
-                  className={css.navigation__link + ' ' + css.link}
+                  className={css.navigation__link + ' ' + css.link + " " + "team-teg"}
                   href={`${path}#team`}
                   aria-label="Barbers"
                 >
@@ -66,7 +68,7 @@ export const Header = () => {
               </li>
               <li className={css.navigation__item}>
                 <a
-                  className={css.navigation__link + ' ' + css.link}
+                  className={css.navigation__link + ' ' + css.link + " " + "contacts-teg"}
                   href={`${path}#contacts`}
                   aria-label="Contacts"
                 >

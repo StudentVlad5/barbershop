@@ -36,8 +36,12 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
 
   useEffect(() => {
     if (window.location.pathname !== '/barbershop/') {
+      const header = document.getElementById('header');
+      header && header.classList.add(css['js-no-transparency']);
       setPath('/barbershop');
-    }
+    } else {setPath('')}
+    const id = window.location.hash;
+    if(document.querySelector('.'+ id.slice(1) +'-teg')){document.querySelector('.'+ id.slice(1) +'-teg').click()}
   }, [window.location.pathname]);
 
   return (
@@ -60,7 +64,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           </li>
           <li className={css['mobile-menu__navigation-item']}>
             <a
-              className={css['mobile-menu__navigation-link'] + ' ' + css.link}
+              className={css['mobile-menu__navigation-link'] + ' ' + css.link + " " + "price-teg"}
               href={`${path}#price`}
               aria-label="Services and Prices"
               onClick={() => onClose()}
@@ -70,7 +74,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           </li>
           <li className={css['mobile-menu__navigation-item']}>
             <a
-              className={css['mobile-menu__navigation-link'] + ' ' + css.link}
+              className={css['mobile-menu__navigation-link'] + ' ' + css.link + " " + "team-teg"}
               href={`${path}#team`}
               aria-label="Barbers"
               onClick={() => onClose()}
@@ -80,7 +84,7 @@ const MobileMenu = ({ onClose, setIsOpenModal }) => {
           </li>
           <li className={css['mobile-menu__navigation-item']}>
             <a
-              className={css['mobile-menu__navigation-link'] + ' ' + css.link}
+              className={css['mobile-menu__navigation-link'] + ' ' + css.link + " " + "contacts-teg"}
               href={`${path}#contacts`}
               aria-label="Contacts"
               onClick={() => onClose()}
