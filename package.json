@@ -2,7 +2,7 @@
   "name": "barbershop",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://studentvlad5.github.io/barbershop/",
+  "homepage": "https://barbershop.vercel.app/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@syncfusion/ej2-base": "^21.2.3",
