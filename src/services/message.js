@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://rich-rose-shoulder-pads.cyclic.app/api";
+const BASE_URL = "https://barbershop-backend-lilac.vercel.app/api";
 // const BASE_URL = "http://localhost:3030/api";
 
 export function leaveMessage(body) {

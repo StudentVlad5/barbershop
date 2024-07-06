@@ -33,7 +33,6 @@ const Contacts = () => {
   const handleSubmit = async () => {
     const credential = { name, phone, message };
 
-    // const BASE_URL = "https://rich-rose-shoulder-pads.cyclic.app/api";
     try {
       const res = await leaveMessage(credential);
       notify();
